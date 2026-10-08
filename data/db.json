@@ -264,6 +264,23 @@
       "trialStartDate": "2026-10-08T20:50:35.759Z",
       "trialExpiryDate": "2026-11-07T20:50:35.759Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791492873773",
+      "name": "Marlene de Brito",
+      "email": "britomarlene330@gmail.com",
+      "password": "20a30c51",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "921.729.979-00",
+      "cnpj": null,
+      "phone": "41996961175",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "createdAt": "2026-10-08T20:54:33.773Z",
+      "trialStartDate": "2026-10-08T20:54:33.773Z",
+      "trialExpiryDate": "2026-11-07T20:54:33.773Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
