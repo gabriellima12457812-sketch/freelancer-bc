@@ -638,6 +638,23 @@
       "trialStartDate": "2026-10-08T23:32:02.429Z",
       "trialExpiryDate": "2026-11-07T23:32:02.429Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791502682335",
+      "name": "Ayelen Garcia",
+      "email": "ayelen.m1421@gmail.com",
+      "password": "Ayelen.1421",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "128.425.021-08",
+      "cnpj": null,
+      "phone": "47996741129",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-08T23:38:02.334Z",
+      "trialStartDate": "2026-10-08T23:38:02.334Z",
+      "trialExpiryDate": "2026-11-07T23:38:02.334Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
