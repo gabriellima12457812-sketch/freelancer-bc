@@ -400,6 +400,23 @@
       "trialStartDate": "2026-10-08T21:56:42.488Z",
       "trialExpiryDate": "2026-11-07T21:56:42.488Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791496609549",
+      "name": "Maria Júlia Bangue Domingues",
+      "email": "majubdomingues9800@gmail.com",
+      "password": "maju@2008",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "110.991.119-00",
+      "cnpj": null,
+      "phone": "42988272770",
+      "businessType": null,
+      "profession": "Limpeza",
+      "createdAt": "2026-10-08T21:56:49.547Z",
+      "trialStartDate": "2026-10-08T21:56:49.547Z",
+      "trialExpiryDate": "2026-11-07T21:56:49.547Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
