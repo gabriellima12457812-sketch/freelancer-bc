@@ -1,0 +1,19 @@
+﻿{
+  "name": "Freelancer BC - Conectando Eventos",
+  "short_name": "Freelancer BC",
+  "description": "O ecossistema oficial para eventos, bares, restaurantes e freelancers em Balneário Camboriú",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
