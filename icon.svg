@@ -1,0 +1,40 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="bagGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  
+  <!-- Rounded App Background -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Inner Glow / Border -->
+  <rect x="6" y="6" width="500" height="500" rx="122" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="4"/>
+
+  <!-- Briefcase Icon -->
+  <g filter="url(#shadow)" transform="translate(106, 116)">
+    <!-- Bag Handle -->
+    <path d="M90 70 V38 C90 22 102 10 118 10 H182 C198 10 210 22 210 38 V70" 
+          fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Bag Body -->
+    <rect x="15" y="70" width="270" height="190" rx="28" fill="url(#bagGrad)"/>
+    <!-- Clasp / Center Band -->
+    <rect x="15" y="115" width="270" height="18" fill="#e2e8f0"/>
+    <rect x="125" y="105" width="50" height="38" rx="8" fill="#4f46e5"/>
+    <circle cx="150" cy="124" r="6" fill="#fbbf24"/>
+  </g>
+  
+  <!-- BC Text Badge -->
+  <g transform="translate(256, 420)">
+    <text text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-weight="900" font-size="52" fill="#ffffff" letter-spacing="4">FREELANCER BC</text>
+  </g>
+</svg>
