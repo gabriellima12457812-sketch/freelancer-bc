@@ -806,21 +806,23 @@
         } catch (e) {}
       };
 
+      const SYNC_API_URL = (typeof window !== 'undefined' && window.location.origin && window.location.origin.includes('crm-piff-paff'))
+        ? '/api/freelancer-sync'
+        : 'https://crm-piff-paff-v2.vercel.app/api/freelancer-sync';
+
       const syncWithCloud = async () => {
         try {
-          const res = await fetch('/api/freelancer-sync');
+          const res = await fetch(SYNC_API_URL);
           if (!res.ok) return;
           const data = await res.json();
           if (data && data.ok) {
-            // Sincronizar vagas (Jobs) em tempo real
+            // Sincronizar vagas (Jobs) em tempo real sem precisar de F5
             if (Array.isArray(data.jobs)) {
               setJobs(prev => {
-                const map = new Map();
-                // Primeiro as vagas locais
-                prev.forEach(j => { if (j && j.id) map.set(j.id, j); });
-                // Sobrepor / adicionar vagas da nuvem
-                data.jobs.forEach(j => { if (j && j.id) map.set(j.id, j); });
-                const merged = Array.from(map.values());
+                const now = Date.now();
+                // Preservar vagas locais recém-criadas nos últimos 20 segundos que ainda estão sendo gravadas
+                const pending = prev.filter(p => p && p.id && !data.jobs.some(cj => cj.id === p.id) && (now - new Date(p.createdAt || 0).getTime() < 20000));
+                const merged = [...pending, ...data.jobs];
                 merged.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
 
                 if (JSON.stringify(prev) !== JSON.stringify(merged)) {
@@ -831,12 +833,17 @@
               });
             }
 
-            // Sincronizar usuários (Users)
+            // Sincronizar usuários (Users) em tempo real
             if (Array.isArray(data.users)) {
               setUsers(prev => {
                 const map = new Map();
-                prev.forEach(u => { if (u && u.id) map.set(u.id, u); });
-                data.users.forEach(u => { if (u && u.id) map.set(u.id, { ...(map.get(u.id) || {}), ...u }); });
+                data.users.forEach(u => { if (u && u.id) map.set(u.id, u); });
+                const now = Date.now();
+                prev.forEach(u => {
+                  if (u && u.id && !map.has(u.id) && (now - new Date(u.createdAt || 0).getTime() < 20000)) {
+                    map.set(u.id, u);
+                  }
+                });
                 const merged = Array.from(map.values());
                 const adminIdx = merged.findIndex(u => u.role === 'admin' || u.username === 'admin');
                 if (adminIdx === -1) {
@@ -878,11 +885,11 @@
 
       const handleDeleteUser = (userId) => {
         setUsers(prev => prev.filter(u => u.id !== userId));
-        fetch('/api/freelancer-sync', {
+        fetch(SYNC_API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ action: 'delete_user', userId })
-        }).catch(() => {});
+        }).then(() => syncWithCloud()).catch(() => {});
         showNotification('Cadastro removido com sucesso.');
       };
 
@@ -893,11 +900,11 @@
             const base = currentExp > new Date() ? currentExp : new Date();
             const newExpiry = new Date(base.getTime() + days * 24 * 60 * 60 * 1000);
             const mod = { ...u, trialExpiryDate: newExpiry.toISOString(), isSubscriptionActive: true };
-            fetch('/api/freelancer-sync', {
+            fetch(SYNC_API_URL, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ action: 'save_user', user: mod })
-            }).catch(() => {});
+            }).then(() => syncWithCloud()).catch(() => {});
             return mod;
           }
           return u;
@@ -910,11 +917,11 @@
           if (u.id === userId) {
             const nextStatus = u.status === 'bloqueado' ? 'aprovado' : 'bloqueado';
             const mod = { ...u, status: nextStatus };
-            fetch('/api/freelancer-sync', {
+            fetch(SYNC_API_URL, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ action: 'save_user', user: mod })
-            }).catch(() => {});
+            }).then(() => syncWithCloud()).catch(() => {});
             return mod;
           }
           return u;
@@ -1023,40 +1030,55 @@
         const messageText = `Olá! Vi a vaga de ${job.title} (${remun.display}) no app Freelancer BC e tenho interesse! Podemos conversar?`;
         const encodedText = encodeURIComponent(messageText);
 
-        setJobs(prev => prev.map(j => {
-          if (j.id === job.id) {
-            const existingApplicants = j.applicants || [];
-            const alreadyApplied = existingApplicants.find(a => a.freelancerId === currentUser.id);
+        let modifiedJob = null;
+        setJobs(prev => {
+          const updated = prev.map(j => {
+            if (j.id === job.id) {
+              const existingApplicants = j.applicants || [];
+              const alreadyApplied = existingApplicants.find(a => a.freelancerId === currentUser.id);
 
-            let updatedApplicants;
-            if (alreadyApplied) {
-              updatedApplicants = existingApplicants.map(a =>
-                a.freelancerId === currentUser.id ? { ...a, clickedAt: new Date().toISOString() } : a
-              );
-            } else {
-              updatedApplicants = [
-                {
-                  freelancerId: currentUser.id,
-                  name: currentUser.name,
-                  email: currentUser.email,
-                  phone: currentUser.phone,
-                  profession: currentUser.profession || 'Freelancer Especialista',
-                  cpf: currentUser.cpf,
-                  clickedAt: new Date().toISOString(),
-                  hiredStatus: 'pendente'
-                },
-                ...existingApplicants
-              ];
+              let updatedApplicants;
+              if (alreadyApplied) {
+                updatedApplicants = existingApplicants.map(a =>
+                  a.freelancerId === currentUser.id ? { ...a, clickedAt: new Date().toISOString() } : a
+                );
+              } else {
+                updatedApplicants = [
+                  {
+                    freelancerId: currentUser.id,
+                    name: currentUser.name,
+                    email: currentUser.email,
+                    phone: currentUser.phone,
+                    profession: currentUser.profession || 'Freelancer Especialista',
+                    cpf: currentUser.cpf,
+                    clickedAt: new Date().toISOString(),
+                    hiredStatus: 'pendente'
+                  },
+                  ...existingApplicants
+                ];
+              }
+
+              modifiedJob = {
+                ...j,
+                clicks: (j.clicks || 0) + (alreadyApplied ? 0 : 1),
+                applicants: updatedApplicants
+              };
+              return modifiedJob;
             }
+            return j;
+          });
+          localStorage.setItem('fbc_jobs', JSON.stringify(updated));
+          broadcastUpdate('JOBS_UPDATED', { jobs: updated });
+          return updated;
+        });
 
-            return {
-              ...j,
-              clicks: (j.clicks || 0) + (alreadyApplied ? 0 : 1),
-              applicants: updatedApplicants
-            };
-          }
-          return j;
-        }));
+        if (modifiedJob) {
+          fetch(SYNC_API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'save_job', job: modifiedJob })
+          }).then(() => syncWithCloud()).catch(() => {});
+        }
 
         window.open(`https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodedText}`, '_blank');
       };
@@ -1074,11 +1096,11 @@
                 onRegister={(newUser) => {
                   setUsers(prev => [...prev, newUser]);
                   setCurrentUser(newUser);
-                  fetch('/api/freelancer-sync', {
+                  fetch(SYNC_API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ action: 'save_user', user: newUser })
-                  }).catch(() => {});
+                  }).then(() => syncWithCloud()).catch(() => {});
                   showNotification('Cadastro realizado com sucesso! Bem-vindo ao Freelancer BC!');
                 }}
                 onGoToLogin={() => setAuthMode('login')}
@@ -1097,6 +1119,7 @@
               users={users}
               onLogin={(user) => {
                 setCurrentUser(user);
+                syncWithCloud();
                 showNotification(`Bem-vindo, ${user.name}!`);
               }}
               onGoToRegister={() => setAuthMode('register')}
@@ -1167,7 +1190,7 @@
                   broadcastUpdate('JOBS_UPDATED', { jobs: updated });
                   return updated;
                 });
-                fetch('/api/freelancer-sync', {
+                fetch(SYNC_API_URL, {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({ action: 'save_job', job: newJob })
@@ -1175,18 +1198,42 @@
                 showNotification('Nova vaga publicada com sucesso!');
               }}
               onUpdateJob={(updatedJob) => {
-                setJobs(prev => prev.map(j => j.id === updatedJob.id ? updatedJob : j));
+                setJobs(prev => {
+                  const updated = prev.map(j => j.id === updatedJob.id ? updatedJob : j);
+                  localStorage.setItem('fbc_jobs', JSON.stringify(updated));
+                  broadcastUpdate('JOBS_UPDATED', { jobs: updated });
+                  return updated;
+                });
+                fetch(SYNC_API_URL, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ action: 'save_job', job: updatedJob })
+                }).then(() => syncWithCloud()).catch(() => {});
                 showNotification('Vaga atualizada com sucesso!');
               }}
               onTogglePauseJob={(jobId) => {
-                setJobs(prev => prev.map(j => {
-                  if (j.id === jobId) {
-                    const next = j.status === 'pausada' ? 'ativa' : 'pausada';
-                    showNotification(next === 'pausada' ? 'Vaga pausada.' : 'Vaga reativada!');
-                    return { ...j, status: next };
-                  }
-                  return j;
-                }));
+                let toggledJob = null;
+                setJobs(prev => {
+                  const updated = prev.map(j => {
+                    if (j.id === jobId) {
+                      const next = j.status === 'pausada' ? 'ativa' : 'pausada';
+                      showNotification(next === 'pausada' ? 'Vaga pausada.' : 'Vaga reativada!');
+                      toggledJob = { ...j, status: next };
+                      return toggledJob;
+                    }
+                    return j;
+                  });
+                  localStorage.setItem('fbc_jobs', JSON.stringify(updated));
+                  broadcastUpdate('JOBS_UPDATED', { jobs: updated });
+                  return updated;
+                });
+                if (toggledJob) {
+                  fetch(SYNC_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'save_job', job: toggledJob })
+                  }).then(() => syncWithCloud()).catch(() => {});
+                }
               }}
               onDeleteJob={(jobId) => {
                 setJobs(prev => {
@@ -1195,7 +1242,7 @@
                   broadcastUpdate('JOBS_UPDATED', { jobs: updated });
                   return updated;
                 });
-                fetch('/api/freelancer-sync', {
+                fetch(SYNC_API_URL, {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({ action: 'delete_job', jobId })
@@ -1203,29 +1250,44 @@
                 showNotification('Vaga removida com sucesso.');
               }}
               onMarkSpotFilled={(jobId, isAppAttribution, candidateId = null) => {
-                setJobs(prev => prev.map(j => {
-                  if (j.id === jobId) {
-                    const nextFilled = Math.min(j.totalSpots, (j.filledSpots || 0) + 1);
-                    const isAllFilled = nextFilled >= j.totalSpots;
+                let modifiedJob = null;
+                setJobs(prev => {
+                  const updated = prev.map(j => {
+                    if (j.id === jobId) {
+                      const nextFilled = Math.min(j.totalSpots, (j.filledSpots || 0) + 1);
+                      const isAllFilled = nextFilled >= j.totalSpots;
 
-                    let updatedApplicants = j.applicants || [];
-                    if (candidateId) {
-                      updatedApplicants = updatedApplicants.map(a =>
-                        a.freelancerId === candidateId
-                          ? { ...a, hiredStatus: isAppAttribution ? 'contratado_app' : 'contratado_fora' }
-                          : a
-                      );
+                      let updatedApplicants = j.applicants || [];
+                      if (candidateId) {
+                        updatedApplicants = updatedApplicants.map(a =>
+                          a.freelancerId === candidateId
+                            ? { ...a, hiredStatus: isAppAttribution ? 'contratado_app' : 'contratado_fora' }
+                            : a
+                        );
+                      }
+
+                      modifiedJob = {
+                        ...j,
+                        filledSpots: nextFilled,
+                        status: isAllFilled ? 'encerrada' : j.status,
+                        applicants: updatedApplicants
+                      };
+                      return modifiedJob;
                     }
+                    return j;
+                  });
+                  localStorage.setItem('fbc_jobs', JSON.stringify(updated));
+                  broadcastUpdate('JOBS_UPDATED', { jobs: updated });
+                  return updated;
+                });
 
-                    return {
-                      ...j,
-                      filledSpots: nextFilled,
-                      status: isAllFilled ? 'encerrada' : j.status,
-                      applicants: updatedApplicants
-                    };
-                  }
-                  return j;
-                }));
+                if (modifiedJob) {
+                  fetch(SYNC_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'save_job', job: modifiedJob })
+                  }).then(() => syncWithCloud()).catch(() => {});
+                }
 
                 showNotification(
                   isAppAttribution
