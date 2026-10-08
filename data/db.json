@@ -502,6 +502,23 @@
       "trialStartDate": "2026-10-08T22:51:05.361Z",
       "trialExpiryDate": "2026-11-07T22:51:05.361Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791500405512",
+      "name": "Antonio Ruan Gomes Rodrigues",
+      "email": "gomesruan0719@gmail.com",
+      "password": "Charlote30#",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "031.421.292-27",
+      "cnpj": null,
+      "phone": "47996883517",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "createdAt": "2026-10-08T23:00:05.512Z",
+      "trialStartDate": "2026-10-08T23:00:05.512Z",
+      "trialExpiryDate": "2026-11-07T23:00:05.512Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
