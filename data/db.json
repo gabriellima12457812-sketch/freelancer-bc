@@ -11,20 +11,6 @@
       "createdAt": "2026-09-01T10:00:00.000Z"
     }
   ],
-  "jobs": [
-    {
-      "paymentType": "diaria_fixa",
-      "companyId": "empresa-123",
-      "id": "job-verif-20261008164113",
-      "category": "Bartender",
-      "createdAt": "2026-10-08T19:41:13.381Z",
-      "companyName": "Balne�rio Lounge",
-      "status": "ativa",
-      "totalSpots": 1,
-      "payRate": 250,
-      "title": "Bartender VIP Teste",
-      "filledSpots": 0
-    }
-  ],
+  "jobs": [],
   "invoices": []
 }
