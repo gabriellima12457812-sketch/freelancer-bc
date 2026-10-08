@@ -43,6 +43,23 @@
       "trialStartDate": "2026-10-08T20:01:08.030Z",
       "trialExpiryDate": "2026-11-07T20:01:08.030Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791490341211",
+      "name": "Gabriel lima",
+      "email": "gabriellima_1@hotmail.com",
+      "password": "12457812",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "101.304.159-36",
+      "cnpj": null,
+      "phone": "47999158919",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-08T20:12:21.211Z",
+      "trialStartDate": "2026-10-08T20:12:21.211Z",
+      "trialExpiryDate": "2026-11-07T20:12:21.211Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
