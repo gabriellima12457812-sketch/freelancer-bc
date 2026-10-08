@@ -11,6 +11,20 @@
       "createdAt": "2026-09-01T10:00:00.000Z"
     }
   ],
-  "jobs": [],
+  "jobs": [
+    {
+      "paymentType": "diaria_fixa",
+      "companyId": "u-admin",
+      "id": "job-test-20261008151415",
+      "category": "Gar�om",
+      "createdAt": "2026-10-08T18:14:15.257Z",
+      "companyName": "Restaurante Teste",
+      "status": "ativa",
+      "totalSpots": 2,
+      "payRate": 180,
+      "title": "Gar�om de Teste",
+      "filledSpots": 0
+    }
+  ],
   "invoices": []
 }
