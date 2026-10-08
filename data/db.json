@@ -111,6 +111,23 @@
       "trialStartDate": "2026-10-08T20:21:55.487Z",
       "trialExpiryDate": "2026-11-07T20:21:55.487Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791491022581",
+      "name": "Iara Valendolf",
+      "email": "iaravalendolf703@gmail.com",
+      "password": "foca1993",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "057.229.589-80",
+      "cnpj": null,
+      "phone": "47996506605",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-08T20:23:42.579Z",
+      "trialStartDate": "2026-10-08T20:23:42.579Z",
+      "trialExpiryDate": "2026-11-07T20:23:42.579Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
