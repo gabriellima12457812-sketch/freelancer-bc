@@ -761,24 +761,82 @@
         return { isExpired: false, daysLeft: 999, isBlocked: false, isPaid: false, isFree: true };
       };
 
-      // SINCRONIZAÇÃO EM NUVEM MULTI-DISPOSITIVO (Vercel Edge Config / API)
+            // SINCRONIZACAO EM TEMPO REAL MULTI-DISPOSITIVO (Auto-Update sem F5)
       const [isSyncing, setIsSyncing] = useState(false);
       const [lastSyncTime, setLastSyncTime] = useState(null);
 
+      // Sincronização entre abas no mesmo navegador (BroadcastChannel + storage event)
+      useEffect(() => {
+        let bc = null;
+        try {
+          bc = new BroadcastChannel('freelancer_bc_realtime');
+          bc.onmessage = (event) => {
+            if (event.data) {
+              if (event.data.type === 'JOBS_UPDATED' && Array.isArray(event.data.jobs)) {
+                setJobs(event.data.jobs);
+              }
+              if (event.data.type === 'USERS_UPDATED' && Array.isArray(event.data.users)) {
+                setUsers(event.data.users);
+              }
+            }
+          };
+        } catch (e) {}
+
+        const handleStorageChange = (e) => {
+          if (e.key === 'fbc_jobs' && e.newValue) {
+            try { setJobs(JSON.parse(e.newValue)); } catch (err) {}
+          }
+          if (e.key === 'fbc_users' && e.newValue) {
+            try { setUsers(JSON.parse(e.newValue)); } catch (err) {}
+          }
+        };
+        window.addEventListener('storage', handleStorageChange);
+
+        return () => {
+          if (bc) bc.close();
+          window.removeEventListener('storage', handleStorageChange);
+        };
+      }, []);
+
+      const broadcastUpdate = (type, payload) => {
+        try {
+          const bc = new BroadcastChannel('freelancer_bc_realtime');
+          bc.postMessage({ type, ...payload });
+          bc.close();
+        } catch (e) {}
+      };
+
       const syncWithCloud = async () => {
-        setIsSyncing(true);
         try {
           const res = await fetch('/api/freelancer-sync');
           if (!res.ok) return;
           const data = await res.json();
           if (data && data.ok) {
-            if (Array.isArray(data.users) && data.users.length > 0) {
+            // Sincronizar vagas (Jobs) em tempo real
+            if (Array.isArray(data.jobs)) {
+              setJobs(prev => {
+                const map = new Map();
+                // Primeiro as vagas locais
+                prev.forEach(j => { if (j && j.id) map.set(j.id, j); });
+                // Sobrepor / adicionar vagas da nuvem
+                data.jobs.forEach(j => { if (j && j.id) map.set(j.id, j); });
+                const merged = Array.from(map.values());
+                merged.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+
+                if (JSON.stringify(prev) !== JSON.stringify(merged)) {
+                  localStorage.setItem('fbc_jobs', JSON.stringify(merged));
+                  return merged;
+                }
+                return prev;
+              });
+            }
+
+            // Sincronizar usuários (Users)
+            if (Array.isArray(data.users)) {
               setUsers(prev => {
                 const map = new Map();
-                prev.forEach(u => map.set(u.id, u));
-                data.users.forEach(u => {
-                  if (u && u.id) map.set(u.id, { ...map.get(u.id), ...u });
-                });
+                prev.forEach(u => { if (u && u.id) map.set(u.id, u); });
+                data.users.forEach(u => { if (u && u.id) map.set(u.id, { ...(map.get(u.id) || {}), ...u }); });
                 const merged = Array.from(map.values());
                 const adminIdx = merged.findIndex(u => u.role === 'admin' || u.username === 'admin');
                 if (adminIdx === -1) {
@@ -796,32 +854,25 @@
                     isSubscriptionActive: true
                   });
                 }
-                return merged;
+                if (JSON.stringify(prev) !== JSON.stringify(merged)) {
+                  localStorage.setItem('fbc_users', JSON.stringify(merged));
+                  return merged;
+                }
+                return prev;
               });
             }
 
-            if (Array.isArray(data.jobs) && data.jobs.length > 0) {
-              setJobs(prev => {
-                const map = new Map();
-                prev.forEach(j => map.set(j.id, j));
-                data.jobs.forEach(j => {
-                  if (j && j.id) map.set(j.id, { ...map.get(j.id), ...j });
-                });
-                return Array.from(map.values());
-              });
-            }
             setLastSyncTime(new Date().toLocaleTimeString('pt-BR'));
           }
         } catch (err) {
-          console.warn('Sync aviso:', err.message);
-        } finally {
-          setIsSyncing(false);
+          // Erro silencioso para não interromper navegação
         }
       };
 
+      // Auto-update veloz a cada 3 segundos sem precisar de F5
       useEffect(() => {
         syncWithCloud();
-        const interval = setInterval(syncWithCloud, 10000);
+        const interval = setInterval(syncWithCloud, 3000);
         return () => clearInterval(interval);
       }, []);
 
@@ -1110,12 +1161,17 @@
               jobs={jobs}
               invoices={invoices.filter(i => i.userId === currentUser.id)}
               onAddJob={(newJob) => {
-                setJobs(prev => [newJob, ...prev]);
+                setJobs(prev => {
+                  const updated = [newJob, ...prev.filter(j => j.id !== newJob.id)];
+                  localStorage.setItem('fbc_jobs', JSON.stringify(updated));
+                  broadcastUpdate('JOBS_UPDATED', { jobs: updated });
+                  return updated;
+                });
                 fetch('/api/freelancer-sync', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({ action: 'save_job', job: newJob })
-                }).catch(() => {});
+                }).then(() => syncWithCloud()).catch(() => {});
                 showNotification('Nova vaga publicada com sucesso!');
               }}
               onUpdateJob={(updatedJob) => {
@@ -1133,7 +1189,17 @@
                 }));
               }}
               onDeleteJob={(jobId) => {
-                setJobs(prev => prev.filter(j => j.id !== jobId));
+                setJobs(prev => {
+                  const updated = prev.filter(j => j.id !== jobId);
+                  localStorage.setItem('fbc_jobs', JSON.stringify(updated));
+                  broadcastUpdate('JOBS_UPDATED', { jobs: updated });
+                  return updated;
+                });
+                fetch('/api/freelancer-sync', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ action: 'delete_job', jobId })
+                }).then(() => syncWithCloud()).catch(() => {});
                 showNotification('Vaga removida com sucesso.');
               }}
               onMarkSpotFilled={(jobId, isAppAttribution, candidateId = null) => {
