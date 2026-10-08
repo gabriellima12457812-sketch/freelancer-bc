@@ -417,6 +417,23 @@
       "trialStartDate": "2026-10-08T21:56:49.547Z",
       "trialExpiryDate": "2026-11-07T21:56:49.547Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791496812587",
+      "name": "Joao Carlos da Silva Martins",
+      "email": "martinsjocarlos@gmail.com",
+      "password": "157881",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "429.898.538-55",
+      "cnpj": null,
+      "phone": "47999692029",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-08T22:00:12.587Z",
+      "trialStartDate": "2026-10-08T22:00:12.587Z",
+      "trialExpiryDate": "2026-11-07T22:00:12.587Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
