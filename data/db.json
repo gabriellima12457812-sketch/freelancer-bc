@@ -298,6 +298,23 @@
       "trialStartDate": "2026-10-08T21:04:24.087Z",
       "trialExpiryDate": "2026-11-07T21:04:24.087Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791494203887",
+      "name": "Bruna luisa neres santos",
+      "email": "brunaluisa374@gmail.com",
+      "password": "Bl@-811709",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "077.807.795-05",
+      "cnpj": null,
+      "phone": "47999210811",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-08T21:16:43.887Z",
+      "trialStartDate": "2026-10-08T21:16:43.887Z",
+      "trialExpiryDate": "2026-11-07T21:16:43.887Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
