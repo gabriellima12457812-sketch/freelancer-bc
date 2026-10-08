@@ -26,6 +26,23 @@
       "trialStartDate": "2026-10-08T19:47:04.282Z",
       "trialExpiryDate": "2026-11-07T19:47:04.282Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791489668030",
+      "name": "Bergamo Prime",
+      "email": "luanfilipe_652@hotmail.com",
+      "password": "Soldado@652",
+      "role": "empresa",
+      "status": "aprovado",
+      "cpf": null,
+      "cnpj": "62.563.197/0001-24",
+      "phone": "47992040469",
+      "businessType": "Eventos",
+      "profession": null,
+      "createdAt": "2026-10-08T20:01:08.030Z",
+      "trialStartDate": "2026-10-08T20:01:08.030Z",
+      "trialExpiryDate": "2026-11-07T20:01:08.030Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
