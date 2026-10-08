@@ -485,6 +485,23 @@
       "trialStartDate": "2026-10-08T22:32:08.328Z",
       "trialExpiryDate": "2026-11-07T22:32:08.328Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791499865361",
+      "name": "Emilaine da silva",
+      "email": "emilainepadilhas@gmail.com",
+      "password": "140107",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "017.156.640-86",
+      "cnpj": null,
+      "phone": "47984246872",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-08T22:51:05.361Z",
+      "trialStartDate": "2026-10-08T22:51:05.361Z",
+      "trialExpiryDate": "2026-11-07T22:51:05.361Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
