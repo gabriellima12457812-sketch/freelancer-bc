@@ -332,6 +332,23 @@
       "trialStartDate": "2026-10-08T21:18:39.021Z",
       "trialExpiryDate": "2026-11-07T21:18:39.021Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791494604205",
+      "name": "Mayanne Gomes",
+      "email": "mayannegomes_@hotmail.com",
+      "password": "Joaquim2404",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "081.389.769-69",
+      "cnpj": null,
+      "phone": "47997012181",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-08T21:23:24.205Z",
+      "trialStartDate": "2026-10-08T21:23:24.205Z",
+      "trialExpiryDate": "2026-11-07T21:23:24.205Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
