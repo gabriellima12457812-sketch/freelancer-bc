@@ -349,6 +349,23 @@
       "trialStartDate": "2026-10-08T21:23:24.205Z",
       "trialExpiryDate": "2026-11-07T21:23:24.205Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791495640080",
+      "name": "Alexandre Alencar Magalhães",
+      "email": "alexandremagalhaesalm@gmail.com",
+      "password": "cesupa@10",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "019.213.952-57",
+      "cnpj": null,
+      "phone": "47988583324",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-08T21:40:40.080Z",
+      "trialStartDate": "2026-10-08T21:40:40.080Z",
+      "trialExpiryDate": "2026-11-07T21:40:40.080Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
