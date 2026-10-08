@@ -587,6 +587,23 @@
       "trialStartDate": "2026-10-08T23:20:35.578Z",
       "trialExpiryDate": "2026-11-07T23:20:35.578Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791501994519",
+      "name": "Alexandra Ruiz",
+      "email": "alexandraruizscremin@gmail.com",
+      "password": "Ale@1836",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "130.824.828-80",
+      "cnpj": null,
+      "phone": "47999944736",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-08T23:26:34.519Z",
+      "trialStartDate": "2026-10-08T23:26:34.519Z",
+      "trialExpiryDate": "2026-11-07T23:26:34.519Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
