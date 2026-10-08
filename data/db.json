@@ -570,6 +570,23 @@
       "trialStartDate": "2026-10-08T23:11:38.413Z",
       "trialExpiryDate": "2026-11-07T23:11:38.413Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791501635578",
+      "name": "Priscila de Cassia dos Anjos e santos",
+      "email": "priscilacassia9624@hotmail.com",
+      "password": "Sucesso369$",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "029.997.251-83",
+      "cnpj": null,
+      "phone": "64992336471",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-08T23:20:35.578Z",
+      "trialStartDate": "2026-10-08T23:20:35.578Z",
+      "trialExpiryDate": "2026-11-07T23:20:35.578Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
