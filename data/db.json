@@ -604,6 +604,23 @@
       "trialStartDate": "2026-10-08T23:26:34.519Z",
       "trialExpiryDate": "2026-11-07T23:26:34.519Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791502051844",
+      "name": "Kátia Cilene Comin",
+      "email": "karealbento@gmail.com",
+      "password": "Amor0504",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "014.391.319-02",
+      "cnpj": null,
+      "phone": "47996313072",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "createdAt": "2026-10-08T23:27:31.844Z",
+      "trialStartDate": "2026-10-08T23:27:31.844Z",
+      "trialExpiryDate": "2026-11-07T23:27:31.844Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
