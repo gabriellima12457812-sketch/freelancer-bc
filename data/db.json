@@ -60,6 +60,23 @@
       "trialStartDate": "2026-10-08T20:12:21.211Z",
       "trialExpiryDate": "2026-11-07T20:12:21.211Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791490837151",
+      "name": "Isadora Zeidler",
+      "email": "isadorazeidler1@gmail.com",
+      "password": "05278400",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "130.297.319-36",
+      "cnpj": null,
+      "phone": "47984042646",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-08T20:20:37.151Z",
+      "trialStartDate": "2026-10-08T20:20:37.151Z",
+      "trialExpiryDate": "2026-11-07T20:20:37.151Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
