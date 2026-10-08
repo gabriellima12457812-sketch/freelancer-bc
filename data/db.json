@@ -281,6 +281,23 @@
       "trialStartDate": "2026-10-08T20:54:33.773Z",
       "trialExpiryDate": "2026-11-07T20:54:33.773Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791493464087",
+      "name": "Ana Paula Pacheco da silva",
+      "email": "pachecodasilvaanapaula5@gmail.com",
+      "password": "02142887",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "060.321.229-80",
+      "cnpj": null,
+      "phone": "47996529969",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "createdAt": "2026-10-08T21:04:24.087Z",
+      "trialStartDate": "2026-10-08T21:04:24.087Z",
+      "trialExpiryDate": "2026-11-07T21:04:24.087Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
