@@ -519,6 +519,23 @@
       "trialStartDate": "2026-10-08T23:00:05.512Z",
       "trialExpiryDate": "2026-11-07T23:00:05.512Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791500431880",
+      "name": "Araceli barbieri",
+      "email": "barbieriaraceli8@gmail.com",
+      "password": "Amor1207",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "095.417.199-37",
+      "cnpj": null,
+      "phone": "47997561755",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "createdAt": "2026-10-08T23:00:31.880Z",
+      "trialStartDate": "2026-10-08T23:00:31.880Z",
+      "trialExpiryDate": "2026-11-07T23:00:31.880Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
