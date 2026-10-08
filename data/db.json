@@ -621,6 +621,23 @@
       "trialStartDate": "2026-10-08T23:27:31.844Z",
       "trialExpiryDate": "2026-11-07T23:27:31.844Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791502322429",
+      "name": "Cristiane krieser",
+      "email": "cristianekrieser6@gmail.com",
+      "password": "batihabagaba-10_",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "844.698.039-87",
+      "cnpj": null,
+      "phone": "47997773096",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-08T23:32:02.429Z",
+      "trialStartDate": "2026-10-08T23:32:02.429Z",
+      "trialExpiryDate": "2026-11-07T23:32:02.429Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
