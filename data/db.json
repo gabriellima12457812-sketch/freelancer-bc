@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "u-admin",
+      "name": "Administrador",
+      "username": "admin",
+      "email": "admin",
+      "password": "08520852",
+      "role": "admin",
+      "status": "aprovado",
+      "createdAt": "2026-09-01T10:00:00.000Z"
+    }
+  ],
+  "jobs": [],
+  "invoices": []
+}
