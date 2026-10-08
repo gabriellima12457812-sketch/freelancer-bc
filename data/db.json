@@ -213,6 +213,23 @@
       "trialStartDate": "2026-10-08T20:47:39.625Z",
       "trialExpiryDate": "2026-11-07T20:47:39.625Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791492474470",
+      "name": "Tauany Caroline Nunes Bernardo",
+      "email": "tauanynunes@icloud.com",
+      "password": "t@u14072001",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "127.937.589-22",
+      "cnpj": null,
+      "phone": "47988003704",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-08T20:47:54.470Z",
+      "trialStartDate": "2026-10-08T20:47:54.470Z",
+      "trialExpiryDate": "2026-11-07T20:47:54.470Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
