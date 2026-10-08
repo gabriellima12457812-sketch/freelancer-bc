@@ -94,6 +94,23 @@
       "trialStartDate": "2026-10-08T20:20:59.652Z",
       "trialExpiryDate": "2026-11-07T20:20:59.652Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791490915487",
+      "name": "Tatiele Vieira rocha",
+      "email": "tatielev4@gmail.com",
+      "password": "46863131",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "406.934.038-61",
+      "cnpj": null,
+      "phone": "41992757645",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-08T20:21:55.487Z",
+      "trialStartDate": "2026-10-08T20:21:55.487Z",
+      "trialExpiryDate": "2026-11-07T20:21:55.487Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
