@@ -315,6 +315,23 @@
       "trialStartDate": "2026-10-08T21:16:43.887Z",
       "trialExpiryDate": "2026-11-07T21:16:43.887Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791494319021",
+      "name": "Vanessa Magalhães",
+      "email": "vanessabendelak@gmail.com",
+      "password": "654321",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "952.786.302-30",
+      "cnpj": null,
+      "phone": "47988684582",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-08T21:18:39.021Z",
+      "trialStartDate": "2026-10-08T21:18:39.021Z",
+      "trialExpiryDate": "2026-11-07T21:18:39.021Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
