@@ -383,6 +383,23 @@
       "trialStartDate": "2026-10-08T21:54:20.555Z",
       "trialExpiryDate": "2026-11-07T21:54:20.555Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791496602488",
+      "name": "Soeli Galvão",
+      "email": "soeligalvao992@gmail.com",
+      "password": "Educar@78",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "019.865.289-52",
+      "cnpj": null,
+      "phone": "47997280581",
+      "businessType": null,
+      "profession": "Promoter de Vendas",
+      "createdAt": "2026-10-08T21:56:42.488Z",
+      "trialStartDate": "2026-10-08T21:56:42.488Z",
+      "trialExpiryDate": "2026-11-07T21:56:42.488Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
