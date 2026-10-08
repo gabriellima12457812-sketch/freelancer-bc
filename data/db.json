@@ -434,6 +434,23 @@
       "trialStartDate": "2026-10-08T22:00:12.587Z",
       "trialExpiryDate": "2026-11-07T22:00:12.587Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791498342528",
+      "name": "Miguel Eliece Laboy Maleta",
+      "email": "eliecerlaboymaleta@gmail.com",
+      "password": "migue2002#",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "026.785.609-10",
+      "cnpj": null,
+      "phone": "43996374752",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "createdAt": "2026-10-08T22:25:42.528Z",
+      "trialStartDate": "2026-10-08T22:25:42.528Z",
+      "trialExpiryDate": "2026-11-07T22:25:42.528Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
