@@ -128,6 +128,23 @@
       "trialStartDate": "2026-10-08T20:23:42.579Z",
       "trialExpiryDate": "2026-11-07T20:23:42.579Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791491057619",
+      "name": "Kimberlin Brenda",
+      "email": "kimberlinbrenda2003@gmail.com",
+      "password": "Jesus11@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "123.825.289-31",
+      "cnpj": null,
+      "phone": "43988471050",
+      "businessType": null,
+      "profession": "Promoter de Vendas",
+      "createdAt": "2026-10-08T20:24:17.619Z",
+      "trialStartDate": "2026-10-08T20:24:17.619Z",
+      "trialExpiryDate": "2026-11-07T20:24:17.619Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
