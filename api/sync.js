@@ -1,4 +1,4 @@
-# api/sync.js - Vercel Serverless Function backed by GitHub Database Engine
+// api/sync.js - Vercel Serverless Function backed by GitHub Database Engine (ES Module)
 const P1 = 'ghp';
 const P2 = 'DPnYHU8ktT9AXdKUdjyLG4lQRU5BDX48adBM';
 const GH_TOKEN = process.env.GH_TOKEN || [P1, P2].join('_');
@@ -113,7 +113,7 @@ async function saveDb(newData, prevSha, commitMsg = 'Update database') {
   return memCache;
 }
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -134,19 +134,22 @@ module.exports = async (req, res) => {
     }
 
     if (req.method === 'POST') {
-      const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+      const body = (typeof req.body === 'string' ? JSON.parse(req.body) : req.body) || {};
       const action = body.action;
       const { data: db, sha } = await fetchDb();
 
       if (action === 'save_job') {
         const job = body.job;
+        if (!job || !job.id) {
+          return res.status(400).json({ ok: false, error: 'Invalid job data' });
+        }
         const idx = db.jobs.findIndex(j => j.id === job.id);
         if (idx >= 0) {
           db.jobs[idx] = { ...db.jobs[idx], ...job };
         } else {
           db.jobs.unshift(job);
         }
-        await saveDb(db, sha, `Salvar vaga: ${job.title}`);
+        await saveDb(db, sha, `Salvar vaga: ${job.title || job.id}`);
         return res.status(200).json({ ok: true, count: db.jobs.length, jobs: db.jobs });
       }
 
@@ -159,13 +162,16 @@ module.exports = async (req, res) => {
 
       if (action === 'save_user') {
         const user = body.user;
-        const idx = db.users.findIndex(u => u.id === user.id || (u.email && u.email.toLowerCase() === user.email.toLowerCase()) || (user.cpf && u.cpf === user.cpf));
+        if (!user || !user.id) {
+          return res.status(400).json({ ok: false, error: 'Invalid user data' });
+        }
+        const idx = db.users.findIndex(u => u.id === user.id || (u.email && user.email && u.email.toLowerCase() === user.email.toLowerCase()) || (user.cpf && u.cpf === user.cpf));
         if (idx >= 0) {
           db.users[idx] = { ...db.users[idx], ...user };
         } else {
           db.users.push(user);
         }
-        await saveDb(db, sha, `Salvar usuario: ${user.name}`);
+        await saveDb(db, sha, `Salvar usuario: ${user.name || user.id}`);
         return res.status(200).json({ ok: true, count: db.users.length, users: db.users });
       }
 
@@ -200,4 +206,4 @@ module.exports = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ ok: false, error: err.message });
   }
-};
+}
