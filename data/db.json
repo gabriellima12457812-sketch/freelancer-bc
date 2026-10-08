@@ -366,6 +366,23 @@
       "trialStartDate": "2026-10-08T21:40:40.080Z",
       "trialExpiryDate": "2026-11-07T21:40:40.080Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791496460555",
+      "name": "Bruna santos",
+      "email": "brunasantos994683@gmail.com",
+      "password": "147852",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "018.335.364-10",
+      "cnpj": null,
+      "phone": "61991789059",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-08T21:54:20.555Z",
+      "trialStartDate": "2026-10-08T21:54:20.555Z",
+      "trialExpiryDate": "2026-11-07T21:54:20.555Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
