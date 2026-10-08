@@ -553,6 +553,23 @@
       "trialStartDate": "2026-10-08T23:07:40.017Z",
       "trialExpiryDate": "2026-11-07T23:07:40.017Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791501098413",
+      "name": "Rayssa Olivia da silveira",
+      "email": "rayssasilveirah@gmail.com",
+      "password": "Enzo.1302",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "020.708.540-43",
+      "cnpj": null,
+      "phone": "47996238789",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-08T23:11:38.413Z",
+      "trialStartDate": "2026-10-08T23:11:38.413Z",
+      "trialExpiryDate": "2026-11-07T23:11:38.413Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
