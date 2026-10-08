@@ -9,6 +9,23 @@
       "role": "admin",
       "status": "aprovado",
       "createdAt": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": "u-1791488824282",
+      "name": "Rangel oliveira",
+      "email": "rangel_oliveira93@hotmail.com",
+      "password": "457638",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "034.099.850-42",
+      "cnpj": null,
+      "phone": "47992618690",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-08T19:47:04.282Z",
+      "trialStartDate": "2026-10-08T19:47:04.282Z",
+      "trialExpiryDate": "2026-11-07T19:47:04.282Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
