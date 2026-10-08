@@ -162,6 +162,23 @@
       "trialStartDate": "2026-10-08T20:27:23.699Z",
       "trialExpiryDate": "2026-11-07T20:27:23.699Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791491488178",
+      "name": "Fabiana Roberta Foralosso",
+      "email": "foralossofabi@gmail.com",
+      "password": "2512",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "051.522.979-22",
+      "cnpj": null,
+      "phone": "47996440738",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-08T20:31:28.178Z",
+      "trialStartDate": "2026-10-08T20:31:28.178Z",
+      "trialExpiryDate": "2026-11-07T20:31:28.178Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
