@@ -179,6 +179,23 @@
       "trialStartDate": "2026-10-08T20:31:28.178Z",
       "trialExpiryDate": "2026-11-07T20:31:28.178Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791491701312",
+      "name": "Leandro Aguero",
+      "email": "leandroj.aguero@gmail.com",
+      "password": "250578",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "800.252.929-43",
+      "cnpj": null,
+      "phone": "47989196098",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-08T20:35:01.312Z",
+      "trialStartDate": "2026-10-08T20:35:01.312Z",
+      "trialExpiryDate": "2026-11-07T20:35:01.312Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
