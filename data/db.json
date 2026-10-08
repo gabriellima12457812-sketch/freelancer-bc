@@ -536,6 +536,23 @@
       "trialStartDate": "2026-10-08T23:00:31.880Z",
       "trialExpiryDate": "2026-11-07T23:00:31.880Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791500860018",
+      "name": "Jacson Silva Nogueira",
+      "email": "nogueirajacson29@gmail.com",
+      "password": "Jacson@031",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "031.554.222-54",
+      "cnpj": null,
+      "phone": "69996094542",
+      "businessType": null,
+      "profession": "Limpeza",
+      "createdAt": "2026-10-08T23:07:40.017Z",
+      "trialStartDate": "2026-10-08T23:07:40.017Z",
+      "trialExpiryDate": "2026-11-07T23:07:40.017Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
