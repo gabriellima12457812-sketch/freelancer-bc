@@ -768,7 +768,7 @@
       const syncWithCloud = async () => {
         setIsSyncing(true);
         try {
-          const res = await fetch('/api/sync');
+          const res = await fetch('/api/freelancer-sync');
           if (!res.ok) return;
           const data = await res.json();
           if (data && data.ok) {
@@ -827,7 +827,7 @@
 
       const handleDeleteUser = (userId) => {
         setUsers(prev => prev.filter(u => u.id !== userId));
-        fetch('/api/sync', {
+        fetch('/api/freelancer-sync', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ action: 'delete_user', userId })
@@ -842,7 +842,7 @@
             const base = currentExp > new Date() ? currentExp : new Date();
             const newExpiry = new Date(base.getTime() + days * 24 * 60 * 60 * 1000);
             const mod = { ...u, trialExpiryDate: newExpiry.toISOString(), isSubscriptionActive: true };
-            fetch('/api/sync', {
+            fetch('/api/freelancer-sync', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ action: 'save_user', user: mod })
@@ -859,7 +859,7 @@
           if (u.id === userId) {
             const nextStatus = u.status === 'bloqueado' ? 'aprovado' : 'bloqueado';
             const mod = { ...u, status: nextStatus };
-            fetch('/api/sync', {
+            fetch('/api/freelancer-sync', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ action: 'save_user', user: mod })
@@ -1023,7 +1023,7 @@
                 onRegister={(newUser) => {
                   setUsers(prev => [...prev, newUser]);
                   setCurrentUser(newUser);
-                  fetch('/api/sync', {
+                  fetch('/api/freelancer-sync', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ action: 'save_user', user: newUser })
@@ -1111,7 +1111,7 @@
               invoices={invoices.filter(i => i.userId === currentUser.id)}
               onAddJob={(newJob) => {
                 setJobs(prev => [newJob, ...prev]);
-                fetch('/api/sync', {
+                fetch('/api/freelancer-sync', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({ action: 'save_job', job: newJob })
