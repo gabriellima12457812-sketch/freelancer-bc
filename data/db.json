@@ -196,6 +196,23 @@
       "trialStartDate": "2026-10-08T20:35:01.312Z",
       "trialExpiryDate": "2026-12-07T20:42:20.730Z",
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791492459625",
+      "name": "Stephany Vitória Costa Cardoso",
+      "email": "stephanny4455@gmail.com",
+      "password": "Ste45nny",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "112.948.209-07",
+      "cnpj": null,
+      "phone": "48996331349",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-08T20:47:39.625Z",
+      "trialStartDate": "2026-10-08T20:47:39.625Z",
+      "trialExpiryDate": "2026-11-07T20:47:39.625Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
