@@ -468,6 +468,23 @@
       "trialStartDate": "2026-10-08T22:29:20.284Z",
       "trialExpiryDate": "2026-11-07T22:29:20.284Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791498728328",
+      "name": "Bianca grube",
+      "email": "eubiancagrube@gmail.com",
+      "password": "Wibigui171831&",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "493.890.108-02",
+      "cnpj": null,
+      "phone": "47991063767",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-08T22:32:08.328Z",
+      "trialStartDate": "2026-10-08T22:32:08.328Z",
+      "trialExpiryDate": "2026-11-07T22:32:08.328Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
