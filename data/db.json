@@ -145,6 +145,23 @@
       "trialStartDate": "2026-10-08T20:24:17.619Z",
       "trialExpiryDate": "2026-11-07T20:24:17.619Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791491243700",
+      "name": "Kerolayne Andrade",
+      "email": "kerolayneandrade54@gmail.com",
+      "password": "Kerolayne123@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "104.311.029-10",
+      "cnpj": null,
+      "phone": "47997203641",
+      "businessType": null,
+      "profession": "Limpeza",
+      "createdAt": "2026-10-08T20:27:23.699Z",
+      "trialStartDate": "2026-10-08T20:27:23.699Z",
+      "trialExpiryDate": "2026-11-07T20:27:23.699Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
