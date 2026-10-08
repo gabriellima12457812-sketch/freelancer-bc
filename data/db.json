@@ -247,6 +247,23 @@
       "trialStartDate": "2026-10-08T20:49:59.965Z",
       "trialExpiryDate": "2026-11-07T20:49:59.965Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791492635759",
+      "name": "Diego Enrique mulher custodio",
+      "email": "diegomcustodio@gmail.com",
+      "password": "Inter@12",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "099.203.549-02",
+      "cnpj": null,
+      "phone": "49984196792",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-08T20:50:35.759Z",
+      "trialStartDate": "2026-10-08T20:50:35.759Z",
+      "trialExpiryDate": "2026-11-07T20:50:35.759Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
