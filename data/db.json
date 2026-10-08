@@ -230,6 +230,23 @@
       "trialStartDate": "2026-10-08T20:47:54.470Z",
       "trialExpiryDate": "2026-11-07T20:47:54.470Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791492599965",
+      "name": "Christiane",
+      "email": "cristianemarialima@icloud.com",
+      "password": "196218Hi",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "007.932.259-06",
+      "cnpj": null,
+      "phone": "47992344034",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "createdAt": "2026-10-08T20:49:59.965Z",
+      "trialStartDate": "2026-10-08T20:49:59.965Z",
+      "trialExpiryDate": "2026-11-07T20:49:59.965Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
