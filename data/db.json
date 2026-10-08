@@ -77,6 +77,23 @@
       "trialStartDate": "2026-10-08T20:20:37.151Z",
       "trialExpiryDate": "2026-11-07T20:20:37.151Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791490859652",
+      "name": "AMANDA NATALIA SILVA DE SOUZA DE OLIVEIRA",
+      "email": "sovitoriaoliver@gmail.com",
+      "password": "011004",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "973.578.042-91",
+      "cnpj": null,
+      "phone": "47999895303",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-08T20:20:59.652Z",
+      "trialStartDate": "2026-10-08T20:20:59.652Z",
+      "trialExpiryDate": "2026-11-07T20:20:59.652Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
