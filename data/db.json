@@ -1205,6 +1205,26 @@
       "trialStartDate": "2026-10-09T16:19:11.845Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791564351295",
+      "name": "Lea mara dos santos inacio",
+      "email": "leainacio38@gmail.com",
+      "password": "975017",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "058.817.769-50",
+      "cnpj": null,
+      "phone": "47997441592",
+      "businessType": null,
+      "profession": "Cozinheiro",
+      "age": 39,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T16:45:51.295Z",
+      "trialStartDate": "2026-10-09T16:45:51.295Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
