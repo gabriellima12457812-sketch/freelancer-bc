@@ -757,6 +757,23 @@
       "trialStartDate": "2026-10-09T11:53:57.831Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791546971288",
+      "name": "Lifeson correia soares",
+      "email": "lifesoncorreia@hotmail.com",
+      "password": "Lara1987",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "105.774.864-11",
+      "cnpj": null,
+      "phone": "47992431351",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "createdAt": "2026-10-09T11:56:11.288Z",
+      "trialStartDate": "2026-10-09T11:56:11.288Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
