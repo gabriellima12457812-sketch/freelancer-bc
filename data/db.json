@@ -885,6 +885,26 @@
       "trialStartDate": "2026-10-09T13:11:01.999Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791553403199",
+      "name": "Thayna da silva",
+      "email": "thaaysantinno@gmail.com",
+      "password": "853029",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "070.819.344-71",
+      "cnpj": null,
+      "phone": "41984481098",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 31,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T13:43:23.199Z",
+      "trialStartDate": "2026-10-09T13:43:23.199Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
