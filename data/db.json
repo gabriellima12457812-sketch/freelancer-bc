@@ -791,6 +791,23 @@
       "trialStartDate": "2026-10-09T11:56:17.361Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791547169175",
+      "name": "Ronaldo Andrade da Silva",
+      "email": "ronawdoa@gmail.com",
+      "password": "Lprde013.xom",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "052.107.862-85",
+      "cnpj": null,
+      "phone": "47999169532",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "createdAt": "2026-10-09T11:59:29.175Z",
+      "trialStartDate": "2026-10-09T11:59:29.175Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
