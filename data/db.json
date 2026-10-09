@@ -1265,6 +1265,26 @@
       "trialStartDate": "2026-10-09T17:37:19.743Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791574876087",
+      "name": "Adriano Junior Cavitione Rodrigues",
+      "email": "donadrianomassagista@gmail.com",
+      "password": "31902410",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "845.803.560-04",
+      "cnpj": null,
+      "phone": "47989293350",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 31,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T19:41:16.087Z",
+      "trialStartDate": "2026-10-09T19:41:16.087Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
