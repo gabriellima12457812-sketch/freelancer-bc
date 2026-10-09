@@ -1065,6 +1065,26 @@
       "trialStartDate": "2026-10-09T14:59:31.595Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791559460901",
+      "name": "Celio Barros Neto",
+      "email": "thebarrostl@gmail.com",
+      "password": "151719",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "018.480.021-81",
+      "cnpj": null,
+      "phone": "47988846542",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 38,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T15:24:20.901Z",
+      "trialStartDate": "2026-10-09T15:24:20.901Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
