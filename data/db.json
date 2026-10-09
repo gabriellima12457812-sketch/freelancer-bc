@@ -1025,6 +1025,26 @@
       "trialStartDate": "2026-10-09T14:58:01.133Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791557908569",
+      "name": "Sarah Do Nascimento Kur",
+      "email": "sarahsilva.nas@gmail.com",
+      "password": "09102020",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "878.673.380-04",
+      "cnpj": null,
+      "phone": "51991856763",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 27,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T14:58:28.569Z",
+      "trialStartDate": "2026-10-09T14:58:28.569Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
