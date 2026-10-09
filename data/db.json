@@ -740,6 +740,23 @@
       "trialStartDate": "2026-10-09T01:36:57.492Z",
       "trialExpiryDate": "2026-11-08T01:36:57.492Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791546837831",
+      "name": "Fernanda de Souza Kur",
+      "email": "nda_kur@hotmail.com",
+      "password": "nanda12",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "852.384.810-04",
+      "cnpj": null,
+      "phone": "51984918410",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-09T11:53:57.831Z",
+      "trialStartDate": "2026-10-09T11:53:57.831Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
