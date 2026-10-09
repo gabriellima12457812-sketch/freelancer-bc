@@ -689,6 +689,23 @@
       "trialStartDate": "2026-10-09T00:41:43.096Z",
       "trialExpiryDate": "2026-11-08T00:41:43.096Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791506696802",
+      "name": "Lucas Souza Magalhaes",
+      "email": "souzamagalhaes8@gmail.com",
+      "password": "41709311",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "010.779.442-09",
+      "cnpj": null,
+      "phone": "92994293313",
+      "businessType": null,
+      "profession": "Recepção",
+      "createdAt": "2026-10-09T00:44:56.802Z",
+      "trialStartDate": "2026-10-09T00:44:56.802Z",
+      "trialExpiryDate": "2026-11-08T00:44:56.802Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
