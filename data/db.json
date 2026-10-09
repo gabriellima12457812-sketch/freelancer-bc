@@ -965,6 +965,26 @@
       "trialStartDate": "2026-10-09T14:18:03.757Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791557414549",
+      "name": "Andressa gonçalves Veleda",
+      "email": "andressagonveleda@gmail.com",
+      "password": "Adriana123.",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "031.372.490-31",
+      "cnpj": null,
+      "phone": "47996660842",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 25,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T14:50:14.549Z",
+      "trialStartDate": "2026-10-09T14:50:14.549Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
