@@ -865,6 +865,26 @@
       "trialStartDate": "2026-10-09T12:53:43.740Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791551461999",
+      "name": "Diana Morais",
+      "email": "diana.j.morais95@gmail.com",
+      "password": "696969",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "089.882.679-90",
+      "cnpj": null,
+      "phone": "47991264679",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 31,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T13:11:01.999Z",
+      "trialStartDate": "2026-10-09T13:11:01.999Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
