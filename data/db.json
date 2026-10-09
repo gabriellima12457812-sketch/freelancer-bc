@@ -1145,6 +1145,26 @@
       "trialStartDate": "2026-10-09T15:39:38.793Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791560499080",
+      "name": "Jamile de Souza de Lins",
+      "email": "jamile260706@gmail.com",
+      "password": "Mila267@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "013.522.009-29",
+      "cnpj": null,
+      "phone": "49998417684",
+      "businessType": null,
+      "profession": "Promoter de Vendas",
+      "age": 20,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "itajai",
+      "createdAt": "2026-10-09T15:41:39.080Z",
+      "trialStartDate": "2026-10-09T15:41:39.080Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
