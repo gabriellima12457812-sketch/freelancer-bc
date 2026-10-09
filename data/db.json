@@ -1288,6 +1288,26 @@
       "trialStartDate": "2026-10-09T19:41:16.087Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791577596518",
+      "name": "Bianca juliane felipe da silva",
+      "email": "bianca.julianefelipedasilva@gmail.com",
+      "password": "Valentin&2018",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "120.288.499-75",
+      "cnpj": null,
+      "phone": "47996776044",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 26,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T20:26:36.518Z",
+      "trialStartDate": "2026-10-09T20:26:36.518Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
