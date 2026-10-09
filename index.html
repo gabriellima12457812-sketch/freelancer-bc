@@ -1026,14 +1026,74 @@
         setCurrentUser(null);
         setAuthMode('login');
       };
+      const [applyingJob, setApplyingJob] = useState(null);
+      const [publicProfileId, setPublicProfileId] = useState(() => {
+        if (typeof window !== 'undefined' && window.location.search) {
+          try {
+            const sp = new URLSearchParams(window.location.search);
+            return sp.get('perfil') || sp.get('candidato') || null;
+          } catch (e) { return null; }
+        }
+        return null;
+      });
 
       const handleFreelancerWhatsappClick = (job) => {
         if (!currentUser) return;
+        setApplyingJob(job);
+      };
+
+      const handleConfirmCandidatura = (job, profileData) => {
+        if (!currentUser) return;
         const cleanPhone = (job.whatsapp || '').replace(/\D/g, '');
         const remun = formatRemuneration(job);
-        const messageText = `Olá! Vi a vaga de ${job.title} (${remun.display}) no app Freelancer BC e tenho interesse! Podemos conversar?`;
-        const encodedText = encodeURIComponent(messageText);
 
+        // 1. Atualizar dados do freelancer local e na nuvem
+        const updatedUser = {
+          ...currentUser,
+          age: profileData.age ? Number(profileData.age) : (currentUser.age || null),
+          experienceTime: profileData.experienceTime || currentUser.experienceTime || '1 a 2 anos',
+          city: profileData.city || currentUser.city || 'Balneário Camboriú',
+          experience: profileData.experience !== undefined ? profileData.experience : (currentUser.experience || '')
+        };
+
+        setCurrentUser(updatedUser);
+        setUsers(prev => prev.map(u => u.id === currentUser.id ? updatedUser : u));
+
+        fetch(SYNC_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'save_user', user: updatedUser })
+        }).catch(() => {});
+
+        // 2. Link público com perfil verificado do candidato no Freelancer BC
+        const baseUrl = (typeof window !== 'undefined' && window.location.origin && window.location.origin.includes('crm-piff-paff'))
+          ? `${window.location.origin}/freelancer`
+          : 'https://crm-piff-paff-v2.vercel.app/freelancer';
+        const profileUrl = `${baseUrl}?perfil=${currentUser.id}`;
+
+        // 3. Montar mensagem completa para a empresa no WhatsApp (SEM DOCUMENTOS / SEM CPF)
+        const messageLines = [
+          `Olá! Vi a vaga de *${job.title}* (${remun.display}) anunciada no app *Freelancer BC* e tenho total interesse!`,
+          ``,
+          `📋 *Meu Perfil de Freelancer:*`,
+          `• *Nome:* ${currentUser.name}`,
+          profileData.age ? `• *Idade:* ${profileData.age} anos` : null,
+          `• *Função / Profissão:* ${currentUser.profession || 'Freelancer Especialista'}`,
+          profileData.experienceTime ? `• *Tempo no Ramo:* ${profileData.experienceTime}` : null,
+          profileData.city ? `• *Cidade / Região:* ${profileData.city}` : null,
+          `• *WhatsApp:* ${formatPhone(currentUser.phone || '')}`,
+          currentUser.email ? `• *E-mail:* ${currentUser.email}` : null,
+          profileData.experience ? `• *Destaques / Resumo:* ${profileData.experience}` : null,
+          ``,
+          `🔗 *Acesse meu Perfil Completo no Freelancer BC:*`,
+          `${profileUrl}`,
+          ``,
+          `Podemos combinar os detalhes da contratação? Aguardo seu retorno!`
+        ].filter(line => line !== null).join('\n');
+
+        const encodedText = encodeURIComponent(messageLines);
+
+        // 4. Salvar candidatura na vaga (SEM DOCUMENTOS / SEM CPF)
         let modifiedJob = null;
         setJobs(prev => {
           const updated = prev.map(j => {
@@ -1041,25 +1101,28 @@
               const existingApplicants = j.applicants || [];
               const alreadyApplied = existingApplicants.find(a => a.freelancerId === currentUser.id);
 
+              const candidateRecord = {
+                freelancerId: currentUser.id,
+                name: currentUser.name,
+                email: currentUser.email,
+                phone: currentUser.phone,
+                profession: currentUser.profession || 'Freelancer Especialista',
+                age: profileData.age ? Number(profileData.age) : (currentUser.age || null),
+                experienceTime: profileData.experienceTime || currentUser.experienceTime || '1 a 2 anos',
+                city: profileData.city || currentUser.city || 'Balneário Camboriú',
+                experience: profileData.experience || '',
+                // Sem envio de documentos confidenciais (sem CPF/RG)
+                clickedAt: new Date().toISOString(),
+                hiredStatus: 'pendente'
+              };
+
               let updatedApplicants;
               if (alreadyApplied) {
                 updatedApplicants = existingApplicants.map(a =>
-                  a.freelancerId === currentUser.id ? { ...a, clickedAt: new Date().toISOString() } : a
+                  a.freelancerId === currentUser.id ? { ...a, ...candidateRecord } : a
                 );
               } else {
-                updatedApplicants = [
-                  {
-                    freelancerId: currentUser.id,
-                    name: currentUser.name,
-                    email: currentUser.email,
-                    phone: currentUser.phone,
-                    profession: currentUser.profession || 'Freelancer Especialista',
-                    cpf: currentUser.cpf,
-                    clickedAt: new Date().toISOString(),
-                    hiredStatus: 'pendente'
-                  },
-                  ...existingApplicants
-                ];
+                updatedApplicants = [candidateRecord, ...existingApplicants];
               }
 
               modifiedJob = {
@@ -1084,6 +1147,8 @@
           }).then(() => syncWithCloud()).catch(() => {});
         }
 
+        setApplyingJob(null);
+        showNotification('Perfil enviado com sucesso! Abrindo WhatsApp...');
         window.open(`https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodedText}`, '_blank');
       };
 
@@ -1094,6 +1159,18 @@
             <>
               {!isInstalled && !bannerDismissed && (
                 <InstallAppBanner onInstall={handleTriggerInstall} onDismiss={() => setBannerDismissed(true)} />
+              )}
+              {publicProfileId && (
+                <PublicCandidateProfileView
+                  candidateId={publicProfileId}
+                  users={users}
+                  onClose={() => {
+                    setPublicProfileId(null);
+                    if (typeof window !== 'undefined' && window.history && window.history.replaceState) {
+                      window.history.replaceState({}, document.title, window.location.pathname);
+                    }
+                  }}
+                />
               )}
               <RegisterView
                 users={users}
@@ -1305,6 +1382,7 @@
               onTriggerInstall={handleTriggerInstall}
               linkedAccount={linkedAccount}
               onSwitchAccount={handleSwitchAccount}
+              onOpenProfile={(cid) => setPublicProfileId(cid)}
             />
           )}
 
@@ -1333,6 +1411,30 @@
               mpConfig={mpConfig}
               onClose={() => setShowPaymentGatewayModal(false)}
               onPaymentConfirmed={handleBankPaymentConfirmed}
+            />
+          )}
+
+          {/* Modal de Complemento de Candidatura com Perfil Completo */}
+          {applyingJob && (
+            <ModalComplementoCandidatura
+              job={applyingJob}
+              freelancer={currentUser}
+              onClose={() => setApplyingJob(null)}
+              onConfirm={(profileData) => handleConfirmCandidatura(applyingJob, profileData)}
+            />
+          )}
+
+          {/* Modal / Card de Perfil Público Verificado do Candidato */}
+          {publicProfileId && (
+            <PublicCandidateProfileView
+              candidateId={publicProfileId}
+              users={users}
+              onClose={() => {
+                setPublicProfileId(null);
+                if (typeof window !== 'undefined' && window.history && window.history.replaceState) {
+                  window.history.replaceState({}, document.title, window.location.pathname);
+                }
+              }}
             />
           )}
 
@@ -1833,39 +1935,94 @@
     // LOGIN & REGISTER
     // ==========================================
     function LoginView({ users, onLogin, onGoToRegister, onTriggerInstall }) {
+      const [selectedRole, setSelectedRole] = useState('freelancer'); // 'freelancer' | 'empresa'
       const [email, setEmail] = useState('');
       const [password, setPassword] = useState('');
       const [showPassword, setShowPassword] = useState(false);
       const [error, setError] = useState('');
+      const [suggestedAccount, setSuggestedAccount] = useState(null);
       const [multiAccounts, setMultiAccounts] = useState(null);
 
       const handleSubmit = (e) => {
         e.preventDefault();
         setError('');
+        setSuggestedAccount(null);
         if (!email.trim() || !password.trim()) {
-          setError('Preencha seu usuário ou e-mail e sua senha.');
+          setError('Preencha seu usuário/e-mail/WhatsApp e sua senha.');
           return;
         }
+
         const loginTerm = email.trim().toLowerCase();
-        const matching = users.filter(u => 
-          ((u.email && u.email.toLowerCase() === loginTerm) ||
-           (u.username && u.username.toLowerCase() === loginTerm) ||
-           (loginTerm === 'admin' && u.role === 'admin')) &&
+        const cleanLoginPhone = email.replace(/\D/g, '');
+
+        // 1. Acesso Administrador BC
+        if ((loginTerm === 'admin' || email.trim() === 'admin') && password === '08520852') {
+          const adminUser = users.find(u => u.role === 'admin') || {
+            id: 'u-admin',
+            name: 'Administrador',
+            username: 'admin',
+            role: 'admin',
+            status: 'aprovado'
+          };
+          onLogin(adminUser);
+          return;
+        }
+
+        const isUserMatch = (u) => {
+          const emailMatch = u.email && u.email.toLowerCase() === loginTerm;
+          const userMatch = u.username && u.username.toLowerCase() === loginTerm;
+          const phoneMatch = cleanLoginPhone.length >= 8 && u.phone && u.phone.replace(/\D/g, '').includes(cleanLoginPhone);
+          return (emailMatch || userMatch || phoneMatch);
+        };
+
+        // 2. Procurar contas no PERFIL SELECIONADO (Freelancer ou Empresa)
+        const matchingCurrentRole = users.filter(u => 
+          u.role === selectedRole && 
+          isUserMatch(u) && 
           u.password === password
         );
 
-        if (matching.length === 0) {
-          setError('Usuário ou senha incorretos.');
+        if (matchingCurrentRole.length === 1) {
+          onLogin(matchingCurrentRole[0]);
           return;
         }
 
-        if (matching.length === 1) {
-          onLogin(matching[0]);
+        if (matchingCurrentRole.length > 1) {
+          setMultiAccounts(matchingCurrentRole);
           return;
         }
 
-        // Multiple accounts match (e.g. 1 Empresa and 1 Freelancer)
-        setMultiAccounts(matching);
+        // 3. Usuário tem conta no OUTRO perfil com essa senha? (Ex: cadastrado como Empresa mas tentou Freelancer)
+        const otherRole = selectedRole === 'freelancer' ? 'empresa' : 'freelancer';
+        const matchingOtherRole = users.filter(u => 
+          u.role === otherRole && 
+          isUserMatch(u) && 
+          u.password === password
+        );
+
+        if (matchingOtherRole.length > 0) {
+          const targetRoleName = otherRole === 'empresa' ? 'Empresa' : 'Freelancer';
+          setSuggestedAccount(matchingOtherRole[0]);
+          setError(`Localizamos sua conta no perfil ${targetRoleName}! Clique no botão abaixo para entrar como ${targetRoleName}.`);
+          return;
+        }
+
+        // 4. Usuário existe na categoria selecionada, porém com senha incorreta
+        const userExistsInRole = users.some(u => u.role === selectedRole && isUserMatch(u));
+        if (userExistsInRole) {
+          setError('Senha incorreta para este perfil.');
+          return;
+        }
+
+        // 5. Usuário existe na OUTRA categoria
+        const userExistsInOther = users.some(u => u.role === otherRole && isUserMatch(u));
+        if (userExistsInOther) {
+          const otherName = otherRole === 'empresa' ? 'Empresa' : 'Freelancer';
+          setError(`Sua conta está cadastrada como perfil ${otherName}. Selecione a aba "${otherName === 'Empresa' ? '🏢 Sou Empresa' : '💼 Sou Freelancer'}" acima para entrar.`);
+          return;
+        }
+
+        setError('Nenhum cadastro encontrado com esses dados para este perfil.');
       };
 
       return (
@@ -1895,7 +2052,7 @@
           </div>
 
           <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md z-10">
-            <div className="bg-slate-900/80 backdrop-blur-xl py-8 px-6 sm:px-10 shadow-2xl rounded-2xl border border-slate-800">
+            <div className="bg-slate-900/80 backdrop-blur-xl py-8 px-6 sm:px-10 shadow-2xl rounded-3xl border border-slate-800">
               {multiAccounts ? (
                 <div>
                   <div className="text-center mb-6">
@@ -1903,7 +2060,7 @@
                       <Icon name="users" className="w-6 h-6" />
                     </div>
                     <h3 className="text-lg font-bold text-white">Escolha o Perfil de Acesso</h3>
-                    <p className="text-xs text-slate-400 mt-1">Identificamos mais de um perfil vinculado ao seu e-mail. Como deseja entrar?</p>
+                    <p className="text-xs text-slate-400 mt-1">Identificamos mais de um cadastro vinculado. Como deseja entrar?</p>
                   </div>
 
                   <div className="space-y-3">
@@ -1946,22 +2103,67 @@
                 </div>
               ) : (
                 <>
+                  {/* SELETOR DE PERFIL: FREELANCER OU EMPRESA */}
+                  <div className="grid grid-cols-2 p-1.5 bg-slate-950 rounded-2xl border border-slate-800 mb-6">
+                    <button
+                      type="button"
+                      onClick={() => { setSelectedRole('freelancer'); setError(''); setSuggestedAccount(null); }}
+                      className={`py-3 px-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition active:scale-95 ${
+                        selectedRole === 'freelancer'
+                          ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/20 font-black ring-1 ring-emerald-400/30'
+                          : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+                      }`}
+                    >
+                      <Icon name="briefcase" className="w-4 h-4" />
+                      <span>💼 Sou Freelancer</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => { setSelectedRole('empresa'); setError(''); setSuggestedAccount(null); }}
+                      className={`py-3 px-3 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition active:scale-95 ${
+                        selectedRole === 'empresa'
+                          ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/20 font-black ring-1 ring-indigo-400/30'
+                          : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+                      }`}
+                    >
+                      <Icon name="building" className="w-4 h-4" />
+                      <span>🏢 Sou Empresa</span>
+                    </button>
+                  </div>
+
                   {error && (
-                    <div className="mb-5 p-3.5 bg-rose-500/10 border border-rose-500/30 rounded-xl flex items-center gap-3 text-rose-300 text-sm">
-                      <Icon name="alertCircle" className="w-5 h-5 flex-shrink-0" />
-                      <span>{error}</span>
+                    <div className="mb-4 p-3.5 bg-rose-500/10 border border-rose-500/30 rounded-xl flex items-start gap-3 text-rose-300 text-xs sm:text-sm">
+                      <Icon name="alertCircle" className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                      <div>{error}</div>
                     </div>
                   )}
 
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  {suggestedAccount && (
+                    <div className="mb-5 p-3.5 bg-indigo-500/15 border border-indigo-500/40 rounded-xl flex items-center justify-between gap-3">
+                      <div className="text-xs text-indigo-200">
+                        Entrar com perfil <strong className="text-white">{suggestedAccount.name}</strong> ({suggestedAccount.role === 'empresa' ? 'Empresa' : 'Freelancer'})?
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => onLogin(suggestedAccount)}
+                        className="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-lg shrink-0 shadow transition active:scale-95"
+                      >
+                        Entrar Agora →
+                      </button>
+                    </div>
+                  )}
+
+                  <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Usuário ou E-mail</label>
+                      <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+                        {selectedRole === 'freelancer' ? 'E-mail, Usuário ou WhatsApp' : 'E-mail ou WhatsApp da Empresa'}
+                      </label>
                       <input
                         type="text"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Digite seu usuário ou e-mail"
+                        placeholder={selectedRole === 'freelancer' ? "Digite seu e-mail ou WhatsApp" : "Digite o e-mail da empresa ou WhatsApp"}
                         className="w-full px-4 py-3 bg-slate-950/70 border border-slate-800 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                       />
                     </div>
@@ -1985,15 +2187,20 @@
 
                     <button
                       type="submit"
-                      className="w-full py-3.5 px-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-sm shadow-lg shadow-indigo-600/30 transition transform active:scale-95"
+                      className={`w-full py-3.5 px-4 text-white font-black rounded-xl text-sm shadow-xl transition transform active:scale-95 flex items-center justify-center gap-2 ${
+                        selectedRole === 'freelancer'
+                          ? 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-emerald-500/25'
+                          : 'bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 shadow-indigo-500/25'
+                      }`}
                     >
-                      Entrar na Plataforma
+                      <Icon name={selectedRole === 'freelancer' ? 'briefcase' : 'building'} className="w-4 h-4" />
+                      <span>Entrar como {selectedRole === 'freelancer' ? 'Freelancer' : 'Empresa'}</span>
                     </button>
                   </form>
 
                   <div className="mt-6 pt-5 border-t border-slate-800 text-center">
                     <p className="text-sm text-slate-400">
-                      Não tem conta? <button onClick={onGoToRegister} className="text-emerald-400 font-medium hover:underline">Cadastre-se gratuitamente</button>
+                      Não tem conta? <button onClick={onGoToRegister} className="text-emerald-400 font-bold hover:underline">Cadastre-se grátis</button>
                     </p>
                   </div>
                 </>
@@ -2014,6 +2221,9 @@
       const [cnpj, setCnpj] = useState('');
       const [businessType, setBusinessType] = useState('Bar / Balada');
       const [profession, setProfession] = useState('Garçom');
+      const [age, setAge] = useState('');
+      const [experienceTime, setExperienceTime] = useState('1 a 2 anos');
+      const [city, setCity] = useState('Balneário Camboriú');
       const [error, setError] = useState('');
 
       const handleSubmit = (e) => {
@@ -2103,6 +2313,9 @@
           phone: phone.replace(/\D/g, ''),
           businessType: userType === 'empresa' ? businessType : null,
           profession: userType === 'freelancer' ? profession : null,
+          age: userType === 'freelancer' && age ? Number(age) : null,
+          experienceTime: userType === 'freelancer' ? experienceTime : null,
+          city: userType === 'freelancer' ? city : null,
           createdAt: now.toISOString(),
           trialStartDate: now.toISOString(),
           trialExpiryDate: null,
@@ -2189,6 +2402,44 @@
                       <option value="Segurança">Segurança</option>
                       <option value="Limpeza">Limpeza & Apoio</option>
                       <option value="Promoter de Vendas">Promoter de Vendas</option>
+                    </select>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-300 uppercase mb-1">Sua Idade (anos)</label>
+                      <input
+                        type="number"
+                        min="16"
+                        max="99"
+                        value={age}
+                        onChange={e => setAge(e.target.value)}
+                        placeholder="Ex: 24"
+                        className="w-full px-4 py-2.5 bg-slate-950/70 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-300 uppercase mb-1">Cidade / Região</label>
+                      <input
+                        value={city}
+                        onChange={e => setCity(e.target.value)}
+                        placeholder="Ex: Balneário Camboriú"
+                        className="w-full px-4 py-2.5 bg-slate-950/70 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-300 uppercase mb-1">Tempo de Atuação na Área</label>
+                    <select
+                      value={experienceTime}
+                      onChange={e => setExperienceTime(e.target.value)}
+                      className="w-full px-4 py-2.5 bg-slate-950/70 border border-slate-800 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    >
+                      <option value="Menos de 1 ano (Iniciante)">Menos de 1 ano (Iniciante)</option>
+                      <option value="1 a 2 anos">1 a 2 anos de experiência</option>
+                      <option value="3 a 5 anos">3 a 5 anos de experiência</option>
+                      <option value="Mais de 5 anos (Sênior / Especialista)">Mais de 5 anos (Sênior / Especialista)</option>
                     </select>
                   </div>
                 </div>
@@ -3891,7 +4142,7 @@
     // ==========================================
     // PAINEL DA EMPRESA
     // ==========================================
-    function EmpresaDashboard({ company, jobs, invoices, onAddJob, onUpdateJob, onTogglePauseJob, onDeleteJob, onMarkSpotFilled, onOpenPaymentGateway, onLogout, trialInfo, onTriggerInstall, linkedAccount, onSwitchAccount }) {
+    function EmpresaDashboard({ company, jobs, invoices, onAddJob, onUpdateJob, onTogglePauseJob, onDeleteJob, onMarkSpotFilled, onOpenPaymentGateway, onLogout, trialInfo, onTriggerInstall, linkedAccount, onSwitchAccount, onOpenProfile }) {
       const [isModalOpen, setIsModalOpen] = useState(false);
       const [editingJob, setEditingJob] = useState(null);
       const [activeTab, setActiveTab] = useState('vagas'); // 'vagas' | 'faturas'
@@ -4131,6 +4382,7 @@
               job={selectedJobForApplicants}
               onClose={() => setSelectedJobForApplicants(null)}
               onHire={(cid) => setAttributionModalData({ job: selectedJobForApplicants, candidateId: cid })}
+              onOpenProfile={onOpenProfile}
             />
           )}
 
@@ -4151,11 +4403,308 @@
     }
 
     // ==========================================
+    // MODAL COMPLEMENTO DE CANDIDATURA (Idade, Tempo no Ramo, Cidade)
+    // ==========================================
+    function ModalComplementoCandidatura({ job, freelancer, onClose, onConfirm }) {
+      const [age, setAge] = useState(freelancer?.age ? String(freelancer.age) : '');
+      const [experienceTime, setExperienceTime] = useState(freelancer?.experienceTime || '1 a 2 anos');
+      const [city, setCity] = useState(freelancer?.city || 'Balneário Camboriú');
+      const [experience, setExperience] = useState(freelancer?.experience || '');
+      const [error, setError] = useState('');
+
+      const remun = formatRemuneration(job);
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setError('');
+        if (!age || Number(age) < 16) {
+          setError('Por favor, informe uma idade válida (mínimo 16 anos).');
+          return;
+        }
+        if (!experienceTime.trim()) {
+          setError('Selecione quanto tempo você já atua na área.');
+          return;
+        }
+        if (!city.trim()) {
+          setError('Informe sua cidade ou região de atuação.');
+          return;
+        }
+
+        onConfirm({
+          age: Number(age),
+          experienceTime: experienceTime.trim(),
+          city: city.trim(),
+          experience: experience.trim()
+        });
+      };
+
+      return (
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white w-full sm:max-w-lg max-h-[92vh] max-h-[92dvh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in"
+          >
+            {/* Header Fixo */}
+            <div className="shrink-0 px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-white z-10">
+              <div>
+                <h3 className="text-lg font-black text-slate-900 leading-tight">
+                  Candidatar-se à Vaga
+                </h3>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  {job.title} • {job.companyName}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label="Fechar"
+                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition"
+              >
+                <Icon name="x" className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Corpo Rolável */}
+            <div className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-6 space-y-4 text-xs">
+              {/* Job summary pill */}
+              <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-2xl flex items-center justify-between">
+                <div>
+                  <span className="font-bold text-indigo-950 block text-xs">{job.title}</span>
+                  <span className="text-[11px] text-indigo-700">{job.address}</span>
+                </div>
+                <div className="text-right">
+                  <span className="font-black text-indigo-950 text-xs">{remun.display}</span>
+                  <span className="block text-[10px] text-indigo-600 font-semibold">{remun.label}</span>
+                </div>
+              </div>
+
+              <div className="p-3 bg-amber-50 border border-amber-200/80 rounded-2xl text-[11px] text-amber-900 leading-relaxed flex items-start gap-2.5">
+                <span className="text-base shrink-0">📋</span>
+                <span>
+                  <strong>Apresentação Profissional:</strong> A empresa receberá seu perfil completo com link verificado e WhatsApp. Complete os dados abaixo:
+                </span>
+              </div>
+
+              {error && (
+                <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-700 font-bold text-xs flex items-center gap-2">
+                  <Icon name="alertCircle" className="w-4 h-4 shrink-0" />
+                  <span>{error}</span>
+                </div>
+              )}
+
+              {/* Informações que a empresa receberá */}
+              <div className="space-y-3">
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="font-bold text-slate-700 block mb-1">
+                      Sua Idade <span className="text-rose-500">*</span>
+                    </label>
+                    <input
+                      type="number"
+                      min="16"
+                      max="99"
+                      required
+                      placeholder="Ex: 24"
+                      value={age}
+                      onChange={e => setAge(e.target.value)}
+                      className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-900 text-sm focus:bg-white"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="font-bold text-slate-700 block mb-1">
+                      Cidade / Região <span className="text-rose-500">*</span>
+                    </label>
+                    <input
+                      required
+                      placeholder="Ex: Balneário Camboriú"
+                      value={city}
+                      onChange={e => setCity(e.target.value)}
+                      className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-medium text-slate-900 text-sm focus:bg-white"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">
+                    Quanto tempo já atua no ramo / área? <span className="text-rose-500">*</span>
+                  </label>
+                  <select
+                    value={experienceTime}
+                    onChange={e => setExperienceTime(e.target.value)}
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-medium text-slate-900 text-sm focus:bg-white"
+                  >
+                    <option value="Menos de 1 ano (Iniciante)">Menos de 1 ano (Iniciante)</option>
+                    <option value="1 a 2 anos">1 a 2 anos de experiência</option>
+                    <option value="3 a 5 anos">3 a 5 anos de experiência</option>
+                    <option value="Mais de 5 anos (Sênior / Especialista)">Mais de 5 anos (Sênior / Especialista)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">
+                    Resumo de Experiências / Diferenciais <span className="text-slate-400 font-normal">(Opcional)</span>
+                  </label>
+                  <textarea
+                    rows="2"
+                    placeholder="Ex: Experiência em baladas e festas VIP, agilidade com drinks e coquetéis, ótimo atendimento..."
+                    value={experience}
+                    onChange={e => setExperience(e.target.value)}
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 text-xs focus:bg-white resize-none"
+                  />
+                </div>
+              </div>
+
+              {/* Aviso de Privacidade */}
+              <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl flex items-center gap-2 text-[11px] text-slate-500">
+                <Icon name="shield" className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>
+                  <strong>100% Seguro:</strong> Nenhum documento (CPF/RG) é enviado. A empresa vê apenas seus dados profissionais e link verificado.
+                </span>
+              </div>
+            </div>
+
+            {/* Footer Fixo */}
+            <div className="shrink-0 p-3.5 sm:p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-end gap-2.5 z-10">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-2.5 border border-slate-200 text-slate-700 font-bold rounded-xl text-xs hover:bg-white transition"
+              >
+                Voltar
+              </button>
+              <button
+                type="submit"
+                className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl text-xs sm:text-sm shadow-lg shadow-emerald-500/25 transition active:scale-95 flex items-center gap-1.5"
+              >
+                <Icon name="whatsapp" className="w-4 h-4" />
+                <span>Confirmar & Chamar no WhatsApp</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      );
+    }
+
+    // ==========================================
+    // PERFIL PÚBLICO VERIFICADO DO CANDIDATO (Link para Empresa)
+    // ==========================================
+    function PublicCandidateProfileView({ candidateId, users, onClose }) {
+      const candidate = users.find(u => u.id === candidateId) || null;
+
+      return (
+        <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 text-white shadow-2xl relative my-auto animate-in fade-in zoom-in-95">
+            <button
+              type="button"
+              onClick={onClose}
+              className="absolute right-4 top-4 w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition"
+            >
+              <Icon name="x" className="w-5 h-5" />
+            </button>
+
+            {candidate ? (
+              <div className="space-y-6">
+                <div className="text-center">
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-tr from-emerald-500 to-indigo-600 flex items-center justify-center text-3xl font-black text-white mx-auto shadow-xl shadow-emerald-500/20 mb-3">
+                    {candidate.name.charAt(0).toUpperCase()}
+                  </div>
+                  <h2 className="text-2xl font-black text-white">{candidate.name}</h2>
+                  <div className="text-emerald-400 font-bold text-sm mt-0.5">
+                    {candidate.profession || 'Profissional Freelancer'}
+                  </div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold mt-2">
+                    <Icon name="checkCircle" className="w-3.5 h-3.5" />
+                    <span>Perfil Verificado Freelancer BC</span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 text-xs">
+                  <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-2xl">
+                    <span className="text-slate-400 block mb-1">🎂 Idade</span>
+                    <span className="font-extrabold text-white text-sm">
+                      {candidate.age ? `${candidate.age} anos` : 'Maior de idade'}
+                    </span>
+                  </div>
+                  <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-2xl">
+                    <span className="text-slate-400 block mb-1">⏱️ Tempo no Ramo</span>
+                    <span className="font-extrabold text-white text-sm">
+                      {candidate.experienceTime || 'Experiente na área'}
+                    </span>
+                  </div>
+                  <div className="p-3.5 bg-slate-950/70 border border-slate-800 rounded-2xl col-span-2">
+                    <span className="text-slate-400 block mb-1">📍 Cidade / Atuação</span>
+                    <span className="font-extrabold text-white text-sm">
+                      {candidate.city || 'Balneário Camboriú e Região'}
+                    </span>
+                  </div>
+                </div>
+
+                {candidate.experience && (
+                  <div className="p-4 bg-slate-950/70 border border-slate-800 rounded-2xl text-xs space-y-1">
+                    <span className="text-slate-400 font-bold uppercase tracking-wider text-[10px] block">
+                      Experiências e Destaques
+                    </span>
+                    <p className="text-slate-200 leading-relaxed whitespace-pre-line">
+                      {candidate.experience}
+                    </p>
+                  </div>
+                )}
+
+                <div className="pt-2 space-y-3">
+                  {candidate.phone && (
+                    <a
+                      href={`https://api.whatsapp.com/send?phone=${candidate.phone.replace(/\D/g, '')}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-2xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition transform active:scale-95"
+                    >
+                      <Icon name="whatsapp" className="w-5 h-5 text-white" />
+                      <span>Conversar no WhatsApp com {candidate.name.split(' ')[0]}</span>
+                    </a>
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="w-full py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-2xl text-xs transition"
+                  >
+                    Acessar Plataforma Freelancer BC
+                  </button>
+                </div>
+
+                <div className="text-center text-[11px] text-slate-500">
+                  🔒 Perfil verificado pelo Freelancer BC • Documentos e identidade protegidos sem exibição de CPF.
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-8 space-y-4">
+                <div className="w-12 h-12 bg-slate-800 text-slate-400 rounded-full flex items-center justify-center mx-auto">
+                  <Icon name="alertCircle" className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-white">Perfil não encontrado</h3>
+                <p className="text-xs text-slate-400">O link do perfil pode ter expirado ou o usuário foi atualizado.</p>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="px-5 py-2.5 bg-indigo-600 text-white font-bold rounded-xl text-xs"
+                >
+                  Ir para o Início
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    // ==========================================
     // MODAL EDITAR VAGA
     // ==========================================
     function ModalEditarVaga({ company, initialJob, onClose, onSave }) {
       const isEditing = Boolean(initialJob);
       const [title, setTitle] = useState(initialJob ? initialJob.title : '');
+      const [companyName, setCompanyName] = useState(initialJob?.companyName || company.name || '');
       const [category, setCategory] = useState(initialJob ? initialJob.category : 'Garçom');
       
       // Remuneration model states: 'diaria_fixa' | 'por_hora' | 'so_comissao' | 'fixo_mais_comissao'
@@ -4194,7 +4743,7 @@
           ...(initialJob || {}),
           id: initialJob ? initialJob.id : `job-${Date.now()}`,
           companyId: company.id,
-          companyName: company.name,
+          companyName: companyName.trim() || company.name,
           title: title.trim(),
           category,
           paymentType,
@@ -4218,32 +4767,69 @@
       };
 
       return (
-        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-7 shadow-2xl relative my-8 animate-in fade-in zoom-in-95">
-            <button onClick={onClose} className="absolute right-4 top-4 text-slate-400 hover:text-slate-600 p-1">
-              <Icon name="x" className="w-5 h-5" />
-            </button>
-            <h3 className="text-xl font-black text-slate-900 mb-1">{isEditing ? 'Editar Vaga' : 'Publicar Nova Vaga'}</h3>
-            <p className="text-xs text-slate-500 mb-4">Preencha as informações e defina o modelo de remuneração.</p>
-
-            <form onSubmit={handleSubmit} className="space-y-4 text-xs">
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white w-full sm:max-w-xl max-h-[92vh] max-h-[92dvh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in"
+          >
+            {/* Header Fixo no Topo - Sempre visível, nunca corta */}
+            <div className="shrink-0 px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-white z-10">
               <div>
-                <label className="font-bold text-slate-700 block mb-1">Título da Vaga</label>
-                <input
-                  required
-                  placeholder="Ex: Bartender para Balada, Garçom para Festa VIP..."
-                  value={title}
-                  onChange={e => setTitle(e.target.value)}
-                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-medium focus:bg-white transition"
-                />
+                <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-tight">
+                  {isEditing ? 'Editar Vaga' : 'Publicar Nova Vaga'}
+                </h3>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Preencha os dados da vaga e o valor para os freelancers
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label="Fechar"
+                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-700 flex items-center justify-center transition active:scale-95 shrink-0"
+              >
+                <Icon name="x" className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Corpo com Rolagem Suave - Sobe e desce sem travar em celular */}
+            <div className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-6 space-y-4 text-xs">
+              {/* Título da Vaga e Nome do Estabelecimento */}
+              <div className="space-y-3">
+                <div>
+                  <label className="font-bold text-slate-800 block mb-1 text-xs">
+                    Título da Vaga / Função <span className="text-rose-500">*</span>
+                  </label>
+                  <input
+                    required
+                    autoFocus
+                    placeholder="Ex: Bartender para Balada, Garçom para Festa VIP..."
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                    className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl font-medium focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition text-sm text-slate-900 placeholder-slate-400"
+                  />
+                </div>
+
+                <div>
+                  <label className="font-bold text-slate-800 block mb-1 text-xs">
+                    Nome do Estabelecimento / Empresa / Evento <span className="text-rose-500">*</span>
+                  </label>
+                  <input
+                    required
+                    placeholder="Ex: Habbitat, Green Valley, Taj Bar, Buffet Elegance..."
+                    value={companyName}
+                    onChange={e => setCompanyName(e.target.value)}
+                    className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl font-medium focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition text-sm text-slate-900 placeholder-slate-400"
+                  />
+                </div>
               </div>
 
               <div>
-                <label className="font-bold text-slate-700 block mb-1">Categoria Profissional</label>
+                <label className="font-bold text-slate-700 block mb-1 text-xs">Categoria Profissional</label>
                 <select
                   value={category}
                   onChange={e => setCategory(e.target.value)}
-                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl font-medium"
+                  className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl font-medium text-sm text-slate-800 focus:bg-white"
                 >
                   {CATEGORIES.filter(c => c !== 'Todos').map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
@@ -4524,45 +5110,130 @@
                 <label className="font-bold text-slate-700 block mb-1">WhatsApp de Contato</label>
                 <input required value={formatPhone(whatsapp)} onChange={e => setWhatsapp(e.target.value)} className="w-full p-2.5 bg-slate-50 border rounded-xl font-mono" />
               </div>
+            </div>
 
-              <div className="flex justify-end gap-2 pt-2">
-                <button type="button" onClick={onClose} className="px-4 py-2 border rounded-xl font-semibold hover:bg-slate-50 transition">Cancelar</button>
-                <button type="submit" className="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-md transition">
-                  {isEditing ? 'Salvar Alterações' : 'Publicar Vaga'}
-                </button>
-              </div>
-            </form>
-          </div>
+            {/* Rodapé Fixo na Base - Sempre visível com botões de ação */}
+            <div className="shrink-0 p-3.5 sm:p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-end gap-2.5 z-10">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-2.5 border border-slate-200 text-slate-700 font-bold rounded-xl text-xs sm:text-sm hover:bg-white transition"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                className="px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500 text-white font-black rounded-xl text-xs sm:text-sm shadow-lg shadow-indigo-500/25 transition active:scale-95 flex items-center gap-1.5"
+              >
+                <Icon name="checkCircle" className="w-4 h-4" />
+                <span>{isEditing ? 'Salvar Alterações' : 'Publicar Vaga'}</span>
+              </button>
+            </div>
+          </form>
         </div>
       );
     }
-
-    function ModalCandidatosWhats({ job, onClose, onHire }) {
+    function ModalCandidatosWhats({ job, onClose, onHire, onOpenProfile }) {
       const applicants = job.applicants || [];
       return (
-        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl relative">
-            <button onClick={onClose} className="absolute right-4 top-4 text-slate-400"><Icon name="x" className="w-5 h-5" /></button>
-            <h3 className="text-lg font-bold text-slate-900 mb-1">Quem Chamou no Whats ({applicants.length})</h3>
-            <p className="text-xs text-slate-400 mb-4">{job.title}</p>
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden">
+          <div className="bg-white w-full sm:max-w-xl max-h-[90vh] max-h-[90dvh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in">
+            <div className="shrink-0 px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-white z-10">
+              <div>
+                <h3 className="text-lg font-black text-slate-900 leading-tight">Quem Chamou no Whats ({applicants.length})</h3>
+                <p className="text-xs text-slate-500 mt-0.5">{job.title} • {job.companyName}</p>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition active:scale-95"
+              >
+                <Icon name="x" className="w-5 h-5" />
+              </button>
+            </div>
 
-            <div className="space-y-3 max-h-80 overflow-y-auto">
-              {applicants.map((cand, idx) => (
-                <div key={idx} className="p-3 bg-slate-50 border rounded-xl flex justify-between items-center text-xs">
-                  <div>
-                    <div className="font-bold text-slate-900">{cand.name}</div>
-                    <div className="text-indigo-600">{cand.profession} • CPF: {cand.cpf}</div>
-                  </div>
-                  <div className="flex gap-2">
-                    <a href={`https://api.whatsapp.com/send?phone=${cand.phone.replace(/\D/g, '')}`} target="_blank" className="px-2.5 py-1.5 bg-emerald-600 text-white rounded-lg font-bold flex items-center gap-1">
-                      <Icon name="whatsapp" className="w-3.5 h-3.5" /> Whats
-                    </a>
-                    <button onClick={() => onHire(cand.freelancerId)} className="px-2.5 py-1.5 bg-indigo-600 text-white rounded-lg font-bold">
-                      Contratar
-                    </button>
-                  </div>
+            <div className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-5 space-y-3">
+              {applicants.length === 0 ? (
+                <div className="text-center py-8 text-slate-400 text-xs">
+                  Nenhum freelancer chamou no WhatsApp ainda para esta vaga.
                 </div>
-              ))}
+              ) : (
+                applicants.map((cand, idx) => (
+                  <div key={idx} className="p-3.5 bg-slate-50 hover:bg-slate-100/80 border border-slate-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs transition">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="font-extrabold text-slate-900 text-sm">{cand.name}</span>
+                        {cand.age && (
+                          <span className="px-2 py-0.5 rounded-full bg-slate-200 text-slate-700 text-[10px] font-bold">
+                            {cand.age} anos
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-indigo-600 font-bold">
+                        {cand.profession || 'Freelancer'}
+                        {cand.experienceTime && <span className="text-slate-500 font-normal"> • {cand.experienceTime}</span>}
+                      </div>
+                      {cand.city && (
+                        <div className="text-slate-500 text-[11px]">📍 {cand.city}</div>
+                      )}
+                      {cand.experience && (
+                        <div className="text-slate-600 text-[11px] bg-white p-2 rounded-lg border border-slate-100 italic">
+                          "{cand.experience}"
+                        </div>
+                      )}
+                      {cand.phone && (
+                        <div className="text-slate-500 text-[11px]">📱 {formatPhone(cand.phone)}</div>
+                      )}
+                      {cand.clickedAt && (
+                        <div className="text-[10px] text-slate-400">
+                          🕒 Solicitou em: {new Date(cand.clickedAt).toLocaleString('pt-BR')}
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-200">
+                      {onOpenProfile && (
+                        <button
+                          type="button"
+                          onClick={() => onOpenProfile(cand.freelancerId)}
+                          className="px-2.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold flex items-center gap-1 transition text-xs"
+                          title="Ver Perfil Completo"
+                        >
+                          <Icon name="userCheck" className="w-3.5 h-3.5" />
+                          <span>Perfil</span>
+                        </button>
+                      )}
+                      {cand.phone && (
+                        <a
+                          href={`https://api.whatsapp.com/send?phone=${cand.phone.replace(/\D/g, '')}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="px-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold flex items-center gap-1.5 shadow-sm transition active:scale-95 text-xs"
+                        >
+                          <Icon name="whatsapp" className="w-3.5 h-3.5" />
+                          <span>Conversar</span>
+                        </a>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => onHire(cand.freelancerId)}
+                        className="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold transition active:scale-95 text-xs shadow-sm"
+                      >
+                        Contratar
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+            
+            <div className="shrink-0 p-3 bg-slate-50 border-t border-slate-100 text-center">
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-full py-2 bg-white border border-slate-200 text-slate-700 font-bold rounded-xl text-xs hover:bg-slate-100 transition"
+              >
+                Fechar
+              </button>
             </div>
           </div>
         </div>
