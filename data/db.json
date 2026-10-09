@@ -985,6 +985,26 @@
       "trialStartDate": "2026-10-09T14:50:14.549Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791557466595",
+      "name": "Alice correa ribeiro",
+      "email": "alicecorrea45@outlook.com",
+      "password": "99545915Pai",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "045.101.980-60",
+      "cnpj": null,
+      "phone": "47996042362",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 27,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T14:51:06.595Z",
+      "trialStartDate": "2026-10-09T14:51:06.595Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
