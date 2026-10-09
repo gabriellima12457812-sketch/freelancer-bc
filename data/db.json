@@ -808,6 +808,23 @@
       "trialStartDate": "2026-10-09T11:59:29.175Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791548699871",
+      "name": "Janaina Rodrigues",
+      "email": "janainarodriguess1991@gmail.com",
+      "password": "ja aedavi",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "408.135.388-31",
+      "cnpj": null,
+      "phone": "14997828207",
+      "businessType": null,
+      "profession": "Limpeza",
+      "createdAt": "2026-10-09T12:24:59.871Z",
+      "trialStartDate": "2026-10-09T12:24:59.871Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
