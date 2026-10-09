@@ -774,6 +774,23 @@
       "trialStartDate": "2026-10-09T11:56:11.288Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791546977361",
+      "name": "Florencia Bazzetti",
+      "email": "f.bazzetti@gmail.com",
+      "password": "lemuria1847",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "705.239.012-40",
+      "cnpj": null,
+      "phone": "73982285285",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-09T11:56:17.361Z",
+      "trialStartDate": "2026-10-09T11:56:17.361Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
