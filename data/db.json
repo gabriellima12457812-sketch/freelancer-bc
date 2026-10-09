@@ -1245,6 +1245,26 @@
       "trialStartDate": "2026-10-09T17:36:26.413Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791567439743",
+      "name": "Bruna de Azeredo",
+      "email": "brubadeazeredo5@gmail.com",
+      "password": "1978crii",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "042.531.170-82",
+      "cnpj": null,
+      "phone": "47991565846",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 29,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T17:37:19.743Z",
+      "trialStartDate": "2026-10-09T17:37:19.743Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
