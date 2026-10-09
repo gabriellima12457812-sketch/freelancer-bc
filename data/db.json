@@ -925,6 +925,26 @@
       "trialStartDate": "2026-10-09T13:58:34.723Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791554942596",
+      "name": "JOAO PAULO MAROTI LEITE",
+      "email": "joaopmaroti@gmail.com",
+      "password": "Jpml2026.",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "086.330.339-09",
+      "cnpj": null,
+      "phone": "47997201887",
+      "businessType": null,
+      "profession": "Bartender & Mixologista",
+      "age": 30,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T14:09:02.596Z",
+      "trialStartDate": "2026-10-09T14:09:02.596Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
