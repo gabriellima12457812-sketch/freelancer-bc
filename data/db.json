@@ -706,6 +706,23 @@
       "trialStartDate": "2026-10-09T00:44:56.802Z",
       "trialExpiryDate": "2026-11-08T00:44:56.802Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791507227774",
+      "name": "Shirley Melissa de Paiva",
+      "email": "shirleymelissa75@gmail.coms",
+      "password": "151284",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "073.565.979-69",
+      "cnpj": null,
+      "phone": "41985033971",
+      "businessType": null,
+      "profession": "Limpeza",
+      "createdAt": "2026-10-09T00:53:47.772Z",
+      "trialStartDate": "2026-10-09T00:53:47.772Z",
+      "trialExpiryDate": "2026-11-08T00:53:47.772Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
