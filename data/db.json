@@ -825,6 +825,26 @@
       "trialStartDate": "2026-10-09T12:24:59.871Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791550036205",
+      "name": "ANDRYELLI LEMOS",
+      "email": "andryelli.lms.rnt@gmail.com",
+      "password": "jorel123",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "058.838.349-06",
+      "cnpj": null,
+      "phone": "47996299531",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 32,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T12:47:16.205Z",
+      "trialStartDate": "2026-10-09T12:47:16.205Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
