@@ -1165,6 +1165,26 @@
       "trialStartDate": "2026-10-09T15:41:39.080Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791562271558",
+      "name": "Kairo Lordes",
+      "email": "kavendas19@gmail.com",
+      "password": "kairo94",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "007.935.782-21",
+      "cnpj": null,
+      "phone": "47997946158",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 32,
+      "experienceTime": "3 a 5 anos",
+      "city": "Brusque",
+      "createdAt": "2026-10-09T16:11:11.558Z",
+      "trialStartDate": "2026-10-09T16:11:11.558Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
