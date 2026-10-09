@@ -905,6 +905,26 @@
       "trialStartDate": "2026-10-09T13:43:23.199Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791554314723",
+      "name": "Maria Duarte",
+      "email": "mraimundad12@gmail.com",
+      "password": "031825",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "004.247.943-65",
+      "cnpj": null,
+      "phone": "98983553492",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 44,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T13:58:34.723Z",
+      "trialStartDate": "2026-10-09T13:58:34.723Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
