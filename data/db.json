@@ -1185,6 +1185,26 @@
       "trialStartDate": "2026-10-09T16:11:11.558Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791562751845",
+      "name": "Luciana Padilha",
+      "email": "lnrpadilha@gmail.com",
+      "password": "0526",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "016.630.999-01",
+      "cnpj": null,
+      "phone": "47996566517",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 48,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T16:19:11.845Z",
+      "trialStartDate": "2026-10-09T16:19:11.845Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
