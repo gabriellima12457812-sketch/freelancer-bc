@@ -945,6 +945,26 @@
       "trialStartDate": "2026-10-09T14:09:02.596Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791555483757",
+      "name": "Liliane luz",
+      "email": "luzliliane055@gmail.com",
+      "password": "280114",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "007.811.100-50",
+      "cnpj": null,
+      "phone": "47997204380",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 37,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T14:18:03.757Z",
+      "trialStartDate": "2026-10-09T14:18:03.757Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
