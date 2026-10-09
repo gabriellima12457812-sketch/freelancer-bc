@@ -1308,6 +1308,26 @@
       "trialStartDate": "2026-10-09T20:26:36.518Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791582649696",
+      "name": "Claudete olenicz",
+      "email": "claudeteolenicz9@gmail.com",
+      "password": "linda1234",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "108.780.739-57",
+      "cnpj": null,
+      "phone": "47996444924",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 30,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T21:50:49.696Z",
+      "trialStartDate": "2026-10-09T21:50:49.696Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
