@@ -1267,6 +1267,31 @@
       "isSubscriptionActive": true
     }
   ],
-  "jobs": [],
+  "jobs": [
+    {
+      "id": "job-1791573310536",
+      "companyId": "u-1791573223226",
+      "companyName": "Lucca cantina",
+      "title": "Cumim",
+      "category": "Garçom",
+      "paymentType": "fixo_mais_comissao",
+      "rate": 2150,
+      "hourlyRate": null,
+      "commissionRate": 10,
+      "commissionDetail": "Global",
+      "totalSpots": 1,
+      "filledSpots": 0,
+      "status": "ativa",
+      "date": "2026-10-09",
+      "startTime": "18:00",
+      "endTime": "02:00",
+      "address": "Av. Atlântica, Balneário Camboriú",
+      "attire": "All Black",
+      "whatsapp": "47999072101",
+      "clicks": 0,
+      "applicants": [],
+      "createdAt": "2026-10-09T19:15:10.536Z"
+    }
+  ],
   "invoices": []
 }
