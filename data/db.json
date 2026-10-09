@@ -453,7 +453,11 @@
       "createdAt": "2026-10-08T22:25:42.528Z",
       "trialStartDate": "2026-10-08T22:25:42.528Z",
       "trialExpiryDate": "2026-11-07T22:25:42.528Z",
-      "isSubscriptionActive": false
+      "isSubscriptionActive": false,
+      "age": 23,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "experience": "Atención al cliente , restaurante"
     },
     {
       "id": "u-1791498560284",
