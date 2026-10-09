@@ -1125,6 +1125,26 @@
       "trialStartDate": "2026-10-09T15:30:18.323Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791560378793",
+      "name": "Gisele de Almeida",
+      "email": "giesef@gmail.com",
+      "password": "Mimi@2025",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "013.485.340-79",
+      "cnpj": null,
+      "phone": "53999040604",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 39,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T15:39:38.793Z",
+      "trialStartDate": "2026-10-09T15:39:38.793Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
