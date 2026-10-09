@@ -1105,6 +1105,26 @@
       "trialStartDate": "2026-10-09T15:28:53.403Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791559818323",
+      "name": "WANDERLEIA DA SILVA CAVALCANTE",
+      "email": "leiacavalcante@hotmail.com",
+      "password": "Leua@2903",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "782.689.401-82",
+      "cnpj": null,
+      "phone": "67999226801",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "age": 49,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T15:30:18.323Z",
+      "trialStartDate": "2026-10-09T15:30:18.323Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
