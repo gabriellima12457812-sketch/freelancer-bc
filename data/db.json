@@ -1045,6 +1045,26 @@
       "trialStartDate": "2026-10-09T14:58:28.569Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791557971595",
+      "name": "Leonardo beserra de moura",
+      "email": "leonardobeserramoura@gmail.com",
+      "password": "250990",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "417.826.348-00",
+      "cnpj": null,
+      "phone": "47999072101",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 36,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T14:59:31.595Z",
+      "trialStartDate": "2026-10-09T14:59:31.595Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
