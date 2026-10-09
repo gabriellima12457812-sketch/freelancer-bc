@@ -45,21 +45,21 @@
       "isSubscriptionActive": true
     },
     {
-      "id": "u-1791490341211",
-      "name": "Gabriel lima",
+      "id": "u-1791507821695",
+      "name": "Piff paff",
       "email": "gabriellima_1@hotmail.com",
-      "password": "12457812",
-      "role": "freelancer",
+      "password": "08520852",
+      "role": "empresa",
       "status": "aprovado",
       "cpf": "101.304.159-36",
       "cnpj": null,
       "phone": "47999158919",
-      "businessType": null,
-      "profession": "Garçom",
-      "createdAt": "2026-10-08T20:12:21.211Z",
-      "trialStartDate": "2026-10-08T20:12:21.211Z",
-      "trialExpiryDate": "2026-12-07T20:42:10.075Z",
-      "isSubscriptionActive": true
+      "businessType": "Eventos",
+      "profession": null,
+      "createdAt": "2026-10-09T01:03:41.695Z",
+      "trialStartDate": "2026-10-09T01:03:41.695Z",
+      "trialExpiryDate": "2026-11-08T01:03:41.695Z",
+      "isSubscriptionActive": false
     },
     {
       "id": "u-1791490837151",
