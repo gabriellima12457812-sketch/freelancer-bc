@@ -845,6 +845,26 @@
       "trialStartDate": "2026-10-09T12:47:16.205Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791550423740",
+      "name": "Gustavo Oliveira Ribas",
+      "email": "lauraoliveir8950@gmail.com",
+      "password": "89509090",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "850.114.440-15",
+      "cnpj": null,
+      "phone": "51997408278",
+      "businessType": null,
+      "profession": "Segurança",
+      "age": 31,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T12:53:43.740Z",
+      "trialStartDate": "2026-10-09T12:53:43.740Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
