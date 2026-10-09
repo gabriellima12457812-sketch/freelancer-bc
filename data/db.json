@@ -672,6 +672,23 @@
       "trialStartDate": "2026-10-08T23:56:26.131Z",
       "trialExpiryDate": "2026-11-07T23:56:26.131Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791506503096",
+      "name": "Alexandre Moura",
+      "email": "alexandremoura1020@gmail.com",
+      "password": "Alexandre10.",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "093.391.779-16",
+      "cnpj": null,
+      "phone": "47920012993",
+      "businessType": null,
+      "profession": "Limpeza",
+      "createdAt": "2026-10-09T00:41:43.096Z",
+      "trialStartDate": "2026-10-09T00:41:43.096Z",
+      "trialExpiryDate": "2026-11-08T00:41:43.096Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [],
