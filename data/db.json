@@ -1005,6 +1005,26 @@
       "trialStartDate": "2026-10-09T14:51:06.595Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791557881133",
+      "name": "Giovana Luizetto Lunardelli",
+      "email": "giovana.lunardelli@hotmail.com",
+      "password": "Gigisucesso3!",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "129.949.419-61",
+      "cnpj": null,
+      "phone": "47996115048",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": null,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-09T14:58:01.133Z",
+      "trialStartDate": "2026-10-09T14:58:01.133Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [],
