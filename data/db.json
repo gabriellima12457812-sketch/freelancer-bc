@@ -723,6 +723,23 @@
       "trialStartDate": "2026-10-09T00:53:47.772Z",
       "trialExpiryDate": "2026-11-08T00:53:47.772Z",
       "isSubscriptionActive": false
+    },
+    {
+      "id": "u-1791509817492",
+      "name": "Mayck caua nascimento souza",
+      "email": "maycksousa@icloud.com",
+      "password": "Mayck22@@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "054.830.732-66",
+      "cnpj": null,
+      "phone": "91981899473",
+      "businessType": null,
+      "profession": "Garçom",
+      "createdAt": "2026-10-09T01:36:57.492Z",
+      "trialStartDate": "2026-10-09T01:36:57.492Z",
+      "trialExpiryDate": "2026-11-08T01:36:57.492Z",
+      "isSubscriptionActive": false
     }
   ],
   "jobs": [
