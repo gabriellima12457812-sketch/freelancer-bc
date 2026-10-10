@@ -1357,6 +1357,26 @@
         "Garçom",
         "Bartender"
       ]
+    },
+    {
+      "id": "u-1791632199184",
+      "name": "Luan sodre",
+      "email": "andresatafer@gmail.com",
+      "password": "@Sodre07",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "033.106.570-35",
+      "cnpj": null,
+      "phone": "51980330619",
+      "businessType": null,
+      "profession": "Promoter de Vendas",
+      "age": 27,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T11:36:39.184Z",
+      "trialStartDate": "2026-10-10T11:36:39.184Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
