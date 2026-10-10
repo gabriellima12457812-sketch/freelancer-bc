@@ -660,7 +660,11 @@
       "createdAt": "2026-10-08T23:32:02.429Z",
       "trialStartDate": "2026-10-08T23:32:02.429Z",
       "trialExpiryDate": "2026-11-07T23:32:02.429Z",
-      "isSubscriptionActive": false
+      "isSubscriptionActive": false,
+      "age": 50,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "experience": "Expocentro/hotel/loja"
     },
     {
       "id": "u-1791502682335",
