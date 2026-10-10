@@ -145,12 +145,59 @@ export default async function handler(req, res) {
         }
         const idx = db.jobs.findIndex(j => j.id === job.id);
         if (idx >= 0) {
-          db.jobs[idx] = { ...db.jobs[idx], ...job };
+          // Preservar applicants existentes se o update não tiver
+          const existingApplicants = Array.isArray(db.jobs[idx].applicants) ? db.jobs[idx].applicants : [];
+          const newApplicants = Array.isArray(job.applicants) ? job.applicants : [];
+          const mergedApplicantsMap = new Map();
+          existingApplicants.forEach(a => mergedApplicantsMap.set(a.freelancerId || a.phone || a.cpf, a));
+          newApplicants.forEach(a => mergedApplicantsMap.set(a.freelancerId || a.phone || a.cpf, a));
+          
+          db.jobs[idx] = { 
+            ...db.jobs[idx], 
+            ...job, 
+            applicants: Array.from(mergedApplicantsMap.values()) 
+          };
         } else {
           db.jobs.unshift(job);
         }
         await saveDb(db, sha, `Salvar vaga: ${job.title || job.id}`);
         return res.status(200).json({ ok: true, count: db.jobs.length, jobs: db.jobs });
+      }
+
+      if (action === 'apply_job') {
+        const { jobId, candidate, job: fallbackJob } = body;
+        if (!jobId || !candidate) {
+          return res.status(400).json({ ok: false, error: 'jobId and candidate required' });
+        }
+        let job = db.jobs.find(j => j.id === jobId);
+        if (!job && fallbackJob) {
+          job = fallbackJob;
+          db.jobs.unshift(job);
+        }
+        if (!job) {
+          return res.status(404).json({ ok: false, error: 'Vaga não encontrada' });
+        }
+        if (!Array.isArray(job.applicants)) job.applicants = [];
+        const candPhone = (candidate.phone || '').replace(/\D/g, '');
+        const candCpf = (candidate.cpf || '').replace(/\D/g, '');
+        const existingIdx = job.applicants.findIndex(a =>
+          (candidate.freelancerId && a.freelancerId && a.freelancerId === candidate.freelancerId) ||
+          (candPhone && a.phone && a.phone.replace(/\D/g, '') === candPhone) ||
+          (candCpf && a.cpf && a.cpf.replace(/\D/g, '') === candCpf)
+        );
+        const record = {
+          ...candidate,
+          clickedAt: new Date().toISOString(),
+          hiredStatus: candidate.hiredStatus || 'pendente'
+        };
+        if (existingIdx >= 0) {
+          job.applicants[existingIdx] = { ...job.applicants[existingIdx], ...record };
+        } else {
+          job.applicants.unshift(record);
+          job.clicks = (job.clicks || 0) + 1;
+        }
+        await saveDb(db, sha, `Candidatura: ${candidate.name} em ${job.title}`);
+        return res.status(200).json({ ok: true, job, applicants: job.applicants, jobs: db.jobs });
       }
 
       if (action === 'delete_job') {
