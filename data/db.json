@@ -1392,6 +1392,26 @@
       "trialStartDate": "2026-10-10T11:43:42.643Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791637370504",
+      "name": "Luan",
+      "email": "luan@piffpaff",
+      "password": "Soldado@652",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "082.707.459-01",
+      "cnpj": null,
+      "phone": "47992040469",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 34,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T13:02:50.504Z",
+      "trialStartDate": "2026-10-10T13:02:50.504Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
