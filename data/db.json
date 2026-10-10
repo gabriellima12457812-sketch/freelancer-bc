@@ -1516,6 +1516,26 @@
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
       "experience": ""
+    },
+    {
+      "id": "u-1791656086437",
+      "name": "Rafaeli Cristina Nunes Pereira",
+      "email": "rafaelicristinapereira@gmail.com",
+      "password": "Filhas23",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "084.482.529-85",
+      "cnpj": null,
+      "phone": "47999545979",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 34,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T18:14:46.437Z",
+      "trialStartDate": "2026-10-10T18:14:46.437Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
