@@ -1700,6 +1700,26 @@
       "trialStartDate": "2026-10-10T19:13:46.619Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791659944728",
+      "name": "Amanda Carolina Stelle",
+      "email": "amandastelle234@gmail.com",
+      "password": "Venus331",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "092.606.159-33",
+      "cnpj": null,
+      "phone": "41996503435",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 27,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T19:19:04.728Z",
+      "trialStartDate": "2026-10-10T19:19:04.728Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
