@@ -1628,11 +1628,12 @@
       "profession": "Recepção",
       "age": 23,
       "experienceTime": "3 a 5 anos",
-      "city": "Itajai ",
+      "city": "Itajai",
       "createdAt": "2026-10-10T18:27:59.499Z",
       "trialStartDate": "2026-10-10T18:27:59.499Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "experience": "Experiência em recepção em eventos, como promotora em diversas ações e Garçonete em baladas"
     }
   ],
   "jobs": [
