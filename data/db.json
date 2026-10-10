@@ -1784,6 +1784,26 @@
       "trialStartDate": "2026-10-10T20:35:52.122Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791664747860",
+      "name": "Fabricia Ceci Consul",
+      "email": "ceciconsul@gmail.com",
+      "password": "190411",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "924.014.140-53",
+      "cnpj": null,
+      "phone": "47984309624",
+      "businessType": null,
+      "profession": "Promoter de Vendas",
+      "age": 54,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T20:39:07.860Z",
+      "trialStartDate": "2026-10-10T20:39:07.860Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
