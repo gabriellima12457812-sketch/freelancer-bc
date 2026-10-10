@@ -1593,6 +1593,26 @@
         "Limpeza",
         "Bartender"
       ]
+    },
+    {
+      "id": "u-1791656591326",
+      "name": "Maria eduarda Oliveira",
+      "email": "dudalemosoli1206@gmail.com",
+      "password": "44664466",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "433.552.708-06",
+      "cnpj": null,
+      "phone": "47988589400",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 22,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T18:23:11.326Z",
+      "trialStartDate": "2026-10-10T18:23:11.326Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
