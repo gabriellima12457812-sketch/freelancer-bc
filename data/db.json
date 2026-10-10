@@ -1888,6 +1888,26 @@
         "Recepção",
         "Garçom"
       ]
+    },
+    {
+      "id": "u-1791672763653",
+      "name": "Carine teles",
+      "email": "carineteles4@gmail.com",
+      "password": "carine1234",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "022.794.966-82",
+      "cnpj": null,
+      "phone": "33998090344",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 27,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T22:52:43.653Z",
+      "trialStartDate": "2026-10-10T22:52:43.653Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
