@@ -4808,14 +4808,15 @@
 
               {/* Botões de Ação para Grupos e Redes */}
               <div className="space-y-2.5 pt-1">
-                <button
-                  type="button"
-                  onClick={handleShareWhatsApp}
-                  className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-2xl text-xs flex items-center justify-center gap-2 shadow-md transition active:scale-95"
+                <a
+                  href={`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-2xl text-xs flex items-center justify-center gap-2 shadow-md transition active:scale-95 cursor-pointer text-center"
                 >
                   <Icon name="whatsapp" className="w-4 h-4" />
                   <span>Enviar em Grupos de WhatsApp</span>
-                </button>
+                </a>
 
                 <button
                   type="button"
