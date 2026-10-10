@@ -1764,6 +1764,26 @@
       "trialStartDate": "2026-10-10T19:58:30.416Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791664552122",
+      "name": "Flavia Sianara Cavalcante de Lima",
+      "email": "cavalcantelimafs@gmail.com",
+      "password": "80946758@Fs",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "016.756.022-04",
+      "cnpj": null,
+      "phone": "47988359702",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 31,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T20:35:52.122Z",
+      "trialStartDate": "2026-10-10T20:35:52.122Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
