@@ -1377,6 +1377,26 @@
       "trialStartDate": "2026-10-10T11:36:39.184Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791632281866",
+      "name": "Piff paff",
+      "email": "piff@paff.com",
+      "password": "08520852",
+      "role": "empresa",
+      "status": "aprovado",
+      "cpf": null,
+      "cnpj": "64.435.385/0001-00",
+      "phone": "47999158991",
+      "businessType": "Eventos",
+      "profession": null,
+      "age": null,
+      "experienceTime": null,
+      "city": null,
+      "createdAt": "2026-10-10T11:38:01.866Z",
+      "trialStartDate": "2026-10-10T11:38:01.866Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
