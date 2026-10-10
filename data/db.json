@@ -1892,6 +1892,12 @@
   ],
   "jobs": [
     {
+      "id": "test-job-connectivity",
+      "title": "Test Connectivity",
+      "companyName": "Test Co",
+      "createdAt": "2026-10-10T19:00:00.000Z"
+    },
+    {
       "id": "job-1791632709917",
       "companyId": "u-1791632622643",
       "companyName": "Luan sodré",
