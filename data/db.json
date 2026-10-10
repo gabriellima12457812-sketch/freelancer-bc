@@ -1441,6 +1441,26 @@
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
       "experience": ""
+    },
+    {
+      "id": "u-1791655481303",
+      "name": "Mateus Chaves",
+      "email": "mateuschupel15@gmail.com",
+      "password": "gafanhoto106",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "147.730.599-82",
+      "cnpj": null,
+      "phone": "47997154507",
+      "businessType": null,
+      "profession": "Bartender & Mixologista",
+      "age": 21,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T18:04:41.303Z",
+      "trialStartDate": "2026-10-10T18:04:41.303Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
