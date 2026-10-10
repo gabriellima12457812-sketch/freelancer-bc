@@ -1844,6 +1844,26 @@
       "trialStartDate": "2026-10-10T20:51:46.931Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791666045591",
+      "name": "Dani Fernandes",
+      "email": "danipaidamanu@gmail.com",
+      "password": "tdb221184",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "012.535.150-00",
+      "cnpj": null,
+      "phone": "55991514183",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 42,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T21:00:45.591Z",
+      "trialStartDate": "2026-10-10T21:00:45.591Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
