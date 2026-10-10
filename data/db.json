@@ -1491,6 +1491,26 @@
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
       "experience": ""
+    },
+    {
+      "id": "u-1791655927227",
+      "name": "Tais nimer",
+      "email": "tais.nimer@gmail.com",
+      "password": "Henri@01",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "029.221.920-24",
+      "cnpj": null,
+      "phone": "47988564583",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 33,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T18:12:07.227Z",
+      "trialStartDate": "2026-10-10T18:12:07.227Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
