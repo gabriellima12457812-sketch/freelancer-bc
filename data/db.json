@@ -1411,7 +1411,8 @@
       "createdAt": "2026-10-10T13:02:50.504Z",
       "trialStartDate": "2026-10-10T13:02:50.504Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "experience": ""
     }
   ],
   "jobs": [
