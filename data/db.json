@@ -1354,7 +1354,8 @@
       "isSubscriptionActive": true,
       "alertCategories": [
         "Promoter de Vendas",
-        "Garçom"
+        "Garçom",
+        "Bartender"
       ]
     }
   ],
