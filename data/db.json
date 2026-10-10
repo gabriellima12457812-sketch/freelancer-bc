@@ -1372,6 +1372,26 @@
       "trialStartDate": "2026-10-10T11:38:01.866Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791632622643",
+      "name": "Luan sodré",
+      "email": "luan@sodre.com",
+      "password": "123456",
+      "role": "empresa",
+      "status": "aprovado",
+      "cpf": "038.259.640-43",
+      "cnpj": null,
+      "phone": "51980330619",
+      "businessType": "Eventos",
+      "profession": null,
+      "age": null,
+      "experienceTime": null,
+      "city": null,
+      "createdAt": "2026-10-10T11:43:42.643Z",
+      "trialStartDate": "2026-10-10T11:43:42.643Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
