@@ -1613,6 +1613,26 @@
       "trialStartDate": "2026-10-10T18:23:11.326Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791656879499",
+      "name": "Letícia Rachel Fernandes Freires da Silva",
+      "email": "freiresleticia2003@gmail.com",
+      "password": "Prsamuel2003@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "112.900.609-32",
+      "cnpj": null,
+      "phone": "41995655321",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 23,
+      "experienceTime": "3 a 5 anos",
+      "city": "Itajai ",
+      "createdAt": "2026-10-10T18:27:59.499Z",
+      "trialStartDate": "2026-10-10T18:27:59.499Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
