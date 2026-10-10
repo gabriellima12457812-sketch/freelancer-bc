@@ -1804,6 +1804,26 @@
       "trialStartDate": "2026-10-10T20:39:07.860Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791664853154",
+      "name": "LUCAS SIQUEIRA GOMES",
+      "email": "lucasurach42@outlook.com",
+      "password": "421921",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "114.634.877-03",
+      "cnpj": null,
+      "phone": "22974045463",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 28,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T20:40:53.154Z",
+      "trialStartDate": "2026-10-10T20:40:53.154Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
