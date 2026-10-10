@@ -1029,6 +1029,60 @@
         setAuthMode('login');
       };
       const [applyingJob, setApplyingJob] = useState(null);
+      const [sharedJobId, setSharedJobId] = useState(() => {
+        if (typeof window !== 'undefined' && window.location.search) {
+          try {
+            const sp = new URLSearchParams(window.location.search);
+            return sp.get('vaga') || sp.get('vaga_id') || sp.get('job') || null;
+          } catch (e) { return null; }
+        }
+        return null;
+      });
+      const [jobToShare, setJobToShare] = useState(null);
+      const [pendingApplyJobId, setPendingApplyJobId] = useState(() => {
+        try { return sessionStorage.getItem('fbc_pending_job_apply') || null; }
+        catch (e) { return null; }
+      });
+
+      const handleShareJob = async (job) => {
+        if (!job) return;
+        const baseUrl = (typeof window !== 'undefined' && window.location.origin && window.location.origin.includes('crm-piff-paff'))
+          ? `${window.location.origin}/freelancer`
+          : 'https://crm-piff-paff-v2.vercel.app/freelancer';
+        const jobUrl = `${baseUrl}?vaga=${job.id}`;
+        const remun = formatRemuneration(job);
+        const shiftH = calculateShiftHours(job.startTime, job.endTime);
+        const shareText = `🚨 VAGA ABERTA NO FREELANCER BC!\n\n💼 Cargo: ${job.title}\n🏢 Local: ${job.companyName}\n💵 Pagamento: ${remun.display}\n📅 Data: ${formatJobDate(job.date)} (${job.startTime} às ${job.endTime})\n📍 ${job.address}\n\n👉 Veja todos os detalhes e candidate-se pelo link:\n${jobUrl}`;
+
+        if (typeof navigator !== 'undefined' && navigator.share) {
+          try {
+            await navigator.share({
+              title: `Vaga: ${job.title} - Freelancer BC`,
+              text: shareText,
+              url: jobUrl
+            });
+            return;
+          } catch (e) {
+            if (e.name === 'AbortError') return;
+          }
+        }
+
+        setJobToShare({ job, jobUrl, shareText });
+      };
+
+      // Quando o usuário loga ou abre link de vaga compartilhada
+      useEffect(() => {
+        if (currentUser && currentUser.role === 'freelancer' && sharedJobId && Array.isArray(jobs) && jobs.length > 0) {
+          const target = jobs.find(j => j.id === sharedJobId);
+          if (target && target.status === 'ativa') {
+            setApplyingJob(target);
+            setSharedJobId(null);
+            if (typeof window !== 'undefined' && window.history) {
+              window.history.replaceState({}, '', window.location.pathname);
+            }
+          }
+        }
+      }, [currentUser, sharedJobId, jobs]);
       const [notifiedJobIds, setNotifiedJobIds] = useState(() => {
         try { return JSON.parse(localStorage.getItem('fbc_notified_jobs') || '[]'); }
         catch (e) { return []; }
@@ -1222,29 +1276,74 @@
 
       // --- SCREEN ROUTING ---
       if (!currentUser) {
-        if (authMode === 'register') {
-          return (
-            <>
-              {!isInstalled && !bannerDismissed && (
-                <InstallAppBanner onInstall={handleTriggerInstall} onDismiss={() => setBannerDismissed(true)} />
-              )}
-              {publicProfileId && (
-                <PublicCandidateProfileView
-                  candidateId={publicProfileId}
-                  users={users}
-                  onClose={() => {
-                    setPublicProfileId(null);
-                    if (typeof window !== 'undefined' && window.history && window.history.replaceState) {
-                      window.history.replaceState({}, document.title, window.location.pathname);
-                    }
-                  }}
-                />
-              )}
+        return (
+          <>
+            {!isInstalled && !bannerDismissed && (
+              <InstallAppBanner onInstall={handleTriggerInstall} onDismiss={() => setBannerDismissed(true)} />
+            )}
+
+            {/* Card de Vaga Compartilhada (acessada via link direto de redes sociais) */}
+            {sharedJobId && (
+              <PublicSharedJobView
+                job={jobs.find(j => j.id === sharedJobId)}
+                isLoading={!jobs || jobs.length === 0}
+                onApplyClick={() => {
+                  setPendingApplyJobId(sharedJobId);
+                  if (typeof sessionStorage !== 'undefined') sessionStorage.setItem('fbc_pending_job_apply', sharedJobId);
+                  setAuthMode('login');
+                  setSharedJobId(null);
+                }}
+                onRegisterClick={() => {
+                  setPendingApplyJobId(sharedJobId);
+                  if (typeof sessionStorage !== 'undefined') sessionStorage.setItem('fbc_pending_job_apply', sharedJobId);
+                  setAuthMode('register');
+                  setSharedJobId(null);
+                }}
+                onShare={() => handleShareJob(jobs.find(j => j.id === sharedJobId))}
+                onClose={() => {
+                  setSharedJobId(null);
+                  if (typeof window !== 'undefined' && window.history) window.history.replaceState({}, '', window.location.pathname);
+                }}
+              />
+            )}
+
+            {/* Card de Perfil Público de Candidato */}
+            {publicProfileId && (
+              <PublicCandidateProfileView
+                candidateId={publicProfileId}
+                users={users}
+                onClose={() => {
+                  setPublicProfileId(null);
+                  if (typeof window !== 'undefined' && window.history && window.history.replaceState) {
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                  }
+                }}
+              />
+            )}
+
+            {/* Modal de Compartilhamento de Vaga para Visitantes */}
+            {jobToShare && (
+              <ModalCompartilharVaga
+                jobData={jobToShare}
+                onClose={() => setJobToShare(null)}
+              />
+            )}
+
+            {authMode === 'register' ? (
               <RegisterView
                 users={users}
                 onRegister={(newUser) => {
                   setUsers(prev => [...prev, newUser]);
                   setCurrentUser(newUser);
+                  const pendingId = pendingApplyJobId || (typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('fbc_pending_job_apply') : null);
+                  if (pendingId && newUser.role === 'freelancer') {
+                    const target = jobs.find(j => j.id === pendingId);
+                    if (target) {
+                      setTimeout(() => setApplyingJob(target), 400);
+                    }
+                    sessionStorage.removeItem('fbc_pending_job_apply');
+                    setPendingApplyJobId(null);
+                  }
                   fetch(SYNC_API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1255,25 +1354,27 @@
                 onGoToLogin={() => setAuthMode('login')}
                 onTriggerInstall={handleTriggerInstall}
               />
-              {showInstallModal && <InstallAppModal onClose={() => setShowInstallModal(false)} />}
-            </>
-          );
-        }
-        return (
-          <>
-            {!isInstalled && !bannerDismissed && (
-              <InstallAppBanner onInstall={handleTriggerInstall} onDismiss={() => setBannerDismissed(true)} />
+            ) : (
+              <LoginView
+                users={users}
+                onLogin={(user) => {
+                  setCurrentUser(user);
+                  syncWithCloud();
+                  const pendingId = pendingApplyJobId || (typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('fbc_pending_job_apply') : null);
+                  if (pendingId && user.role === 'freelancer') {
+                    const target = jobs.find(j => j.id === pendingId);
+                    if (target) {
+                      setTimeout(() => setApplyingJob(target), 400);
+                    }
+                    sessionStorage.removeItem('fbc_pending_job_apply');
+                    setPendingApplyJobId(null);
+                  }
+                  showNotification(`Bem-vindo, ${user.name}!`);
+                }}
+                onGoToRegister={() => setAuthMode('register')}
+                onTriggerInstall={handleTriggerInstall}
+              />
             )}
-            <LoginView
-              users={users}
-              onLogin={(user) => {
-                setCurrentUser(user);
-                syncWithCloud();
-                showNotification(`Bem-vindo, ${user.name}!`);
-              }}
-              onGoToRegister={() => setAuthMode('register')}
-              onTriggerInstall={handleTriggerInstall}
-            />
             {showInstallModal && <InstallAppModal onClose={() => setShowInstallModal(false)} />}
           </>
         );
@@ -1451,6 +1552,7 @@
               linkedAccount={linkedAccount}
               onSwitchAccount={handleSwitchAccount}
               onOpenProfile={(cid) => setPublicProfileId(cid)}
+              onShareJob={handleShareJob}
             />
           )}
 
@@ -1470,6 +1572,7 @@
               onOpenNotifCenter={() => setShowNotifCenter(true)}
               activeJobAlert={activeJobAlert}
               onDismissJobAlert={() => setActiveJobAlert(null)}
+              onShareJob={handleShareJob}
             />
           )}
 
@@ -1486,7 +1589,15 @@
             />
           )}
 
-                    {/* Central de Notificações para Freelancers */}
+                    {/* Modal de Compartilhamento de Vaga */}
+          {jobToShare && (
+            <ModalCompartilharVaga
+              jobData={jobToShare}
+              onClose={() => setJobToShare(null)}
+            />
+          )}
+
+          {/* Central de Notificações para Freelancers */}
           {showNotifCenter && currentUser && currentUser.role === 'freelancer' && (
             <ModalCentralNotificacoes
               freelancer={currentUser}
@@ -4240,7 +4351,7 @@
     // ==========================================
     // PAINEL DA EMPRESA
     // ==========================================
-    function EmpresaDashboard({ company, jobs, invoices, onAddJob, onUpdateJob, onTogglePauseJob, onDeleteJob, onMarkSpotFilled, onOpenPaymentGateway, onLogout, trialInfo, onTriggerInstall, linkedAccount, onSwitchAccount, onOpenProfile }) {
+    function EmpresaDashboard({ company, jobs, invoices, onAddJob, onUpdateJob, onTogglePauseJob, onDeleteJob, onMarkSpotFilled, onOpenPaymentGateway, onLogout, trialInfo, onTriggerInstall, linkedAccount, onSwitchAccount, onOpenProfile, onShareJob }) {
       const [isModalOpen, setIsModalOpen] = useState(false);
       const [editingJob, setEditingJob] = useState(null);
       const [activeTab, setActiveTab] = useState('vagas'); // 'vagas' | 'faturas'
@@ -4402,6 +4513,19 @@
                             <span className="flex items-center gap-2"><Icon name="whatsapp" className="w-4 h-4 text-emerald-600" /> Quem Chamou no Whats</span>
                             <span className="bg-emerald-600 text-white px-2 py-0.5 rounded-full text-[10px]">{applicantsList.length}</span>
                           </button>
+
+                          {/* Botão de Compartilhar Vaga */}
+                          {onShareJob && (
+                            <button
+                              type="button"
+                              onClick={() => onShareJob(job)}
+                              className="w-full py-2 px-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200/80 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition active:scale-98"
+                              title="Compartilhar link desta vaga no WhatsApp, Instagram, Facebook..."
+                            >
+                              <Icon name="share" className="w-4 h-4" />
+                              <span>Compartilhar Vaga (Link Redes/Grupos)</span>
+                            </button>
+                          )}
 
                           <div className="flex justify-between items-center gap-2 pt-1 text-xs">
                             <button
@@ -4592,6 +4716,420 @@
         const words = c.split(/[\s&/]+/).filter(w => w.length >= 3);
         return words.some(w => jTitle.includes(w));
       });
+    }
+
+    // ==========================================
+    // MODAL COMPARTILHAR VAGA (Links para WhatsApp, Facebook, Instagram)
+    // ==========================================
+    function ModalCompartilharVaga({ jobData, onClose }) {
+      const [copied, setCopied] = useState(false);
+      const [textCopied, setTextCopied] = useState(false);
+
+      if (!jobData || !jobData.job) return null;
+      const { job, jobUrl, shareText } = jobData;
+      const remun = formatRemuneration(job);
+
+      const handleCopyLink = () => {
+        if (typeof navigator !== 'undefined' && navigator.clipboard) {
+          navigator.clipboard.writeText(jobUrl).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 3000);
+          });
+        }
+      };
+
+      const handleCopyFullText = () => {
+        if (typeof navigator !== 'undefined' && navigator.clipboard) {
+          navigator.clipboard.writeText(shareText).then(() => {
+            setTextCopied(true);
+            setTimeout(() => setTextCopied(false), 3000);
+          });
+        }
+      };
+
+      const handleShareWhatsApp = () => {
+        const encoded = encodeURIComponent(shareText);
+        window.open(`https://api.whatsapp.com/send?text=${encoded}`, '_blank');
+      };
+
+      return (
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden">
+          <div className="bg-white w-full sm:max-w-lg max-h-[92vh] max-h-[92dvh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in">
+            <div className="shrink-0 px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-white z-10">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center">
+                  <Icon name="share" className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900 leading-tight">Compartilhar Vaga</h3>
+                  <p className="text-xs text-slate-500">Divulgue no WhatsApp, Instagram e Facebook</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition"
+              >
+                <Icon name="x" className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-6 space-y-4 text-xs">
+              {/* Card Resumo da Vaga */}
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-indigo-600 text-[11px] uppercase">{job.category}</span>
+                  <span className="font-extrabold text-emerald-600 text-xs">{remun.display}</span>
+                </div>
+                <h4 className="font-black text-slate-900 text-base">{job.title}</h4>
+                <p className="text-xs text-slate-500">{job.companyName} • {job.address}</p>
+              </div>
+
+              {/* Link direto */}
+              <div className="space-y-1.5">
+                <label className="font-bold text-slate-700 block text-xs">Link da Vaga (para postar nas redes):</label>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    readOnly
+                    value={jobUrl}
+                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono text-slate-800 select-all"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleCopyLink}
+                    className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 shrink-0 transition"
+                  >
+                    <Icon name="copy" className="w-4 h-4" />
+                    <span>{copied ? 'Copiado!' : 'Copiar'}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Botões de Ação para Grupos e Redes */}
+              <div className="space-y-2.5 pt-1">
+                <button
+                  type="button"
+                  onClick={handleShareWhatsApp}
+                  className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-2xl text-xs flex items-center justify-center gap-2 shadow-md transition active:scale-95"
+                >
+                  <Icon name="whatsapp" className="w-4 h-4" />
+                  <span>Enviar em Grupos de WhatsApp</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleCopyFullText}
+                  className="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-2xl text-xs flex items-center justify-center gap-2 transition"
+                >
+                  <Icon name="copy" className="w-4 h-4" />
+                  <span>{textCopied ? 'Texto Completo Copiado!' : 'Copiar Texto Pronto para Postar no Facebook/Insta'}</span>
+                </button>
+              </div>
+
+              <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-2xl text-[11px] text-indigo-900 leading-relaxed">
+                💡 <strong>Dica de divulgação:</strong> Quem clicar no link cai direto nesta vaga, vê os detalhes completos e pode criar conta ou fazer login para chamar a empresa no WhatsApp!
+              </div>
+            </div>
+
+            <div className="shrink-0 p-3.5 bg-slate-50 border-t border-slate-100 text-center">
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-full py-2 bg-white border border-slate-200 text-slate-700 font-bold rounded-xl text-xs hover:bg-slate-100 transition"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // ==========================================
+    // VISUALIZAÇÃO PÚBLICA DE VAGA COMPARTILHADA (Landing Page para Redes)
+    // ==========================================
+    function PublicSharedJobView({ job, isLoading, onApplyClick, onRegisterClick, onShare, onClose }) {
+      if (!job) {
+        if (isLoading) {
+          return (
+            <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
+              <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-sm w-full p-8 text-white text-center shadow-2xl space-y-4">
+                <div className="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+                <h3 className="text-lg font-bold">Carregando vaga...</h3>
+                <p className="text-xs text-slate-400">Buscando informações em tempo real no Freelancer BC</p>
+              </div>
+            </div>
+          );
+        }
+        return (
+          <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+            <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 text-white text-center shadow-2xl relative my-auto">
+              <div className="w-12 h-12 bg-slate-800 text-slate-400 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                <Icon name="alertCircle" className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold">Vaga não encontrada</h3>
+              <p className="text-xs text-slate-400 mt-1 mb-6">Esta vaga pode ter sido encerrada ou preenchida.</p>
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs"
+              >
+                Ver Vagas Disponíveis em BC
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      const remun = formatRemuneration(job);
+      const remaining = Math.max(0, (job.totalSpots || 1) - (job.filledSpots || 0));
+      const shiftHours = calculateShiftHours(job.startTime, job.endTime);
+
+      return (
+        <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden">
+          <div className="bg-white w-full sm:max-w-xl max-h-[94vh] max-h-[94dvh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in">
+            {/* Header */}
+            <div className="shrink-0 px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-white z-10">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-500 to-emerald-400 flex items-center justify-center font-bold text-white">
+                  <Icon name="briefcase" className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-slate-900 leading-tight">Freelancer BC</h3>
+                  <p className="text-[11px] text-slate-400">Balneário Camboriú & Região</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition"
+              >
+                <Icon name="x" className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Scrollable Job Details */}
+            <div className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-6 space-y-4 text-xs">
+              {/* Top Banner */}
+              <div className="p-5 bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-950 text-white rounded-3xl shadow-md space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 bg-indigo-500/30 text-indigo-200 border border-indigo-400/30 rounded-full font-bold text-[11px]">
+                    {job.category}
+                  </span>
+                  <span className="text-[11px] font-bold text-emerald-400">
+                    👥 {remaining} {remaining === 1 ? 'vaga restante' : 'vagas restantes'}
+                  </span>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-black text-white leading-tight">{job.title}</h2>
+                  <p className="text-sm text-slate-300 font-semibold mt-1">🏢 {job.companyName}</p>
+                  <p className="text-xs text-slate-400">📍 {job.address}</p>
+                </div>
+
+                <div className="pt-2 border-t border-slate-800 flex items-baseline justify-between">
+                  <div>
+                    <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">Valor do Pagamento</span>
+                    <span className="text-2xl font-black text-emerald-400">{remun.display}</span>
+                  </div>
+                  <span className="px-2.5 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full text-[10px] font-bold">
+                    {remun.label}
+                  </span>
+                </div>
+              </div>
+
+              {/* Detalhes do Turno */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl">
+                  <span className="text-slate-400 block text-[11px] font-bold mb-1">📅 Data do Evento</span>
+                  <span className="font-extrabold text-slate-900 text-sm">{formatJobDate(job.date)}</span>
+                </div>
+                <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl">
+                  <span className="text-slate-400 block text-[11px] font-bold mb-1">⏰ Horário do Turno</span>
+                  <span className="font-extrabold text-slate-900 text-sm">{job.startTime} às {job.endTime} ({shiftHours}h)</span>
+                </div>
+                {job.attire && (
+                  <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl col-span-2">
+                    <span className="text-slate-400 block text-[11px] font-bold mb-1">👔 Traje Exigido</span>
+                    <span className="font-bold text-slate-800 text-xs">{job.attire}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Caixa de Conversão */}
+              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-950 space-y-1">
+                <div className="font-black text-sm flex items-center gap-1.5 text-emerald-900">
+                  <span>⚡</span>
+                  <span>Candidate-se agora gratuitamente</span>
+                </div>
+                <p className="text-xs text-emerald-800">
+                  Cadastre-se ou entre no <strong>Freelancer BC</strong> para se candidatar e chamar a empresa direto no WhatsApp com link verificado!
+                </p>
+              </div>
+            </div>
+
+            {/* Footer com Botões */}
+            <div className="shrink-0 p-4 border-t border-slate-100 bg-slate-50 space-y-2">
+              <button
+                type="button"
+                onClick={onApplyClick}
+                className="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-2xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition transform active:scale-95"
+              >
+                <Icon name="whatsapp" className="w-5 h-5 text-white" />
+                <span>Candidatar-se a Esta Vaga</span>
+              </button>
+
+              <div className="flex items-center justify-between gap-2 text-xs">
+                <button
+                  type="button"
+                  onClick={onRegisterClick}
+                  className="flex-1 py-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold rounded-xl transition text-center"
+                >
+                  Criar Conta Grátis
+                </button>
+                <button
+                  type="button"
+                  onClick={onShare}
+                  className="py-2.5 px-3 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-bold rounded-xl flex items-center justify-center gap-1.5 transition shrink-0"
+                  title="Compartilhar vaga"
+                >
+                  <Icon name="share" className="w-3.5 h-3.5" />
+                  <span>Compartilhar</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition shrink-0"
+                >
+                  Ver Mais Vagas
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+      const remun = formatRemuneration(job);
+      const remaining = Math.max(0, (job.totalSpots || 1) - (job.filledSpots || 0));
+      const shiftHours = calculateShiftHours(job.startTime, job.endTime);
+
+      return (
+        <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden">
+          <div className="bg-white w-full sm:max-w-xl max-h-[94vh] max-h-[94dvh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in">
+            {/* Header */}
+            <div className="shrink-0 px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-white z-10">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-500 to-emerald-400 flex items-center justify-center font-bold text-white">
+                  <Icon name="briefcase" className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-slate-900 leading-tight">Freelancer BC</h3>
+                  <p className="text-[11px] text-slate-400">Balneário Camboriú & Região</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition"
+              >
+                <Icon name="x" className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Scrollable Job Details */}
+            <div className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-6 space-y-4 text-xs">
+              {/* Top Banner */}
+              <div className="p-5 bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-950 text-white rounded-3xl shadow-md space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 bg-indigo-500/30 text-indigo-200 border border-indigo-400/30 rounded-full font-bold text-[11px]">
+                    {job.category}
+                  </span>
+                  <span className="text-[11px] font-bold text-emerald-400">
+                    👥 {remaining} {remaining === 1 ? 'vaga restante' : 'vagas restantes'}
+                  </span>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-black text-white leading-tight">{job.title}</h2>
+                  <p className="text-sm text-slate-300 font-semibold mt-1">🏢 {job.companyName}</p>
+                  <p className="text-xs text-slate-400">📍 {job.address}</p>
+                </div>
+
+                <div className="pt-2 border-t border-slate-800 flex items-baseline justify-between">
+                  <div>
+                    <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">Valor do Pagamento</span>
+                    <span className="text-2xl font-black text-emerald-400">{remun.display}</span>
+                  </div>
+                  <span className="px-2.5 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full text-[10px] font-bold">
+                    {remun.label}
+                  </span>
+                </div>
+              </div>
+
+              {/* Detalhes do Turno */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl">
+                  <span className="text-slate-400 block text-[11px] font-bold mb-1">📅 Data do Evento</span>
+                  <span className="font-extrabold text-slate-900 text-sm">{formatJobDate(job.date)}</span>
+                </div>
+                <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl">
+                  <span className="text-slate-400 block text-[11px] font-bold mb-1">⏰ Horário do Turno</span>
+                  <span className="font-extrabold text-slate-900 text-sm">{job.startTime} às {job.endTime} ({shiftHours}h)</span>
+                </div>
+                {job.attire && (
+                  <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl col-span-2">
+                    <span className="text-slate-400 block text-[11px] font-bold mb-1">👔 Traje Exigido</span>
+                    <span className="font-bold text-slate-800 text-xs">{job.attire}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Caixa de Conversão */}
+              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-950 space-y-1">
+                <div className="font-black text-sm flex items-center gap-1.5 text-emerald-900">
+                  <span>⚡</span>
+                  <span>Candidate-se agora gratuitamente</span>
+                </div>
+                <p className="text-xs text-emerald-800">
+                  Entre ou crie seu perfil de freelancer no <strong>Freelancer BC</strong> para se candidatar e chamar a empresa direto no WhatsApp com link verificado!
+                </p>
+              </div>
+            </div>
+
+            {/* Footer com Botões */}
+            <div className="shrink-0 p-4 border-t border-slate-100 bg-slate-50 space-y-2.5">
+              <button
+                type="button"
+                onClick={onApplyClick}
+                className="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-2xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition transform active:scale-95"
+              >
+                <Icon name="whatsapp" className="w-5 h-5 text-white" />
+                <span>Candidatar-se a Esta Vaga</span>
+              </button>
+
+              <div className="grid grid-cols-2 gap-2 text-xs">
+                <button
+                  type="button"
+                  onClick={onShare}
+                  className="py-2.5 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-bold rounded-xl flex items-center justify-center gap-1.5 transition"
+                >
+                  <Icon name="share" className="w-3.5 h-3.5" />
+                  <span>Compartilhar</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition"
+                >
+                  Ver Todas as Vagas
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
     }
 
     function ModalCentralNotificacoes({ 
@@ -5669,7 +6207,7 @@
     // ==========================================
     // PAINEL DO FREELANCER
     // ==========================================
-    function FreelancerDashboard({ freelancer, jobs, invoices, onWhatsappClick, onOpenPaymentGateway, onLogout, trialInfo, onTriggerInstall, linkedAccount, onSwitchAccount, notifications = [], onOpenNotifCenter, activeJobAlert, onDismissJobAlert }) {
+    function FreelancerDashboard({ freelancer, jobs, invoices, onWhatsappClick, onOpenPaymentGateway, onLogout, trialInfo, onTriggerInstall, linkedAccount, onSwitchAccount, notifications = [], onOpenNotifCenter, activeJobAlert, onDismissJobAlert, onShareJob }) {
       const [searchQuery, setSearchQuery] = useState('');
       const [selectedCategory, setSelectedCategory] = useState('Todos');
       const [paymentFilter, setPaymentFilter] = useState('todos');
@@ -6159,14 +6697,26 @@
                         </div>
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={() => onWhatsappClick(job)}
-                        className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl text-sm flex items-center justify-center gap-2 shadow-md transition transform active:scale-98"
-                      >
-                        <Icon name="whatsapp" className="w-5 h-5 text-white" />
-                        <span>Chamar no Whats</span>
-                      </button>
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => onWhatsappClick(job)}
+                          className="flex-1 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl text-sm flex items-center justify-center gap-2 shadow-md transition transform active:scale-98"
+                        >
+                          <Icon name="whatsapp" className="w-5 h-5 text-white" />
+                          <span>Chamar no Whats</span>
+                        </button>
+                        {onShareJob && (
+                          <button
+                            type="button"
+                            onClick={() => onShareJob(job)}
+                            className="p-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-indigo-600 rounded-2xl transition active:scale-95 shrink-0"
+                            title="Compartilhar vaga com amigos ou grupos"
+                          >
+                            <Icon name="share" className="w-5 h-5" />
+                          </button>
+                        )}
+                      </div>
                     </div>
                   );
                 })
