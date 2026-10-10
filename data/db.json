@@ -1744,6 +1744,26 @@
       "trialStartDate": "2026-10-10T19:29:28.465Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791662310416",
+      "name": "Larissa Dutra Barbosa",
+      "email": "larissadutra215@gmail.com",
+      "password": "Lari3006.",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "008.013.712-10",
+      "cnpj": null,
+      "phone": "92992686228",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 20,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T19:58:30.416Z",
+      "trialStartDate": "2026-10-10T19:58:30.416Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
