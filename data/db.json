@@ -1535,8 +1535,7 @@
       "createdAt": "2026-10-10T18:14:46.437Z",
       "trialStartDate": "2026-10-10T18:14:46.437Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true,
-      "experience": "Tenho experiência em vendas, caixa, já trabalhei como caixa de casa noturna e shows, experiências comprovadas. Sou ótima como recepcionista, sou comunicativa, falo bem, gosto de ajudar as pessoas."
+      "isSubscriptionActive": true
     },
     {
       "id": "u-1791656182207",
@@ -1555,6 +1554,26 @@
       "city": "Balneário Camboriú",
       "createdAt": "2026-10-10T18:16:22.207Z",
       "trialStartDate": "2026-10-10T18:16:22.207Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791656183933",
+      "name": "GABRIELA MARINHO COELHO",
+      "email": "gabrielamarinho496@gmail.com",
+      "password": "105081",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "085.528.969-40",
+      "cnpj": null,
+      "phone": "41920048556",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 21,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T18:16:23.933Z",
+      "trialStartDate": "2026-10-10T18:16:23.933Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
     }
