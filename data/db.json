@@ -1577,7 +1577,11 @@
       "trialStartDate": "2026-10-10T18:16:23.933Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
-      "experience": ""
+      "experience": "",
+      "alertCategories": [
+        "Recepção",
+        "Cozinha"
+      ]
     }
   ],
   "jobs": [
