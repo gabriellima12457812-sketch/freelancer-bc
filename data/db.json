@@ -1476,12 +1476,13 @@
       "businessType": null,
       "profession": "Garçom",
       "age": 20,
-      "experienceTime": "3 a 5 anos",
+      "experienceTime": "Menos de 1 ano (Iniciante)",
       "city": "Balneário Camboriú",
       "createdAt": "2026-10-10T18:09:44.958Z",
       "trialStartDate": "2026-10-10T18:09:44.958Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "experience": ""
     }
   ],
   "jobs": [
