@@ -1824,6 +1824,26 @@
       "trialStartDate": "2026-10-10T20:40:53.154Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791665506931",
+      "name": "Soledad vargas",
+      "email": "solevargas311@gmail.com",
+      "password": "Sole6686",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "718.699.961-19",
+      "cnpj": null,
+      "phone": "47999432027",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 28,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T20:51:46.931Z",
+      "trialStartDate": "2026-10-10T20:51:46.931Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
