@@ -1864,6 +1864,26 @@
       "trialStartDate": "2026-10-10T21:00:45.591Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791668968555",
+      "name": "Rebeca Priscila Dias Ferreira Paulino",
+      "email": "priscilarebeca34@gmail.com",
+      "password": "23102023",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "107.358.909-94",
+      "cnpj": null,
+      "phone": "47999006377",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 28,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T21:49:28.555Z",
+      "trialStartDate": "2026-10-10T21:49:28.555Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
