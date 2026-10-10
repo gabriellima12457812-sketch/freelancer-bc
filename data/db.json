@@ -1680,6 +1680,26 @@
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
       "experience": "Experiência + 1 ano na função. Disponibilidade de atuação e vontade de crescimento"
+    },
+    {
+      "id": "u-1791659626619",
+      "name": "Regilayne dos Santos Martins",
+      "email": "regilaynemartins13@gmail.com",
+      "password": "13071803",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "123.775.397-00",
+      "cnpj": null,
+      "phone": "47991128934",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 38,
+      "experienceTime": "1 a 2 anos",
+      "city": "Itapema/Balneário Camboriú",
+      "createdAt": "2026-10-10T19:13:46.619Z",
+      "trialStartDate": "2026-10-10T19:13:46.619Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
