@@ -1536,6 +1536,26 @@
       "trialStartDate": "2026-10-10T18:14:46.437Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791656182207",
+      "name": "Lucas da silva bandeira",
+      "email": "lucashenri0105@gmail.com",
+      "password": "Arena@22",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "039.571.250-57",
+      "cnpj": null,
+      "phone": "47997694962",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 28,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T18:16:22.207Z",
+      "trialStartDate": "2026-10-10T18:16:22.207Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
