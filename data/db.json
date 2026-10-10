@@ -1720,6 +1720,26 @@
       "trialStartDate": "2026-10-10T19:19:04.728Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791660568465",
+      "name": "Arianna A G Paez",
+      "email": "paezarianna2015@gmail.com",
+      "password": "foto26",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "801.269.779-33",
+      "cnpj": null,
+      "phone": "47996655788",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 24,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T19:29:28.465Z",
+      "trialStartDate": "2026-10-10T19:29:28.465Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
