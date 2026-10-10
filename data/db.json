@@ -1634,6 +1634,26 @@
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
       "experience": "Experiência em recepção em eventos, como promotora em diversas ações e Garçonete em baladas"
+    },
+    {
+      "id": "u-1791657090698",
+      "name": "Giovanna Fernandez Rubini",
+      "email": "rubini.giofer@hotmail.com",
+      "password": "Teamo123.",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "135.031.869-80",
+      "cnpj": null,
+      "phone": "47999697053",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 21,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T18:31:30.698Z",
+      "trialStartDate": "2026-10-10T18:31:30.698Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
