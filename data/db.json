@@ -1351,7 +1351,11 @@
       "createdAt": "2026-10-10T11:29:24.128Z",
       "trialStartDate": "2026-10-10T11:29:24.128Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "alertCategories": [
+        "Promoter de Vendas",
+        "Garçom"
+      ]
     }
   ],
   "jobs": [
