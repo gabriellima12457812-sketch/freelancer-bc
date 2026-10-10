@@ -1462,6 +1462,26 @@
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
       "experience": "Experiência em eventos de alto padrão"
+    },
+    {
+      "id": "u-1791655784958",
+      "name": "Maria Luisa aguilheira de Oliveira",
+      "email": "maria.aguilheira.oliveira@gmail.com",
+      "password": "malu-2006",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "089.755.731-09",
+      "cnpj": null,
+      "phone": "67993421346",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 20,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T18:09:44.958Z",
+      "trialStartDate": "2026-10-10T18:09:44.958Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
