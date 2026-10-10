@@ -117,7 +117,11 @@
       "age": 36,
       "experienceTime": "1 a 2 anos",
       "city": "Balneário Camboriú",
-      "experience": ""
+      "experience": "",
+      "alertCategories": [
+        "Recepção",
+        "Garçom"
+      ]
     },
     {
       "id": "u-1791491022581",
