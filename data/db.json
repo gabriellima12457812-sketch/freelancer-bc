@@ -1416,6 +1416,26 @@
       "alertCategories": [
         "Garçom"
       ]
+    },
+    {
+      "id": "u-1791647511940",
+      "name": "Silvana soares marques",
+      "email": "silvanasoaresmarques997314305@gmail.com",
+      "password": "198852Mh@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "098.668.799-50",
+      "cnpj": null,
+      "phone": "47997314305",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 33,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T15:51:51.940Z",
+      "trialStartDate": "2026-10-10T15:51:51.940Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
