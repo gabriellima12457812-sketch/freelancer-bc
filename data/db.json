@@ -1412,7 +1412,11 @@
       "trialStartDate": "2026-10-10T13:02:50.504Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
-      "experience": ""
+      "experience": "",
+      "alertCategories": [
+        "Garçom",
+        "Bartender"
+      ]
     }
   ],
   "jobs": [
