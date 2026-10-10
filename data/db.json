@@ -79,7 +79,11 @@
       "createdAt": "2026-10-08T20:20:37.151Z",
       "trialStartDate": "2026-10-08T20:20:37.151Z",
       "trialExpiryDate": "2026-11-07T20:42:14.584Z",
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "age": 23,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "experience": "Sou recepcionista em concessionária e atendente de camarote na Greenvalley há 3 anos, também tenho experiência como caixa e recepcionista em outras casas noturnas da região (Speedway, Griffin, Savana Garden, entre outras)"
     },
     {
       "id": "u-1791490859652",
