@@ -1659,6 +1659,26 @@
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
       "experience": "Tenho experiência como hostess e garçonete, com foco em oferecer um excelente atendimento ao cliente. Possuo habilidades em vendas, boa comunicação, facilidade para trabalhar em equipe e aprendo novas funções com rapidez."
+    },
+    {
+      "id": "u-1791658996533",
+      "name": "David borges",
+      "email": "david.icloud.borges@gmail.com",
+      "password": "@David1922",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "029.600.512-62",
+      "cnpj": null,
+      "phone": "92988045566",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 22,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-10T19:03:16.533Z",
+      "trialStartDate": "2026-10-10T19:03:16.533Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
