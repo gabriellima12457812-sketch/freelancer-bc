@@ -1948,6 +1948,26 @@
       "trialStartDate": "2026-10-11T00:55:30.619Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791688499581",
+      "name": "Cleonice abrao",
+      "email": "cleoabrao29193@gmail.com",
+      "password": "083020",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "774.708.009-30",
+      "cnpj": null,
+      "phone": "47999698611",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "age": 45,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "BALNEARIO CAMBORIU",
+      "createdAt": "2026-10-11T03:14:59.581Z",
+      "trialStartDate": "2026-10-11T03:14:59.581Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
