@@ -2088,6 +2088,26 @@
       "trialStartDate": "2026-10-11T20:35:03.742Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791757249091",
+      "name": "Maria Eduarda Schmidt Vassão",
+      "email": "dudaaschmidt78@gmail.com",
+      "password": "Mariae78@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "073.287.259-66",
+      "cnpj": null,
+      "phone": "42991172308",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 21,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-11T22:20:49.090Z",
+      "trialStartDate": "2026-10-11T22:20:49.090Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
