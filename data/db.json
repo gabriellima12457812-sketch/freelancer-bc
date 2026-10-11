@@ -1988,6 +1988,26 @@
       "trialStartDate": "2026-10-11T08:34:00.879Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791720970145",
+      "name": "Priscila Bandeira",
+      "email": "priscila_oliveira_2012@hotmail.com",
+      "password": "Gratidao14$",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "020.816.580-03",
+      "cnpj": null,
+      "phone": "47999637023",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 35,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-11T12:16:10.145Z",
+      "trialStartDate": "2026-10-11T12:16:10.145Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
