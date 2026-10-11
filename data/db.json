@@ -2008,6 +2008,26 @@
       "trialStartDate": "2026-10-11T12:16:10.145Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791729200612",
+      "name": "Michel  Rousselet",
+      "email": "profissionalrs77@gmail.com",
+      "password": "777$$$",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "537.604.250-20",
+      "cnpj": null,
+      "phone": "51997328477",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 36,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-11T14:33:20.612Z",
+      "trialStartDate": "2026-10-11T14:33:20.612Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
