@@ -1928,6 +1928,26 @@
       "trialStartDate": "2026-10-10T22:55:01.811Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791680130619",
+      "name": "Marcelly Beatriz Queiroz da Costa",
+      "email": "cellysilva021@gmail.com",
+      "password": "1204Ellie.",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "705.648.742-48",
+      "cnpj": null,
+      "phone": "47997489619",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 22,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-11T00:55:30.619Z",
+      "trialStartDate": "2026-10-11T00:55:30.619Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
