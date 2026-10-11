@@ -2028,6 +2028,26 @@
       "trialStartDate": "2026-10-11T14:33:20.612Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791738295294",
+      "name": "Larissa Dias Lopes",
+      "email": "larissalpss3005@gmail.com",
+      "password": "Zo16011962#",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "855.163.410-00",
+      "cnpj": null,
+      "phone": "47996006112",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 32,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-11T17:04:55.294Z",
+      "trialStartDate": "2026-10-11T17:04:55.294Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
