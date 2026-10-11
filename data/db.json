@@ -2068,6 +2068,26 @@
       "trialStartDate": "2026-10-11T20:05:00.976Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791750903742",
+      "name": "Layla sofhia borges",
+      "email": "layla.sofhia@ufms.br",
+      "password": "06092010",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "105.982.222-94",
+      "cnpj": null,
+      "phone": "91986148407",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 20,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-11T20:35:03.742Z",
+      "trialStartDate": "2026-10-11T20:35:03.742Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
