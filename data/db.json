@@ -1968,6 +1968,26 @@
       "trialStartDate": "2026-10-11T03:14:59.581Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791707640879",
+      "name": "Elisangela nogueira da dilva",
+      "email": "elisnogueira333@gmail.com",
+      "password": "Sarah1819@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "812.325.510-15",
+      "cnpj": null,
+      "phone": "51992503533",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": null,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-11T08:34:00.879Z",
+      "trialStartDate": "2026-10-11T08:34:00.879Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
