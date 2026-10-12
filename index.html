@@ -280,7 +280,9 @@
 
         download: <g><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></g>,
 
-        share: <g><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></g>
+        share: <g><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></g>,
+
+        trash: <path d="M3 6h18m-2 0v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
 
       };
 
@@ -3043,7 +3045,36 @@
               lastSyncTime={lastSyncTime}
 
               onLogout={handleLogout}
-
+              onTogglePauseJob={handleTogglePauseJob}
+              onDeleteJob={handleDeleteJob}
+              onAddJob={(newJob) => {
+                setJobs(prev => {
+                  const updated = [newJob, ...prev.filter(j => j.id !== newJob.id)];
+                  localStorage.setItem('fbc_jobs', JSON.stringify(updated));
+                  broadcastUpdate('JOBS_UPDATED', { jobs: updated });
+                  return updated;
+                });
+                fetch(SYNC_API_URL, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ action: 'save_job', job: newJob })
+                }).then(() => syncWithCloud()).catch(() => {});
+                showNotification('Nova vaga publicada com sucesso pelo Admin!');
+              }}
+              onUpdateJob={(updatedJob) => {
+                setJobs(prev => {
+                  const updated = prev.map(j => j.id === updatedJob.id ? updatedJob : j);
+                  localStorage.setItem('fbc_jobs', JSON.stringify(updated));
+                  broadcastUpdate('JOBS_UPDATED', { jobs: updated });
+                  return updated;
+                });
+                fetch(SYNC_API_URL, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ action: 'save_job', job: updatedJob })
+                }).then(() => syncWithCloud()).catch(() => {});
+                showNotification('Vaga atualizada com sucesso pelo Admin!');
+              }}
             />
 
           )}
@@ -6089,7 +6120,7 @@
 
     // ==========================================
 
-    function AdminDashboard({ admin, users, jobs, invoices, mpConfig, onUpdateMpConfig, onApprove, onReject, onToggleTrial, onAddTrialDays, onToggleStatus, onDeleteUser, onRefreshCloud, isSyncing, lastSyncTime, onLogout, onTogglePauseJob, onDeleteJob }) {
+    function AdminDashboard({ admin, users, jobs, invoices, mpConfig, onUpdateMpConfig, onApprove, onReject, onToggleTrial, onAddTrialDays, onToggleStatus, onDeleteUser, onRefreshCloud, isSyncing, lastSyncTime, onLogout, onTogglePauseJob, onDeleteJob, onAddJob, onUpdateJob }) {
 
       const [activeTab, setActiveTab] = useState('usuarios'); // 'usuarios' | 'pendentes' | 'vagas' | 'financeiro' | 'gateways'
 
@@ -6103,6 +6134,8 @@
 
       const [selectedUserForModal, setSelectedUserForModal] = useState(null);
       const [selectedJobForApplicants, setSelectedJobForApplicants] = useState(null);
+      const [isJobModalOpen, setIsJobModalOpen] = useState(false);
+      const [editingJob, setEditingJob] = useState(null);
       const [sharingJobAdmin, setSharingJobAdmin] = useState(null);
       const [adminJobSearch, setAdminJobSearch] = useState('');
       const [adminJobStatusFilter, setAdminJobStatusFilter] = useState('todos');
@@ -7451,14 +7484,24 @@
 
                 {/* Tabela Executiva de Vagas com Empresa Responsável e Ações */}
                 <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                  <div className="p-5 border-b border-slate-100 flex justify-between items-center">
+                  <div className="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <h3 className="font-bold text-slate-900">Vagas Publicadas na Plataforma</h3>
-                      <p className="text-xs text-slate-500">Acompanhamento completo de empresas contratantes e candidatos</p>
+                      <div className="flex items-center gap-2.5">
+                        <h3 className="font-bold text-slate-900 text-base">Vagas Publicadas na Plataforma</h3>
+                        <span className="text-xs font-bold text-indigo-600 bg-indigo-50 border border-indigo-200 px-3 py-1 rounded-full">
+                          {jobs.length} vagas totais
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-500 mt-0.5">Acompanhamento completo e publicação direta para contratantes externos sem cadastro</p>
                     </div>
-                    <span className="text-xs font-bold text-indigo-600 bg-indigo-50 border border-indigo-200 px-3 py-1 rounded-full">
-                      {jobs.length} vagas totais
-                    </span>
+                    <button
+                      type="button"
+                      onClick={() => { setEditingJob(null); setIsJobModalOpen(true); }}
+                      className="px-4 py-2.5 bg-gradient-to-r from-indigo-600 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500 text-white font-black rounded-xl text-xs sm:text-sm shadow-md shadow-indigo-500/20 flex items-center justify-center gap-2 transition active:scale-95 shrink-0"
+                    >
+                      <Icon name="plus" className="w-4 h-4" />
+                      <span>Publicar Vaga como Admin</span>
+                    </button>
                   </div>
 
                   {(() => {
@@ -7527,9 +7570,13 @@
                                       <span>🏢</span>
                                       <span>{job.companyName}</span>
                                     </div>
-                                    {companyUser && (
+                                    {companyUser ? (
                                       <div className="text-[11px] text-slate-500 mt-0.5">
                                         Doc: <span className="font-mono">{companyUser.cnpj || companyUser.cpf || 'Cadastrada'}</span>
+                                      </div>
+                                    ) : (
+                                      <div className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 bg-amber-50 text-amber-700 text-[10px] font-bold rounded-full border border-amber-200">
+                                        🛡️ Contratante Externo (Sem Cadastro)
                                       </div>
                                     )}
                                     {cleanPhone && (
@@ -7599,6 +7646,15 @@
 
                                   <td className="p-4 text-right">
                                     <div className="flex items-center justify-end gap-1.5">
+                                      <button
+                                        type="button"
+                                        onClick={() => { setEditingJob(job); setIsJobModalOpen(true); }}
+                                        className="px-2.5 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-xs font-bold transition flex items-center gap-1"
+                                        title="Editar vaga (contato, remuneração, horários)"
+                                      >
+                                        <Icon name="edit" className="w-3.5 h-3.5" />
+                                        <span>Editar</span>
+                                      </button>
                                       <button
                                         type="button"
                                         onClick={() => onTogglePauseJob && onTogglePauseJob(job.id)}
@@ -8863,6 +8919,25 @@
                 job={sharingJobAdmin}
                 users={users}
                 onClose={() => setSharingJobAdmin(null)}
+              />
+            )}
+
+            {/* Modal de Criação / Edição de Vaga pelo Admin (Para Contratantes Externos Sem Cadastro) */}
+            {isJobModalOpen && (
+              <ModalEditarVaga
+                company={{ id: 'admin', name: 'Administrador BC', role: 'admin' }}
+                initialJob={editingJob}
+                isAdminMode={true}
+                onClose={() => { setIsJobModalOpen(false); setEditingJob(null); }}
+                onSave={(jobData) => {
+                  if (editingJob && editingJob.id) {
+                    if (onUpdateJob) onUpdateJob(jobData);
+                  } else {
+                    if (onAddJob) onAddJob(jobData);
+                  }
+                  setIsJobModalOpen(false);
+                  setEditingJob(null);
+                }}
               />
             )}
           </main>
@@ -11497,13 +11572,14 @@
 
     // ==========================================
 
-    function ModalEditarVaga({ company, initialJob, onClose, onSave }) {
+    function ModalEditarVaga({ company, initialJob, onClose, onSave, isAdminMode = false }) {
 
+      const isAdmin = Boolean(isAdminMode || company?.role === 'admin' || company?.id === 'admin');
       const isEditing = Boolean(initialJob);
 
       const [title, setTitle] = useState(initialJob ? initialJob.title : '');
 
-      const [companyName, setCompanyName] = useState(initialJob?.companyName || company.name || '');
+      const [companyName, setCompanyName] = useState(initialJob?.companyName || (isAdmin ? '' : (company?.name || '')));
 
       const [category, setCategory] = useState(initialJob ? initialJob.category : 'Garçom');
 
@@ -11537,7 +11613,7 @@
 
       const [attire, setAttire] = useState(initialJob ? initialJob.attire : 'All Black');
 
-      const [whatsapp, setWhatsapp] = useState(initialJob ? initialJob.whatsapp : (company.phone || ''));
+      const [whatsapp, setWhatsapp] = useState(initialJob?.whatsapp || (isAdmin ? '' : (company?.phone || '')));
 
 
 
@@ -11579,9 +11655,9 @@
 
           id: initialJob ? initialJob.id : `job-${Date.now()}`,
 
-          companyId: company.id,
+          companyId: initialJob?.companyId || (isAdmin ? `ext-${Date.now()}` : company.id),
 
-          companyName: companyName.trim() || company.name,
+          companyName: companyName.trim() || (isAdmin ? 'Contratante Externo' : (company.name || 'Empresa')),
 
           title: title.trim(),
 
@@ -11645,16 +11721,19 @@
 
               <div>
 
-                <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-tight">
-
-                  {isEditing ? 'Editar Vaga' : 'Publicar Nova Vaga'}
-
-                </h3>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-tight">
+                    {isEditing ? (isAdmin ? 'Editar Vaga (Admin)' : 'Editar Vaga') : (isAdmin ? 'Publicar Vaga para Contratante Externo' : 'Publicar Nova Vaga')}
+                  </h3>
+                  {isAdmin && (
+                    <span className="px-2 py-0.5 bg-indigo-100 text-indigo-800 text-[10px] font-black rounded-full uppercase tracking-wider">
+                      Admin
+                    </span>
+                  )}
+                </div>
 
                 <p className="text-xs text-slate-500 mt-0.5">
-
-                  Preencha os dados da vaga e o valor para os freelancers
-
+                  {isAdmin ? 'Cadastre a vaga com o WhatsApp do contratante. Não é necessário ele ter cadastro.' : 'Preencha os dados da vaga e o valor para os freelancers'}
                 </p>
 
               </div>
@@ -11719,7 +11798,7 @@
 
                   <label className="font-bold text-slate-800 block mb-1 text-xs">
 
-                    Nome do Estabelecimento / Empresa / Evento <span className="text-rose-500">*</span>
+                    {isAdmin ? 'Nome do Estabelecimento / Contratante (Sem necessidade de cadastro)' : 'Nome do Estabelecimento / Empresa / Evento'} <span className="text-rose-500">*</span>
 
                   </label>
 
@@ -11727,7 +11806,7 @@
 
                     required
 
-                    placeholder="Ex: Habbitat, Green Valley, Taj Bar, Buffet Elegance..."
+                    placeholder={isAdmin ? "Ex: Restaurante Porto Belo, Taj Bar, Buffet Elegance, Evento VIP..." : "Ex: Habbitat, Green Valley, Taj Bar, Buffet Elegance..."}
 
                     value={companyName}
 
@@ -12309,9 +12388,28 @@
 
               <div>
 
-                <label className="font-bold text-slate-700 block mb-1">WhatsApp de Contato</label>
+                <label className="font-bold text-slate-800 block mb-1 text-xs">
+                  {isAdmin ? 'WhatsApp do Contratante com DDD (Onde os freelancers vão chamar)' : 'WhatsApp de Contato (com DDD)'} <span className="text-rose-500">*</span>
+                </label>
 
-                <input required value={formatPhone(whatsapp)} onChange={e => setWhatsapp(e.target.value)} className="w-full p-2.5 bg-slate-50 border rounded-xl font-mono" />
+                <div className="relative">
+                  <input
+                    required
+                    placeholder="(47) 99999-9999"
+                    value={formatPhone(whatsapp)}
+                    onChange={e => setWhatsapp(e.target.value)}
+                    className="w-full pl-10 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl font-mono text-sm focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+                  />
+                  <div className="absolute left-3 top-2.5 text-emerald-600">
+                    <Icon name="whatsapp" className="w-4 h-4" />
+                  </div>
+                </div>
+
+                {isAdmin && (
+                  <p className="text-[11px] text-slate-500 mt-1">
+                    📲 Quando os candidatos clicarem em "Quero me Candidatar", a conversa do WhatsApp abrirá diretamente com este número com a ficha do candidato.
+                  </p>
+                )}
 
               </div>
 
