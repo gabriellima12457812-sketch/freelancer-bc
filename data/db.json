@@ -2108,6 +2108,26 @@
       "trialStartDate": "2026-10-11T22:20:49.090Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791765852282",
+      "name": "Lucas kalenuk",
+      "email": "lucasalejandrokalenuk@gmail.com",
+      "password": "LuKale44012787",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "718.984.081-81",
+      "cnpj": null,
+      "phone": "47988002513",
+      "businessType": null,
+      "profession": "Cozinheiro",
+      "age": 24,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-12T00:44:12.282Z",
+      "trialStartDate": "2026-10-12T00:44:12.282Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
