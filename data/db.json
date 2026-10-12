@@ -2136,6 +2136,26 @@
         "Recepção",
         "Garçom"
       ]
+    },
+    {
+      "id": "u-1791769622383",
+      "name": "Odair Antunes Vargas",
+      "email": "odairantunes0412@gmail.com",
+      "password": "Od@101840",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "066.356.989-30",
+      "cnpj": null,
+      "phone": "48988257387",
+      "businessType": null,
+      "profession": "Bartender & Mixologista",
+      "age": 38,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-12T01:47:02.383Z",
+      "trialStartDate": "2026-10-12T01:47:02.383Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
