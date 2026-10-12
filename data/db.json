@@ -2185,6 +2185,26 @@
       "trialStartDate": "2026-10-12T21:45:22.990Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791843376781",
+      "name": "ELIO PEREIRA JUNIOR",
+      "email": "perfect.home.epj@gmail.com",
+      "password": "Garage28",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "497.400.751-34",
+      "cnpj": null,
+      "phone": "47999205151",
+      "businessType": null,
+      "profession": "Segurança",
+      "age": 48,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-12T22:16:16.781Z",
+      "trialStartDate": "2026-10-12T22:16:16.781Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
