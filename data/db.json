@@ -1358,7 +1358,8 @@
       "isSubscriptionActive": true,
       "alertCategories": [
         "Garçom",
-        "Cozinha"
+        "Cozinha",
+        "Recepção"
       ]
     },
     {
