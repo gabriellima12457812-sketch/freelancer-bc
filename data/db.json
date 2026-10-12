@@ -2165,6 +2165,26 @@
         "Bartender & Mixologista",
         "Garçom"
       ]
+    },
+    {
+      "id": "u-1791841522990",
+      "name": "Viviane Ramos",
+      "email": "viviaanderlaine33@gmail.com",
+      "password": "240911",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "034.035.245-07",
+      "cnpj": null,
+      "phone": "75981795483",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 38,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-12T21:45:22.990Z",
+      "trialStartDate": "2026-10-12T21:45:22.990Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
