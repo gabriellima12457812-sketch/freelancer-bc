@@ -6103,6 +6103,7 @@
 
       const [selectedUserForModal, setSelectedUserForModal] = useState(null);
       const [selectedJobForApplicants, setSelectedJobForApplicants] = useState(null);
+      const [sharingJobAdmin, setSharingJobAdmin] = useState(null);
       const [adminJobSearch, setAdminJobSearch] = useState('');
       const [adminJobStatusFilter, setAdminJobStatusFilter] = useState('todos');
 
@@ -7491,6 +7492,7 @@
                               <th className="p-4 font-bold">Remuneração</th>
                               <th className="p-4 font-bold">Status</th>
                               <th className="p-4 font-bold text-center">Candidatos no Whats</th>
+                              <th className="p-4 font-bold text-center">Divulgação / Prova Social</th>
                               <th className="p-4 font-bold text-right">Ações Admin</th>
                             </tr>
                           </thead>
@@ -7580,6 +7582,18 @@
                                     >
                                       <Icon name="whatsapp" className="w-3.5 h-3.5" />
                                       <span>Quem Chamou ({applicantsList.length})</span>
+                                    </button>
+                                  </td>
+
+                                  <td className="p-4 text-center">
+                                    <button
+                                      type="button"
+                                      onClick={() => setSharingJobAdmin(job)}
+                                      className="px-3 py-1.5 bg-gradient-to-r from-indigo-600 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500 text-white rounded-xl text-xs font-black inline-flex items-center gap-1.5 shadow-xs transition active:scale-95"
+                                      title="Compartilhar vaga com número do contratante (Prova Social para Empresas)"
+                                    >
+                                      <Icon name="share" className="w-3.5 h-3.5" />
+                                      <span>Divulgar com Contato</span>
                                     </button>
                                   </td>
 
@@ -8833,6 +8847,24 @@
 
             )}
 
+                      {/* Modal de Candidatos WhatsApp no Admin */}
+            {selectedJobForApplicants && (
+              <ModalCandidatosWhats
+                job={selectedJobForApplicants}
+                onClose={() => setSelectedJobForApplicants(null)}
+                onHire={() => {}}
+                onOpenProfile={() => {}}
+              />
+            )}
+
+            {/* Modal de Compartilhamento Prova Social para o Admin */}
+            {sharingJobAdmin && (
+              <ModalCompartilharVagaAdmin
+                job={sharingJobAdmin}
+                users={users}
+                onClose={() => setSharingJobAdmin(null)}
+              />
+            )}
           </main>
 
         </div>
@@ -9731,6 +9763,300 @@
     // VISUALIZAÇÃO PÚBLICA DE VAGA COMPARTILHADA (Landing Page para Redes)
 
     // ==========================================
+
+    // ==========================================
+    // MODAL COMPARTILHAR VAGA ADMIN (PROVA SOCIAL COM CONTATO DO CONTRATANTE)
+    // ==========================================
+    function ModalCompartilharVagaAdmin({ job, users, onClose }) {
+      const [shareMode, setShareMode] = useState('social_proof'); // 'social_proof' | 'vaga_direta'
+      const [copiedText, setCopiedText] = useState(false);
+      const [copiedLink, setCopiedLink] = useState(false);
+
+      if (!job) return null;
+
+      // Localizar empresa no sistema
+      const companyUser = (users || []).find(u => 
+        u.role === 'empresa' && (
+          (job.companyId && u.id === job.companyId) ||
+          (job.companyName && u.name && u.name.toLowerCase() === job.companyName.toLowerCase()) ||
+          (job.whatsapp && u.phone && u.phone.replace(/\D/g, '') === job.whatsapp.replace(/\D/g, ''))
+        )
+      );
+
+      const compPhone = job.whatsapp || companyUser?.phone || '';
+      const cleanPhone = compPhone.replace(/\D/g, '');
+      const compName = job.companyName || companyUser?.name || 'Estabelecimento Contratante';
+      const compResponsible = companyUser?.responsibleName || companyUser?.name || 'Responsável pelo Estabelecimento';
+      const applicantsCount = (job.applicants || []).length;
+      const remun = formatRemuneration(job);
+      const shiftHours = calculateShiftHours(job.startTime, job.endTime);
+
+      const baseUrl = (typeof window !== 'undefined' && window.location.origin && window.location.origin.includes('crm-piff-paff'))
+        ? `${window.location.origin}/freelancer`
+        : 'https://crm-piff-paff-v2.vercel.app/freelancer';
+      const jobUrl = `${baseUrl}?vaga=${job.id}`;
+
+      // Texto 1: Prova Social para Empresas (B2B)
+      const socialProofText = [
+        `🚀 *PROVA SOCIAL - FREELANCER BC FUNCIONA DE VERDADE!*`,
+        ``,
+        `Veja este exemplo real de contratante ativo em Balneário Camboriú utilizando nosso app agora:`,
+        ``,
+        `🏢 *Estabelecimento Contratante:* ${compName}`,
+        `👤 *Responsável:* ${compResponsible}`,
+        cleanPhone ? `📱 *WhatsApp do Contratante:* ${formatPhone(compPhone)}` : null,
+        `📌 *Vaga Anunciada:* ${job.title} (${job.category})`,
+        `💰 *Valor da Diária / Cachê:* ${remun.display} (${remun.label})`,
+        `📅 *Data do Turno:* ${formatJobDate(job.date)} • ${job.startTime} às ${job.endTime} (${shiftHours}h)`,
+        `📍 *Local:* ${job.address}`,
+        `👥 *Resultado Real:* ${applicantsCount} freelancer(s) já chamaram este contratante no WhatsApp!`,
+        ``,
+        `🔗 *Veja a vaga ao vivo no aplicativo:*`,
+        `${jobUrl}`,
+        ``,
+        `🎯 *Tem bar, restaurante, casa noturna ou evento em BC?*`,
+        `Precisa de garçons, bartenders, seguranças ou apoios de confiança?`,
+        `👉 Publique grátis no Freelancer BC e receba candidatos no WhatsApp em minutos!`
+      ].filter(Boolean).join('\n');
+
+      // Texto 2: Divulgação Direta da Vaga (Com contato do contratante)
+      const directJobText = [
+        `🚨 *VAGA REAL ABERTA NO FREELANCER BC!*`,
+        ``,
+        `🏢 *Empresa Contratante:* ${compName}`,
+        cleanPhone ? `📱 *WhatsApp do Contratante:* ${formatPhone(compPhone)}` : null,
+        `💼 *Vaga:* ${job.title} (${job.category})`,
+        `💵 *Pagamento:* ${remun.display} (${remun.label})`,
+        `📅 *Data:* ${formatJobDate(job.date)} • ${job.startTime} às ${job.endTime}`,
+        `📍 *Endereço:* ${job.address}`,
+        job.attire ? `👔 *Traje:* ${job.attire}` : null,
+        ``,
+        `👉 *Acesse o link oficial para ver os detalhes completos ou se candidatar:*`,
+        `${jobUrl}`
+      ].filter(Boolean).join('\n');
+
+      const currentText = shareMode === 'social_proof' ? socialProofText : directJobText;
+
+      const handleCopyText = () => {
+        if (typeof navigator !== 'undefined' && navigator.clipboard) {
+          navigator.clipboard.writeText(currentText).then(() => {
+            setCopiedText(true);
+            setTimeout(() => setCopiedText(false), 3000);
+          });
+        }
+      };
+
+      const handleCopyLink = () => {
+        if (typeof navigator !== 'undefined' && navigator.clipboard) {
+          navigator.clipboard.writeText(jobUrl).then(() => {
+            setCopiedLink(true);
+            setTimeout(() => setCopiedLink(false), 3000);
+          });
+        }
+      };
+
+      const handleShareWhatsApp = () => {
+        const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(currentText)}`;
+        window.open(url, '_blank');
+      };
+
+      const handleNativeShare = async () => {
+        if (typeof navigator !== 'undefined' && navigator.share) {
+          try {
+            await navigator.share({
+              title: `Vaga ${job.title} - ${compName}`,
+              text: currentText,
+              url: jobUrl
+            });
+          } catch (e) {}
+        }
+      };
+
+      return (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden animate-in fade-in">
+          <div className="bg-white w-full sm:max-w-xl max-h-[92vh] max-h-[92dvh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+            {/* Header */}
+            <div className="shrink-0 px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-white z-10">
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 to-emerald-500 text-white flex items-center justify-center shadow-sm">
+                  <Icon name="share" className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-black text-slate-900 leading-tight">Compartilhar Vaga (Prova Social)</h3>
+                  <p className="text-xs text-slate-500">Mostre para outras empresas que o app funciona de verdade</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition"
+              >
+                <Icon name="x" className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Scrollable Content */}
+            <div className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-6 space-y-4 text-xs">
+              {/* Banner Prova Social do Contratante */}
+              <div className="p-4 bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-900 text-white rounded-2xl border border-indigo-500/30 shadow-sm space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="px-2.5 py-0.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full text-[10px] font-extrabold uppercase tracking-wider">
+                    Contratante Verificado BC
+                  </span>
+                  <span className="text-[11px] font-bold text-slate-400">
+                    ID: {job.id}
+                  </span>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-black text-white flex items-center gap-2">
+                    <span>🏢</span>
+                    <span>{compName}</span>
+                  </h4>
+                  <div className="text-xs text-slate-300 mt-0.5 space-y-0.5">
+                    {companyUser && <div>👤 Responsável: <strong className="text-white">{compResponsible}</strong></div>}
+                    <div>📌 Vaga: <strong className="text-emerald-400">{job.title}</strong> ({remun.display})</div>
+                  </div>
+                </div>
+
+                {/* Bloco de Contato do Contratante em Destaque */}
+                <div className="p-3 bg-white/10 rounded-xl backdrop-blur-sm border border-white/10 flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-slate-300 block">Número do Contratante</span>
+                    <span className="text-sm font-black text-white font-mono">
+                      {compPhone ? formatPhone(compPhone) : 'Telefone não informado'}
+                    </span>
+                  </div>
+                  {cleanPhone && (
+                    <a
+                      href={`https://wa.me/55${cleanPhone}?text=${encodeURIComponent(`Olá ${compResponsible}! Sou do suporte administrativo do Freelancer BC.`)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-lg font-extrabold text-xs flex items-center gap-1 transition"
+                    >
+                      <Icon name="whatsapp" className="w-3.5 h-3.5 text-slate-950" />
+                      <span>Falar no Whats</span>
+                    </a>
+                  )}
+                </div>
+
+                {/* Métrica de Sucesso / Candidatos */}
+                <div className="flex items-center justify-between text-xs pt-1 border-t border-slate-800">
+                  <span className="text-slate-400">Freelancers que já chamaram no Whats:</span>
+                  <span className="font-extrabold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-lg border border-emerald-500/20">
+                    👥 {applicantsCount} candidatos interessados
+                  </span>
+                </div>
+              </div>
+
+              {/* Seletor de Modelo de Mensagem */}
+              <div>
+                <label className="font-bold text-slate-700 block text-xs mb-1.5">Escolha o Modelo de Mensagem:</label>
+                <div className="grid grid-cols-2 p-1 bg-slate-100 rounded-xl gap-1">
+                  <button
+                    type="button"
+                    onClick={() => setShareMode('social_proof')}
+                    className={`py-2 px-3 rounded-lg font-bold text-xs transition flex items-center justify-center gap-1.5 ${
+                      shareMode === 'social_proof'
+                        ? 'bg-white text-indigo-700 shadow-xs'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    <span>🚀 Prova Social (Empresas)</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShareMode('vaga_direta')}
+                    className={`py-2 px-3 rounded-lg font-bold text-xs transition flex items-center justify-center gap-1.5 ${
+                      shareMode === 'vaga_direta'
+                        ? 'bg-white text-indigo-700 shadow-xs'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    <span>📢 Vaga com Contato</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Preview da Mensagem */}
+              <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="font-bold text-slate-700 block text-xs">Mensagem Formatada Pronta para Envio:</label>
+                  <span className="text-[11px] text-slate-400 font-medium">Contém contato do contratante e link</span>
+                </div>
+                <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-[11px] text-slate-800 font-mono whitespace-pre-wrap max-h-48 overflow-y-auto leading-relaxed select-all">
+                  {currentText}
+                </div>
+              </div>
+
+              {/* Link Direto */}
+              <div>
+                <label className="font-bold text-slate-700 block text-xs mb-1">Link Direto da Vaga:</label>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    readOnly
+                    value={jobUrl}
+                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono text-slate-700 select-all"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleCopyLink}
+                    className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs shrink-0 transition"
+                  >
+                    {copiedLink ? 'Copiado!' : 'Copiar Link'}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer com Botões de Envio */}
+            <div className="shrink-0 p-4 border-t border-slate-100 bg-slate-50 space-y-2">
+              <button
+                type="button"
+                onClick={handleShareWhatsApp}
+                className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-2xl text-xs flex items-center justify-center gap-2 shadow-md transition transform active:scale-95 cursor-pointer text-center"
+              >
+                <Icon name="whatsapp" className="w-4 h-4 text-white" />
+                <span>Enviar no WhatsApp com Número do Contratante</span>
+              </button>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleCopyText}
+                  className="flex-1 py-2.5 bg-white border border-slate-200 hover:bg-slate-100 text-slate-800 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition"
+                >
+                  <Icon name="copy" className="w-3.5 h-3.5" />
+                  <span>{copiedText ? 'Texto Copiado!' : 'Copiar Texto Completo'}</span>
+                </button>
+
+                {typeof navigator !== 'undefined' && navigator.share && (
+                  <button
+                    type="button"
+                    onClick={handleNativeShare}
+                    className="py-2.5 px-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 transition shrink-0"
+                    title="Compartilhar pelo menu do celular"
+                  >
+                    <Icon name="share" className="w-3.5 h-3.5" />
+                    <span>Compartilhar</span>
+                  </button>
+                )}
+
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="py-2.5 px-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl text-xs transition shrink-0"
+                >
+                  Fechar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
 
     function PublicSharedJobView({ job, isLoading, currentUser, onApplyClick, onQuickApply, onRegisterClick, onShare, onClose }) {
       const [showQuickModal, setShowQuickModal] = useState(false);
