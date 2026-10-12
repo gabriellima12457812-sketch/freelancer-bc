@@ -1355,7 +1355,11 @@
       "createdAt": "2026-10-09T21:50:49.696Z",
       "trialStartDate": "2026-10-09T21:50:49.696Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "alertCategories": [
+        "Garçom",
+        "Cozinha"
+      ]
     },
     {
       "id": "u-1791632199184",
