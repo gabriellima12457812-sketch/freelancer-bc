@@ -2245,6 +2245,26 @@
       "trialStartDate": "2026-10-13T14:07:35.606Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791920887203",
+      "name": "Gabriel Alfredo",
+      "email": "gabrielalfredo4002@gmail.com",
+      "password": "Coxinha123@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "102.383.039-69",
+      "cnpj": null,
+      "phone": "31983298279",
+      "businessType": null,
+      "profession": "Bartender & Mixologista",
+      "age": 29,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-13T19:48:07.203Z",
+      "trialStartDate": "2026-10-13T19:48:07.203Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
