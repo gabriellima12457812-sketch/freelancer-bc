@@ -2225,6 +2225,26 @@
       "trialStartDate": "2026-10-13T02:19:16.390Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791900455606",
+      "name": "LAIRA MACHADO",
+      "email": "lairapiresmachado3@gmail.com",
+      "password": "lala20",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "139.227.419-24",
+      "cnpj": null,
+      "phone": "47984204396",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 19,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-13T14:07:35.606Z",
+      "trialStartDate": "2026-10-13T14:07:35.606Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
