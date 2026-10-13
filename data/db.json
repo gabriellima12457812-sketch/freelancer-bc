@@ -2205,6 +2205,26 @@
       "trialStartDate": "2026-10-12T22:16:16.781Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1791857956390",
+      "name": "Elidiane Alves Ribeiro",
+      "email": "lidya.alves2324@gmail.com",
+      "password": "Lidyane21#",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "066.399.003-35",
+      "cnpj": null,
+      "phone": "47999226743",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 32,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-13T02:19:16.390Z",
+      "trialStartDate": "2026-10-13T02:19:16.390Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
