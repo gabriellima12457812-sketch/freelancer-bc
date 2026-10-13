@@ -2266,6 +2266,26 @@
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
       "experience": ""
+    },
+    {
+      "id": "u-1791922013799",
+      "name": "Hainan Sousa Ferreira",
+      "email": "hainan.souza@gmail.com",
+      "password": "242815",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "033.933.260-31",
+      "cnpj": null,
+      "phone": "47996794182",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 29,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-13T20:06:53.799Z",
+      "trialStartDate": "2026-10-13T20:06:53.799Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
