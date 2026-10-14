@@ -2302,7 +2302,7 @@
       "commissionDetail": null,
       "totalSpots": 2,
       "filledSpots": 0,
-      "status": "pausada",
+      "status": "ativa",
       "date": "2026-10-10",
       "startTime": "16:00",
       "endTime": "11:00",
@@ -2311,8 +2311,7 @@
       "whatsapp": "51980330619",
       "clicks": 0,
       "applicants": [],
-      "createdAt": "2026-10-10T11:45:09.917Z",
-      "autoPaused": true
+      "createdAt": "2026-10-10T11:45:09.917Z"
     },
     {
       "id": "job-1791573310536",
@@ -2327,7 +2326,7 @@
       "commissionDetail": "Global",
       "totalSpots": 1,
       "filledSpots": 0,
-      "status": "ativa",
+      "status": "pausada",
       "date": "2026-10-09",
       "startTime": "18:00",
       "endTime": "02:00",
@@ -2336,7 +2335,8 @@
       "whatsapp": "47999072101",
       "clicks": 0,
       "applicants": [],
-      "createdAt": "2026-10-09T19:15:10.536Z"
+      "createdAt": "2026-10-09T19:15:10.536Z",
+      "autoPaused": true
     }
   ],
   "invoices": []
