@@ -2344,8 +2344,21 @@
       "address": "Marejada Itajaí",
       "attire": "All Black",
       "whatsapp": "48991867605",
-      "clicks": 0,
-      "applicants": [],
+      "clicks": 1,
+      "applicants": [
+        {
+          "freelancerId": "u-1791506696802",
+          "name": "Lucas Souza Magalhaes",
+          "phone": "92994293313",
+          "email": "souzamagalhaes8@gmail.com",
+          "profession": "Recepção",
+          "age": 32,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T00:54:27.884Z",
+          "hiredStatus": "pendente"
+        }
+      ],
       "createdAt": "2026-10-15T00:46:51.205Z"
     },
     {
