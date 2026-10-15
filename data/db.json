@@ -3115,6 +3115,26 @@
       "trialStartDate": "2026-10-15T14:06:15.926Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792075566380",
+      "name": "Frankiele Xavier de Araujo",
+      "email": "frankielexavierdearaujo@gmail.com",
+      "password": "23250410",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "065.255.219-63",
+      "cnpj": null,
+      "phone": "47997325112",
+      "businessType": null,
+      "profession": "Cozinheiro",
+      "age": 39,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T14:46:06.380Z",
+      "trialStartDate": "2026-10-15T14:46:06.380Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
