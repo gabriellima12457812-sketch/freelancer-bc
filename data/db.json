@@ -3368,7 +3368,11 @@
       "createdAt": "2026-10-15T19:54:37.867Z",
       "trialStartDate": "2026-10-15T19:54:37.867Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "alertCategories": [
+        "Recepção",
+        "Garçom"
+      ]
     }
   ],
   "jobs": [
