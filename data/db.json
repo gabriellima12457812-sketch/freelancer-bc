@@ -3351,8 +3351,20 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "47992728741",
-      "clicks": 1,
+      "clicks": 2,
       "applicants": [
+        {
+          "freelancerId": "u-1792030707842",
+          "name": "Eduarda Castro",
+          "phone": "47988275338",
+          "email": "dudacastrossis@gmail.com",
+          "profession": "Garçom",
+          "age": 18,
+          "experienceTime": "Menos de 1 ano",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T19:13:28.302Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1792091578177",
           "name": "ANDERSON COSTA DE ANDRADE",
