@@ -3333,8 +3333,21 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "47992728741",
-      "clicks": 0,
-      "applicants": [],
+      "clicks": 1,
+      "applicants": [
+        {
+          "freelancerId": "u-1792091457911",
+          "name": "Eledriano Marcos de Sousa  ( garçom )",
+          "phone": "86999021104",
+          "email": "00020522100@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 46,
+          "experienceTime": "Mais de 5 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T19:10:59.272Z",
+          "hiredStatus": "pendente"
+        }
+      ],
       "createdAt": "2026-10-15T19:05:48.578Z"
     },
     {
