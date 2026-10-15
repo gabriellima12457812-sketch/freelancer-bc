@@ -3580,8 +3580,20 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "47992728741",
-      "clicks": 8,
+      "clicks": 9,
       "applicants": [
+        {
+          "freelancerId": "u-1792100394293",
+          "name": "Enzo Rafael Bandeira Matos",
+          "phone": "47999106554",
+          "email": "06037317917@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 31,
+          "experienceTime": "Mais de 5 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T21:39:53.889Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1792100072606",
           "name": "Renata Rejane dos santos da silva",
