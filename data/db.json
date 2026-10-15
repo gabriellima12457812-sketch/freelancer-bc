@@ -3348,6 +3348,23 @@
         "Caixa",
         "Limpeza"
       ]
+    },
+    {
+      "id": "u-1792093440269",
+      "name": "Evania Bach",
+      "role": "freelancer",
+      "cpf": "020.416.589-08",
+      "phone": "55991639463",
+      "email": "02041658908@freelancerbc.local",
+      "password": "vana2204*",
+      "age": 50,
+      "experienceTime": "1 a 2 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T19:44:00.270Z"
     }
   ],
   "jobs": [
