@@ -3244,6 +3244,26 @@
         "Limpeza",
         "Caixa"
       ]
+    },
+    {
+      "id": "u-1792088891833",
+      "name": "Raysla taiane de jesus oliveira",
+      "email": "rayslat79@icloud.com",
+      "password": "212508",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "123.771.359-51",
+      "cnpj": null,
+      "phone": "49991482676",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 25,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T18:28:11.833Z",
+      "trialStartDate": "2026-10-15T18:28:11.833Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
