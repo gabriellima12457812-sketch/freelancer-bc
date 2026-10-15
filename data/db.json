@@ -3297,6 +3297,26 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-15T19:10:57.912Z"
+    },
+    {
+      "id": "u-1792092072871",
+      "name": "Daniele Forlim",
+      "email": "daniforlim@gmail.com",
+      "password": "dani123",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "131.038.319-78",
+      "cnpj": null,
+      "phone": "47997208891",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 25,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T19:21:12.871Z",
+      "trialStartDate": "2026-10-15T19:21:12.871Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
