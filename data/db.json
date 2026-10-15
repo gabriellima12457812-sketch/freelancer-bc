@@ -3421,23 +3421,6 @@
         "Caixa",
         "Limpeza"
       ]
-    },
-    {
-      "id": "u-1792097211294",
-      "name": "Freelancer",
-      "role": "freelancer",
-      "cpf": "057.599.682-03",
-      "phone": "",
-      "email": "05759968203@freelancerbc.local",
-      "password": "Jujuba.123",
-      "age": null,
-      "experienceTime": "1 a 2 anos",
-      "profession": "Garçom",
-      "city": "Balneário Camboriú",
-      "isSubscriptionActive": true,
-      "subscriptionTier": "free",
-      "status": "aprovado",
-      "createdAt": "2026-10-15T20:46:51.294Z"
     }
   ],
   "jobs": [
@@ -3465,8 +3448,21 @@
       "address": "Praia brava",
       "attire": "All Black",
       "whatsapp": "47992560978",
-      "clicks": 0,
-      "applicants": [],
+      "clicks": 1,
+      "applicants": [
+        {
+          "freelancerId": "u-1792097211294",
+          "name": "Freelancer",
+          "phone": "",
+          "email": "05759968203@freelancerbc.local",
+          "profession": "Garçom",
+          "age": null,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T20:46:51.748Z",
+          "hiredStatus": "pendente"
+        }
+      ],
       "createdAt": "2026-10-15T20:24:13.328Z",
       "monthlyRate": 2400
     },
