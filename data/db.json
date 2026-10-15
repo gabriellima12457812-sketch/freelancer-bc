@@ -1729,7 +1729,8 @@
       "createdAt": "2026-10-10T19:13:46.619Z",
       "trialStartDate": "2026-10-10T19:13:46.619Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "experience": ""
     },
     {
       "id": "u-1791659944728",
