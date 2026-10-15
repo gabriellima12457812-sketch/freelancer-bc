@@ -3197,12 +3197,13 @@
       "businessType": null,
       "profession": "Garçom",
       "age": 21,
-      "experienceTime": "1 a 2 anos",
+      "experienceTime": "Menos de 1 ano (Iniciante)",
       "city": "Balneário Camboriú",
       "createdAt": "2026-10-15T16:39:47.224Z",
       "trialStartDate": "2026-10-15T16:39:47.224Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "experience": ""
     },
     {
       "id": "u-1792084385543",
