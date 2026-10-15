@@ -1981,7 +1981,8 @@
       "createdAt": "2026-10-11T03:14:59.581Z",
       "trialStartDate": "2026-10-11T03:14:59.581Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "experience": ""
     },
     {
       "id": "u-1791707640879",
