@@ -751,6 +751,57 @@
 
 
 
+    // Formatador ultra-clean de compartilhamento/indicação para WhatsApp e Redes Sociais
+    // Focado em alta legibilidade, informações importantes, sem poluição visual ou excesso de emojis
+    const formatCleanShareJobText = (job, shareRole = 'geral', jobUrl = '') => {
+      if (!job) return '';
+      const remun = formatRemuneration(job);
+
+      // Cachê direto sem redundâncias de parênteses ou emojis extras
+      let cacheDisplay = remun.display;
+      if (remun.type === 'a_combinar') {
+        cacheDisplay = 'A combinar';
+      }
+
+      // Data e Horário em linha única e direta
+      const dateStr = formatJobDate(job.date);
+      const timeStr = (job.startTime && job.endTime) ? `${job.startTime} às ${job.endTime}` : '';
+      const dateTimeStr = timeStr ? `${dateStr} • ${timeStr}` : dateStr;
+
+      // Cabeçalho e Chamada de Ação (CTA) limpos de acordo com o papel
+      let header = '*VAGA DE FREELANCER* 🎯';
+      let intro = null;
+      let cta = `👉 *Acesse o link para ver a vaga e chamar no WhatsApp:*\n${jobUrl}`;
+
+      if (shareRole === 'indicacao_freelancer') {
+        header = '*INDICAÇÃO DE VAGA* 🤝';
+        intro = 'Fala parceiro(a)! Vi essa oportunidade de freelancer:';
+        cta = `👉 *Acesse pelo link para falar com o contratante:*\n${jobUrl}`;
+      } else if (shareRole === 'empresa_divulgacao') {
+        header = '*OPORTUNIDADE DE FREELANCER* 📢';
+        cta = `👉 *Candidate-se pelo link e fale conosco no WhatsApp:*\n${jobUrl}`;
+      }
+
+      const lines = [
+        header,
+        '',
+        intro,
+        intro ? '' : null,
+        `• *Vaga:* ${job.title}`,
+        job.companyName ? `• *Empresa:* ${job.companyName}` : null,
+        `• *Cachê:* ${cacheDisplay}`,
+        `• *Data:* ${dateTimeStr}`,
+        job.address ? `• *Local:* ${job.address}` : null,
+        job.attire ? `• *Traje:* ${job.attire}` : null,
+        '',
+        cta
+      ].filter(l => l !== null);
+
+      return lines.join('\n');
+    };
+
+
+
     const checkDateMatch = (jobDate, filter, customDate) => {
 
       if (!filter || filter === 'todos') return true;
@@ -2181,41 +2232,11 @@
 
         const jobUrl = `${baseUrl}?vaga=${job.id}`;
 
-        const remun = formatRemuneration(job);
+        const effectiveRole = shareRole !== 'geral'
+          ? shareRole
+          : ((currentUser && currentUser.role === 'freelancer') ? 'indicacao_freelancer' : ((currentUser && currentUser.role === 'empresa') ? 'empresa_divulgacao' : 'geral'));
 
-        const shiftH = calculateShiftHours(job.startTime, job.endTime);
-
-        const isFreelancer = shareRole === 'indicacao_freelancer' || (currentUser && currentUser.role === 'freelancer');
-        const isEmpresa = shareRole === 'empresa_divulgacao' || (currentUser && currentUser.role === 'empresa');
-
-        const shareHeader = isFreelancer
-          ? `🤝 *INDICAÇÃO DE VAGA EM BALNEÁRIO CAMBORIÚ!*`
-          : (isEmpresa ? `📢 *VAGA ABERTA — ${job.companyName.toUpperCase()}!*` : `🔥 *VAGA DISPONÍVEL EM BALNEÁRIO CAMBORIÚ!*`);
-
-        const introLine = isFreelancer
-          ? `Oi! Encontrei esta vaga no app *Freelancer BC* e lembrei de você:`
-          : (isEmpresa ? `O estabelecimento *${job.companyName}* está com vaga aberta para o seguinte turno:` : null);
-
-        const shareText = [
-          shareHeader,
-          ``,
-          introLine,
-          introLine ? `` : null,
-          `💼 *Cargo / Função:* ${job.title} (${job.category})`,
-          `🏢 *Estabelecimento:* ${job.companyName}`,
-          `💰 *Remuneração:* ${remun.display} (${remun.label})`,
-          `📅 *Data do Turno:* ${formatJobDate(job.date)} • ${job.startTime} às ${job.endTime} (${shiftH}h)`,
-          `📍 *Localização:* ${job.address}`,
-          job.attire ? `👔 *Traje Exigido:* ${job.attire}` : null,
-          ``,
-          `⚡ *VAGAS LIMITADAS — CONTRATAÇÃO RÁPIDA!*`,
-          `👉 *Para ver todos os detalhes e LIBERAR O CONTATO DIRETO do contratante no WhatsApp, acesse o link oficial:*`,
-          `${jobUrl}`,
-          ``,
-          `📲 _Abra a vaga pelo link acima para falar diretamente com o contratante pelo WhatsApp._`
-        ].filter(Boolean).join('\n');
-
-
+        const shareText = formatCleanShareJobText(job, effectiveRole, jobUrl);
 
         if (typeof navigator !== 'undefined' && navigator.share) {
 
@@ -2241,9 +2262,7 @@
 
         }
 
-
-
-        setJobToShare({ job, jobUrl, shareText });
+        setJobToShare({ job, jobUrl, shareText, shareRole: effectiveRole });
 
       };
 
@@ -9894,6 +9913,17 @@
 
 
 
+              {/* Prévia da Mensagem Clean Formatada */}
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <label className="font-bold text-slate-700 block text-xs">Mensagem Pronta para Envio (WhatsApp):</label>
+                  <span className="text-[11px] text-emerald-600 font-bold">✨ Formato Clean</span>
+                </div>
+                <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl text-[11px] text-slate-800 font-mono whitespace-pre-wrap max-h-36 overflow-y-auto leading-relaxed select-all">
+                  {shareText}
+                </div>
+              </div>
+
               {/* Botões de Ação para Grupos e Redes */}
 
               <div className="space-y-2.5 pt-1">
@@ -10020,46 +10050,28 @@
         : 'https://crm-piff-paff-v2.vercel.app/freelancer';
       const jobUrl = `${baseUrl}?vaga=${job.id}`;
 
-      // Texto 1: Prova Social para Empresas (B2B)
+      // Texto 1: Prova Social para Empresas (B2B) - Clean e Direto
+      const cacheDisplay = remun.type === 'a_combinar' ? 'A combinar' : remun.display;
+      const dateTimeStr = (job.startTime && job.endTime)
+        ? `${formatJobDate(job.date)} • ${job.startTime} às ${job.endTime}`
+        : formatJobDate(job.date);
+
       const socialProofText = [
-        `🚀 *PROVA SOCIAL - FREELANCER BC FUNCIONA DE VERDADE!*`,
+        `*FREELANCER BC — VAGA ATIVA* 🚀`,
         ``,
-        `Veja este exemplo real de contratante ativo em Balneário Camboriú utilizando nosso app agora:`,
+        `• *Empresa:* ${compName}`,
+        `• *Vaga:* ${job.title}`,
+        `• *Cachê:* ${cacheDisplay}`,
+        `• *Data:* ${dateTimeStr}`,
+        job.address ? `• *Local:* ${job.address}` : null,
+        `• *Candidatos:* ${applicantsCount} freelancer(s) já chamaram no WhatsApp`,
         ``,
-        `🏢 *Estabelecimento Contratante:* ${compName}`,
-        `👤 *Responsável:* ${compResponsible}`,
-        `📌 *Vaga Anunciada:* ${job.title} (${job.category})`,
-        `💰 *Valor da Diária / Remuneração:* ${remun.display} (${remun.label})`,
-        `📅 *Data do Turno:* ${formatJobDate(job.date)} • ${job.startTime} às ${job.endTime} (${shiftHours}h)`,
-        `📍 *Local:* ${job.address}`,
-        `👥 *Resultado Real:* ${applicantsCount} freelancer(s) já chamaram este contratante no WhatsApp!`,
-        ``,
-        `🔒 *O contato oficial do contratante e a vaga completa estão liberados no link oficial:*`,
-        `👉 *Acesse ao vivo pelo aplicativo:*`,
-        `${jobUrl}`,
-        ``,
-        `🎯 *Tem bar, restaurante, casa noturna ou evento em BC?*`,
-        `Precisa de garçons, bartenders, seguranças ou apoios de confiança?`,
-        `👉 Publique grátis no Freelancer BC e receba candidatos no WhatsApp em minutos!`
+        `👉 *Confira a vaga ativa ao vivo pelo app:*`,
+        `${jobUrl}`
       ].filter(Boolean).join('\n');
 
-      // Texto 2: Divulgação Direta da Vaga (Atrair Freelancers para o App)
-      const directJobText = [
-        `🔥 *VAGA DISPONÍVEL EM BALNEÁRIO CAMBORIÚ!*`,
-        ``,
-        `💼 *Cargo / Função:* ${job.title} (${job.category})`,
-        `🏢 *Estabelecimento:* ${compName}`,
-        `💰 *Remuneração:* ${remun.display} (${remun.label})`,
-        `📅 *Data:* ${formatJobDate(job.date)} • ${job.startTime} às ${job.endTime} (${shiftHours}h)`,
-        `📍 *Local:* ${job.address}`,
-        job.attire ? `👔 *Traje:* ${job.attire}` : null,
-        ``,
-        `⚡ *VAGAS LIMITADAS — CONTRATAÇÃO RÁPIDA!*`,
-        `👉 *Para ver os detalhes completos e LIBERAR O CONTATO DIRETO do contratante no WhatsApp, acesse o link oficial:*`,
-        `${jobUrl}`,
-        ``,
-        `📲 _Abra a vaga pelo link acima para falar diretamente com o contratante pelo WhatsApp._`
-      ].filter(Boolean).join('\n');
+      // Texto 2: Divulgação Direta da Vaga - Clean e Direto
+      const directJobText = formatCleanShareJobText(job, 'geral', jobUrl);
 
       const currentText = shareMode === 'social_proof' ? socialProofText : directJobText;
 
