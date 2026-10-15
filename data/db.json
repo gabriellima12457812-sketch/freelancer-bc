@@ -2424,6 +2424,26 @@
       "trialStartDate": "2026-10-15T01:06:44.148Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792026529179",
+      "name": "ANA CLAUDIA LIMA DE ARAUJO",
+      "email": "klaudinha.ana71@gmail.com",
+      "password": "@Cla2307",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "405.407.902-49",
+      "cnpj": null,
+      "phone": "47999638496",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 55,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:08:49.179Z",
+      "trialStartDate": "2026-10-15T01:08:49.179Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
