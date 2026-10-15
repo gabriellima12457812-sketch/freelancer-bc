@@ -2769,6 +2769,26 @@
       "trialStartDate": "2026-10-15T01:31:24.398Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792028166842",
+      "name": "Élner Daniel",
+      "email": "elner_daniel@hotmail.com",
+      "password": "01461818",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "077.151.579-02",
+      "cnpj": null,
+      "phone": "47988471533",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 27,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:36:06.842Z",
+      "trialStartDate": "2026-10-15T01:36:06.842Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
