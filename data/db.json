@@ -3341,7 +3341,11 @@
       "isSubscriptionActive": true,
       "subscriptionTier": "free",
       "status": "aprovado",
-      "createdAt": "2026-10-15T19:22:34.131Z"
+      "createdAt": "2026-10-15T19:22:34.131Z",
+      "alertCategories": [
+        "Recepção",
+        "Caixa"
+      ]
     }
   ],
   "jobs": [
