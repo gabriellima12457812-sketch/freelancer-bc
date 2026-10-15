@@ -3155,6 +3155,26 @@
       "trialStartDate": "2026-10-15T14:49:29.351Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792082387224",
+      "name": "Viktor Hugo Benachio",
+      "email": "victor.benachio18@gmail.com",
+      "password": "Jesus1809@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "146.266.939-54",
+      "cnpj": null,
+      "phone": "47996290673",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 21,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T16:39:47.224Z",
+      "trialStartDate": "2026-10-15T16:39:47.224Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
