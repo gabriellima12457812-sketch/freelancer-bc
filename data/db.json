@@ -2649,6 +2649,26 @@
       "trialStartDate": "2026-10-15T01:17:23.233Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792027178240",
+      "name": "Sandra agertt Cabral",
+      "email": "sandraagertte@gmail.com",
+      "password": "120907",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "014.523.510-66",
+      "cnpj": null,
+      "phone": "47997128976",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 43,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:19:38.240Z",
+      "trialStartDate": "2026-10-15T01:19:38.240Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
