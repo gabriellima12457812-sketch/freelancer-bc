@@ -2589,6 +2589,26 @@
       "trialStartDate": "2026-10-15T01:15:03.415Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792026903161",
+      "name": "Flavio Luiz Souza",
+      "email": "flavioluizs485@gmail.com",
+      "password": "181627",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "019.383.339-50",
+      "cnpj": null,
+      "phone": "48999945881",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 49,
+      "experienceTime": "1 a 2 anos",
+      "city": "Florianópolis ",
+      "createdAt": "2026-10-15T01:15:03.161Z",
+      "trialStartDate": "2026-10-15T01:15:03.161Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
