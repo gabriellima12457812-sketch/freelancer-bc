@@ -2303,7 +2303,11 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-15T00:51:34.608Z",
-      "experience": ""
+      "experience": "",
+      "alertCategories": [
+        "Segurança",
+        "Garçom"
+      ]
     },
     {
       "id": "u-1792025550697",
