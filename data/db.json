@@ -3443,6 +3443,26 @@
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
       "experience": ""
+    },
+    {
+      "id": "u-1792099720931",
+      "name": "JEOSADAQUE CALIXTO DA SILVA",
+      "email": "jeosadaque2015@gmail.com",
+      "password": "Natal@26",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "046.177.083-08",
+      "cnpj": null,
+      "phone": "88992513293",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": null,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T21:28:40.931Z",
+      "trialStartDate": "2026-10-15T21:28:40.931Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
