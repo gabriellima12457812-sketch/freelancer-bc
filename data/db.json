@@ -2869,6 +2869,26 @@
       "trialStartDate": "2026-10-15T02:14:55.349Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792030707842",
+      "name": "Eduarda Castro",
+      "email": "dudacastrossis@gmail.com",
+      "password": "castro08",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "547.505.108-90",
+      "cnpj": null,
+      "phone": "47988275338",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": null,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T02:18:27.842Z",
+      "trialStartDate": "2026-10-15T02:18:27.842Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
