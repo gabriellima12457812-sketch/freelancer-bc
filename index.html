@@ -2305,6 +2305,47 @@
 
 
 
+      // Rastreamento de quantas pessoas acessaram a vaga
+      const handleTrackJobView = (jobId) => {
+        if (!jobId) return;
+        try {
+          const viewed = JSON.parse(sessionStorage.getItem('fbc_viewed_jobs') || '[]');
+          if (viewed.includes(jobId)) return;
+          sessionStorage.setItem('fbc_viewed_jobs', JSON.stringify([...viewed, jobId]));
+        } catch (e) {}
+
+        setJobs(prev => {
+          if (!Array.isArray(prev)) return prev;
+          let modified = null;
+          const updated = prev.map(j => {
+            if (j.id === jobId) {
+              const currentViews = Number(j.views || j.clicks || 0);
+              modified = { ...j, views: currentViews + 1 };
+              return modified;
+            }
+            return j;
+          });
+          if (modified) {
+            try { localStorage.setItem('fbc_jobs', JSON.stringify(updated)); } catch (e) {}
+            broadcastUpdate('JOBS_UPDATED', { jobs: updated });
+            fetch(SYNC_API_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ action: 'save_job', job: modified })
+            }).catch(() => {});
+            return updated;
+          }
+          return prev;
+        });
+      };
+
+      // Contabilizar acesso ao abrir vaga compartilhada
+      useEffect(() => {
+        if (sharedJobId) {
+          handleTrackJobView(sharedJobId);
+        }
+      }, [sharedJobId]);
+
       // Quando o usuário loga ou abre link de vaga compartilhada
 
       useEffect(() => {
@@ -2962,6 +3003,7 @@
               <PublicSharedJobView
 
                 job={jobs.find(j => j.id === sharedJobId)}
+                onTrackView={handleTrackJobView}
 
                 isLoading={!jobs || jobs.length === 0}
                 currentUser={currentUser}
@@ -7739,7 +7781,7 @@
                               <th className="p-4 font-bold">Data & Turno</th>
                               <th className="p-4 font-bold">Remuneração</th>
                               <th className="p-4 font-bold">Status</th>
-                              <th className="p-4 font-bold text-center">Candidatos no Whats</th>
+                              <th className="p-4 font-bold text-center">Acessos & Whats</th>
                               <th className="p-4 font-bold text-center">Divulgação / Prova Social</th>
                               <th className="p-4 font-bold text-right">Ações Admin</th>
                             </tr>
@@ -7823,19 +7865,25 @@
                                   </td>
 
                                   <td className="p-4 text-center">
-                                    <button
-                                      type="button"
-                                      onClick={() => setSelectedJobForApplicants(job)}
-                                      className={`px-3 py-1.5 rounded-xl text-xs font-bold inline-flex items-center gap-1.5 transition ${
-                                        applicantsList.length > 0
-                                          ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs'
-                                          : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
-                                      }`}
-                                      title="Ver todos os freelancers que clicaram no WhatsApp desta vaga"
-                                    >
-                                      <Icon name="whatsapp" className="w-3.5 h-3.5" />
-                                      <span>Quem Chamou ({applicantsList.length})</span>
-                                    </button>
+                                    <div className="flex flex-col items-center gap-1.5">
+                                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-indigo-50 text-indigo-800 font-extrabold text-[11px] rounded-lg border border-indigo-200">
+                                        <Icon name="eye" className="w-3.5 h-3.5 text-indigo-600" />
+                                        <span>{Math.max(job.views || 0, (job.applicants || []).length, job.clicks || 0)} acessos</span>
+                                      </span>
+                                      <button
+                                        type="button"
+                                        onClick={() => setSelectedJobForApplicants(job)}
+                                        className={`px-2.5 py-1 rounded-lg text-xs font-bold inline-flex items-center gap-1 transition ${
+                                          applicantsList.length > 0
+                                            ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs'
+                                            : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
+                                        }`}
+                                        title="Ver todos os freelancers que clicaram no WhatsApp desta vaga"
+                                      >
+                                        <Icon name="whatsapp" className="w-3.5 h-3.5" />
+                                        <span>No Whats ({applicantsList.length})</span>
+                                      </button>
+                                    </div>
                                   </td>
 
                                   <td className="p-4 text-center">
@@ -9411,6 +9459,37 @@
                                 </div>
                               </div>
 
+                              {/* Métricas de Acessos e Candidatos no WhatsApp */}
+                              <div className="grid grid-cols-2 gap-2 mb-4">
+                                <div className="p-3 bg-indigo-50/80 border border-indigo-100 rounded-xl flex items-center justify-between">
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-7 h-7 rounded-lg bg-indigo-600/10 text-indigo-700 flex items-center justify-center font-bold">
+                                      <Icon name="eye" className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <span className="text-[10px] text-slate-500 font-bold uppercase block leading-tight">Pessoas Acessaram</span>
+                                      <span className="text-sm font-black text-indigo-900 leading-tight">
+                                        {Math.max(job.views || 0, (job.applicants || []).length, job.clicks || 0)} acessos
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div className="p-3 bg-emerald-50/80 border border-emerald-100 rounded-xl flex items-center justify-between">
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-7 h-7 rounded-lg bg-emerald-600/10 text-emerald-700 flex items-center justify-center font-bold">
+                                      <Icon name="whatsapp" className="w-4 h-4" />
+                                    </div>
+                                    <div>
+                                      <span className="text-[10px] text-slate-500 font-bold uppercase block leading-tight">Chamaram no Whats</span>
+                                      <span className="text-sm font-black text-emerald-900 leading-tight">
+                                        {applicantsList.length} candidatos
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
                               <div className="space-y-1.5 text-xs text-slate-600 mb-6">
                                 {job.hasMultiplePositions && job.positions && job.positions.length > 0 && (
                                   <div className="bg-indigo-50/70 border border-indigo-200/80 rounded-xl p-2.5 space-y-1 mb-2">
@@ -10405,7 +10484,12 @@
     }
 
 
-    function PublicSharedJobView({ job, isLoading, currentUser, onApplyClick, onQuickApply, onRegisterClick, onShare, onClose }) {
+    function PublicSharedJobView({ job, isLoading, currentUser, onApplyClick, onQuickApply, onRegisterClick, onShare, onClose, onTrackView }) {
+      useEffect(() => {
+        if (job?.id && onTrackView) {
+          onTrackView(job.id);
+        }
+      }, [job?.id]);
       const [showQuickModal, setShowQuickModal] = useState(false);
       const [quickIsExisting, setQuickIsExisting] = useState(false);
       const [quickName, setQuickName] = useState('');
@@ -10558,9 +10642,15 @@
                   <span className="px-3 py-1 bg-indigo-500/30 text-indigo-200 border border-indigo-400/30 rounded-full font-bold text-[11px]">
                     {job.category}
                   </span>
-                  <span className="text-[11px] font-bold text-emerald-400">
-                    👥 {remaining} {remaining === 1 ? 'vaga restante' : 'vagas restantes'}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-bold text-indigo-200 bg-white/10 border border-white/10 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                      <Icon name="eye" className="w-3.5 h-3.5 text-indigo-300" />
+                      <span>{Math.max(job.views || 0, (job.applicants || []).length, job.clicks || 0) + 1} acessaram</span>
+                    </span>
+                    <span className="text-[11px] font-bold text-emerald-400">
+                      👥 {remaining} {remaining === 1 ? 'vaga restante' : 'vagas restantes'}
+                    </span>
+                  </div>
                 </div>
 
                 <div>
@@ -14322,9 +14412,16 @@
 
                           )}
 
-                          <div className="text-[11px] text-indigo-600 font-bold">
+                          <div className="flex items-center justify-between text-[11px] pt-1">
 
-                            👥 {remaining} {remaining === 1 ? 'vaga restante' : 'vagas restantes'}
+                            <span className="text-indigo-600 font-bold">
+                              👥 {remaining} {remaining === 1 ? 'vaga restante' : 'vagas restantes'}
+                            </span>
+
+                            <span className="text-slate-500 font-semibold flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded-lg border border-slate-200/50">
+                              <Icon name="eye" className="w-3.5 h-3.5 text-slate-400" />
+                              <span>{Math.max(job.views || 0, (job.applicants || []).length, job.clicks || 0)} acessos</span>
+                            </span>
 
                           </div>
 
