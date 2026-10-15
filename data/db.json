@@ -2309,8 +2309,21 @@
       "address": "Marejada Itajaí",
       "attire": "All Black",
       "whatsapp": "48991867605",
-      "clicks": 0,
-      "applicants": [],
+      "clicks": 1,
+      "applicants": [
+        {
+          "freelancerId": "u-1792025494608",
+          "name": "Lucas Gabriel Souza da Silva",
+          "phone": "47996225311",
+          "email": "70317197027@freelancerbc.local",
+          "profession": "Segurança",
+          "age": 26,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T00:51:34.866Z",
+          "hiredStatus": "pendente"
+        }
+      ],
       "createdAt": "2026-10-15T00:46:51.205Z"
     },
     {
