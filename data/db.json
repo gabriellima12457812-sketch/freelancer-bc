@@ -2543,6 +2543,26 @@
       "trialStartDate": "2026-10-15T01:13:56.891Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792026852891",
+      "name": "Bruna Alves",
+      "email": "bruninhamalves1999@hotmail.com",
+      "password": "Ben020219",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "055.942.879-06",
+      "cnpj": null,
+      "phone": "47992693405",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": null,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:14:12.891Z",
+      "trialStartDate": "2026-10-15T01:14:12.891Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
