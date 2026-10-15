@@ -3376,6 +3376,23 @@
         "Segurança",
         "Caixa"
       ]
+    },
+    {
+      "id": "u-1792094849811",
+      "name": "Andrea romina lopez iza",
+      "role": "freelancer",
+      "cpf": "719.457.461-65",
+      "phone": "47997833766",
+      "email": "71945746165@freelancerbc.local",
+      "password": "1015",
+      "age": 35,
+      "experienceTime": "1 a 2 anos",
+      "profession": "Sub Chef",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T20:07:29.811Z"
     }
   ],
   "jobs": [
@@ -3529,21 +3546,8 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "47999072101",
-      "clicks": 1,
-      "applicants": [
-        {
-          "freelancerId": "u-1792094849811",
-          "name": "Andrea romina lopez iza",
-          "phone": "47997833766",
-          "email": "71945746165@freelancerbc.local",
-          "profession": "Sub Chef",
-          "age": 35,
-          "experienceTime": "1 a 2 anos",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-15T20:07:29.566Z",
-          "hiredStatus": "pendente"
-        }
-      ],
+      "clicks": 0,
+      "applicants": [],
       "createdAt": "2026-10-15T17:59:13.729Z",
       "hasMultiplePositions": false,
       "positions": [],
