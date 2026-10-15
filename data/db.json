@@ -3469,23 +3469,6 @@
         "Recepção",
         "Segurança"
       ]
-    },
-    {
-      "id": "u-1792100072606",
-      "name": "Renata Rejane dos santos da silva",
-      "role": "freelancer",
-      "cpf": "004.307.090-64",
-      "phone": "47997886023",
-      "email": "00430709064@freelancerbc.local",
-      "password": "32466948",
-      "age": 35,
-      "experienceTime": "Mais de 5 anos",
-      "profession": "Garçom",
-      "city": "Balneário Camboriú",
-      "isSubscriptionActive": true,
-      "subscriptionTier": "free",
-      "status": "aprovado",
-      "createdAt": "2026-10-15T21:34:32.606Z"
     }
   ],
   "jobs": [
@@ -3596,8 +3579,20 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "47992728741",
-      "clicks": 7,
+      "clicks": 8,
       "applicants": [
+        {
+          "freelancerId": "u-1792100072606",
+          "name": "Renata Rejane dos santos da silva",
+          "phone": "47997886023",
+          "email": "00430709064@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 35,
+          "experienceTime": "Mais de 5 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T21:34:33.072Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1792026269555",
           "name": "Mariane Marjorye",
