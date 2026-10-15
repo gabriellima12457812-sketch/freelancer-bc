@@ -2298,11 +2298,12 @@
       "age": 26,
       "experienceTime": "1 a 2 anos",
       "profession": "Segurança",
-      "city": "Balneário Camboriú",
+      "city": "Itajaí",
       "isSubscriptionActive": true,
       "subscriptionTier": "free",
       "status": "aprovado",
-      "createdAt": "2026-10-15T00:51:34.608Z"
+      "createdAt": "2026-10-15T00:51:34.608Z",
+      "experience": ""
     }
   ],
   "jobs": [
