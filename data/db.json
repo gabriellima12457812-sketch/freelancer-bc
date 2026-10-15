@@ -2413,7 +2413,8 @@
       "isSubscriptionActive": true,
       "subscriptionTier": "free",
       "status": "aprovado",
-      "createdAt": "2026-10-15T00:57:34.861Z"
+      "createdAt": "2026-10-15T00:57:34.861Z",
+      "experience": ""
     },
     {
       "id": "u-1792026269555",
