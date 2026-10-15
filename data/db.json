@@ -556,7 +556,11 @@
       "createdAt": "2026-10-08T23:00:05.512Z",
       "trialStartDate": "2026-10-08T23:00:05.512Z",
       "trialExpiryDate": "2026-11-07T23:00:05.512Z",
-      "isSubscriptionActive": false
+      "isSubscriptionActive": false,
+      "age": 24,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "experience": "Experiencia na cozinha, gosto de trabalhar em equipe, tenho muita agilidade pra aprender"
     },
     {
       "id": "u-1791500431880",
