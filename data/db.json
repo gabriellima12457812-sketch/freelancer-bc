@@ -2347,8 +2347,20 @@
       "address": "Marejada Itajaí",
       "attire": "All Black",
       "whatsapp": "48991867605",
-      "clicks": 1,
+      "clicks": 2,
       "applicants": [
+        {
+          "freelancerId": "u-1792025762563",
+          "name": "Ingrid castro",
+          "phone": "47996626079",
+          "email": "14576119966@freelancerbc.local",
+          "profession": "Segurança",
+          "age": 19,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T00:56:03.148Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1791506696802",
           "name": "Lucas Souza Magalhaes",
