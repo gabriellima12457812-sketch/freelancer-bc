@@ -2929,6 +2929,26 @@
       "trialStartDate": "2026-10-15T02:43:26.012Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792032805335",
+      "name": "Tatiane Trapp",
+      "email": "tatianetrapp3@gmail.com",
+      "password": "2026TATY",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "051.843.019-76",
+      "cnpj": null,
+      "phone": "47988967411",
+      "businessType": null,
+      "profession": "Promoter de Vendas",
+      "age": 39,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T02:53:25.335Z",
+      "trialStartDate": "2026-10-15T02:53:25.335Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
