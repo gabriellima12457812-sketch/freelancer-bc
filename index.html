@@ -614,11 +614,39 @@
 
       }
 
+      if (type === 'a_combinar') {
+
+        return {
+
+          type: 'a_combinar',
+
+          label: '🤝 A Combinar',
+
+          display: 'A Combinar',
+
+          subtitle: job.commissionDetail ? job.commissionDetail : 'Taxa / valor a combinar direto no WhatsApp',
+
+          badgeColor: 'bg-indigo-50 text-indigo-800 border border-indigo-200'
+
+        };
+
+      }
+
 
 
       // Default: diaria_fixa
 
       const rate = Number(job.rate || 0);
+
+      if (rate === 0 && (!job.paymentType || job.paymentType === 'a_combinar')) {
+        return {
+          type: 'a_combinar',
+          label: '🤝 A Combinar',
+          display: 'A Combinar',
+          subtitle: job.commissionDetail ? job.commissionDetail : 'Taxa / valor a combinar direto no WhatsApp',
+          badgeColor: 'bg-indigo-50 text-indigo-800 border border-indigo-200'
+        };
+      }
 
       return {
 
@@ -11771,13 +11799,13 @@
 
           paymentType,
 
-          rate: (paymentType === 'so_comissao') ? 0 : (paymentType === 'por_hora' ? Number(hourlyRate) : (Number(rate) || 0)),
+          rate: (paymentType === 'so_comissao' || paymentType === 'a_combinar') ? 0 : (paymentType === 'por_hora' ? Number(hourlyRate) : (Number(rate) || 0)),
 
           hourlyRate: paymentType === 'por_hora' ? (Number(hourlyRate) || 0) : null,
 
           commissionRate: (paymentType === 'so_comissao' || paymentType === 'fixo_mais_comissao') ? (Number(commissionRate) || 0) : null,
 
-          commissionDetail: (paymentType === 'so_comissao' || paymentType === 'fixo_mais_comissao') ? commissionDetail.trim() : null,
+          commissionDetail: (paymentType === 'so_comissao' || paymentType === 'fixo_mais_comissao' || paymentType === 'a_combinar') ? commissionDetail.trim() : null,
 
           totalSpots: Number(totalSpots) || 1,
 
@@ -11960,7 +11988,7 @@
 
                 </label>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
 
                   <button
 
@@ -12069,6 +12097,32 @@
                     <span className="text-xs font-bold leading-tight">Fixo + Comis.</span>
 
                     <span className="text-[10px] text-slate-400 font-normal">Base + % vendas</span>
+
+                  </button>
+
+                  <button
+
+                    type="button"
+
+                    onClick={() => setPaymentType('a_combinar')}
+
+                    className={`p-2.5 rounded-xl border text-left transition flex flex-col justify-between ${
+
+                      paymentType === 'a_combinar'
+
+                        ? 'bg-indigo-50 border-indigo-500 ring-2 ring-indigo-500/20 text-indigo-950 font-bold'
+
+                        : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100'
+
+                    }`}
+
+                  >
+
+                    <span className="text-base mb-1">🤝</span>
+
+                    <span className="text-xs font-bold leading-tight">A Combinar</span>
+
+                    <span className="text-[10px] text-slate-400 font-normal">Valor a negociar</span>
 
                   </button>
 
@@ -12291,6 +12345,50 @@
                 )}
 
 
+
+                {paymentType === 'a_combinar' && (
+
+                  <div className="space-y-2 pt-1 animate-in fade-in">
+
+                    <div className="p-3 bg-indigo-50/70 border border-indigo-200 rounded-xl text-xs text-indigo-950 space-y-1">
+
+                      <div className="font-extrabold flex items-center gap-1.5 text-indigo-900">
+
+                        <span>🤝</span>
+
+                        <span>Valor / Taxa a Combinar</span>
+
+                      </div>
+
+                      <p className="text-[11px] text-indigo-800 leading-relaxed">
+
+                        A vaga será publicada com remuneração <strong>"A Combinar"</strong>. O valor exato ou formato de pagamento será negociado diretamente com o freelancer pelo WhatsApp.
+
+                      </p>
+
+                    </div>
+
+                    <div>
+
+                      <label className="font-semibold text-slate-700 block text-[11px] mb-1">Observações da Remuneração (Opcional)</label>
+
+                      <input
+
+                        placeholder="Ex: A combinar conforme experiência, a combinar no WhatsApp, etc."
+
+                        value={commissionDetail}
+
+                        onChange={e => setCommissionDetail(e.target.value)}
+
+                        className="w-full p-2 bg-white border border-slate-200 rounded-xl text-xs font-medium text-slate-900"
+
+                      />
+
+                    </div>
+
+                  </div>
+
+                )}
 
                 {paymentType === 'fixo_mais_comissao' && (
 
@@ -12908,6 +13006,7 @@
           else if (paymentFilter === 'por_hora') matchPay = pType === 'por_hora';
 
           else if (paymentFilter === 'comissao') matchPay = (pType === 'so_comissao' || pType === 'fixo_mais_comissao');
+          else if (paymentFilter === 'a_combinar') matchPay = (pType === 'a_combinar' || !job.rate || Number(job.rate) === 0);
 
 
 
@@ -13567,7 +13666,8 @@
 
                   { id: 'por_hora', label: '⏱️ Por Hora' },
 
-                  { id: 'comissao', label: '📈 Com Comissão' }
+                  { id: 'comissao', label: '📈 Com Comissão' },
+                  { id: 'a_combinar', label: '🤝 A Combinar' }
 
                 ].map(p => (
 
