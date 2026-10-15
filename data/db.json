@@ -3053,6 +3053,26 @@
       "status": "aprovado",
       "createdAt": "2026-10-15T13:08:32.818Z",
       "experience": ""
+    },
+    {
+      "id": "u-1792070813400",
+      "name": "Bianca Oliveira Ferreira",
+      "email": "biancaraykethy2903@gmail.com",
+      "password": "Raykethy16",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "036.164.500-71",
+      "cnpj": null,
+      "phone": "47997147985",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 33,
+      "experienceTime": "1 a 2 anos",
+      "city": "Camboriú",
+      "createdAt": "2026-10-15T13:26:53.400Z",
+      "trialStartDate": "2026-10-15T13:26:53.400Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
