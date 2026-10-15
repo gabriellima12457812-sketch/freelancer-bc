@@ -3441,6 +3441,23 @@
       "trialStartDate": "2026-10-15T20:48:58.444Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792097340542",
+      "name": "Gloria maria dos santos silva",
+      "role": "freelancer",
+      "cpf": "605.114.463-30",
+      "phone": "48991673456",
+      "email": "60511446330@freelancerbc.local",
+      "password": "1727",
+      "age": 32,
+      "experienceTime": "1 a 2 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T20:49:00.542Z"
     }
   ],
   "jobs": [
