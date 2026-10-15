@@ -3072,7 +3072,11 @@
       "createdAt": "2026-10-15T13:26:53.400Z",
       "trialStartDate": "2026-10-15T13:26:53.400Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "alertCategories": [
+        "Limpeza",
+        "Bartender"
+      ]
     }
   ],
   "jobs": [
