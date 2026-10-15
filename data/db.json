@@ -162,7 +162,11 @@
       "createdAt": "2026-10-08T20:24:17.619Z",
       "trialStartDate": "2026-10-08T20:24:17.619Z",
       "trialExpiryDate": "2026-12-07T20:42:17.642Z",
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "age": 24,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "experience": ""
     },
     {
       "id": "u-1791491243700",
