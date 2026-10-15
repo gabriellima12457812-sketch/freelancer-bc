@@ -3478,8 +3478,21 @@
       "address": "Palhoça Santa Catarina",
       "attire": "All Black",
       "whatsapp": "48996099890",
-      "clicks": 0,
-      "applicants": [],
+      "clicks": 1,
+      "applicants": [
+        {
+          "freelancerId": "u-1792092154131",
+          "name": "Heloisa Dos Santos Honorato",
+          "phone": "48988537639",
+          "email": "08838417970@freelancerbc.local",
+          "profession": "Recepção",
+          "age": 28,
+          "experienceTime": "Menos de 1 ano",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T19:22:35.533Z",
+          "hiredStatus": "pendente"
+        }
+      ],
       "createdAt": "2026-10-15T11:27:53.114Z"
     },
     {
