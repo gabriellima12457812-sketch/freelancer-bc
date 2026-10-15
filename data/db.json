@@ -2464,6 +2464,23 @@
       "trialStartDate": "2026-10-15T01:09:26.708Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792026588245",
+      "name": "Lucas Francisco Machado dos Santos",
+      "role": "freelancer",
+      "cpf": "042.012.867-03",
+      "phone": "47996713100",
+      "email": "04201286703@freelancerbc.local",
+      "password": "Athena2020",
+      "age": 37,
+      "experienceTime": "1 a 2 anos",
+      "profession": "Segurança",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T01:09:48.245Z"
     }
   ],
   "jobs": [
@@ -2487,20 +2504,8 @@
       "address": "Marejada Itajaí",
       "attire": "All Black",
       "whatsapp": "48991867605",
-      "clicks": 2,
+      "clicks": 1,
       "applicants": [
-        {
-          "freelancerId": "u-1792026588245",
-          "name": "Lucas Francisco Machado dos Santos",
-          "phone": "47996713100",
-          "email": "04201286703@freelancerbc.local",
-          "profession": "Segurança",
-          "age": 37,
-          "experienceTime": "1 a 2 anos",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-15T01:09:48.342Z",
-          "hiredStatus": "pendente"
-        },
         {
           "freelancerId": "u-1791506696802",
           "name": "Lucas Souza Magalhaes",
