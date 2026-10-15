@@ -3135,6 +3135,26 @@
       "trialStartDate": "2026-10-15T14:46:06.380Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792075769351",
+      "name": "Brenda de lima de Almeida",
+      "email": "bre29.l.almeida@gmail.com",
+      "password": "Perola29",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "044.229.310-08",
+      "cnpj": null,
+      "phone": "47997349362",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 24,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T14:49:29.351Z",
+      "trialStartDate": "2026-10-15T14:49:29.351Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
