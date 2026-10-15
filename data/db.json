@@ -2749,6 +2749,26 @@
       "trialStartDate": "2026-10-15T01:23:19.505Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792027883599",
+      "name": "CRISTINA DE FREITAS",
+      "email": "cristiinadefreitas2@gmail.com",
+      "password": "maravilhosa",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "285.587.848-92",
+      "cnpj": null,
+      "phone": "47996403470",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 46,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:31:23.599Z",
+      "trialStartDate": "2026-10-15T01:31:23.599Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
