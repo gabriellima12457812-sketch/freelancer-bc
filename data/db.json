@@ -3534,8 +3534,20 @@
       "address": "Praia brava",
       "attire": "All Black",
       "whatsapp": "47992560978",
-      "clicks": 2,
+      "clicks": 3,
       "applicants": [
+        {
+          "freelancerId": "u-1792107299336",
+          "name": "Alessandra saqueto",
+          "phone": "42984086998",
+          "email": "10327934902@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 30,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T23:34:59.440Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1792097340542",
           "name": "Gloria maria dos santos silva",
