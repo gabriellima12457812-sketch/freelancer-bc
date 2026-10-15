@@ -2689,6 +2689,26 @@
       "trialStartDate": "2026-10-15T01:20:22.020Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792027280896",
+      "name": "Joao paulo vieira sizenando",
+      "email": "jv1051551@gmail.com",
+      "password": "Marly132#",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "113.714.839-06",
+      "cnpj": null,
+      "phone": "47988589466",
+      "businessType": null,
+      "profession": "Promoter de Vendas",
+      "age": 29,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:21:20.896Z",
+      "trialStartDate": "2026-10-15T01:21:20.896Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
