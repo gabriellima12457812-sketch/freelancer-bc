@@ -3215,6 +3215,26 @@
       "trialStartDate": "2026-10-15T17:26:29.083Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792087428260",
+      "name": "Laura Ramos Ribeiro",
+      "email": "lribeirolau@gmail.com",
+      "password": "91302516",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "049.453.700-01",
+      "cnpj": null,
+      "phone": "51992107925",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 23,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T18:03:48.260Z",
+      "trialStartDate": "2026-10-15T18:03:48.260Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
