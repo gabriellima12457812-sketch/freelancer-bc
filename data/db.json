@@ -3425,8 +3425,21 @@
       "address": "Praia brava",
       "attire": "All Black",
       "whatsapp": "47992560978",
-      "clicks": 0,
-      "applicants": [],
+      "clicks": 1,
+      "applicants": [
+        {
+          "freelancerId": "u-1792095975690",
+          "name": "Vitória Soares Flores",
+          "phone": "47984006995",
+          "email": "05423275032@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 22,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T20:26:16.329Z",
+          "hiredStatus": "pendente"
+        }
+      ],
       "createdAt": "2026-10-15T20:24:13.328Z"
     },
     {
