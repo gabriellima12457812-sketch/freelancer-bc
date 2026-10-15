@@ -230,7 +230,11 @@
       "createdAt": "2026-10-08T20:47:39.625Z",
       "trialStartDate": "2026-10-08T20:47:39.625Z",
       "trialExpiryDate": "2026-11-07T20:47:39.625Z",
-      "isSubscriptionActive": false
+      "isSubscriptionActive": false,
+      "age": 24,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "experience": "Trabalho em atendimento ao público desde os 15 anos, atualmente sou do setor administrativo de uma concessionária, já trabalhei 3 anos em recepção."
     },
     {
       "id": "u-1791492474470",
