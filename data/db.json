@@ -2915,13 +2915,14 @@
       "phone": "47988275338",
       "businessType": null,
       "profession": "Garçom",
-      "age": null,
+      "age": 18,
       "experienceTime": "Menos de 1 ano (Iniciante)",
       "city": "Balneário Camboriú",
       "createdAt": "2026-10-15T02:18:27.842Z",
       "trialStartDate": "2026-10-15T02:18:27.842Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "experience": "Experiência com atendimento ao cliente e como garçom na roda gigante de balneário, já trabalhei em eventos tambem"
     },
     {
       "id": "u-1792031815586",
