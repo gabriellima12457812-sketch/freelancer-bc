@@ -2526,43 +2526,6 @@
   ],
   "jobs": [
     {
-      "id": "job-1792025211205",
-      "companyId": "ext-1792025211205",
-      "companyName": "Itajaí",
-      "title": "Segurança",
-      "category": "Segurança",
-      "paymentType": "diaria_fixa",
-      "rate": 1,
-      "hourlyRate": null,
-      "commissionRate": null,
-      "commissionDetail": null,
-      "totalSpots": 2,
-      "filledSpots": 0,
-      "status": "ativa",
-      "date": "2026-10-16",
-      "startTime": "17:00",
-      "endTime": "02:00",
-      "address": "Marejada Itajaí",
-      "attire": "All Black",
-      "whatsapp": "48991867605",
-      "clicks": 1,
-      "applicants": [
-        {
-          "freelancerId": "u-1791506696802",
-          "name": "Lucas Souza Magalhaes",
-          "phone": "92994293313",
-          "email": "souzamagalhaes8@gmail.com",
-          "profession": "Recepção",
-          "age": 32,
-          "experienceTime": "1 a 2 anos",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-15T00:54:27.884Z",
-          "hiredStatus": "pendente"
-        }
-      ],
-      "createdAt": "2026-10-15T00:46:51.205Z"
-    },
-    {
       "id": "job-1791632709917",
       "companyId": "u-1791632622643",
       "companyName": "Luan sodré",
