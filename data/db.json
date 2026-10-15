@@ -3456,7 +3456,7 @@
       "phone": "88992513293",
       "businessType": null,
       "profession": "Limpeza",
-      "age": null,
+      "age": 36,
       "experienceTime": "1 a 2 anos",
       "city": "Balneário Camboriú",
       "createdAt": "2026-10-15T21:28:40.931Z",
@@ -3468,7 +3468,8 @@
         "Caixa",
         "Recepção",
         "Segurança"
-      ]
+      ],
+      "experience": "Vim do nordeste com experiência com atendimento ao público, hoje por um 1 ano e 2 meses, estou fixo como consultor de atendimento na farmácia Panvel, com o conhecimento que já tenho sempre estou aberto para um novo aprendizagem como também contribuiu na continuidade do melhor atendimento dente da empresa."
     }
   ],
   "jobs": [
