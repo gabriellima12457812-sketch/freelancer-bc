@@ -3487,6 +3487,26 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-15T21:39:54.294Z"
+    },
+    {
+      "id": "u-1792106591909",
+      "name": "Thiago Almeida Ferreira",
+      "email": "tg7333388@gmail.com",
+      "password": "Lucianath10$",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "099.086.112-08",
+      "cnpj": null,
+      "phone": "91920060679",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 26,
+      "experienceTime": "1 a 2 anos",
+      "city": "Itajaí",
+      "createdAt": "2026-10-15T23:23:11.908Z",
+      "trialStartDate": "2026-10-15T23:23:11.908Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
