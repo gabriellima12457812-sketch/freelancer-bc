@@ -3321,6 +3321,23 @@
       "trialStartDate": "2026-10-15T19:21:12.871Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792092154131",
+      "name": "Heloisa Dos Santos Honorato",
+      "role": "freelancer",
+      "cpf": "088.384.179-70",
+      "phone": "48988537639",
+      "email": "08838417970@freelancerbc.local",
+      "password": "8447",
+      "age": 28,
+      "experienceTime": "Menos de 1 ano",
+      "profession": "Recepção",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T19:22:34.131Z"
     }
   ],
   "jobs": [
@@ -3478,21 +3495,8 @@
       "address": "Palhoça Santa Catarina",
       "attire": "All Black",
       "whatsapp": "48996099890",
-      "clicks": 1,
-      "applicants": [
-        {
-          "freelancerId": "u-1792092154131",
-          "name": "Heloisa Dos Santos Honorato",
-          "phone": "48988537639",
-          "email": "08838417970@freelancerbc.local",
-          "profession": "Recepção",
-          "age": 28,
-          "experienceTime": "Menos de 1 ano",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-15T19:22:35.533Z",
-          "hiredStatus": "pendente"
-        }
-      ],
+      "clicks": 0,
+      "applicants": [],
       "createdAt": "2026-10-15T11:27:53.114Z"
     },
     {
