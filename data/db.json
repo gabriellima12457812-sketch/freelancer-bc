@@ -2444,6 +2444,26 @@
       "trialStartDate": "2026-10-15T01:08:49.179Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792026566708",
+      "name": "Anderson",
+      "email": "andersonmonitor1976@gmail.com",
+      "password": "Monitor75",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "011.369.999-90",
+      "cnpj": null,
+      "phone": "47997804378",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 50,
+      "experienceTime": "1 a 2 anos",
+      "city": "Itajai",
+      "createdAt": "2026-10-15T01:09:26.708Z",
+      "trialStartDate": "2026-10-15T01:09:26.708Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
