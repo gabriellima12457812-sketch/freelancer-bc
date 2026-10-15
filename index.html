@@ -672,7 +672,7 @@
     // Uma vaga marcada para o dia X expira e pausa automaticamente no dia seguinte (X+1) às 06:00 da manhã.
     // Assim que passa das 06:00 da manhã do dia seguinte, a vaga fica 'pausada' e não aparece mais como disponível.
     const isJobExpired = (job) => {
-      if (!job || !job.date) return false;
+      if (!job || !job.date || job.noFixedDate || job.dateUndefined || job.date === 'sem_data') return false;
       try {
         let year, month, day;
         const dateStr = String(job.date).trim();
@@ -703,9 +703,13 @@
       }
     };
 
-    const formatJobDate = (dateStr) => {
+    const formatJobDate = (dateStr, job) => {
 
-      if (!dateStr) return '';
+      if ((job && (job.noFixedDate || job.dateUndefined)) || !dateStr || dateStr === 'sem_data' || dateStr === 'a_combinar') {
+
+        return 'Sem data definida (A combinar)';
+
+      }
 
       try {
 
@@ -757,28 +761,54 @@
       if (!job) return '';
       const remun = formatRemuneration(job);
 
-      // Cachê direto sem redundâncias de parênteses ou emojis extras
-      let cacheDisplay = remun.display;
-      if (remun.type === 'a_combinar') {
-        cacheDisplay = 'A combinar';
+      // 1. Vagas / Funções (Suporte a Vaga Única e Múltiplas Vagas no Anúncio)
+      const hasMulti = Boolean(job.hasMultiplePositions && Array.isArray(job.positions) && job.positions.length > 0);
+      let vagasLines = [];
+      if (hasMulti) {
+        vagasLines.push('• *Vagas Abertas neste Anúncio:*');
+        job.positions.forEach(p => {
+          const pSpots = Number(p.spots) || 1;
+          const pSpotsStr = `${pSpots} ${pSpots === 1 ? 'vaga' : 'vagas'}`;
+          let pRateStr = '';
+          if (p.paymentType === 'a_combinar' || !p.rate) {
+            pRateStr = 'Cachê a combinar';
+          } else if (p.paymentType === 'por_hora') {
+            pRateStr = `R$ ${p.rate}/h`;
+          } else {
+            pRateStr = `R$ ${p.rate}`;
+          }
+          vagasLines.push(`  - *${p.role}:* ${pSpotsStr} (${pRateStr})`);
+        });
+      } else {
+        vagasLines.push(`• *Vaga:* ${job.title}`);
+        let cacheDisplay = remun.display;
+        if (remun.type === 'a_combinar') {
+          cacheDisplay = 'A combinar';
+        }
+        vagasLines.push(`• *Cachê:* ${cacheDisplay}`);
       }
 
-      // Data e Horário em linha única e direta
-      const dateStr = formatJobDate(job.date);
-      const timeStr = (job.startTime && job.endTime) ? `${job.startTime} às ${job.endTime}` : '';
-      const dateTimeStr = timeStr ? `${dateStr} • ${timeStr}` : dateStr;
+      // 2. Data e Horário (Suporte a Sem Data Definida / A Combinar)
+      let dateTimeStr = '';
+      if (job.noFixedDate || job.dateUndefined || !job.date || job.date === 'sem_data') {
+        dateTimeStr = 'Sem data definida (A combinar / Início imediato)';
+      } else {
+        const dateStr = formatJobDate(job.date, job);
+        const timeStr = (job.startTime && job.endTime && job.startTime !== '00:00' && job.startTime !== 'A combinar') ? `${job.startTime} às ${job.endTime}` : '';
+        dateTimeStr = timeStr ? `${dateStr} • ${timeStr}` : dateStr;
+      }
 
-      // Cabeçalho e Chamada de Ação (CTA) limpos de acordo com o papel
+      // 3. Cabeçalho e Chamada de Ação (CTA) limpos de acordo com o papel
       let header = '*VAGA DE FREELANCER* 🎯';
       let intro = null;
-      let cta = `👉 *Acesse o link para ver a vaga e chamar no WhatsApp:*\n${jobUrl}`;
+      let cta = `👉 *Acesse o link para ver ${hasMulti ? 'as vagas' : 'a vaga'} e chamar no WhatsApp:*\n${jobUrl}`;
 
       if (shareRole === 'indicacao_freelancer') {
         header = '*INDICAÇÃO DE VAGA* 🤝';
-        intro = 'Fala parceiro(a)! Vi essa oportunidade de freelancer:';
+        intro = `Fala parceiro(a)! Vi ${hasMulti ? 'essas oportunidades de freelancer' : 'essa oportunidade de freelancer'}:`;
         cta = `👉 *Acesse pelo link para falar com o contratante:*\n${jobUrl}`;
       } else if (shareRole === 'empresa_divulgacao') {
-        header = '*OPORTUNIDADE DE FREELANCER* 📢';
+        header = hasMulti ? '*VAGAS ABERTAS (MÚLTIPLOS CARGOS)* 📢' : '*VAGA ABERTA* 📢';
         cta = `👉 *Candidate-se pelo link e fale conosco no WhatsApp:*\n${jobUrl}`;
       }
 
@@ -787,9 +817,8 @@
         '',
         intro,
         intro ? '' : null,
-        `• *Vaga:* ${job.title}`,
+        ...vagasLines,
         job.companyName ? `• *Empresa:* ${job.companyName}` : null,
-        `• *Cachê:* ${cacheDisplay}`,
         `• *Data:* ${dateTimeStr}`,
         job.address ? `• *Local:* ${job.address}` : null,
         job.attire ? `• *Traje:* ${job.attire}` : null,
@@ -802,11 +831,19 @@
 
 
 
-    const checkDateMatch = (jobDate, filter, customDate) => {
+    const checkDateMatch = (jobDate, filter, customDate, job) => {
 
       if (!filter || filter === 'todos') return true;
 
-      if (!jobDate) return false;
+      const isNoDate = !jobDate || jobDate === 'sem_data' || job?.noFixedDate || job?.dateUndefined;
+
+      if (filter === 'sem_data') {
+
+        return isNoDate;
+
+      }
+
+      if (isNoDate) return false;
 
 
 
@@ -1064,7 +1101,7 @@
 
 
 
-    const CATEGORIES = ['Todos', 'Garçom', 'Bartender', 'Segurança', 'Limpeza', 'Cozinha', 'Recepção', 'Caixa'];
+    const CATEGORIES = ['Todos', 'Garçom', 'Bartender', 'Sushiman', 'Sub Chef', 'Gerente', 'Cozinha', 'Segurança', 'Limpeza', 'Recepção', 'Caixa'];
 
 
 
@@ -2736,9 +2773,13 @@
 
         // 3. Montar mensagem completa para a empresa no WhatsApp (SEM DOCUMENTOS / SEM CPF)
 
+        const appliedTitle = profileData.selectedPosition
+          ? `vaga de *${profileData.selectedPosition}* (no anúncio "${job.title}")`
+          : `vaga de *${job.title}* (${remun.display})`;
+
         const messageLines = [
 
-          `Olá! Vi a vaga de *${job.title}* (${remun.display}) anunciada no app *Freelancer BC* e tenho total interesse!`,
+          `Olá! Vi a ${appliedTitle} anunciada no app *Freelancer BC* e tenho total interesse!`,
 
           ``,
 
@@ -2805,6 +2846,8 @@
                 phone: currentUser.phone,
 
                 profession: currentUser.profession || 'Freelancer Especialista',
+
+                appliedPosition: profileData.selectedPosition || job.title,
 
                 age: profileData.age ? Number(profileData.age) : (currentUser.age || null),
 
@@ -5381,6 +5424,12 @@
                       <option value="Garçom">Garçom</option>
 
                       <option value="Bartender & Mixologista">Bartender & Mixologista</option>
+
+                      <option value="Sushiman">Sushiman</option>
+
+                      <option value="Sub Chef">Sub Chef</option>
+
+                      <option value="Gerente">Gerente</option>
 
                       <option value="Cozinheiro">Cozinheiro</option>
 
@@ -9363,9 +9412,32 @@
                               </div>
 
                               <div className="space-y-1.5 text-xs text-slate-600 mb-6">
+                                {job.hasMultiplePositions && job.positions && job.positions.length > 0 && (
+                                  <div className="bg-indigo-50/70 border border-indigo-200/80 rounded-xl p-2.5 space-y-1 mb-2">
+                                    <span className="text-[10px] font-black uppercase text-indigo-700 block tracking-wider">
+                                      ✨ Cargos / Vagas neste Anúncio ({job.positions.length}):
+                                    </span>
+                                    {job.positions.map((pos, idx) => (
+                                      <div key={idx} className="flex items-center justify-between py-0.5 border-b border-indigo-100 last:border-0 text-xs">
+                                        <div className="font-extrabold text-slate-800 flex items-center gap-1.5">
+                                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                          <span>{pos.role}</span>
+                                          <span className="text-[10px] text-slate-400 font-normal">({pos.spots} {Number(pos.spots) === 1 ? 'vaga' : 'vagas'})</span>
+                                        </div>
+                                        <span className="font-black text-emerald-600 text-xs">
+                                          {pos.paymentType === 'a_combinar' ? 'A combinar' : (pos.paymentType === 'por_hora' ? `R$ ${pos.rate}/h` : `R$ ${pos.rate}`)}
+                                        </span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
                                 <div className="flex items-center gap-2">
                                   <Icon name="calendar" className="w-4 h-4 text-slate-400" />
-                                  <span>{formatJobDate(job.date)} • {job.startTime} às {job.endTime} ({calculateShiftHours(job.startTime, job.endTime)}h)</span>
+                                  <span>
+                                    {(job.noFixedDate || job.dateUndefined || !job.date)
+                                      ? 'Sem data definida (A combinar / Início imediato)'
+                                      : `${formatJobDate(job.date, job)} • ${job.startTime} às ${job.endTime} (${calculateShiftHours(job.startTime, job.endTime)}h)`}
+                                  </span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                   <Icon name="mapPin" className="w-4 h-4 text-slate-400" />
@@ -9868,6 +9940,43 @@
                 <p className="text-xs text-slate-500">{job.companyName} • {job.address}</p>
 
               </div>
+
+              {/* Seletor de Vaga Desejada (Quando o anúncio tiver múltiplas vagas) */}
+              {job?.hasMultiplePositions && job?.positions && job.positions.length > 0 && (
+                <div className="p-3 bg-indigo-50/80 border border-indigo-200 rounded-2xl space-y-2">
+                  <label className="font-extrabold text-indigo-950 text-xs block">
+                    ✨ Selecione a vaga que você quer disputar: <span className="text-rose-500">*</span>
+                  </label>
+                  <div className="space-y-1.5">
+                    {job.positions.map((pos, idx) => (
+                      <label
+                        key={idx}
+                        className={`flex items-center justify-between p-2.5 rounded-xl border cursor-pointer transition ${
+                          selectedPosition === pos.role
+                            ? 'bg-white border-indigo-600 ring-2 ring-indigo-500/20 text-slate-900 font-bold'
+                            : 'bg-white/60 border-slate-200 text-slate-700 hover:bg-white'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="radio"
+                            name="selected_pos"
+                            value={pos.role}
+                            checked={selectedPosition === pos.role}
+                            onChange={() => setSelectedPosition(pos.role)}
+                            className="w-4 h-4 text-indigo-600 focus:ring-indigo-500"
+                          />
+                          <span className="text-xs font-bold text-slate-800">{pos.role}</span>
+                          <span className="text-[10px] text-slate-400 font-normal">({pos.spots} {Number(pos.spots) === 1 ? 'vaga' : 'vagas'})</span>
+                        </div>
+                        <span className="text-xs font-black text-emerald-600">
+                          {pos.paymentType === 'a_combinar' ? 'A combinar' : (pos.paymentType === 'por_hora' ? `R$ ${pos.rate}/h` : `R$ ${pos.rate}`)}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              )}
 
 
 
@@ -10503,9 +10612,32 @@
 
               {/* Detalhes do Turno */}
               <div className="grid grid-cols-2 gap-3">
+                {job.hasMultiplePositions && job.positions && job.positions.length > 0 && (
+                  <div className="col-span-2 p-3.5 bg-indigo-50/80 border border-indigo-200 rounded-2xl space-y-1.5">
+                    <span className="text-[10px] font-black uppercase text-indigo-700 block tracking-wider">
+                      ✨ Vagas Abertas neste Anúncio ({job.positions.length} cargos):
+                    </span>
+                    {job.positions.map((pos, idx) => (
+                      <div key={idx} className="flex items-center justify-between py-1 border-b border-indigo-100 last:border-0 text-xs">
+                        <div className="font-extrabold text-slate-800 flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                          <span>{pos.role}</span>
+                          <span className="text-[10px] text-slate-400 font-normal">({pos.spots} {Number(pos.spots) === 1 ? 'vaga' : 'vagas'})</span>
+                        </div>
+                        <span className="font-black text-emerald-600 text-xs">
+                          {pos.paymentType === 'a_combinar' ? 'A combinar' : (pos.paymentType === 'por_hora' ? `R$ ${pos.rate}/h` : `R$ ${pos.rate}`)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl">
                   <span className="text-slate-400 block text-[11px] font-bold mb-1">📅 Data do Evento</span>
-                  <span className="font-extrabold text-slate-900 text-sm">{formatJobDate(job.date)}</span>
+                  <span className="font-extrabold text-slate-900 text-sm">
+                    {(job.noFixedDate || job.dateUndefined || !job.date)
+                      ? 'Sem data definida (A combinar)'
+                      : formatJobDate(job.date, job)}
+                  </span>
                 </div>
                 <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl">
                   <span className="text-slate-400 block text-[11px] font-bold mb-1">⏰ Horário do Turno</span>
@@ -10958,7 +11090,7 @@
 
                 <div className="flex flex-wrap gap-1.5">
 
-                  {['Garçom', 'Bartender', 'Cozinha', 'Recepção', 'Segurança', 'Limpeza', 'Caixa'].map(cat => {
+                  {['Garçom', 'Bartender', 'Sushiman', 'Sub Chef', 'Gerente', 'Cozinha', 'Recepção', 'Segurança', 'Limpeza', 'Caixa'].map(cat => {
 
                     const active = userCategories.some(uc => uc.toLowerCase().includes(cat.toLowerCase()) || cat.toLowerCase().includes(uc.toLowerCase()));
 
@@ -11208,6 +11340,12 @@
 
       const [error, setError] = useState('');
 
+      const [selectedPosition, setSelectedPosition] = useState(
+        (job?.hasMultiplePositions && job?.positions && job.positions.length > 0)
+          ? job.positions[0].role
+          : ''
+      );
+
 
 
       const remun = formatRemuneration(job);
@@ -11254,7 +11392,9 @@
 
           city: city.trim(),
 
-          experience: experience.trim()
+          experience: experience.trim(),
+
+          selectedPosition: selectedPosition || null
 
         });
 
@@ -11799,7 +11939,23 @@
 
       const [category, setCategory] = useState(initialJob ? initialJob.category : 'Garçom');
 
-      
+      // Suporte a Múltiplas Vagas / Cargos no mesmo anúncio
+      const [hasMultiplePositions, setHasMultiplePositions] = useState(
+        Boolean(initialJob?.hasMultiplePositions || (initialJob?.positions && initialJob.positions.length > 0))
+      );
+      const [positions, setPositions] = useState(
+        (initialJob?.positions && initialJob.positions.length > 0)
+          ? initialJob.positions
+          : [
+              { id: 'pos-1', role: 'Garçom', spots: 2, rate: '200', paymentType: 'diaria_fixa' },
+              { id: 'pos-2', role: 'Sushiman', spots: 1, rate: '350', paymentType: 'diaria_fixa' }
+            ]
+      );
+
+      // Suporte a Vaga Sem Data Definida (A combinar / Banco de talentos / Início imediato)
+      const [noFixedDate, setNoFixedDate] = useState(
+        Boolean(initialJob?.noFixedDate || initialJob?.dateUndefined || (initialJob && !initialJob.date))
+      );
 
       // Remuneration model states: 'diaria_fixa' | 'por_hora' | 'so_comissao' | 'fixo_mais_comissao'
 
@@ -11865,6 +12021,18 @@
 
         e.preventDefault();
 
+        const calculatedSpots = hasMultiplePositions && positions.length > 0
+          ? positions.reduce((acc, p) => acc + (Number(p.spots) || 1), 0)
+          : (Number(totalSpots) || 1);
+
+        const autoTitle = hasMultiplePositions && positions.length > 0
+          ? positions.map(p => `${p.spots}x ${p.role}`).join(', ')
+          : title.trim();
+
+        const calculatedCategory = hasMultiplePositions && positions.length > 0
+          ? positions[0].role
+          : category;
+
         onSave({
 
           ...(initialJob || {}),
@@ -11875,31 +12043,39 @@
 
           companyName: companyName.trim() || (isAdmin ? 'Contratante Externo' : (company.name || 'Empresa')),
 
-          title: title.trim(),
+          title: title.trim() || autoTitle,
 
-          category,
+          category: calculatedCategory,
 
-          paymentType,
+          hasMultiplePositions: Boolean(hasMultiplePositions && positions.length > 0),
 
-          rate: (paymentType === 'so_comissao' || paymentType === 'a_combinar') ? 0 : (paymentType === 'por_hora' ? Number(hourlyRate) : (Number(rate) || 0)),
+          positions: hasMultiplePositions ? positions : [],
 
-          hourlyRate: paymentType === 'por_hora' ? (Number(hourlyRate) || 0) : null,
+          paymentType: hasMultiplePositions ? 'a_combinar' : paymentType,
 
-          commissionRate: (paymentType === 'so_comissao' || paymentType === 'fixo_mais_comissao') ? (Number(commissionRate) || 0) : null,
+          rate: hasMultiplePositions ? 0 : ((paymentType === 'so_comissao' || paymentType === 'a_combinar') ? 0 : (paymentType === 'por_hora' ? Number(hourlyRate) : (Number(rate) || 0))),
 
-          commissionDetail: (paymentType === 'so_comissao' || paymentType === 'fixo_mais_comissao' || paymentType === 'a_combinar') ? commissionDetail.trim() : null,
+          hourlyRate: (!hasMultiplePositions && paymentType === 'por_hora') ? (Number(hourlyRate) || 0) : null,
 
-          totalSpots: Number(totalSpots) || 1,
+          commissionRate: (!hasMultiplePositions && (paymentType === 'so_comissao' || paymentType === 'fixo_mais_comissao')) ? (Number(commissionRate) || 0) : null,
+
+          commissionDetail: commissionDetail.trim() || null,
+
+          totalSpots: calculatedSpots,
 
           filledSpots: Number(filledSpots) || 0,
 
-          status: (Number(filledSpots) >= Number(totalSpots)) ? 'encerrada' : (isJobExpired({ date }) ? 'pausada' : 'ativa'),
+          status: (Number(filledSpots) >= Number(calculatedSpots)) ? 'encerrada' : ((!noFixedDate && isJobExpired({ date })) ? 'pausada' : 'ativa'),
 
-          date,
+          noFixedDate: Boolean(noFixedDate),
 
-          startTime,
+          dateUndefined: Boolean(noFixedDate),
 
-          endTime,
+          date: noFixedDate ? '' : date,
+
+          startTime: noFixedDate ? 'A combinar' : startTime,
+
+          endTime: noFixedDate ? 'A combinar' : endTime,
 
           address: address.trim(),
 
@@ -12038,25 +12214,152 @@
 
 
 
-              <div>
-
-                <label className="font-bold text-slate-700 block mb-1 text-xs">Categoria Profissional</label>
-
-                <select
-
-                  value={category}
-
-                  onChange={e => setCategory(e.target.value)}
-
-                  className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl font-medium text-sm text-slate-800 focus:bg-white"
-
-                >
-
-                  {CATEGORIES.filter(c => c !== 'Todos').map(c => <option key={c} value={c}>{c}</option>)}
-
-                </select>
-
+              {/* SELETOR DE MODO: VAGA ÚNICA OU VÁRIAS VAGAS NO MESMO ANÚNCIO */}
+              <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <span className="font-black text-slate-800 text-xs block">Tipo de Anúncio:</span>
+                    <span className="text-[11px] text-slate-500">Cadastre uma função individual ou várias vagas juntas</span>
+                  </div>
+                  <div className="flex items-center gap-1 bg-white p-1 border border-slate-200 rounded-xl shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => setHasMultiplePositions(false)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                        !hasMultiplePositions ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      Vaga Única
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setHasMultiplePositions(true);
+                        if (!title || title === 'Garçom') {
+                          setTitle(positions.map(p => p.role).join(', '));
+                        }
+                      }}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                        hasMultiplePositions ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      ✨ Várias Vagas Juntas
+                    </button>
+                  </div>
+                </div>
               </div>
+
+              {/* Construtor de Múltiplas Vagas no Mesmo Anúncio */}
+              {hasMultiplePositions ? (
+                <div className="p-3.5 bg-indigo-50/70 border border-indigo-200 rounded-2xl space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="font-black text-indigo-950 text-xs">Vagas Abertas neste Anúncio:</h4>
+                      <p className="text-[10px] text-indigo-700">Adicione os cargos (ex: Sushiman, Sub Chef, Gerente, Garçom)</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newId = `pos-${Date.now()}`;
+                        setPositions([...positions, { id: newId, role: 'Sub Chef', spots: 1, rate: '250', paymentType: 'diaria_fixa' }]);
+                      }}
+                      className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-xs flex items-center gap-1 shadow-xs transition"
+                    >
+                      <Icon name="plus" className="w-3.5 h-3.5" />
+                      <span>Adicionar Cargo</span>
+                    </button>
+                  </div>
+
+                  <div className="space-y-2">
+                    {positions.map((pos, index) => (
+                      <div key={pos.id || index} className="p-3 bg-white border border-slate-200 rounded-xl shadow-2xs space-y-2">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-[10px] font-black uppercase text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md">
+                            Função #{index + 1}
+                          </span>
+                          {positions.length > 1 && (
+                            <button
+                              type="button"
+                              onClick={() => setPositions(positions.filter((_, i) => i !== index))}
+                              className="text-rose-500 hover:text-rose-700 font-bold text-xs px-1"
+                              title="Remover cargo"
+                            >
+                              Remover ✕
+                            </button>
+                          )}
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                          <div>
+                            <label className="text-[10px] font-bold text-slate-600 block mb-0.5">Cargo / Função</label>
+                            <select
+                              value={pos.role}
+                              onChange={e => {
+                                const updated = [...positions];
+                                updated[index].role = e.target.value;
+                                setPositions(updated);
+                              }}
+                              className="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold text-slate-800"
+                            >
+                              {CATEGORIES.filter(c => c !== 'Todos').map(c => (
+                                <option key={c} value={c}>{c}</option>
+                              ))}
+                            </select>
+                          </div>
+
+                          <div>
+                            <label className="text-[10px] font-bold text-slate-600 block mb-0.5">Qtd de Vagas</label>
+                            <input
+                              type="number"
+                              min="1"
+                              value={pos.spots}
+                              onChange={e => {
+                                const updated = [...positions];
+                                updated[index].spots = Math.max(1, parseInt(e.target.value) || 1);
+                                setPositions(updated);
+                              }}
+                              className="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold text-slate-800"
+                            />
+                          </div>
+
+                          <div>
+                            <label className="text-[10px] font-bold text-slate-600 block mb-0.5">Cachê / Valor (R$)</label>
+                            <input
+                              type="text"
+                              value={pos.rate}
+                              onChange={e => {
+                                const updated = [...positions];
+                                updated[index].rate = e.target.value;
+                                setPositions(updated);
+                              }}
+                              placeholder="Ex: 250 ou A combinar"
+                              className="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold text-emerald-700"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="text-right text-[11px] font-bold text-indigo-900 bg-white/80 p-2.5 rounded-xl border border-indigo-100 flex justify-between items-center">
+                    <span>Total de profissionais necessários:</span>
+                    <span className="font-black text-indigo-700 text-sm">
+                      {positions.reduce((acc, p) => acc + (Number(p.spots) || 1), 0)} vagas no total
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1 text-xs">Categoria Profissional</label>
+                  <select
+                    value={category}
+                    onChange={e => setCategory(e.target.value)}
+                    className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl font-medium text-sm text-slate-800 focus:bg-white"
+                  >
+                    {CATEGORIES.filter(c => c !== 'Todos').map(c => <option key={c} value={c}>{c}</option>)}
+                  </select>
+                </div>
+              )}
 
 
 
@@ -12609,55 +12912,70 @@
 
 
               {/* VAGAS E HORÁRIO */}
+              {!hasMultiplePositions && (
+                <div className="grid grid-cols-2 gap-3 p-3 bg-indigo-50/70 rounded-xl border border-indigo-100">
+                  <div>
+                    <label className="font-bold text-slate-700 block mb-1">Vagas Totais</label>
+                    <input type="number" min="1" required value={totalSpots} onChange={e => setTotalSpots(e.target.value)} className="w-full p-2 bg-white border rounded-xl font-bold" />
+                  </div>
+                  <div>
+                    <label className="font-bold text-slate-700 block mb-1">Preenchidas</label>
+                    <input type="number" min="0" value={filledSpots} onChange={e => setFilledSpots(e.target.value)} className="w-full p-2 bg-white border rounded-xl font-bold" />
+                  </div>
+                </div>
+              )}
 
-              <div className="grid grid-cols-2 gap-3 p-3 bg-indigo-50/70 rounded-xl border border-indigo-100">
 
-                <div>
 
-                  <label className="font-bold text-slate-700 block mb-1">Vagas Totais</label>
-
-                  <input type="number" min="1" required value={totalSpots} onChange={e => setTotalSpots(e.target.value)} className="w-full p-2 bg-white border rounded-xl font-bold" />
-
+              <div className="space-y-2">
+                <div className="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
+                  <label className="flex items-center gap-2 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={noFixedDate}
+                      onChange={e => {
+                        setNoFixedDate(e.target.checked);
+                        if (e.target.checked) setDate('');
+                      }}
+                      className="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500"
+                    />
+                    <span className="font-bold text-slate-800 text-xs">
+                      Sem data definida (A combinar / Banco de talentos / Início imediato)
+                    </span>
+                  </label>
+                  {noFixedDate && (
+                    <span className="text-[10px] font-black uppercase text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+                      Sem data fixa
+                    </span>
+                  )}
                 </div>
 
-                <div>
-
-                  <label className="font-bold text-slate-700 block mb-1">Preenchidas</label>
-
-                  <input type="number" min="0" value={filledSpots} onChange={e => setFilledSpots(e.target.value)} className="w-full p-2 bg-white border rounded-xl font-bold" />
-
-                </div>
-
-              </div>
-
-
-
-              <div className="grid grid-cols-3 gap-2">
-
-                <div>
-
-                  <label className="font-bold text-slate-700 block mb-1">Data</label>
-
-                  <input type="date" required value={date} onChange={e => setDate(e.target.value)} className="w-full p-2 bg-slate-50 border rounded-xl" />
-
-                </div>
-
-                <div>
-
-                  <label className="font-bold text-slate-700 block mb-1">Início</label>
-
-                  <input type="time" required value={startTime} onChange={e => setStartTime(e.target.value)} className="w-full p-2 bg-slate-50 border rounded-xl" />
-
-                </div>
-
-                <div>
-
-                  <label className="font-bold text-slate-700 block mb-1">Fim</label>
-
-                  <input type="time" required value={endTime} onChange={e => setEndTime(e.target.value)} className="w-full p-2 bg-slate-50 border rounded-xl" />
-
-                </div>
-
+                {!noFixedDate ? (
+                  <div className="grid grid-cols-3 gap-2">
+                    <div>
+                      <label className="font-bold text-slate-700 block mb-1">Data <span className="text-rose-500">*</span></label>
+                      <input type="date" required={!noFixedDate} value={date} onChange={e => setDate(e.target.value)} className="w-full p-2 bg-slate-50 border rounded-xl" />
+                    </div>
+                    <div>
+                      <label className="font-bold text-slate-700 block mb-1">Início</label>
+                      <input type="time" required={!noFixedDate} value={startTime} onChange={e => setStartTime(e.target.value)} className="w-full p-2 bg-slate-50 border rounded-xl" />
+                    </div>
+                    <div>
+                      <label className="font-bold text-slate-700 block mb-1">Fim</label>
+                      <input type="time" required={!noFixedDate} value={endTime} onChange={e => setEndTime(e.target.value)} className="w-full p-2 bg-slate-50 border rounded-xl" />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="p-3 bg-amber-50/80 border border-amber-200 rounded-xl text-xs text-amber-900 flex items-center gap-2">
+                    <span className="text-base">⏳</span>
+                    <div>
+                      <strong className="block font-bold">Vaga sem data fixa</strong>
+                      <span className="text-[11px] text-amber-800">
+                        Os freelancers poderão se candidatar a qualquer momento. A data e horário serão combinados diretamente no WhatsApp. Esta vaga não expira automaticamente às 06:00.
+                      </span>
+                    </div>
+                  </div>
+                )}
               </div>
 
 
@@ -13071,7 +13389,7 @@
 
           if (job.status === 'pausada' || job.status === 'encerrada' || isJobExpired(job)) return false;
 
-          const matchCat = selectedCategory === 'Todos' || job.category === selectedCategory;
+          const matchCat = selectedCategory === 'Todos' || job.category === selectedCategory || (job.positions && job.positions.some(p => p.role === selectedCategory));
 
           const query = searchQuery.toLowerCase();
 
@@ -13092,7 +13410,7 @@
 
 
 
-          const matchDate = checkDateMatch(job.date, dateFilter, customDate);
+          const matchDate = checkDateMatch(job.date, dateFilter, customDate, job);
 
           const matchShift = checkShiftMatch(job.startTime, job.endTime, shiftFilter, freeFrom, freeUntil);
 
@@ -13463,6 +13781,8 @@
                       { id: 'amanha', label: '☀️ Amanhã' },
 
                       { id: 'fim_de_semana', label: '🎉 Fim de Semana' },
+
+                      { id: 'sem_data', label: '⏳ Sem Data / A Combinar' },
 
                       { id: 'custom', label: '🗓️ Outra Data' }
 
@@ -13945,13 +14265,38 @@
 
                         <div className="bg-slate-50 p-3 rounded-2xl mb-4 text-xs text-slate-700 space-y-1.5 border border-slate-100">
 
+                          {/* Mini-lista de Múltiplas Vagas neste Anúncio */}
+                          {job.hasMultiplePositions && job.positions && job.positions.length > 0 && (
+                            <div className="bg-indigo-50/60 border border-indigo-200/80 rounded-xl p-2.5 space-y-1 mb-2">
+                              <span className="text-[10px] font-black uppercase text-indigo-700 block tracking-wider">
+                                ✨ Vagas Abertas neste Anúncio ({job.positions.length} cargos):
+                              </span>
+                              {job.positions.map((pos, idx) => (
+                                <div key={idx} className="flex items-center justify-between py-0.5 border-b border-indigo-100/50 last:border-0 text-xs">
+                                  <div className="font-extrabold text-slate-800 flex items-center gap-1.5">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    <span>{pos.role}</span>
+                                    <span className="text-[10px] text-slate-400 font-normal">({pos.spots} {Number(pos.spots) === 1 ? 'vaga' : 'vagas'})</span>
+                                  </div>
+                                  <span className="font-black text-emerald-600 text-xs">
+                                    {pos.paymentType === 'a_combinar' ? 'A combinar' : (pos.paymentType === 'por_hora' ? `R$ ${pos.rate}/h` : `R$ ${pos.rate}`)}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+
                           <div className="flex items-center justify-between gap-1.5 font-semibold">
 
                             <div className="flex items-center gap-1.5">
 
                               <Icon name="calendar" className="w-3.5 h-3.5 text-slate-500" />
 
-                              <span>{formatJobDate(job.date)} • {job.startTime} às {job.endTime}</span>
+                              <span>
+                                {(job.noFixedDate || job.dateUndefined || !job.date)
+                                  ? 'Sem data definida (A combinar)'
+                                  : `${formatJobDate(job.date, job)} • ${job.startTime} às ${job.endTime}`}
+                              </span>
 
                             </div>
 
