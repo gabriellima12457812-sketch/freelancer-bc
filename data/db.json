@@ -2809,6 +2809,26 @@
       "trialStartDate": "2026-10-15T01:47:19.496Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792029990261",
+      "name": "Leonardo Goulart muniz",
+      "email": "munizleonardo740@gmail.com",
+      "password": "Sandra22@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "031.647.520-32",
+      "cnpj": null,
+      "phone": "47991107331",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 32,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T02:06:30.261Z",
+      "trialStartDate": "2026-10-15T02:06:30.261Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
