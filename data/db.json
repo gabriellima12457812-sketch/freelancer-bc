@@ -3349,6 +3349,26 @@
         "Caixa",
         "Limpeza"
       ]
+    },
+    {
+      "id": "u-1792094077867",
+      "name": "Giseli  Maria Graeff",
+      "email": "giiselih@gmail.com",
+      "password": "25021994",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "099.142.539-11",
+      "cnpj": null,
+      "phone": "47988649474",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 32,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T19:54:37.867Z",
+      "trialStartDate": "2026-10-15T19:54:37.867Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
