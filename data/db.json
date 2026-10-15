@@ -2789,6 +2789,26 @@
       "trialStartDate": "2026-10-15T01:36:06.842Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792028839496",
+      "name": "Thiago Henrique Arruda Emílio",
+      "email": "thiagohenriqueemilio@gmail.com",
+      "password": "99921370",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "069.048.619-75",
+      "cnpj": null,
+      "phone": "47999055439",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 37,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:47:19.496Z",
+      "trialStartDate": "2026-10-15T01:47:19.496Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
