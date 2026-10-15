@@ -2629,6 +2629,26 @@
       "trialStartDate": "2026-10-15T01:15:50.734Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792027043233",
+      "name": "Ilmara reis dos santos",
+      "email": "ilmarasantos1993@gmail.com",
+      "password": "ilmara2101",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "063.121.085-70",
+      "cnpj": null,
+      "phone": "47992441137",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "age": 33,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:17:23.233Z",
+      "trialStartDate": "2026-10-15T01:17:23.233Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
