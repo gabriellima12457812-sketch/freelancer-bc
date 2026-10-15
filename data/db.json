@@ -3421,6 +3421,26 @@
         "Caixa",
         "Limpeza"
       ]
+    },
+    {
+      "id": "u-1792097338444",
+      "name": "Patrick silva",
+      "email": "vilpac08@gmail.com",
+      "password": "20305095",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "030.873.130-17",
+      "cnpj": null,
+      "phone": "47989247281",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 26,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T20:48:58.444Z",
+      "trialStartDate": "2026-10-15T20:48:58.444Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
