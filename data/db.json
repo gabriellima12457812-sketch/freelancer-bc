@@ -2829,6 +2829,26 @@
       "trialStartDate": "2026-10-15T02:06:30.261Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792030127461",
+      "name": "bruna regina pereira de liz",
+      "email": "brunaliz405@gmail.com",
+      "password": "Thales30",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "140.527.779-30",
+      "cnpj": null,
+      "phone": "47984965627",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 23,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T02:08:47.461Z",
+      "trialStartDate": "2026-10-15T02:08:47.461Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
