@@ -2378,6 +2378,26 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-15T00:57:34.861Z"
+    },
+    {
+      "id": "u-1792026269555",
+      "name": "Mariane Marjorye",
+      "email": "marjorye337@gmail.com",
+      "password": "124574Be",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "087.785.989-23",
+      "cnpj": null,
+      "phone": "47996966807",
+      "businessType": null,
+      "profession": "Promoter de Vendas",
+      "age": 31,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:04:29.555Z",
+      "trialStartDate": "2026-10-15T01:04:29.555Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
