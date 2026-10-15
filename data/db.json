@@ -3015,6 +3015,26 @@
       "trialStartDate": "2026-10-15T10:08:25.345Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792064612936",
+      "name": "Everton Felipe Do Amaral",
+      "email": "evertonamaralsbs@hotmail.com",
+      "password": "91572197Ab@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "104.635.989-46",
+      "cnpj": null,
+      "phone": "47479924778",
+      "businessType": null,
+      "profession": "Segurança",
+      "age": 29,
+      "experienceTime": "1 a 2 anos",
+      "city": "Camboriú",
+      "createdAt": "2026-10-15T11:43:32.936Z",
+      "trialStartDate": "2026-10-15T11:43:32.936Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
