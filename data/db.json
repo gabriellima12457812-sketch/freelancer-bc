@@ -3051,7 +3051,8 @@
       "isSubscriptionActive": true,
       "subscriptionTier": "free",
       "status": "aprovado",
-      "createdAt": "2026-10-15T13:08:32.818Z"
+      "createdAt": "2026-10-15T13:08:32.818Z",
+      "experience": ""
     }
   ],
   "jobs": [
