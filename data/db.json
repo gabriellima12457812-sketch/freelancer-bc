@@ -2304,6 +2304,23 @@
       "status": "aprovado",
       "createdAt": "2026-10-15T00:51:34.608Z",
       "experience": ""
+    },
+    {
+      "id": "u-1792025550697",
+      "name": "MARIA VITORIA DA SILVA CARNEIRO CANDIDO",
+      "role": "freelancer",
+      "cpf": "098.252.799-10",
+      "phone": "47999188140",
+      "email": "09825279910@freelancerbc.local",
+      "password": "3258",
+      "age": 20,
+      "experienceTime": "Menos de 1 ano",
+      "profession": "Segurança",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T00:52:30.698Z"
     }
   ],
   "jobs": [
@@ -2327,21 +2344,8 @@
       "address": "Marejada Itajaí",
       "attire": "All Black",
       "whatsapp": "48991867605",
-      "clicks": 1,
-      "applicants": [
-        {
-          "freelancerId": "u-1792025550697",
-          "name": "MARIA VITORIA DA SILVA CARNEIRO CANDIDO",
-          "phone": "47999188140",
-          "email": "09825279910@freelancerbc.local",
-          "profession": "Segurança",
-          "age": 20,
-          "experienceTime": "Menos de 1 ano",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-15T00:52:31.996Z",
-          "hiredStatus": "pendente"
-        }
-      ],
+      "clicks": 0,
+      "applicants": [],
       "createdAt": "2026-10-15T00:46:51.205Z"
     },
     {
