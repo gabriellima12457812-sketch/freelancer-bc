@@ -2169,7 +2169,7 @@
 
 
 
-      const handleShareJob = async (job) => {
+      const handleShareJob = async (job, shareRole = 'geral') => {
 
         if (!job) return;
 
@@ -2185,9 +2185,22 @@
 
         const shiftH = calculateShiftHours(job.startTime, job.endTime);
 
+        const isFreelancer = shareRole === 'indicacao_freelancer' || (currentUser && currentUser.role === 'freelancer');
+        const isEmpresa = shareRole === 'empresa_divulgacao' || (currentUser && currentUser.role === 'empresa');
+
+        const shareHeader = isFreelancer
+          ? `🤝 *INDICAÇÃO DE VAGA EM BALNEÁRIO CAMBORIÚ!*`
+          : (isEmpresa ? `📢 *VAGA ABERTA — ${job.companyName.toUpperCase()}!*` : `🔥 *VAGA DISPONÍVEL EM BALNEÁRIO CAMBORIÚ!*`);
+
+        const introLine = isFreelancer
+          ? `Oi! Encontrei esta vaga no app *Freelancer BC* e lembrei de você:`
+          : (isEmpresa ? `O estabelecimento *${job.companyName}* está com vaga aberta para o seguinte turno:` : null);
+
         const shareText = [
-          `🔥 *VAGA DISPONÍVEL EM BALNEÁRIO CAMBORIÚ!*`,
+          shareHeader,
           ``,
+          introLine,
+          introLine ? `` : null,
           `💼 *Cargo / Função:* ${job.title} (${job.category})`,
           `🏢 *Estabelecimento:* ${job.companyName}`,
           `💰 *Remuneração:* ${remun.display} (${remun.label})`,
@@ -9362,16 +9375,16 @@
                                 <span className="text-emerald-600 font-bold">Ver candidatos →</span>
                               </button>
 
-                              {/* Botão de Compartilhar Vaga */}
+                              {/* Botão de Indicar / Divulgar Vaga */}
                               {onShareJob && (
                                 <button
                                   type="button"
-                                  onClick={() => onShareJob(job)}
-                                  className="w-full py-2 px-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200/80 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition active:scale-98"
-                                  title="Compartilhar link desta vaga no WhatsApp, Instagram, Facebook..."
+                                  onClick={() => onShareJob(job, 'empresa_divulgacao')}
+                                  className="w-full py-2.5 px-3 bg-gradient-to-r from-indigo-50 to-emerald-50 hover:from-indigo-100 hover:to-emerald-100 text-indigo-900 border border-indigo-200 rounded-xl text-xs font-black flex items-center justify-center gap-2 transition active:scale-98 shadow-2xs"
+                                  title="Indicar ou divulgar vaga no WhatsApp, Instagram, Facebook..."
                                 >
-                                  <Icon name="share" className="w-4 h-4" />
-                                  <span>Compartilhar Vaga (Link Redes/Grupos)</span>
+                                  <Icon name="share" className="w-4 h-4 text-indigo-600" />
+                                  <span>Indicar / Divulgar Vaga no WhatsApp</span>
                                 </button>
                               )}
 
@@ -9779,7 +9792,7 @@
 
               <div className="flex items-center gap-2.5">
 
-                <div className="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 to-emerald-500 text-white flex items-center justify-center shadow-sm">
 
                   <Icon name="share" className="w-5 h-5" />
 
@@ -9787,9 +9800,13 @@
 
                 <div>
 
-                  <h3 className="text-lg font-black text-slate-900 leading-tight">Compartilhar Vaga</h3>
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 leading-tight">
+                    {jobData?.shareRole === 'indicacao_freelancer' ? 'Indicar Vaga para Amigos' : 'Indicar / Divulgar Vaga'}
+                  </h3>
 
-                  <p className="text-xs text-slate-500">Divulgue no WhatsApp, Instagram e Facebook</p>
+                  <p className="text-xs text-slate-500">
+                    {jobData?.shareRole === 'indicacao_freelancer' ? 'Envie para um amigo freelancer ou em grupos de WhatsApp' : 'Divulgue no WhatsApp, Instagram e Facebook'}
+                  </p>
 
                 </div>
 
@@ -9895,7 +9912,7 @@
 
                   <Icon name="whatsapp" className="w-4 h-4" />
 
-                  <span>Enviar em Grupos de WhatsApp</span>
+                  <span>Enviar Indicação no WhatsApp</span>
 
                 </a>
 
@@ -9913,7 +9930,7 @@
 
                   <Icon name="copy" className="w-4 h-4" />
 
-                  <span>{textCopied ? 'Texto Completo Copiado!' : 'Copiar Texto Pronto para Postar no Facebook/Insta'}</span>
+                  <span>{textCopied ? 'Texto da Indicação Copiado!' : 'Copiar Texto Pronto da Indicação'}</span>
 
                 </button>
 
@@ -13960,7 +13977,7 @@
 
 
 
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1">
 
                         <button
 
@@ -13968,13 +13985,13 @@
 
                           onClick={() => onWhatsappClick(job)}
 
-                          className="flex-1 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl text-sm flex items-center justify-center gap-2 shadow-md transition transform active:scale-98"
+                          className="flex-1 py-3.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition transform active:scale-98"
 
                         >
 
-                          <Icon name="whatsapp" className="w-5 h-5 text-white" />
+                          <Icon name="whatsapp" className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
 
-                          <span>Chamar no Whats</span>
+                          <span>Quero me Candidatar</span>
 
                         </button>
 
@@ -13984,15 +14001,17 @@
 
                             type="button"
 
-                            onClick={() => onShareJob(job)}
+                            onClick={() => onShareJob(job, 'indicacao_freelancer')}
 
-                            className="p-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-indigo-600 rounded-2xl transition active:scale-95 shrink-0"
+                            className="py-3.5 px-4 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-2xl text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 transition active:scale-95 shrink-0"
 
-                            title="Compartilhar vaga com amigos ou grupos"
+                            title="Indicar esta vaga para um amigo freelancer ou em grupos de WhatsApp"
 
                           >
 
-                            <Icon name="share" className="w-5 h-5" />
+                            <Icon name="share" className="w-4 h-4 text-indigo-600" />
+
+                            <span>Indicar Vaga</span>
 
                           </button>
 
