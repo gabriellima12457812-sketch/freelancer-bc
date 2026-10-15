@@ -3297,6 +3297,23 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-15T19:10:57.912Z"
+    },
+    {
+      "id": "u-1792091815798",
+      "name": "FABIO JUNIOR DE OLIVEIRA",
+      "role": "freelancer",
+      "cpf": "071.389.839-99",
+      "phone": "47997387965",
+      "email": "07138983999@freelancerbc.local",
+      "password": "1521",
+      "age": 38,
+      "experienceTime": "Mais de 5 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T19:16:55.798Z"
     }
   ],
   "jobs": [
