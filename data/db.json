@@ -2523,6 +2523,26 @@
       "trialStartDate": "2026-10-15T01:12:42.998Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792026836891",
+      "name": "Dienifer Goulart Bittencourt",
+      "email": "japaluafm@gmail.com",
+      "password": "pitchula",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "125.131.839-83",
+      "cnpj": null,
+      "phone": "47997374255",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 24,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:13:56.891Z",
+      "trialStartDate": "2026-10-15T01:13:56.891Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
