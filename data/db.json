@@ -2949,6 +2949,26 @@
       "trialStartDate": "2026-10-15T02:53:25.335Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792038661952",
+      "name": "Priscila Debatin",
+      "email": "prisciladebatin9@gmail.com",
+      "password": "310519pjv",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "071.483.679-64",
+      "cnpj": null,
+      "phone": "47999305616",
+      "businessType": null,
+      "profession": "Bartender & Mixologista",
+      "age": 39,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Itajai ",
+      "createdAt": "2026-10-15T04:31:01.952Z",
+      "trialStartDate": "2026-10-15T04:31:01.952Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
