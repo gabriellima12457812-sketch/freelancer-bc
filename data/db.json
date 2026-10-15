@@ -2398,6 +2398,26 @@
       "trialStartDate": "2026-10-15T01:04:29.555Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792026404148",
+      "name": "Lucas",
+      "email": "lucashgabriel703@gmail.com",
+      "password": "20192020",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "703.171.972-07",
+      "cnpj": null,
+      "phone": "47996225311",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 26,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:06:44.148Z",
+      "trialStartDate": "2026-10-15T01:06:44.148Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
