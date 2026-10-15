@@ -2975,6 +2975,26 @@
         "Recepção",
         "Caixa"
       ]
+    },
+    {
+      "id": "u-1792056395084",
+      "name": "Jenypher Lima ramos",
+      "email": "jenypher.ramos@gmail.com",
+      "password": "280310",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "078.149.634-94",
+      "cnpj": null,
+      "phone": "82993520715",
+      "businessType": null,
+      "profession": "Promoter de Vendas",
+      "age": 37,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T09:26:35.084Z",
+      "trialStartDate": "2026-10-15T09:26:35.084Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
