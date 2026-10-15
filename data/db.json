@@ -3344,7 +3344,8 @@
       "createdAt": "2026-10-15T19:22:34.131Z",
       "alertCategories": [
         "Recepção",
-        "Caixa"
+        "Caixa",
+        "Limpeza"
       ]
     }
   ],
