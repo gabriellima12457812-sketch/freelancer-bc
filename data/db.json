@@ -2482,6 +2482,26 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-15T01:09:48.245Z"
+    },
+    {
+      "id": "u-1792026745647",
+      "name": "Jorge Ricardo",
+      "email": "jorgepersonalchef@gmail.com",
+      "password": "99324450",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "008.895.290-86",
+      "cnpj": null,
+      "phone": "47999324450",
+      "businessType": null,
+      "profession": "Cozinheiro",
+      "age": 41,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:12:25.647Z",
+      "trialStartDate": "2026-10-15T01:12:25.647Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
