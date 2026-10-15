@@ -2909,6 +2909,26 @@
       "trialStartDate": "2026-10-15T02:36:55.586Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792032206012",
+      "name": "EMILYM SILVEIRA COSTA",
+      "email": "costaemilyn80@gmail.com",
+      "password": "427826",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "046.481.860-52",
+      "cnpj": null,
+      "phone": "53999583901",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 27,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T02:43:26.012Z",
+      "trialStartDate": "2026-10-15T02:43:26.012Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
