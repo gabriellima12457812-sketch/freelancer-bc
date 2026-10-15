@@ -3058,8 +3058,21 @@
       "address": "Palhoça Santa Catarina",
       "attire": "All Black",
       "whatsapp": "48996099890",
-      "clicks": 0,
-      "applicants": [],
+      "clicks": 1,
+      "applicants": [
+        {
+          "freelancerId": "u-1792069712818",
+          "name": "Laiane guimaraes martins",
+          "phone": "91981573462",
+          "email": "05214735278@freelancerbc.local",
+          "profession": "Recepção",
+          "age": 23,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T13:08:33.540Z",
+          "hiredStatus": "pendente"
+        }
+      ],
       "createdAt": "2026-10-15T11:27:53.114Z"
     },
     {
