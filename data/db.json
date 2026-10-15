@@ -3175,6 +3175,26 @@
       "trialStartDate": "2026-10-15T16:39:47.224Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792084385543",
+      "name": "Joyce Jasche",
+      "email": "joycorretoraimoves@gmail.com",
+      "password": "joy1006",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "007.647.709-69",
+      "cnpj": null,
+      "phone": "47996826036",
+      "businessType": null,
+      "profession": "Promoter de Vendas",
+      "age": 45,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T17:13:05.543Z",
+      "trialStartDate": "2026-10-15T17:13:05.543Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
