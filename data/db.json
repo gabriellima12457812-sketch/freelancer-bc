@@ -3268,6 +3268,63 @@
   ],
   "jobs": [
     {
+      "id": "job-1792091148577",
+      "companyId": "ext-1792091148577",
+      "companyName": "di mare",
+      "title": "avenida atlantica",
+      "category": "Garçom",
+      "hasMultiplePositions": true,
+      "positions": [
+        {
+          "id": "pos-1",
+          "role": "Garçom",
+          "spots": 2,
+          "rate": "",
+          "paymentType": "diaria_fixa"
+        },
+        {
+          "id": "pos-2",
+          "role": "Sushiman",
+          "spots": 1,
+          "rate": "",
+          "paymentType": "diaria_fixa"
+        },
+        {
+          "id": "pos-1792091063719",
+          "role": "Recepção",
+          "spots": 1,
+          "rate": "",
+          "paymentType": "diaria_fixa"
+        },
+        {
+          "id": "pos-1792091073716",
+          "role": "Cozinha",
+          "spots": 1,
+          "rate": "",
+          "paymentType": "diaria_fixa"
+        }
+      ],
+      "paymentType": "a_combinar",
+      "rate": 0,
+      "hourlyRate": null,
+      "commissionRate": null,
+      "commissionDetail": null,
+      "totalSpots": 5,
+      "filledSpots": 0,
+      "status": "ativa",
+      "noFixedDate": true,
+      "dateUndefined": true,
+      "date": "",
+      "startTime": "A combinar",
+      "endTime": "A combinar",
+      "address": "Av. Atlântica, Balneário Camboriú",
+      "attire": "All Black",
+      "whatsapp": "47992728741",
+      "clicks": 0,
+      "applicants": [],
+      "createdAt": "2026-10-15T19:05:48.578Z"
+    },
+    {
       "id": "job-1792087153729",
       "companyId": "ext-1792087153729",
       "companyName": "Lucca cantina",
