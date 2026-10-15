@@ -3506,8 +3506,20 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "47992728741",
-      "clicks": 6,
+      "clicks": 7,
       "applicants": [
+        {
+          "freelancerId": "u-1792026269555",
+          "name": "Mariane Marjorye",
+          "phone": "47996966807",
+          "email": "marjorye337@gmail.com",
+          "profession": "Promoter de Vendas",
+          "age": 31,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T20:45:08.112Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1792093440269",
           "name": "Evania Bach",
