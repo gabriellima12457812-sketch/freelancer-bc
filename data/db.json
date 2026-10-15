@@ -2669,6 +2669,26 @@
       "trialStartDate": "2026-10-15T01:19:38.240Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792027222020",
+      "name": "Ariadyna inacio dos santos",
+      "email": "ariadynasantos1747@gmail.com",
+      "password": "97689435",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "180.945.007-19",
+      "cnpj": null,
+      "phone": "47991969435",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": null,
+      "experienceTime": "1 a 2 anos",
+      "city": "Itapema/ porto Belo / balneario camburio",
+      "createdAt": "2026-10-15T01:20:22.020Z",
+      "trialStartDate": "2026-10-15T01:20:22.020Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
