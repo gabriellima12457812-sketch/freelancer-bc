@@ -3235,7 +3235,11 @@
       "trialStartDate": "2026-10-15T18:03:48.260Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
-      "experience": "Experiencia em festas, eventos corporativos e eventos privados"
+      "experience": "Experiencia em festas, eventos corporativos e eventos privados",
+      "alertCategories": [
+        "Recepção",
+        "Limpeza"
+      ]
     }
   ],
   "jobs": [
