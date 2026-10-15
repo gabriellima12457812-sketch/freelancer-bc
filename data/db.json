@@ -2889,6 +2889,26 @@
       "trialStartDate": "2026-10-15T02:18:27.842Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792031815586",
+      "name": "Djane machado",
+      "email": "machadoquasetudo@hotmail.com",
+      "password": "machado99198#",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "837.729.529-68",
+      "cnpj": null,
+      "phone": "47991982923",
+      "businessType": null,
+      "profession": "Promoter de Vendas",
+      "age": 49,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T02:36:55.586Z",
+      "trialStartDate": "2026-10-15T02:36:55.586Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
