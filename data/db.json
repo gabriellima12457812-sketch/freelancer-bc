@@ -2995,6 +2995,26 @@
       "trialStartDate": "2026-10-15T09:26:35.084Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792058905345",
+      "name": "Vanessa Campos dos Santos",
+      "email": "vaneevini38@gmail.com",
+      "password": "040325",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "009.640.175-39",
+      "cnpj": null,
+      "phone": "47996183606",
+      "businessType": null,
+      "profession": "Segurança",
+      "age": 46,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Joinville ",
+      "createdAt": "2026-10-15T10:08:25.345Z",
+      "trialStartDate": "2026-10-15T10:08:25.345Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
