@@ -2502,6 +2502,26 @@
       "trialStartDate": "2026-10-15T01:12:25.647Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792026762998",
+      "name": "Sara Nunes",
+      "email": "sara@gmail.cim",
+      "password": "s24g04n06",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "043.929.180-17",
+      "cnpj": null,
+      "phone": "53999674758",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 22,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:12:42.998Z",
+      "trialStartDate": "2026-10-15T01:12:42.998Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
