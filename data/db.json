@@ -3297,6 +3297,23 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-15T19:10:57.912Z"
+    },
+    {
+      "id": "u-1792091883324",
+      "name": "Ingrid Mariela Maia de Lima",
+      "role": "freelancer",
+      "cpf": "012.264.189-29",
+      "phone": "49999319945",
+      "email": "01226418929@freelancerbc.local",
+      "password": "970\"58",
+      "age": 29,
+      "experienceTime": "Menos de 1 ano",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T19:18:03.324Z"
     }
   ],
   "jobs": [
