@@ -2341,6 +2341,26 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-15T00:56:02.563Z"
+    },
+    {
+      "id": "u-1792025812829",
+      "name": "Daniela da silva lins",
+      "email": "linsdaniela1234@gmail.com",
+      "password": "211215",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "426.891.538-90",
+      "cnpj": null,
+      "phone": "47997912180",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 32,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T00:56:52.829Z",
+      "trialStartDate": "2026-10-15T00:56:52.829Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
