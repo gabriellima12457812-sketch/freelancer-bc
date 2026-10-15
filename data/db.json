@@ -3470,6 +3470,23 @@
         "Segurança"
       ],
       "experience": "Vim do nordeste com experiência com atendimento ao público, hoje por um 1 ano e 2 meses, estou fixo como consultor de atendimento na farmácia Panvel, com o conhecimento que já tenho sempre estou aberto para um novo aprendizagem como também contribuiu na continuidade do melhor atendimento dente da empresa."
+    },
+    {
+      "id": "u-1792100394293",
+      "name": "Enzo Rafael Bandeira Matos",
+      "role": "freelancer",
+      "cpf": "060.373.179-17",
+      "phone": "47999106554",
+      "email": "06037317917@freelancerbc.local",
+      "password": "7264",
+      "age": 31,
+      "experienceTime": "Mais de 5 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T21:39:54.294Z"
     }
   ],
   "jobs": [
@@ -3580,20 +3597,8 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "47992728741",
-      "clicks": 9,
+      "clicks": 8,
       "applicants": [
-        {
-          "freelancerId": "u-1792100394293",
-          "name": "Enzo Rafael Bandeira Matos",
-          "phone": "47999106554",
-          "email": "06037317917@freelancerbc.local",
-          "profession": "Garçom",
-          "age": 31,
-          "experienceTime": "Mais de 5 anos",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-15T21:39:53.889Z",
-          "hiredStatus": "pendente"
-        },
         {
           "freelancerId": "u-1792100072606",
           "name": "Renata Rejane dos santos da silva",
