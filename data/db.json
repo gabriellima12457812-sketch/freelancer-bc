@@ -217,7 +217,11 @@
       "createdAt": "2026-10-08T20:35:01.312Z",
       "trialStartDate": "2026-10-08T20:35:01.312Z",
       "trialExpiryDate": "2026-12-07T20:42:20.730Z",
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "age": 40,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "experience": ""
     },
     {
       "id": "u-1791492459625",
