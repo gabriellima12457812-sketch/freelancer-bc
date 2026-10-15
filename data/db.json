@@ -2609,6 +2609,26 @@
       "trialStartDate": "2026-10-15T01:15:03.161Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792026950734",
+      "name": "CARLA ALEXANDRA PINHEIRO DE MELO",
+      "email": "carla.alexandra776@yahoo.com",
+      "password": "234518",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "871.726.152-04",
+      "cnpj": null,
+      "phone": "91984179050",
+      "businessType": null,
+      "profession": "Segurança",
+      "age": 41,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:15:50.734Z",
+      "trialStartDate": "2026-10-15T01:15:50.734Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
