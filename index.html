@@ -2185,7 +2185,22 @@
 
         const shiftH = calculateShiftHours(job.startTime, job.endTime);
 
-        const shareText = `🚨 VAGA ABERTA NO FREELANCER BC!\n\n💼 Cargo: ${job.title}\n🏢 Local: ${job.companyName}\n💵 Pagamento: ${remun.display}\n📅 Data: ${formatJobDate(job.date)} (${job.startTime} às ${job.endTime})\n📍 ${job.address}\n\n👉 Veja todos os detalhes e candidate-se pelo link:\n${jobUrl}`;
+        const shareText = [
+          `🔥 *VAGA DISPONÍVEL EM BALNEÁRIO CAMBORIÚ!*`,
+          ``,
+          `💼 *Cargo / Função:* ${job.title} (${job.category})`,
+          `🏢 *Estabelecimento:* ${job.companyName}`,
+          `💰 *Remuneração:* ${remun.display} (${remun.label})`,
+          `📅 *Data do Turno:* ${formatJobDate(job.date)} • ${job.startTime} às ${job.endTime} (${shiftH}h)`,
+          `📍 *Localização:* ${job.address}`,
+          job.attire ? `👔 *Traje Exigido:* ${job.attire}` : null,
+          ``,
+          `⚡ *VAGAS LIMITADAS — CONTRATAÇÃO RÁPIDA!*`,
+          `👉 *Para ver todos os detalhes e LIBERAR O CONTATO DIRETO do contratante no WhatsApp, acesse o link oficial:*`,
+          `${jobUrl}`,
+          ``,
+          `📲 _Abra a vaga pelo link acima para falar diretamente com o contratante pelo WhatsApp._`
+        ].filter(Boolean).join('\n');
 
 
 
@@ -9906,9 +9921,15 @@
 
 
 
-              <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-2xl text-[11px] text-indigo-900 leading-relaxed">
+              <div className="p-3.5 bg-gradient-to-r from-indigo-50 to-emerald-50 border border-indigo-100 rounded-2xl text-[11px] text-indigo-950 leading-relaxed space-y-1">
 
-                💡 <strong>Dica de divulgação:</strong> Quem clicar no link cai direto nesta vaga, vê os detalhes completos e pode criar conta ou fazer login para chamar a empresa no WhatsApp!
+                <div className="font-extrabold flex items-center gap-1.5 text-indigo-900">
+                  <span>🔒</span>
+                  <span>Proteção do Contato & Captação para o App</span>
+                </div>
+                <p className="text-slate-600">
+                  O número de telefone não vai no texto aberto para evitar que as pessoas chamem fora do aplicativo. Quem clicar no link acessa o app, conhece a plataforma e libera o botão direto para o WhatsApp do contratante!
+                </p>
 
               </div>
 
@@ -9990,14 +10011,14 @@
         ``,
         `🏢 *Estabelecimento Contratante:* ${compName}`,
         `👤 *Responsável:* ${compResponsible}`,
-        cleanPhone ? `📱 *WhatsApp do Contratante:* ${formatPhone(compPhone)}` : null,
         `📌 *Vaga Anunciada:* ${job.title} (${job.category})`,
-        `💰 *Valor da Diária / Cachê:* ${remun.display} (${remun.label})`,
+        `💰 *Valor da Diária / Remuneração:* ${remun.display} (${remun.label})`,
         `📅 *Data do Turno:* ${formatJobDate(job.date)} • ${job.startTime} às ${job.endTime} (${shiftHours}h)`,
         `📍 *Local:* ${job.address}`,
         `👥 *Resultado Real:* ${applicantsCount} freelancer(s) já chamaram este contratante no WhatsApp!`,
         ``,
-        `🔗 *Veja a vaga ao vivo no aplicativo:*`,
+        `🔒 *O contato oficial do contratante e a vaga completa estão liberados no link oficial:*`,
+        `👉 *Acesse ao vivo pelo aplicativo:*`,
         `${jobUrl}`,
         ``,
         `🎯 *Tem bar, restaurante, casa noturna ou evento em BC?*`,
@@ -10005,20 +10026,22 @@
         `👉 Publique grátis no Freelancer BC e receba candidatos no WhatsApp em minutos!`
       ].filter(Boolean).join('\n');
 
-      // Texto 2: Divulgação Direta da Vaga (Com contato do contratante)
+      // Texto 2: Divulgação Direta da Vaga (Atrair Freelancers para o App)
       const directJobText = [
-        `🚨 *VAGA REAL ABERTA NO FREELANCER BC!*`,
+        `🔥 *VAGA DISPONÍVEL EM BALNEÁRIO CAMBORIÚ!*`,
         ``,
-        `🏢 *Empresa Contratante:* ${compName}`,
-        cleanPhone ? `📱 *WhatsApp do Contratante:* ${formatPhone(compPhone)}` : null,
-        `💼 *Vaga:* ${job.title} (${job.category})`,
-        `💵 *Pagamento:* ${remun.display} (${remun.label})`,
-        `📅 *Data:* ${formatJobDate(job.date)} • ${job.startTime} às ${job.endTime}`,
-        `📍 *Endereço:* ${job.address}`,
+        `💼 *Cargo / Função:* ${job.title} (${job.category})`,
+        `🏢 *Estabelecimento:* ${compName}`,
+        `💰 *Remuneração:* ${remun.display} (${remun.label})`,
+        `📅 *Data:* ${formatJobDate(job.date)} • ${job.startTime} às ${job.endTime} (${shiftHours}h)`,
+        `📍 *Local:* ${job.address}`,
         job.attire ? `👔 *Traje:* ${job.attire}` : null,
         ``,
-        `👉 *Acesse o link oficial para ver os detalhes completos ou se candidatar:*`,
-        `${jobUrl}`
+        `⚡ *VAGAS LIMITADAS — CONTRATAÇÃO RÁPIDA!*`,
+        `👉 *Para ver os detalhes completos e LIBERAR O CONTATO DIRETO do contratante no WhatsApp, acesse o link oficial:*`,
+        `${jobUrl}`,
+        ``,
+        `📲 _Abra a vaga pelo link acima para falar diretamente com o contratante pelo WhatsApp._`
       ].filter(Boolean).join('\n');
 
       const currentText = shareMode === 'social_proof' ? socialProofText : directJobText;
@@ -10168,7 +10191,7 @@
               <div>
                 <div className="flex items-center justify-between mb-1.5">
                   <label className="font-bold text-slate-700 block text-xs">Mensagem Formatada Pronta para Envio:</label>
-                  <span className="text-[11px] text-slate-400 font-medium">Contém contato do contratante e link</span>
+                  <span className="text-[11px] text-emerald-600 font-bold">O número só é liberado para quem clica no link</span>
                 </div>
                 <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-[11px] text-slate-800 font-mono whitespace-pre-wrap max-h-48 overflow-y-auto leading-relaxed select-all">
                   {currentText}
@@ -10419,6 +10442,36 @@
                 </div>
               </div>
 
+              {/* Card Destaque: Contato Oficial do Contratante Liberado no App */}
+              <div className="p-4 bg-gradient-to-r from-emerald-50 via-teal-50 to-indigo-50 border-2 border-emerald-500/30 rounded-2xl flex items-center justify-between gap-3 shadow-sm animate-in fade-in">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center font-bold shadow-md shadow-emerald-500/20 shrink-0">
+                    <Icon name="whatsapp" className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                      <span className="text-[10px] font-black uppercase tracking-wider text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+                        Contato Liberado no App
+                      </span>
+                    </div>
+                    <h4 className="font-extrabold text-slate-900 text-sm sm:text-base mt-0.5">
+                      {job.companyName}
+                    </h4>
+                    <p className="text-xs text-emerald-800 font-bold flex items-center gap-1 mt-0.5">
+                      <Icon name="whatsapp" className="w-3.5 h-3.5 text-emerald-600 inline" />
+                      <span>WhatsApp: {formatPhone(job.whatsapp || '') || 'Disponível para Candidatura'}</span>
+                    </p>
+                  </div>
+                </div>
+                <div className="hidden sm:block text-right">
+                  <span className="text-[10px] text-slate-400 font-bold block uppercase">Status</span>
+                  <span className="text-xs font-black text-emerald-600 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
+                    Online
+                  </span>
+                </div>
+              </div>
+
               {/* Detalhes do Turno */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl">
@@ -10476,10 +10529,10 @@
                 <button
                   type="button"
                   onClick={handleMainApplyClick}
-                  className="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-2xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition transform active:scale-95"
+                  className="w-full py-4 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black rounded-2xl text-base flex items-center justify-center gap-2.5 shadow-xl shadow-emerald-600/30 transition transform active:scale-95 cursor-pointer"
                 >
-                  <Icon name="whatsapp" className="w-5 h-5 text-white" />
-                  <span>Candidatar-se a Esta Vaga</span>
+                  <Icon name="whatsapp" className="w-6 h-6 text-white" />
+                  <span>Chamar Contratante no WhatsApp Agora</span>
                 </button>
               )}
 
