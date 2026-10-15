@@ -2709,6 +2709,26 @@
       "trialStartDate": "2026-10-15T01:21:20.896Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792027361271",
+      "name": "Ashley Vieira",
+      "email": "ashleyypuckettyy@gmail.com",
+      "password": "Asb230987.",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "864.453.910-87",
+      "cnpj": null,
+      "phone": "51985354165",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 31,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:22:41.271Z",
+      "trialStartDate": "2026-10-15T01:22:41.271Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
