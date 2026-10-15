@@ -3398,6 +3398,23 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-15T20:07:29.811Z"
+    },
+    {
+      "id": "u-1792095975690",
+      "name": "Vitória Soares Flores",
+      "role": "freelancer",
+      "cpf": "054.232.750-32",
+      "phone": "47984006995",
+      "email": "05423275032@freelancerbc.local",
+      "password": "501626",
+      "age": 22,
+      "experienceTime": "1 a 2 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T20:26:15.691Z"
     }
   ],
   "jobs": [
@@ -3425,21 +3442,8 @@
       "address": "Praia brava",
       "attire": "All Black",
       "whatsapp": "47992560978",
-      "clicks": 1,
-      "applicants": [
-        {
-          "freelancerId": "u-1792095975690",
-          "name": "Vitória Soares Flores",
-          "phone": "47984006995",
-          "email": "05423275032@freelancerbc.local",
-          "profession": "Garçom",
-          "age": 22,
-          "experienceTime": "1 a 2 anos",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-15T20:26:16.329Z",
-          "hiredStatus": "pendente"
-        }
-      ],
+      "clicks": 0,
+      "applicants": [],
       "createdAt": "2026-10-15T20:24:13.328Z"
     },
     {
