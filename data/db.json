@@ -2968,7 +2968,11 @@
       "createdAt": "2026-10-15T04:31:01.952Z",
       "trialStartDate": "2026-10-15T04:31:01.952Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "alertCategories": [
+        "Bartender & Mixologista",
+        "Garçom"
+      ]
     }
   ],
   "jobs": [
