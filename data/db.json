@@ -2569,6 +2569,26 @@
       "trialStartDate": "2026-10-15T01:14:12.891Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792026903415",
+      "name": "William freitas",
+      "email": "william.fbecker5208@gmail.com",
+      "password": "wf02021993",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "030.241.390-10",
+      "cnpj": null,
+      "phone": "51996056995",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 33,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-15T01:15:03.415Z",
+      "trialStartDate": "2026-10-15T01:15:03.415Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
