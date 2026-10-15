@@ -2286,6 +2286,23 @@
       "trialStartDate": "2026-10-13T20:06:53.799Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792025494608",
+      "name": "Lucas Gabriel Souza da Silva",
+      "role": "freelancer",
+      "cpf": "703.171.970-27",
+      "phone": "47996225311",
+      "email": "70317197027@freelancerbc.local",
+      "password": "20192020",
+      "age": 26,
+      "experienceTime": "1 a 2 anos",
+      "profession": "Segurança",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T00:51:34.608Z"
     }
   ],
   "jobs": [
@@ -2309,21 +2326,8 @@
       "address": "Marejada Itajaí",
       "attire": "All Black",
       "whatsapp": "48991867605",
-      "clicks": 1,
-      "applicants": [
-        {
-          "freelancerId": "u-1792025494608",
-          "name": "Lucas Gabriel Souza da Silva",
-          "phone": "47996225311",
-          "email": "70317197027@freelancerbc.local",
-          "profession": "Segurança",
-          "age": 26,
-          "experienceTime": "1 a 2 anos",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-15T00:51:34.866Z",
-          "hiredStatus": "pendente"
-        }
-      ],
+      "clicks": 0,
+      "applicants": [],
       "createdAt": "2026-10-15T00:46:51.205Z"
     },
     {
