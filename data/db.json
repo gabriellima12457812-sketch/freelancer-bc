@@ -3348,23 +3348,6 @@
         "Caixa",
         "Limpeza"
       ]
-    },
-    {
-      "id": "u-1792093440269",
-      "name": "Evania Bach",
-      "role": "freelancer",
-      "cpf": "020.416.589-08",
-      "phone": "55991639463",
-      "email": "02041658908@freelancerbc.local",
-      "password": "vana2204*",
-      "age": 50,
-      "experienceTime": "1 a 2 anos",
-      "profession": "Garçom",
-      "city": "Balneário Camboriú",
-      "isSubscriptionActive": true,
-      "subscriptionTier": "free",
-      "status": "aprovado",
-      "createdAt": "2026-10-15T19:44:00.270Z"
     }
   ],
   "jobs": [
@@ -3421,8 +3404,20 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "47992728741",
-      "clicks": 5,
+      "clicks": 6,
       "applicants": [
+        {
+          "freelancerId": "u-1792093440269",
+          "name": "Evania Bach",
+          "phone": "55991639463",
+          "email": "02041658908@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 50,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T19:44:01.261Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1792093220867",
           "name": "Luciana Romero",
