@@ -3371,7 +3371,8 @@
       "isSubscriptionActive": true,
       "alertCategories": [
         "Recepção",
-        "Garçom"
+        "Garçom",
+        "Segurança"
       ]
     }
   ],
