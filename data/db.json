@@ -2971,7 +2971,8 @@
       "isSubscriptionActive": true,
       "alertCategories": [
         "Bartender & Mixologista",
-        "Garçom"
+        "Garçom",
+        "Recepção"
       ]
     }
   ],
