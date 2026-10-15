@@ -3295,23 +3295,6 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-15T19:10:57.912Z"
-    },
-    {
-      "id": "u-1792091578177",
-      "name": "ANDERSON COSTA DE ANDRADE",
-      "role": "freelancer",
-      "cpf": "128.399.207-86",
-      "phone": "21969488334",
-      "email": "12839920786@freelancerbc.local",
-      "password": "1715",
-      "age": 37,
-      "experienceTime": "Mais de 5 anos",
-      "profession": "Garçom",
-      "city": "Balneário Camboriú",
-      "isSubscriptionActive": true,
-      "subscriptionTier": "free",
-      "status": "aprovado",
-      "createdAt": "2026-10-15T19:12:58.177Z"
     }
   ],
   "jobs": [
@@ -3368,8 +3351,21 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "47992728741",
-      "clicks": 0,
-      "applicants": [],
+      "clicks": 1,
+      "applicants": [
+        {
+          "freelancerId": "u-1792091578177",
+          "name": "ANDERSON COSTA DE ANDRADE",
+          "phone": "21969488334",
+          "email": "12839920786@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 37,
+          "experienceTime": "Mais de 5 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T19:12:58.497Z",
+          "hiredStatus": "pendente"
+        }
+      ],
       "createdAt": "2026-10-15T19:05:48.578Z"
     },
     {
