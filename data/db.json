@@ -2361,6 +2361,23 @@
       "trialStartDate": "2026-10-15T00:56:52.829Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792025854861",
+      "name": "Patrick de Oliveira Felicio",
+      "role": "freelancer",
+      "cpf": "148.535.479-08",
+      "phone": "47999803173",
+      "email": "14853547908@freelancerbc.local",
+      "password": "7052",
+      "age": 21,
+      "experienceTime": "Menos de 1 ano",
+      "profession": "Segurança",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T00:57:34.861Z"
     }
   ],
   "jobs": [
@@ -2384,20 +2401,8 @@
       "address": "Marejada Itajaí",
       "attire": "All Black",
       "whatsapp": "48991867605",
-      "clicks": 2,
+      "clicks": 1,
       "applicants": [
-        {
-          "freelancerId": "u-1792025854861",
-          "name": "Patrick de Oliveira Felicio",
-          "phone": "47999803173",
-          "email": "14853547908@freelancerbc.local",
-          "profession": "Segurança",
-          "age": 21,
-          "experienceTime": "Menos de 1 ano",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-15T00:57:35.114Z",
-          "hiredStatus": "pendente"
-        },
         {
           "freelancerId": "u-1791506696802",
           "name": "Lucas Souza Magalhaes",
