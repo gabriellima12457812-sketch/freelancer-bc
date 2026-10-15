@@ -2384,8 +2384,20 @@
       "address": "Marejada Itajaí",
       "attire": "All Black",
       "whatsapp": "48991867605",
-      "clicks": 1,
+      "clicks": 2,
       "applicants": [
+        {
+          "freelancerId": "u-1792025854861",
+          "name": "Patrick de Oliveira Felicio",
+          "phone": "47999803173",
+          "email": "14853547908@freelancerbc.local",
+          "profession": "Segurança",
+          "age": 21,
+          "experienceTime": "Menos de 1 ano",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-15T00:57:35.114Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1791506696802",
           "name": "Lucas Souza Magalhaes",
