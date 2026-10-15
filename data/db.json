@@ -3347,6 +3347,23 @@
         "Caixa",
         "Limpeza"
       ]
+    },
+    {
+      "id": "u-1792093220867",
+      "name": "Luciana Romero",
+      "role": "freelancer",
+      "cpf": "000.210.659-00",
+      "phone": "47992508510",
+      "email": "00021065900@freelancerbc.local",
+      "password": "38569699",
+      "age": 31,
+      "experienceTime": "3 a 5 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T19:40:20.867Z"
     }
   ],
   "jobs": [
