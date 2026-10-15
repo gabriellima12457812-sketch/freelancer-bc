@@ -3277,6 +3277,23 @@
       "trialStartDate": "2026-10-15T18:28:11.833Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792091457911",
+      "name": "Eledriano Marcos de Sousa  ( garçom )",
+      "role": "freelancer",
+      "cpf": "000.205.221-00",
+      "phone": "86999021104",
+      "email": "00020522100@freelancerbc.local",
+      "password": "869560",
+      "age": 46,
+      "experienceTime": "Mais de 5 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T19:10:57.912Z"
     }
   ],
   "jobs": [
@@ -3333,21 +3350,8 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "47992728741",
-      "clicks": 1,
-      "applicants": [
-        {
-          "freelancerId": "u-1792091457911",
-          "name": "Eledriano Marcos de Sousa  ( garçom )",
-          "phone": "86999021104",
-          "email": "00020522100@freelancerbc.local",
-          "profession": "Garçom",
-          "age": 46,
-          "experienceTime": "Mais de 5 anos",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-15T19:10:59.272Z",
-          "hiredStatus": "pendente"
-        }
-      ],
+      "clicks": 0,
+      "applicants": [],
       "createdAt": "2026-10-15T19:05:48.578Z"
     },
     {
