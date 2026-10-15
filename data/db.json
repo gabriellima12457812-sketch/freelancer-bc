@@ -3432,8 +3432,8 @@
       "category": "Garçom",
       "hasMultiplePositions": false,
       "positions": [],
-      "paymentType": "a_combinar",
-      "rate": 0,
+      "paymentType": "mensal",
+      "rate": 2400,
       "hourlyRate": null,
       "commissionRate": null,
       "commissionDetail": null,
@@ -3450,7 +3450,8 @@
       "whatsapp": "47992560978",
       "clicks": 0,
       "applicants": [],
-      "createdAt": "2026-10-15T20:24:13.328Z"
+      "createdAt": "2026-10-15T20:24:13.328Z",
+      "monthlyRate": 2400
     },
     {
       "id": "job-1792091148577",
