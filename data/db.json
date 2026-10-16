@@ -3809,7 +3809,7 @@
       "commissionDetail": null,
       "totalSpots": 3,
       "filledSpots": 0,
-      "status": "ativa",
+      "status": "pausada",
       "date": "2026-10-15",
       "startTime": "09:00",
       "endTime": "18:00",
@@ -3818,7 +3818,8 @@
       "whatsapp": "48996099890",
       "clicks": 0,
       "applicants": [],
-      "createdAt": "2026-10-15T11:27:53.114Z"
+      "createdAt": "2026-10-15T11:27:53.114Z",
+      "autoPaused": true
     },
     {
       "id": "job-1791632709917",
