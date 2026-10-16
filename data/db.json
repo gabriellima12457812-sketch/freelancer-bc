@@ -3544,23 +3544,6 @@
       "trialStartDate": "2026-10-16T00:37:56.494Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
-    },
-    {
-      "id": "u-1792125159945",
-      "name": "Cristina Dias Correia",
-      "role": "freelancer",
-      "cpf": "088.671.119-30",
-      "phone": "47996931590",
-      "email": "08867111930@freelancerbc.local",
-      "password": "280198",
-      "age": 32,
-      "experienceTime": "Mais de 5 anos",
-      "profession": "Garçom",
-      "city": "Balneário Camboriú",
-      "isSubscriptionActive": true,
-      "subscriptionTier": "free",
-      "status": "aprovado",
-      "createdAt": "2026-10-16T04:32:39.945Z"
     }
   ],
   "jobs": [
@@ -3588,8 +3571,20 @@
       "address": "Praia brava",
       "attire": "All Black",
       "whatsapp": "47992560978",
-      "clicks": 2,
+      "clicks": 3,
       "applicants": [
+        {
+          "freelancerId": "u-1792125159945",
+          "name": "Cristina Dias Correia",
+          "phone": "47996931590",
+          "email": "08867111930@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 32,
+          "experienceTime": "Mais de 5 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-16T04:32:41.146Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1792097340542",
           "name": "Gloria maria dos santos silva",
