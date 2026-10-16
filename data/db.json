@@ -3524,6 +3524,26 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-15T23:34:59.336Z"
+    },
+    {
+      "id": "u-1792111076494",
+      "name": "Emily Chaves",
+      "email": "emilycchaves@gmail.com",
+      "password": "081096",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "035.468.340-38",
+      "cnpj": null,
+      "phone": "54996737533",
+      "businessType": null,
+      "profession": "Cozinheiro",
+      "age": 30,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-16T00:37:56.494Z",
+      "trialStartDate": "2026-10-16T00:37:56.494Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
