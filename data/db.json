@@ -3544,6 +3544,26 @@
       "trialStartDate": "2026-10-16T00:37:56.494Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792145034537",
+      "name": "Carlos Sousa",
+      "email": "carlos.sousa@live.com",
+      "password": "9714",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "008.557.599-25",
+      "cnpj": null,
+      "phone": "47988139714",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 47,
+      "experienceTime": "3 a 5 anos",
+      "city": "Itajaí ",
+      "createdAt": "2026-10-16T10:03:54.537Z",
+      "trialStartDate": "2026-10-16T10:03:54.537Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
