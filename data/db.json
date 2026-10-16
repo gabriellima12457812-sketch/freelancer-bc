@@ -3585,6 +3585,23 @@
       "status": "aprovado",
       "createdAt": "2026-10-16T15:53:36.528Z",
       "experience": ""
+    },
+    {
+      "id": "u-1792194641894",
+      "name": "Josiane Patrícia Rodrigues de Campos",
+      "role": "freelancer",
+      "cpf": "838.625.100-00",
+      "phone": "47996321438",
+      "email": "83862510000@freelancerbc.local",
+      "password": "14030901",
+      "age": 38,
+      "experienceTime": "Mais de 5 anos",
+      "profession": "Sub Chef",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-16T23:50:41.894Z"
     }
   ],
   "jobs": [
