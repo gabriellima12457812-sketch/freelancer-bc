@@ -104,7 +104,11 @@
       "createdAt": "2026-10-08T20:20:59.652Z",
       "trialStartDate": "2026-10-08T20:20:59.652Z",
       "trialExpiryDate": "2026-11-07T20:42:13.530Z",
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "age": 37,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "experience": "Balada restaurantes eventos fechados"
     },
     {
       "id": "u-1791490915487",
