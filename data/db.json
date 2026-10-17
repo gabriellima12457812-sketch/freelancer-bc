@@ -3589,6 +3589,26 @@
       "status": "aprovado",
       "createdAt": "2026-10-16T15:53:36.528Z",
       "experience": ""
+    },
+    {
+      "id": "u-1792243577717",
+      "name": "Pamella oliveira",
+      "email": "pamella.r.o87@gmail.com",
+      "password": "14051985",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "022.041.920-58",
+      "cnpj": null,
+      "phone": "47999468148",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 39,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-17T13:26:17.717Z",
+      "trialStartDate": "2026-10-17T13:26:17.717Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
