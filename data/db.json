@@ -3628,7 +3628,11 @@
       "createdAt": "2026-10-17T22:55:09.689Z",
       "trialStartDate": "2026-10-17T22:55:09.689Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "alertCategories": [
+        "Garçom",
+        "Caixa"
+      ]
     }
   ],
   "jobs": [
