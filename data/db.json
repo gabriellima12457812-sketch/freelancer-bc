@@ -3631,7 +3631,8 @@
       "isSubscriptionActive": true,
       "alertCategories": [
         "Garçom",
-        "Caixa"
+        "Caixa",
+        "Recepção"
       ]
     }
   ],
