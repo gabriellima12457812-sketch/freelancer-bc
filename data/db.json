@@ -3609,6 +3609,26 @@
       "trialStartDate": "2026-10-17T13:26:17.717Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792277709689",
+      "name": "Alessandra Costa",
+      "email": "alessandracontatos25@outlook.com",
+      "password": "0319",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "028.804.220-43",
+      "cnpj": null,
+      "phone": "53991727848",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 35,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-17T22:55:09.689Z",
+      "trialStartDate": "2026-10-17T22:55:09.689Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
