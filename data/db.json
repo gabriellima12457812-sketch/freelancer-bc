@@ -3634,6 +3634,26 @@
         "Caixa",
         "Recepção"
       ]
+    },
+    {
+      "id": "u-1792327940372",
+      "name": "Jaqueline Luzia sebastiao",
+      "email": "luziasebastiaojaqueline59@gmail.com",
+      "password": "030925",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "008.835.889-51",
+      "cnpj": null,
+      "phone": "47999330134",
+      "businessType": null,
+      "profession": "Promoter de Vendas",
+      "age": 42,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-18T12:52:20.372Z",
+      "trialStartDate": "2026-10-18T12:52:20.372Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
