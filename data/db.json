@@ -3674,6 +3674,26 @@
       "trialStartDate": "2026-10-19T01:57:00.689Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792375277979",
+      "name": "Estefani",
+      "email": "estefanimarianno245@gmail.com",
+      "password": "08042003",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "052.629.112-50",
+      "cnpj": null,
+      "phone": "47997189660",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": null,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-19T02:01:17.979Z",
+      "trialStartDate": "2026-10-19T02:01:17.979Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
