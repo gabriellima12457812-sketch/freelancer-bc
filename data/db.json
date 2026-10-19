@@ -3846,6 +3846,26 @@
       "trialStartDate": "2026-10-19T12:19:14.631Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792417506766",
+      "name": "Jeferson Gama",
+      "email": "jefersonejosivida@gmail.com",
+      "password": "eusougostoso1.",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "033.338.571-38",
+      "cnpj": null,
+      "phone": "47992836692",
+      "businessType": null,
+      "profession": "Segurança",
+      "age": 34,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-19T13:45:06.766Z",
+      "trialStartDate": "2026-10-19T13:45:06.766Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
