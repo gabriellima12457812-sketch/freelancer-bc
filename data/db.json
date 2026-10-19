@@ -3734,6 +3734,26 @@
       "trialStartDate": "2026-10-19T02:24:51.275Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792377483755",
+      "name": "JESSICA DA SILVA ANTUNES",
+      "email": "vitorejessica7@gmail.com",
+      "password": "169403",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "043.552.130-64",
+      "cnpj": null,
+      "phone": "47984798515",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 26,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-19T02:38:03.755Z",
+      "trialStartDate": "2026-10-19T02:38:03.755Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
