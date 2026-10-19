@@ -3822,7 +3822,8 @@
       "isSubscriptionActive": true,
       "alertCategories": [
         "Limpeza",
-        "Garçom"
+        "Garçom",
+        "Bartender"
       ]
     }
   ],
