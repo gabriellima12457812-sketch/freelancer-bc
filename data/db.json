@@ -3826,6 +3826,26 @@
         "Bartender",
         "Cozinha"
       ]
+    },
+    {
+      "id": "u-1792412354631",
+      "name": "Giovanni Araújo",
+      "email": "araujogiovanni866@gmail.com",
+      "password": "160320",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "051.433.422-36",
+      "cnpj": null,
+      "phone": "91981004655",
+      "businessType": null,
+      "profession": "Segurança",
+      "age": 26,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-19T12:19:14.631Z",
+      "trialStartDate": "2026-10-19T12:19:14.631Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
