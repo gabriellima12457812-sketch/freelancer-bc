@@ -3780,6 +3780,26 @@
       "trialStartDate": "2026-10-19T05:12:42.767Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792406055986",
+      "name": "Danielle Rosa Marques",
+      "email": "daniellerosamarques50@gmail.com",
+      "password": "170421",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "016.143.389-81",
+      "cnpj": null,
+      "phone": "41995058131",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "age": 51,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-19T10:34:15.985Z",
+      "trialStartDate": "2026-10-19T10:34:15.985Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
