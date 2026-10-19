@@ -3714,6 +3714,26 @@
       "trialStartDate": "2026-10-19T02:05:01.657Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792376691275",
+      "name": "LEILIANE GOMES BEZERRA",
+      "email": "leilyaniwalker@gmail.com",
+      "password": "Any11gom",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "058.400.931-30",
+      "cnpj": null,
+      "phone": "47996105048",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "age": 30,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-19T02:24:51.275Z",
+      "trialStartDate": "2026-10-19T02:24:51.275Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
