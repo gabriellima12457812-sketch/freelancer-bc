@@ -3819,7 +3819,11 @@
       "createdAt": "2026-10-19T11:14:35.540Z",
       "trialStartDate": "2026-10-19T11:14:35.540Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "alertCategories": [
+        "Limpeza",
+        "Garçom"
+      ]
     }
   ],
   "jobs": [
