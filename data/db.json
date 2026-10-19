@@ -3900,6 +3900,26 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-19T14:39:03.931Z"
+    },
+    {
+      "id": "u-1792422324057",
+      "name": "Aline Beatriz Da Silva",
+      "email": "alynebtz@gmail.com",
+      "password": "Ionarak0312.",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "130.090.089-02",
+      "cnpj": null,
+      "phone": "47997941105",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 21,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-19T15:05:24.057Z",
+      "trialStartDate": "2026-10-19T15:05:24.057Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
