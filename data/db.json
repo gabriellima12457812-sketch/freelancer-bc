@@ -3756,7 +3756,8 @@
       "isSubscriptionActive": true,
       "alertCategories": [
         "Garçom",
-        "Recepção"
+        "Recepção",
+        "Limpeza"
       ]
     }
   ],
