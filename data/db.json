@@ -3694,6 +3694,26 @@
       "trialStartDate": "2026-10-19T02:01:17.979Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792375501657",
+      "name": "Francine Souza da Rosa",
+      "email": "francinesouzahdarosa@gmail.com",
+      "password": "0707Fran",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "106.791.489-73",
+      "cnpj": null,
+      "phone": "47991108532",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 25,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-19T02:05:01.657Z",
+      "trialStartDate": "2026-10-19T02:05:01.657Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
