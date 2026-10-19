@@ -3920,6 +3920,24 @@
       "trialStartDate": "2026-10-19T15:05:24.057Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792100072606",
+      "name": "Renata Rejane dos santos da silva",
+      "role": "freelancer",
+      "cpf": "004.307.090-64",
+      "phone": "47997886023",
+      "email": "00430709064@freelancerbc.local",
+      "password": "32466948",
+      "age": 35,
+      "experienceTime": "Mais de 5 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-15T21:34:32.606Z",
+      "experience": ""
     }
   ],
   "jobs": [
