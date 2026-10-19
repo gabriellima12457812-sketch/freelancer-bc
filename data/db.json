@@ -3760,6 +3760,26 @@
         "Limpeza",
         "Caixa"
       ]
+    },
+    {
+      "id": "u-1792386762767",
+      "name": "Sara gabrieli julio de lima",
+      "email": "saragabrielly@gmail.com",
+      "password": "180926",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "125.659.429-66",
+      "cnpj": null,
+      "phone": "47997872031",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 20,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-19T05:12:42.767Z",
+      "trialStartDate": "2026-10-19T05:12:42.767Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
