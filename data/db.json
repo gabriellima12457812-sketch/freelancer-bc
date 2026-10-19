@@ -3883,6 +3883,23 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-19T14:38:59.559Z"
+    },
+    {
+      "id": "u-1792420743931",
+      "name": "Gloria maria dos santos",
+      "role": "freelancer",
+      "cpf": "605.114.463-30",
+      "phone": "48991673456",
+      "email": "60511446330@freelancerbc.local",
+      "password": "1706",
+      "age": 32,
+      "experienceTime": "1 a 2 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-19T14:39:03.931Z"
     }
   ],
   "jobs": [
@@ -3925,15 +3942,15 @@
           "hiredStatus": "pendente"
         },
         {
-          "freelancerId": "u-1792420743931",
-          "name": "Gloria maria dos santos",
+          "freelancerId": "u-1792097340542",
+          "name": "Gloria maria dos santos silva",
           "phone": "48991673456",
           "email": "60511446330@freelancerbc.local",
           "profession": "Garçom",
           "age": 32,
           "experienceTime": "1 a 2 anos",
           "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-19T14:39:04.187Z",
+          "clickedAt": "2026-10-15T20:49:01.084Z",
           "hiredStatus": "pendente"
         },
         {
