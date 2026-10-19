@@ -3654,6 +3654,26 @@
       "trialStartDate": "2026-10-18T12:52:20.372Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792375020689",
+      "name": "Lucas Zardinni",
+      "email": "ansrondonopis@gmail.com",
+      "password": "Qwerty123@",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "618.278.723-65",
+      "cnpj": null,
+      "phone": "47933870013",
+      "businessType": null,
+      "profession": "Gerente",
+      "age": 27,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-19T01:57:00.689Z",
+      "trialStartDate": "2026-10-19T01:57:00.689Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
