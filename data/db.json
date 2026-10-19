@@ -3866,6 +3866,23 @@
       "trialStartDate": "2026-10-19T13:45:06.766Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792420739559",
+      "name": "Ines aparecida cordeiro pinto",
+      "role": "freelancer",
+      "cpf": "046.130.759-63",
+      "phone": "42998749363",
+      "email": "04613075963@freelancerbc.local",
+      "password": "1234",
+      "age": 43,
+      "experienceTime": "3 a 5 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-19T14:38:59.559Z"
     }
   ],
   "jobs": [
