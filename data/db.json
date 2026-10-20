@@ -3472,7 +3472,6 @@
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
       "alertCategories": [
-        "Limpeza",
         "Caixa",
         "Recepção",
         "Segurança"
