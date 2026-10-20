@@ -3944,6 +3944,26 @@
       "status": "aprovado",
       "createdAt": "2026-10-15T21:34:32.606Z",
       "experience": ""
+    },
+    {
+      "id": "u-1792498964375",
+      "name": "Cidney Castro mendes",
+      "email": "castrocidney50@gmail.com",
+      "password": "Ci821520",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "011.828.252-22",
+      "cnpj": null,
+      "phone": "47988255962",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 31,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-20T12:22:44.375Z",
+      "trialStartDate": "2026-10-20T12:22:44.375Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
