@@ -3964,6 +3964,26 @@
       "trialStartDate": "2026-10-20T12:22:44.375Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1792597034865",
+      "name": "Joceli dos santos Pina",
+      "email": "jocelipina11@gmail.com",
+      "password": "11081989",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "384.467.638-42",
+      "cnpj": null,
+      "phone": "47997431157",
+      "businessType": null,
+      "profession": "Auxiliar de Cozinha",
+      "age": 37,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-21T15:37:14.865Z",
+      "trialStartDate": "2026-10-21T15:37:14.865Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
