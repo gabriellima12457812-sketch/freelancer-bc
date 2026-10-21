@@ -3978,12 +3978,13 @@
       "businessType": null,
       "profession": "Auxiliar de Cozinha",
       "age": 37,
-      "experienceTime": "1 a 2 anos",
+      "experienceTime": "Menos de 1 ano (Iniciante)",
       "city": "Balneário Camboriú",
       "createdAt": "2026-10-21T15:37:14.865Z",
       "trialStartDate": "2026-10-21T15:37:14.865Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "experience": "Agilidade com limpeza e garçonete"
     }
   ],
   "jobs": [
