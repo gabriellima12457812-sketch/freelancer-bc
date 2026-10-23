@@ -3631,7 +3631,11 @@
       "createdAt": "2026-10-17T13:26:17.717Z",
       "trialStartDate": "2026-10-17T13:26:17.717Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "alertCategories": [
+        "Limpeza",
+        "Recepção"
+      ]
     },
     {
       "id": "u-1792277709689",
