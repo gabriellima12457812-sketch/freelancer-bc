@@ -223,6 +223,22 @@
   ],
   "audit_logs": [
     {
+      "id": "d271bed0-6065-4ae2-b230-082c096c7ae6",
+      "user_id": "e5555555-5555-5555-5555-555555555555",
+      "action": "CUSTOM_EVENT",
+      "resource_type": "leads",
+      "resource_id": "CRM-ROD-WA-553288020406",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "rodrigo",
+        "lead_name": "William Picinin de Sales",
+        "previous_stage": "proposta",
+        "new_stage": "concluidas"
+      },
+      "created_at": "2026-10-28T14:48:36.983Z"
+    },
+    {
       "id": "cb689605-5a58-4761-b969-8449cb5925c2",
       "user_id": "99999999-9999-9999-9999-999999999999",
       "action": "USER_CREATED_FULL_PROVISION",
