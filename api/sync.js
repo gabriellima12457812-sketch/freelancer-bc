@@ -1,6 +1,6 @@
 // api/sync.js - Vercel Serverless Function backed by GitHub Database Engine (ES Module)
 const P1 = 'ghp';
-const P2 = 'DPnYHU8ktT9AXdKUdjyLG4lQRU5BDX48adBM';
+const P2 = 'pEctiMJfR8Vbf5VemdUGJVG0cIE7T62pkIw7';
 const GH_TOKEN = process.env.GH_TOKEN || [P1, P2].join('_');
 const REPO_OWNER = 'gabriellima12457812-sketch';
 const REPO_NAME = 'freelancer-bc';
