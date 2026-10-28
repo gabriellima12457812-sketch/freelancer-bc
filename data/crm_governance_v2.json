@@ -223,6 +223,22 @@
   ],
   "audit_logs": [
     {
+      "id": "aa46a034-8898-482d-a560-13d252ad6a01",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "LEAD_STATUS_CHANGE",
+      "resource_type": "lead",
+      "resource_id": "CRM-GAB-0002",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; pt-BR) WindowsPowerShell/5.1.19041.6456",
+      "details": {
+        "lead_name": "Luciana Soares Bezerra",
+        "previous_stage": "fechamento",
+        "new_stage": "novos",
+        "seller": "Gabriel Lima"
+      },
+      "created_at": "2026-10-28T19:23:57.082Z"
+    },
+    {
       "id": "6e3b8eb7-7e16-4bda-86e5-f34d8dda32fd",
       "user_id": "usr-sebastiao",
       "action": "LEAD_STATUS_CHANGE",
