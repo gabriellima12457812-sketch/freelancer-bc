@@ -1,6 +1,20 @@
 {
   "calls": [
     {
+      "id": "7a1d919c-b641-4768-a3cf-edc167473990",
+      "user_id": "gabriel",
+      "lead_id": "lead-test-2",
+      "caller_number": "47999158919",
+      "recipient_number": "11988887777",
+      "call_source": "WHATSAPP",
+      "status": "NO_ANSWER",
+      "duration_seconds": 0,
+      "recording_url": null,
+      "started_at": "2026-10-28T20:25:06.759Z",
+      "ended_at": "2026-10-28T20:25:06.759Z",
+      "created_at": "2026-10-28T20:25:06.759Z"
+    },
+    {
       "id": "78c9d8e6-7edd-410d-8537-607f283d08a4",
       "user_id": "gabriel",
       "lead_id": "lead-test-1",
@@ -16,6 +30,22 @@
     }
   ],
   "activities": [
+    {
+      "id": "e1db37ce-ed99-469b-b74c-ec9ef4acb4f4",
+      "user_id": "gabriel",
+      "lead_id": "lead-test-2",
+      "activity_type": "CALL",
+      "metadata": {
+        "call_id": "7a1d919c-b641-4768-a3cf-edc167473990",
+        "duration_seconds": 0,
+        "status": "NO_ANSWER",
+        "caller_number": "47999158919",
+        "recipient_number": "11988887777",
+        "call_source": "WHATSAPP",
+        "recording_url": null
+      },
+      "created_at": "2026-10-28T20:25:06.759Z"
+    },
     {
       "id": "684b2782-7e18-4367-ac73-df16d547f521",
       "user_id": "gabriel",
@@ -33,5 +63,5 @@
       "created_at": "2026-10-28T20:24:57.640Z"
     }
   ],
-  "updated_at": "2026-10-28T20:24:57.640Z"
+  "updated_at": "2026-10-28T20:25:06.759Z"
 }
