@@ -4064,6 +4064,18 @@
     {
       "applicants": [
         {
+          "freelancerId": "u-1791688499581",
+          "name": "Cleonice abrao",
+          "phone": "47999698611",
+          "email": "cleoabrao29193@gmail.com",
+          "profession": "Auxiliar de Cozinha",
+          "age": 45,
+          "experienceTime": "Mais de 5 anos",
+          "city": "BALNEARIO CAMBORIU",
+          "clickedAt": "2026-10-28T23:28:55.478Z",
+          "hiredStatus": "pendente"
+        },
+        {
           "freelancerId": "u-1792100072606",
           "name": "Renata Rejane dos santos da silva",
           "phone": "47997886023",
@@ -4090,7 +4102,7 @@
       ],
       "companyName": "Bar na avenida atlântica",
       "commissionRate": null,
-      "clicks": 2,
+      "clicks": 3,
       "category": "Garçom",
       "address": "Av. Atlântica, Balneário",
       "startTime": "A combinar",
