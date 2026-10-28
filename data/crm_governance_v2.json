@@ -191,6 +191,19 @@
   ],
   "audit_logs": [
     {
+      "id": "efb4380d-899a-47b1-be95-1a1e09506a84",
+      "user_id": "878c6e2d-cd9b-4330-90d6-25beb2687642",
+      "action": "LOGIN_FAILED_WRONG_PASSWORD",
+      "resource_type": "auth",
+      "resource_id": "878c6e2d-cd9b-4330-90d6-25beb2687642",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+      "details": {
+        "email": "diana@piffpaff.com"
+      },
+      "created_at": "2026-10-28T12:36:42.416Z"
+    },
+    {
       "id": "cd3d5caf-d984-4803-b2ac-3488fdc08014",
       "user_id": "878c6e2d-cd9b-4330-90d6-25beb2687642",
       "action": "LOGIN_SUCCESS",
