@@ -207,6 +207,21 @@
   ],
   "audit_logs": [
     {
+      "id": "0cc305d6-4fe2-4dfd-bfb4-ad885a1631cb",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "LOGIN_SUCCESS",
+      "resource_type": "auth",
+      "resource_id": "a1111111-1111-1111-1111-111111111111",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+      "details": {
+        "email": "gabriel@piffpaff.com.br",
+        "role": "admin",
+        "requires_2fa": false
+      },
+      "created_at": "2026-10-28T13:27:37.198Z"
+    },
+    {
       "id": "fa58911a-6bfe-4496-a4ec-5ca3ee4c2614",
       "user_id": "878c6e2d-cd9b-4330-90d6-25beb2687642",
       "action": "LOGIN_SUCCESS",
