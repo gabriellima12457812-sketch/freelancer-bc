@@ -136,13 +136,13 @@
       "phone": "47996413082",
       "password_hash": "8d2b264f16014c6d889f3944f4eb233173475dfd911660cfd20dcd07448cc5ca",
       "role": "vendedor",
-      "status": "active",
+      "status": "inactive",
       "requires_2fa": false,
       "prefix": "CRM-DIA-",
-      "session_version": 1,
+      "session_version": 2,
       "deleted_at": null,
       "created_at": "2026-10-28T12:33:06.930Z",
-      "updated_at": "2026-10-28T12:43:54.167Z"
+      "updated_at": "2026-10-28T14:43:30.727Z"
     },
     {
       "id": "f9abd92a-3709-4737-8293-759a15a6215d",
@@ -206,6 +206,22 @@
     }
   ],
   "audit_logs": [
+    {
+      "id": "5c7c0769-3172-400d-8cc5-6ada6b07823e",
+      "user_id": "99999999-9999-9999-9999-999999999999",
+      "action": "USER_DEACTIVATED_SESSIONS_REVOKED",
+      "resource_type": "user",
+      "resource_id": "878c6e2d-cd9b-4330-90d6-25beb2687642",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+      "details": {
+        "target_user": "Diana",
+        "target_email": "diana@piffpaff.com",
+        "new_status": "inactive",
+        "session_version": 2
+      },
+      "created_at": "2026-10-28T14:43:30.727Z"
+    },
     {
       "id": "87a88926-38a9-4e25-84fa-b9a1501d03a1",
       "user_id": "878c6e2d-cd9b-4330-90d6-25beb2687642",
