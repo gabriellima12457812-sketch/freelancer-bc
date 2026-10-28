@@ -159,6 +159,22 @@
       "deleted_at": null,
       "created_at": "2026-10-28T12:39:50.634Z",
       "updated_at": "2026-10-28T12:39:50.634Z"
+    },
+    {
+      "id": "528bdca6-62a3-4dd5-bc45-0e77e9174e67",
+      "key": "sebastiao",
+      "name": "sebastiao",
+      "email": "sebastiao@piffpaff.com.br",
+      "phone": "",
+      "password_hash": "1f0550a4b6a367f1e676967a0aa8b22a05fea41919420f7764a95e76c032a149",
+      "role": "vendedor",
+      "status": "active",
+      "requires_2fa": false,
+      "prefix": "CRM-SEB-",
+      "session_version": 1,
+      "deleted_at": null,
+      "created_at": "2026-10-28T14:45:18.204Z",
+      "updated_at": "2026-10-28T14:45:18.204Z"
     }
   ],
   "user_trusted_devices": [],
@@ -206,6 +222,27 @@
     }
   ],
   "audit_logs": [
+    {
+      "id": "cb689605-5a58-4761-b969-8449cb5925c2",
+      "user_id": "99999999-9999-9999-9999-999999999999",
+      "action": "USER_CREATED_FULL_PROVISION",
+      "resource_type": "user",
+      "resource_id": "528bdca6-62a3-4dd5-bc45-0e77e9174e67",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+      "details": {
+        "name": "sebastiao",
+        "email": "sebastiao@piffpaff.com.br",
+        "role": "vendedor",
+        "requires_2fa": false,
+        "supabase_synced": false,
+        "whatsapp_instance": "sebastiao",
+        "whatsapp_instance_ready": true,
+        "webhook_configured": true,
+        "api_endpoint": "/api/edson?seller=sebastiao"
+      },
+      "created_at": "2026-10-28T14:45:18.204Z"
+    },
     {
       "id": "5c7c0769-3172-400d-8cc5-6ada6b07823e",
       "user_id": "99999999-9999-9999-9999-999999999999",
