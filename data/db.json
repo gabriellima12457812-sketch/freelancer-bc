@@ -822,7 +822,11 @@
       "createdAt": "2026-10-09T01:36:57.492Z",
       "trialStartDate": "2026-10-09T01:36:57.492Z",
       "trialExpiryDate": "2026-11-08T01:36:57.492Z",
-      "isSubscriptionActive": false
+      "isSubscriptionActive": false,
+      "age": 19,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "experience": "Trabalhei em pizzaria e em restaurantes como Lucca bistrô bistrô 1982"
     },
     {
       "id": "u-1791546837831",
