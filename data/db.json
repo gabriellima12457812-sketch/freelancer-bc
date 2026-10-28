@@ -4014,10 +4014,23 @@
   ],
   "jobs": [
     {
-      "applicants": [],
+      "applicants": [
+        {
+          "freelancerId": "u-1793208360503",
+          "name": "Kaylane soares silveira",
+          "phone": "47992562301",
+          "email": "05311392126@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 23,
+          "experienceTime": "Menos de 1 ano",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-28T17:26:01.598Z",
+          "hiredStatus": "pendente"
+        }
+      ],
       "companyName": "Bar na avenida atlântica",
       "commissionRate": null,
-      "clicks": 0,
+      "clicks": 1,
       "category": "Garçom",
       "address": "Av. Atlântica, Balneário",
       "startTime": "A combinar",
