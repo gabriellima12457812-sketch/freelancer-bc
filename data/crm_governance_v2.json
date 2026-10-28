@@ -127,6 +127,22 @@
       "deleted_at": null,
       "created_at": "2026-01-01T00:00:00.000Z",
       "updated_at": "2026-10-26T00:00:00.000Z"
+    },
+    {
+      "id": "878c6e2d-cd9b-4330-90d6-25beb2687642",
+      "key": "diana",
+      "name": "Diana",
+      "email": "diana@piffpaff.com",
+      "phone": "47996413082",
+      "password_hash": "8d2b264f16014c6d889f3944f4eb233173475dfd911660cfd20dcd07448cc5ca",
+      "role": "vendedor",
+      "status": "active",
+      "requires_2fa": false,
+      "prefix": "CRM-DIA-",
+      "session_version": 1,
+      "deleted_at": null,
+      "created_at": "2026-10-28T12:33:06.930Z",
+      "updated_at": "2026-10-28T12:33:06.930Z"
     }
   ],
   "user_trusted_devices": [],
@@ -174,6 +190,22 @@
     }
   ],
   "audit_logs": [
+    {
+      "id": "1554ad0a-a231-4d5d-8b7f-7547a088ad50",
+      "user_id": "99999999-9999-9999-9999-999999999999",
+      "action": "USER_CREATED",
+      "resource_type": "user",
+      "resource_id": "878c6e2d-cd9b-4330-90d6-25beb2687642",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+      "details": {
+        "name": "Diana",
+        "email": "diana@piffpaff.com",
+        "role": "vendedor",
+        "requires_2fa": false
+      },
+      "created_at": "2026-10-28T12:33:06.930Z"
+    },
     {
       "id": "4212ad82-312c-4f4b-929d-4414629a994e",
       "user_id": "a1111111-1111-1111-1111-111111111111",
