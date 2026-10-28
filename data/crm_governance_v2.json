@@ -207,6 +207,21 @@
   ],
   "audit_logs": [
     {
+      "id": "87a88926-38a9-4e25-84fa-b9a1501d03a1",
+      "user_id": "878c6e2d-cd9b-4330-90d6-25beb2687642",
+      "action": "LOGIN_SUCCESS",
+      "resource_type": "auth",
+      "resource_id": "878c6e2d-cd9b-4330-90d6-25beb2687642",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; pt-BR) WindowsPowerShell/5.1.19041.6456",
+      "details": {
+        "email": "diana@piffpaff.com",
+        "role": "vendedor",
+        "requires_2fa": false
+      },
+      "created_at": "2026-10-28T14:22:43.183Z"
+    },
+    {
       "id": "0cc305d6-4fe2-4dfd-bfb4-ad885a1631cb",
       "user_id": "a1111111-1111-1111-1111-111111111111",
       "action": "LOGIN_SUCCESS",
