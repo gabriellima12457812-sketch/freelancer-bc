@@ -4034,6 +4034,26 @@
         "Recepção",
         "Cozinha"
       ]
+    },
+    {
+      "id": "u-1793220996311",
+      "name": "Anelise Gabe",
+      "email": "anegabe788@gmail.com",
+      "password": "310732",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "010.629.600-09",
+      "cnpj": null,
+      "phone": "47988161047",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 35,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-28T20:56:36.311Z",
+      "trialStartDate": "2026-10-28T20:56:36.311Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
