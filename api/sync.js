@@ -11,17 +11,18 @@ let memSha = null;
 let lastFetchTime = 0;
 const CACHE_TTL = 1000; // 1 second in-memory cache
 
-async function fetchDb() {
+async function fetchDb(forceFresh = false) {
   const now = Date.now();
-  if (memCache && (now - lastFetchTime < CACHE_TTL)) {
+  if (!forceFresh && memCache && (now - lastFetchTime < CACHE_TTL)) {
     return { data: memCache, sha: memSha };
   }
 
-  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DB_PATH}`;
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${DB_PATH}?ref=main&t=${now}`;
   const res = await fetch(url, {
     headers: {
       Authorization: `token ${GH_TOKEN}`,
       Accept: 'application/vnd.github.v3+json',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
       'User-Agent': 'FreelancerBC-Serverless-Sync'
     }
   });
@@ -82,7 +83,7 @@ async function saveDb(newData, prevSha, commitMsg = 'Update database') {
 
   if (!res.ok) {
     if (res.status === 409) {
-      const latest = await fetchDb();
+      const latest = await fetchDb(true);
       payload.sha = latest.sha;
       const retryRes = await fetch(url, {
         method: 'PUT',
@@ -117,6 +118,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -136,7 +138,7 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
       const body = (typeof req.body === 'string' ? JSON.parse(req.body) : req.body) || {};
       const action = body.action;
-      const { data: db, sha } = await fetchDb();
+      const { data: db, sha } = await fetchDb(true);
 
       if (action === 'save_job') {
         const job = body.job;
