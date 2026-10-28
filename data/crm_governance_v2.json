@@ -223,6 +223,21 @@
   ],
   "audit_logs": [
     {
+      "id": "547af251-db05-4265-b97d-a03ae7fed307",
+      "user_id": "usr-sebastiao",
+      "action": "LEAD_STATUS_CHANGE",
+      "resource_type": "lead",
+      "resource_id": "CRM-SEB-WA-554199673278",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+      "details": {
+        "stage": "fechamento",
+        "value": 0,
+        "updated_by": "sebastiao"
+      },
+      "created_at": "2026-10-28T18:28:12.172Z"
+    },
+    {
       "id": "7478426d-68fe-4923-8ef2-c8203960e179",
       "user_id": "usr-sebastiao",
       "action": "CUSTOM_EVENT",
