@@ -1,0 +1,205 @@
+{
+  "users": [
+    {
+      "id": "99999999-9999-9999-9999-999999999999",
+      "key": "edson",
+      "name": "Édson (Super Administrador)",
+      "email": "edson@piffpaff.com.br",
+      "phone": "47999990000",
+      "password_hash": "51a618f4bd65ea94e705257debffa9dcad686ab5f890d060fa97d3710cc1efcd",
+      "role": "super_admin",
+      "status": "active",
+      "requires_2fa": true,
+      "prefix": "CRM-EDS-",
+      "session_version": 1,
+      "deleted_at": null,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-10-26T00:00:00.000Z"
+    },
+    {
+      "id": "a1111111-1111-1111-1111-111111111111",
+      "key": "gabriel",
+      "name": "Gabriel Lima",
+      "email": "gabriel@piffpaff.com.br",
+      "phone": "47999991111",
+      "password_hash": "cfc3ba02912f173652971a84c1eb20aac8136187fab650475343c9a5cee38813",
+      "role": "admin",
+      "status": "active",
+      "requires_2fa": false,
+      "prefix": "CRM-GAB-",
+      "session_version": 1,
+      "deleted_at": null,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-10-26T00:00:00.000Z"
+    },
+    {
+      "id": "c3333333-3333-3333-3333-333333333333",
+      "key": "felipe",
+      "name": "Felipe",
+      "email": "felipe@piffpaff.com.br",
+      "phone": "47999993333",
+      "password_hash": "49740e0f00727fb062c2479d2be77a7ef9522fd22fdb3ea68ae934826c2d13d2",
+      "role": "vendedor",
+      "status": "active",
+      "requires_2fa": false,
+      "prefix": "CRM-FEL-",
+      "session_version": 1,
+      "deleted_at": null,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-10-26T00:00:00.000Z"
+    },
+    {
+      "id": "b2222222-2222-2222-2222-222222222222",
+      "key": "mayara",
+      "name": "Mayara",
+      "email": "mayara@piffpaff.com.br",
+      "phone": "47999992222",
+      "password_hash": "f254be50c764d699bf8566cf339f2f24d29cf3107ecef57906c85007b3d8b233",
+      "role": "vendedor",
+      "status": "active",
+      "requires_2fa": false,
+      "prefix": "CRM-MAY-",
+      "session_version": 1,
+      "deleted_at": null,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-10-26T00:00:00.000Z"
+    },
+    {
+      "id": "f6666666-6666-6666-6666-666666666666",
+      "key": "barbara",
+      "name": "Especialista Bárbara",
+      "email": "barbara@piffpaff.com.br",
+      "phone": "47999996666",
+      "password_hash": "c089d6ba80264aa97d77b1a49f4fdc78d07390556a15b5e524b48ffc6e44a2fe",
+      "role": "vendedor",
+      "status": "active",
+      "requires_2fa": false,
+      "prefix": "CRM-BAR-",
+      "session_version": 1,
+      "deleted_at": null,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-10-26T00:00:00.000Z"
+    },
+    {
+      "id": "d4444444-4444-4444-4444-444444444444",
+      "key": "eduardo",
+      "name": "Eduardo",
+      "email": "eduardo@piffpaff.com.br",
+      "phone": "47999994444",
+      "password_hash": "17fcf225e5227a10179c66426471f5f5b926a2b226e9b17bedbdf29d295a6b6f",
+      "role": "vendedor",
+      "status": "active",
+      "requires_2fa": false,
+      "prefix": "CRM-EDU-",
+      "session_version": 1,
+      "deleted_at": null,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-10-26T00:00:00.000Z"
+    },
+    {
+      "id": "e5555555-5555-5555-5555-555555555555",
+      "key": "rodrigo",
+      "name": "Especialista Rodrigo",
+      "email": "rodrigo@piffpaff.com.br",
+      "phone": "47999995555",
+      "password_hash": "463303ddc807b05a8c353df00202c3afe7c50b6fce9b215e2f0815fe481968d2",
+      "role": "vendedor",
+      "status": "active",
+      "requires_2fa": false,
+      "prefix": "CRM-ROD-",
+      "session_version": 1,
+      "deleted_at": null,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-10-26T00:00:00.000Z"
+    },
+    {
+      "id": "77777777-7777-7777-7777-777777777777",
+      "key": "kasio",
+      "name": "Kasio",
+      "email": "kasio@piffpaff.com.br",
+      "phone": "47999997777",
+      "password_hash": "cfb2be146a400e582770a005dc0b44272815a2525aea5e85c5a00cd1c96970ba",
+      "role": "vendedor",
+      "status": "active",
+      "requires_2fa": false,
+      "prefix": "CRM-KAS-",
+      "session_version": 1,
+      "deleted_at": null,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-10-26T00:00:00.000Z"
+    }
+  ],
+  "user_trusted_devices": [],
+  "admin_setup_tokens": [
+    {
+      "id": "setup-token-edson-primary",
+      "user_id": "99999999-9999-9999-9999-999999999999",
+      "token_hash": "589afc078e198d2991261b7c47c3f357220160458f96ee7b5e2cb7e1b3f0d1b9",
+      "raw_token_hint": "edson_setup_2026_9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c",
+      "email_code_hash": null,
+      "phone_code_hash": null,
+      "pending_email": null,
+      "pending_phone": null,
+      "pending_password_hash": null,
+      "is_used": false,
+      "expires_at": null,
+      "created_at": "2026-10-28T11:56:45.383Z"
+    },
+    {
+      "id": "setup-token-master-edson",
+      "user_id": "99999999-9999-9999-9999-999999999999",
+      "token_hash": "3468bb8ab4d0e9ebc16d9c264017736cf7babbbe6c1f24e539b6aa3085f105bf",
+      "raw_token_hint": "EDSON-SETUP-2026-MASTER",
+      "email_code_hash": null,
+      "phone_code_hash": null,
+      "pending_email": null,
+      "pending_phone": null,
+      "pending_password_hash": null,
+      "is_used": false,
+      "expires_at": null,
+      "created_at": "2026-10-28T11:56:45.383Z"
+    }
+  ],
+  "two_factor_challenges": [],
+  "code_lock_challenges": [],
+  "code_lock_tokens": [
+    {
+      "id": "4ce85c3b-b981-49bc-9822-448a49e2e4fb",
+      "token_hash": "1710d4586cca08c1a1f876bbf48662746d9dc654eeeb92f31778871c25965dfa",
+      "method": "password",
+      "authorized_by": "senha_mestra_12457812",
+      "ip_address": "170.247.147.73",
+      "is_revoked": false,
+      "created_at": "2026-10-28T11:56:45.384Z"
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": "4212ad82-312c-4f4b-929d-4414629a994e",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "CODE_LOCK_UNLOCKED_PASSWORD",
+      "resource_type": "code_protection",
+      "resource_id": "crm-source-lock",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; pt-BR) WindowsPowerShell/5.1.19041.6456",
+      "details": {
+        "method": "password"
+      },
+      "created_at": "2026-10-28T11:56:45.384Z"
+    },
+    {
+      "id": "a5c31385-83e7-456b-b3f8-dc6d5147adbb",
+      "user_id": "99999999-9999-9999-9999-999999999999",
+      "action": "GOVERNANCE_INITIALIZED",
+      "resource_type": "system",
+      "resource_id": "crm-piff-paff-v2",
+      "ip_address": "127.0.0.1",
+      "user_agent": "Antigravity Security Engine",
+      "details": {
+        "message": "Pacote de Governança, Soft Delete Universal e 2FA do Super Admin ativado."
+      },
+      "created_at": "2026-10-28T11:56:45.383Z"
+    }
+  ],
+  "soft_deleted_records": {}
+}
