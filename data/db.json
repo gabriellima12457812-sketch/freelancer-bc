@@ -4040,6 +4040,18 @@
     {
       "applicants": [
         {
+          "freelancerId": "u-1792100072606",
+          "name": "Renata Rejane dos santos da silva",
+          "phone": "47997886023",
+          "email": "00430709064@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 35,
+          "experienceTime": "Mais de 5 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-28T20:26:51.476Z",
+          "hiredStatus": "pendente"
+        },
+        {
           "freelancerId": "u-1792071749145",
           "name": "Marcos Gabriel",
           "phone": "47999108243",
@@ -4054,7 +4066,7 @@
       ],
       "companyName": "Bar na avenida atlântica",
       "commissionRate": null,
-      "clicks": 1,
+      "clicks": 2,
       "category": "Garçom",
       "address": "Av. Atlântica, Balneário",
       "startTime": "A combinar",
