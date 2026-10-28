@@ -1796,38 +1796,93 @@
 
 
       const SYNC_API_URL = (typeof window !== 'undefined' && window.location.origin && window.location.origin.includes('crm-piff-paff'))
-
         ? '/api/freelancer-sync'
-
         : 'https://crm-piff-paff-v2.vercel.app/api/freelancer-sync';
 
+      const [initialCloudSyncDone, setInitialCloudSyncDone] = useState(false);
 
+      const getPendingSyncJobsMap = () => {
+        try {
+          return JSON.parse(localStorage.getItem('fbc_pending_sync_jobs') || '{}') || {};
+        } catch (e) {
+          return {};
+        }
+      };
+
+      const markJobPendingSync = (job) => {
+        if (!job || !job.id) return;
+        try {
+          const map = getPendingSyncJobsMap();
+          map[job.id] = job;
+          localStorage.setItem('fbc_pending_sync_jobs', JSON.stringify(map));
+        } catch (e) {}
+      };
+
+      const unmarkJobPendingSync = (jobId) => {
+        if (!jobId) return;
+        try {
+          const map = getPendingSyncJobsMap();
+          if (map[jobId]) {
+            delete map[jobId];
+            localStorage.setItem('fbc_pending_sync_jobs', JSON.stringify(map));
+          }
+        } catch (e) {}
+      };
+
+      const saveJobToCloudReliable = async (job) => {
+        if (!job || !job.id) return;
+        markJobPendingSync(job);
+        try {
+          const res = await fetch(SYNC_API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'save_job', job })
+          });
+          if (res.ok) {
+            const data = await res.json();
+            if (data && data.ok) {
+              unmarkJobPendingSync(job.id);
+              syncWithCloud();
+            }
+          }
+        } catch (e) {}
+      };
 
       const syncWithCloud = async () => {
-
         try {
-
           const res = await fetch(SYNC_API_URL);
-
-          if (!res.ok) return;
-
+          if (!res.ok) {
+            setInitialCloudSyncDone(true);
+            return;
+          }
           const data = await res.json();
-
           if (data && data.ok) {
-
             // Sincronizar vagas (Jobs) em tempo real sem precisar de F5
-
             if (Array.isArray(data.jobs)) {
+              const pendingMap = getPendingSyncJobsMap();
+              const cloudIds = new Set(data.jobs.map(cj => cj && cj.id).filter(Boolean));
+
+              Object.keys(pendingMap).forEach(pid => {
+                if (cloudIds.has(pid)) {
+                  unmarkJobPendingSync(pid);
+                  delete pendingMap[pid];
+                } else if (pendingMap[pid]) {
+                  fetch(SYNC_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'save_job', job: pendingMap[pid] })
+                  }).then(r => r.ok ? r.json() : null).then(d => {
+                    if (d && d.ok) unmarkJobPendingSync(pid);
+                  }).catch(() => {});
+                }
+              });
 
               setJobs(prev => {
-
                 const now = Date.now();
+                const pendingFromPrev = prev.filter(p => p && p.id && !cloudIds.has(p.id) && (Boolean(pendingMap[p.id]) || (now - new Date(p.createdAt || 0).getTime() < 120000)));
+                const pendingFromStorage = Object.values(pendingMap).filter(p => p && p.id && !cloudIds.has(p.id) && !pendingFromPrev.some(fp => fp.id === p.id));
 
-                // Preservar vagas locais recém-criadas nos últimos 20 segundos que ainda estão sendo gravadas
-
-                const pending = prev.filter(p => p && p.id && !data.jobs.some(cj => cj.id === p.id) && (now - new Date(p.createdAt || 0).getTime() < 20000));
-
-                const rawMerged = [...pending, ...data.jobs];
+                const rawMerged = [...pendingFromPrev, ...pendingFromStorage, ...data.jobs];
                 const merged = rawMerged.map(j => {
                   if (j && j.status === 'ativa' && isJobExpired(j)) {
                     const pausedJob = { ...j, status: 'pausada', autoPaused: true };
@@ -1843,20 +1898,12 @@
 
                 merged.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
 
-
-
                 if (JSON.stringify(prev) !== JSON.stringify(merged)) {
-
                   localStorage.setItem('fbc_jobs', JSON.stringify(merged));
-
                   return merged;
-
                 }
-
                 return prev;
-
               });
-
             }
 
 
@@ -1941,6 +1988,8 @@
 
           // Erro silencioso para não interromper navegação
 
+        } finally {
+          setInitialCloudSyncDone(true);
         }
 
       };
@@ -2368,31 +2417,7 @@
         }
       }, [sharedJobId]);
 
-      // Quando o usuário loga ou abre link de vaga compartilhada
-
-      useEffect(() => {
-
-        if (currentUser && currentUser.role === 'freelancer' && sharedJobId && Array.isArray(jobs) && jobs.length > 0) {
-
-          const target = jobs.find(j => j.id === sharedJobId);
-
-          if (target && target.status === 'ativa') {
-
-            setApplyingJob(target);
-
-            setSharedJobId(null);
-
-            if (typeof window !== 'undefined' && window.history) {
-
-              window.history.replaceState({}, '', window.location.pathname);
-
-            }
-
-          }
-
-        }
-
-      }, [currentUser, sharedJobId, jobs]);
+      // Manter o card focado (PublicSharedJobView) visível quando abrir link ?vaga=... para qualquer perfil (Visitante, Freelancer, Empresa ou Admin)
 
       const [notifiedJobIds, setNotifiedJobIds] = useState(() => {
 
@@ -2605,6 +2630,7 @@
 
       const handleDeleteJob = (jobId) => {
         if (!confirm('Tem certeza que deseja excluir esta vaga permanentemente?')) return;
+        unmarkJobPendingSync(jobId);
         setJobs(prev => {
           const updated = prev.filter(j => j.id !== jobId);
           localStorage.setItem('fbc_jobs', JSON.stringify(updated));
@@ -3027,7 +3053,7 @@
                 job={jobs.find(j => j.id === sharedJobId)}
                 onTrackView={handleTrackJobView}
 
-                isLoading={!jobs || jobs.length === 0}
+                isLoading={!initialCloudSyncDone && !jobs.some(j => j.id === sharedJobId)}
                 currentUser={currentUser}
                 onQuickApply={handleQuickApply}
 
@@ -3265,7 +3291,30 @@
 
           )}
 
-
+          {/* Card de Vaga Compartilhada focado também para usuários já logados (Admin, Empresa ou Freelancer) */}
+          {sharedJobId && (
+            <PublicSharedJobView
+              job={jobs.find(j => j.id === sharedJobId)}
+              onTrackView={handleTrackJobView}
+              isLoading={!initialCloudSyncDone && !jobs.some(j => j.id === sharedJobId)}
+              currentUser={currentUser}
+              onQuickApply={handleQuickApply}
+              onApplyClick={() => {
+                const target = jobs.find(j => j.id === sharedJobId);
+                if (target) setApplyingJob(target);
+                setSharedJobId(null);
+                if (typeof window !== 'undefined' && window.history) window.history.replaceState({}, '', window.location.pathname);
+              }}
+              onRegisterClick={() => {
+                setSharedJobId(null);
+              }}
+              onShare={() => handleShareJob(jobs.find(j => j.id === sharedJobId))}
+              onClose={() => {
+                setSharedJobId(null);
+                if (typeof window !== 'undefined' && window.history) window.history.replaceState({}, '', window.location.pathname);
+              }}
+            />
+          )}
 
           {currentUser.role === 'admin' && (
 
@@ -3311,31 +3360,25 @@
               onTogglePauseJob={handleTogglePauseJob}
               onDeleteJob={handleDeleteJob}
               onAddJob={(newJob) => {
+                markJobPendingSync(newJob);
                 setJobs(prev => {
                   const updated = [newJob, ...prev.filter(j => j.id !== newJob.id)];
                   localStorage.setItem('fbc_jobs', JSON.stringify(updated));
                   broadcastUpdate('JOBS_UPDATED', { jobs: updated });
                   return updated;
                 });
-                fetch(SYNC_API_URL, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ action: 'save_job', job: newJob })
-                }).then(() => syncWithCloud()).catch(() => {});
+                saveJobToCloudReliable(newJob);
                 showNotification('Nova vaga publicada com sucesso pelo Admin!');
               }}
               onUpdateJob={(updatedJob) => {
+                markJobPendingSync(updatedJob);
                 setJobs(prev => {
                   const updated = prev.map(j => j.id === updatedJob.id ? updatedJob : j);
                   localStorage.setItem('fbc_jobs', JSON.stringify(updated));
                   broadcastUpdate('JOBS_UPDATED', { jobs: updated });
                   return updated;
                 });
-                fetch(SYNC_API_URL, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ action: 'save_job', job: updatedJob })
-                }).then(() => syncWithCloud()).catch(() => {});
+                saveJobToCloudReliable(updatedJob);
                 showNotification('Vaga atualizada com sucesso pelo Admin!');
               }}
             />
@@ -3356,6 +3399,8 @@
 
               onAddJob={(newJob) => {
 
+                markJobPendingSync(newJob);
+
                 setJobs(prev => {
 
                   const updated = [newJob, ...prev.filter(j => j.id !== newJob.id)];
@@ -3368,21 +3413,15 @@
 
                 });
 
-                fetch(SYNC_API_URL, {
-
-                  method: 'POST',
-
-                  headers: { 'Content-Type': 'application/json' },
-
-                  body: JSON.stringify({ action: 'save_job', job: newJob })
-
-                }).then(() => syncWithCloud()).catch(() => {});
+                saveJobToCloudReliable(newJob);
 
                 showNotification('Nova vaga publicada com sucesso!');
 
               }}
 
               onUpdateJob={(updatedJob) => {
+
+                markJobPendingSync(updatedJob);
 
                 setJobs(prev => {
 
@@ -3396,15 +3435,7 @@
 
                 });
 
-                fetch(SYNC_API_URL, {
-
-                  method: 'POST',
-
-                  headers: { 'Content-Type': 'application/json' },
-
-                  body: JSON.stringify({ action: 'save_job', job: updatedJob })
-
-                }).then(() => syncWithCloud()).catch(() => {});
+                saveJobToCloudReliable(updatedJob);
 
                 showNotification('Vaga atualizada com sucesso!');
 
@@ -3444,21 +3475,15 @@
 
                 if (toggledJob) {
 
-                  fetch(SYNC_API_URL, {
-
-                    method: 'POST',
-
-                    headers: { 'Content-Type': 'application/json' },
-
-                    body: JSON.stringify({ action: 'save_job', job: toggledJob })
-
-                  }).then(() => syncWithCloud()).catch(() => {});
+                  saveJobToCloudReliable(toggledJob);
 
                 }
 
               }}
 
               onDeleteJob={(jobId) => {
+
+                unmarkJobPendingSync(jobId);
 
                 setJobs(prev => {
 
