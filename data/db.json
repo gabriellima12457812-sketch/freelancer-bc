@@ -4010,27 +4010,31 @@
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
       "experience": "Agilidade com limpeza e garçonete"
+    },
+    {
+      "id": "u-1793208360503",
+      "name": "Kaylane soares silveira",
+      "role": "freelancer",
+      "cpf": "053.113.921-26",
+      "phone": "47992562301",
+      "email": "05311392126@freelancerbc.local",
+      "password": "1424",
+      "age": 23,
+      "experienceTime": "Menos de 1 ano",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-28T17:26:00.503Z"
     }
   ],
   "jobs": [
     {
-      "applicants": [
-        {
-          "freelancerId": "u-1793208360503",
-          "name": "Kaylane soares silveira",
-          "phone": "47992562301",
-          "email": "05311392126@freelancerbc.local",
-          "profession": "Garçom",
-          "age": 23,
-          "experienceTime": "Menos de 1 ano",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-28T17:26:01.598Z",
-          "hiredStatus": "pendente"
-        }
-      ],
+      "applicants": [],
       "companyName": "Bar na avenida atlântica",
       "commissionRate": null,
-      "clicks": 1,
+      "clicks": 0,
       "category": "Garçom",
       "address": "Av. Atlântica, Balneário",
       "startTime": "A combinar",
