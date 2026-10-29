@@ -4178,6 +4178,23 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-29T13:52:11.651Z"
+    },
+    {
+      "id": "u-1793283367206",
+      "name": "Gustavo Ilibio",
+      "role": "freelancer",
+      "cpf": "859.645.730-53",
+      "phone": "51985310173",
+      "email": "85964573053@freelancerbc.local",
+      "password": "12122002Gl-",
+      "age": 23,
+      "experienceTime": "1 a 2 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-29T14:16:07.206Z"
     }
   ],
   "jobs": [
