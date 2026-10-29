@@ -4144,6 +4144,23 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-29T12:56:28.395Z"
+    },
+    {
+      "id": "u-1793281478401",
+      "name": "Maria fernanda Miranda soares",
+      "role": "freelancer",
+      "cpf": "121.654.839-05",
+      "phone": "47999012697",
+      "email": "12165483905@freelancerbc.local",
+      "password": "1357",
+      "age": 24,
+      "experienceTime": "1 a 2 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-29T13:44:38.401Z"
     }
   ],
   "jobs": [
@@ -4206,18 +4223,6 @@
     {
       "applicants": [
         {
-          "freelancerId": "u-1793281478401",
-          "name": "Maria fernanda Miranda soares",
-          "phone": "47999012697",
-          "email": "12165483905@freelancerbc.local",
-          "profession": "Garçom",
-          "age": 24,
-          "experienceTime": "1 a 2 anos",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-29T13:44:38.640Z",
-          "hiredStatus": "pendente"
-        },
-        {
           "freelancerId": "u-1791688499581",
           "name": "Cleonice abrao",
           "phone": "47999698611",
@@ -4256,7 +4261,7 @@
       ],
       "companyName": "Bar na avenida atlântica",
       "commissionRate": null,
-      "clicks": 4,
+      "clicks": 3,
       "category": "Garçom",
       "address": "Av. Atlântica, Balneário",
       "startTime": "A combinar",
