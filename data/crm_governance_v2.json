@@ -223,6 +223,20 @@
   ],
   "audit_logs": [
     {
+      "id": "74d32bb6-70c0-4583-866f-447532deb34a",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "CUSTOM_EVENT",
+      "resource_type": "leads",
+      "resource_id": "CRM-GAB-0039-NOVO-c185-12",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "gabriel",
+        "deleted_at": "2026-10-29T12:39:05.100Z"
+      },
+      "created_at": "2026-10-29T12:39:06.355Z"
+    },
+    {
       "id": "264f7fdb-2d4f-4ece-879f-74d99fe01c44",
       "user_id": "a1111111-1111-1111-1111-111111111111",
       "action": "LEAD_SOFT_DELETE",
