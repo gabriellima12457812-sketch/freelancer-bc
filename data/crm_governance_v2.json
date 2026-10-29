@@ -223,6 +223,24 @@
   ],
   "audit_logs": [
     {
+      "id": "18ee12b7-edd7-4819-ad71-25cb3a832ebb",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "LEAD_SOFT_DELETE",
+      "resource_type": "lead",
+      "resource_id": "CRM-WA-748848",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "details": {
+        "lead_name": "Dudu Cliente Instagram",
+        "phone": "31985395383",
+        "value": 4500,
+        "stage": "proposta",
+        "deleted_by": "Gabriel Lima",
+        "deleted_at": "2026-10-29T13:18:52.522Z"
+      },
+      "created_at": "2026-10-29T13:18:52.522Z"
+    },
+    {
       "id": "dafea58a-2076-4b22-a159-11b98c8d855f",
       "user_id": "a1111111-1111-1111-1111-111111111111",
       "action": "LEAD_SOFT_DELETE",
@@ -828,6 +846,22 @@
         "instagram": null,
         "stage": "proposta",
         "value": 14740,
+        "user_id": "a1111111-1111-1111-1111-111111111111"
+      }
+    },
+    "lead:CRM-WA-748848": {
+      "id": "CRM-WA-748848",
+      "resource_type": "lead",
+      "deleted_at": "2026-10-29T13:18:52.522Z",
+      "deleted_by": "a1111111-1111-1111-1111-111111111111",
+      "deleted_by_name": "Gabriel Lima",
+      "snapshot": {
+        "id": "CRM-WA-748848",
+        "name": "Dudu Cliente Instagram",
+        "phone": "31985395383",
+        "instagram": null,
+        "stage": "proposta",
+        "value": 4500,
         "user_id": "a1111111-1111-1111-1111-111111111111"
       }
     }
