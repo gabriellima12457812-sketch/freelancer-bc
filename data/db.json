@@ -4206,8 +4206,20 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "51994483775",
-      "clicks": 4,
+      "clicks": 5,
       "applicants": [
+        {
+          "freelancerId": "u-1791509817492",
+          "name": "Mayck caua nascimento souza",
+          "phone": "91981899473",
+          "email": "maycksousa@icloud.com",
+          "profession": "Garçom",
+          "age": 19,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-29T14:24:56.345Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1793283367206",
           "name": "Gustavo Ilibio",
