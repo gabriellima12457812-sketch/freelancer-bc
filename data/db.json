@@ -4138,8 +4138,21 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "51994483775",
-      "clicks": 0,
-      "applicants": [],
+      "clicks": 1,
+      "applicants": [
+        {
+          "freelancerId": "u-1793277697637",
+          "name": "Bruna Ostwald Casburgo",
+          "phone": "47989155052",
+          "email": "11726460908@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 25,
+          "experienceTime": "Menos de 1 ano",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-29T12:41:39.471Z",
+          "hiredStatus": "pendente"
+        }
+      ],
       "createdAt": "2026-10-29T12:21:11.830Z",
       "updatedAt": "2026-10-29T12:21:11.831Z",
       "_localSyncTs": 1793276471831
