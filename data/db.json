@@ -4179,23 +4179,6 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-29T13:52:11.651Z"
-    },
-    {
-      "id": "u-1793312399525",
-      "name": "Diego Oliveira lima",
-      "role": "freelancer",
-      "cpf": "035.450.890-37",
-      "phone": "51982095681",
-      "email": "03545089037@freelancerbc.local",
-      "password": "1905",
-      "age": 32,
-      "experienceTime": "Mais de 5 anos",
-      "profession": "Garçom",
-      "city": "Balneário Camboriú",
-      "isSubscriptionActive": true,
-      "subscriptionTier": "free",
-      "status": "aprovado",
-      "createdAt": "2026-10-29T22:19:59.527Z"
     }
   ],
   "jobs": [
@@ -4224,8 +4207,20 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "51994483775",
-      "clicks": 7,
+      "clicks": 8,
       "applicants": [
+        {
+          "freelancerId": "u-1793312399525",
+          "name": "Diego Oliveira lima",
+          "phone": "51982095681",
+          "email": "03545089037@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 32,
+          "experienceTime": "Mais de 5 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-29T22:19:59.978Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1792075566380",
           "name": "Frankiele Xavier de Araujo",
