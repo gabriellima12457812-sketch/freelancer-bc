@@ -4103,8 +4103,21 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "51994483775",
-      "clicks": 0,
-      "applicants": [],
+      "clicks": 1,
+      "applicants": [
+        {
+          "freelancerId": "u-1793277440100",
+          "name": "Vera Lucia de Oliveira",
+          "phone": "11947290370",
+          "email": "09315237889@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 50,
+          "experienceTime": "Mais de 5 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-29T12:37:21.248Z",
+          "hiredStatus": "pendente"
+        }
+      ],
       "createdAt": "2026-10-29T12:21:11.830Z",
       "updatedAt": "2026-10-29T12:21:11.831Z",
       "_localSyncTs": 1793276471831
