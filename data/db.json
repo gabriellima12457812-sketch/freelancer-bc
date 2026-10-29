@@ -4155,8 +4155,20 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "51994483775",
-      "clicks": 1,
+      "clicks": 2,
       "applicants": [
+        {
+          "freelancerId": "u-1792026404148",
+          "name": "Lucas",
+          "phone": "47996225311",
+          "email": "lucashgabriel703@gmail.com",
+          "profession": "Garçom",
+          "age": 26,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-29T12:51:59.449Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1792093220867",
           "name": "Luciana Romero",
