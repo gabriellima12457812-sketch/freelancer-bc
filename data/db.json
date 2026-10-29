@@ -4178,23 +4178,6 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-29T13:52:11.651Z"
-    },
-    {
-      "id": "u-1793288479173",
-      "name": "Geovane Andrade santos",
-      "role": "freelancer",
-      "cpf": "103.901.759-27",
-      "phone": "47997421764",
-      "email": "10390175927@freelancerbc.local",
-      "password": "0508",
-      "age": 32,
-      "experienceTime": "1 a 2 anos",
-      "profession": "Garçom",
-      "city": "Balneário Camboriú",
-      "isSubscriptionActive": true,
-      "subscriptionTier": "free",
-      "status": "aprovado",
-      "createdAt": "2026-10-29T15:41:19.173Z"
     }
   ],
   "jobs": [
@@ -4223,8 +4206,20 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "51994483775",
-      "clicks": 5,
+      "clicks": 6,
       "applicants": [
+        {
+          "freelancerId": "u-1793288479173",
+          "name": "Geovane Andrade santos",
+          "phone": "47997421764",
+          "email": "10390175927@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 32,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-29T15:41:20.267Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1791509817492",
           "name": "Mayck caua nascimento souza",
