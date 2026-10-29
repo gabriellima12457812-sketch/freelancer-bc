@@ -280,6 +280,21 @@
   ],
   "audit_logs": [
     {
+      "id": "279eb588-6c02-429f-9812-f4d04aca568a",
+      "user_id": "usr-yasmim",
+      "action": "LEAD_STATUS_CHANGE",
+      "resource_type": "lead",
+      "resource_id": "CRM-YAS-LID-63664400933024",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "stage": "investigacao",
+        "value": 0,
+        "updated_by": "yasmim"
+      },
+      "created_at": "2026-10-29T17:40:42.241Z"
+    },
+    {
       "id": "f9cb6a31-fde1-4f29-a33d-04d10ee2c1b7",
       "user_id": "usr-yasmim",
       "action": "LEAD_STATUS_CHANGE",
