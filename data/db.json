@@ -4189,8 +4189,20 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "51994483775",
-      "clicks": 2,
+      "clicks": 3,
       "applicants": [
+        {
+          "freelancerId": "u-1793281931651",
+          "name": "Dangelo Lemos estrada",
+          "phone": "47999030145",
+          "email": "01851865055@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 39,
+          "experienceTime": "Mais de 5 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-29T13:52:12.022Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1792026404148",
           "name": "Lucas",
