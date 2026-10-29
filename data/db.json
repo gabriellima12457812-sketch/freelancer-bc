@@ -4161,6 +4161,23 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-29T13:44:38.401Z"
+    },
+    {
+      "id": "u-1793281931651",
+      "name": "Dangelo Lemos estrada",
+      "role": "freelancer",
+      "cpf": "018.518.650-55",
+      "phone": "47999030145",
+      "email": "01851865055@freelancerbc.local",
+      "password": "gaucho",
+      "age": 39,
+      "experienceTime": "Mais de 5 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-29T13:52:11.651Z"
     }
   ],
   "jobs": [
@@ -4189,20 +4206,8 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "51994483775",
-      "clicks": 3,
+      "clicks": 2,
       "applicants": [
-        {
-          "freelancerId": "u-1793281931651",
-          "name": "Dangelo Lemos estrada",
-          "phone": "47999030145",
-          "email": "01851865055@freelancerbc.local",
-          "profession": "Garçom",
-          "age": 39,
-          "experienceTime": "Mais de 5 anos",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-29T13:52:12.022Z",
-          "hiredStatus": "pendente"
-        },
         {
           "freelancerId": "u-1792026404148",
           "name": "Lucas",
