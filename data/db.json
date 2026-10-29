@@ -4062,6 +4062,37 @@
   ],
   "jobs": [
     {
+      "id": "job-1793276471830",
+      "companyId": "ext-1793276471830",
+      "companyName": "doliva mar e bar",
+      "title": "garcom",
+      "category": "Garçom",
+      "hasMultiplePositions": false,
+      "positions": [],
+      "paymentType": "a_combinar",
+      "rate": 0,
+      "hourlyRate": null,
+      "monthlyRate": null,
+      "commissionRate": null,
+      "commissionDetail": null,
+      "totalSpots": 3,
+      "filledSpots": 0,
+      "status": "ativa",
+      "noFixedDate": true,
+      "dateUndefined": true,
+      "date": "",
+      "startTime": "A combinar",
+      "endTime": "A combinar",
+      "address": "Av. Atlântica, Balneário Camboriú",
+      "attire": "All Black",
+      "whatsapp": "51994483775",
+      "clicks": 0,
+      "applicants": [],
+      "createdAt": "2026-10-29T12:21:11.830Z",
+      "updatedAt": "2026-10-29T12:21:11.831Z",
+      "_localSyncTs": 1793276471831
+    },
+    {
       "applicants": [
         {
           "freelancerId": "u-1791688499581",
