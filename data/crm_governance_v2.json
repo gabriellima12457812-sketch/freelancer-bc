@@ -223,6 +223,22 @@
   ],
   "audit_logs": [
     {
+      "id": "35d98864-60e8-4ce8-9784-2a16c268d0ff",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "LEAD_STATUS_CHANGE",
+      "resource_type": "lead",
+      "resource_id": "lead-1789180520498-gq8ya",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "details": {
+        "lead_name": "Neiva",
+        "previous_stage": "fechamento",
+        "new_stage": "proposta",
+        "seller": "Gabriel Lima"
+      },
+      "created_at": "2026-10-29T13:02:00.391Z"
+    },
+    {
       "id": "e7d46812-622a-4669-8ce9-08e3f5ec1f69",
       "user_id": "a1111111-1111-1111-1111-111111111111",
       "action": "LEAD_STATUS_CHANGE",
