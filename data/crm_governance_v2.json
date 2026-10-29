@@ -223,6 +223,24 @@
   ],
   "audit_logs": [
     {
+      "id": "f9626e51-0cf9-4ffa-bff2-d8864219e641",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "LEAD_SOFT_DELETE",
+      "resource_type": "lead",
+      "resource_id": "lead-83996106966",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "details": {
+        "lead_name": "Cliente Clínica +55 83 99610-6966",
+        "phone": "83996106966",
+        "value": 82697,
+        "stage": "proposta",
+        "deleted_by": "Gabriel Lima",
+        "deleted_at": "2026-10-29T12:40:07.529Z"
+      },
+      "created_at": "2026-10-29T12:40:07.529Z"
+    },
+    {
       "id": "c3c578e4-d484-4695-80e7-44155680c7eb",
       "user_id": "a1111111-1111-1111-1111-111111111111",
       "action": "LEAD_SOFT_DELETE",
@@ -716,7 +734,7 @@
     "lead:lead-83996106966": {
       "id": "lead-83996106966",
       "resource_type": "lead",
-      "deleted_at": "2026-10-29T12:39:59.625Z",
+      "deleted_at": "2026-10-29T12:40:07.529Z",
       "deleted_by": "a1111111-1111-1111-1111-111111111111",
       "deleted_by_name": "Gabriel Lima",
       "snapshot": {
