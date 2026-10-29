@@ -223,6 +223,24 @@
   ],
   "audit_logs": [
     {
+      "id": "d102a24d-c6d0-4840-92ca-b4f7651fbacf",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "LEAD_SOFT_DELETE",
+      "resource_type": "lead",
+      "resource_id": "CRM-GAB-EDUARDO-LAZARI-19995304504",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "details": {
+        "lead_name": "Eduardo Lazari (@dumayoral)",
+        "phone": "19995304504",
+        "value": 16000,
+        "stage": "proposta",
+        "deleted_by": "Gabriel Lima",
+        "deleted_at": "2026-10-29T13:20:46.826Z"
+      },
+      "created_at": "2026-10-29T13:20:46.826Z"
+    },
+    {
       "id": "ca9fa854-a9af-44f8-b473-be8271b84352",
       "user_id": "a1111111-1111-1111-1111-111111111111",
       "action": "LEAD_SOFT_DELETE",
@@ -880,6 +898,22 @@
         "instagram": null,
         "stage": "proposta",
         "value": 4500,
+        "user_id": "a1111111-1111-1111-1111-111111111111"
+      }
+    },
+    "lead:CRM-GAB-EDUARDO-LAZARI-19995304504": {
+      "id": "CRM-GAB-EDUARDO-LAZARI-19995304504",
+      "resource_type": "lead",
+      "deleted_at": "2026-10-29T13:20:46.826Z",
+      "deleted_by": "a1111111-1111-1111-1111-111111111111",
+      "deleted_by_name": "Gabriel Lima",
+      "snapshot": {
+        "id": "CRM-GAB-EDUARDO-LAZARI-19995304504",
+        "name": "Eduardo Lazari (@dumayoral)",
+        "phone": "19995304504",
+        "instagram": "dumayoral",
+        "stage": "proposta",
+        "value": 16000,
         "user_id": "a1111111-1111-1111-1111-111111111111"
       }
     }
