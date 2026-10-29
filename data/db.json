@@ -4058,6 +4058,23 @@
       "trialStartDate": "2026-10-28T20:56:36.311Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1793277421471",
+      "name": "Wellison da silva andrade",
+      "role": "freelancer",
+      "cpf": "111.501.979-19",
+      "phone": "47997685055",
+      "email": "11150197919@freelancerbc.local",
+      "password": "105090",
+      "age": 27,
+      "experienceTime": "Mais de 5 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-29T12:37:01.471Z"
     }
   ],
   "jobs": [
@@ -4086,21 +4103,8 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "51994483775",
-      "clicks": 1,
-      "applicants": [
-        {
-          "freelancerId": "u-1793277421471",
-          "name": "Wellison da silva andrade",
-          "phone": "47997685055",
-          "email": "11150197919@freelancerbc.local",
-          "profession": "Garçom",
-          "age": 27,
-          "experienceTime": "Mais de 5 anos",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-29T12:37:01.944Z",
-          "hiredStatus": "pendente"
-        }
-      ],
+      "clicks": 0,
+      "applicants": [],
       "createdAt": "2026-10-29T12:21:11.830Z",
       "updatedAt": "2026-10-29T12:21:11.831Z",
       "_localSyncTs": 1793276471831
