@@ -4206,8 +4206,20 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "51994483775",
-      "clicks": 2,
+      "clicks": 3,
       "applicants": [
+        {
+          "freelancerId": "u-1792094849811",
+          "name": "Andrea romina lopez iza",
+          "phone": "47997833766",
+          "email": "71945746165@freelancerbc.local",
+          "profession": "Sub Chef",
+          "age": 35,
+          "experienceTime": "1 a 2 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-29T14:03:39.974Z",
+          "hiredStatus": "pendente"
+        },
         {
           "freelancerId": "u-1792026404148",
           "name": "Lucas",
