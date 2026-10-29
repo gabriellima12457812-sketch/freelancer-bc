@@ -175,6 +175,22 @@
       "deleted_at": null,
       "created_at": "2026-10-28T14:45:18.204Z",
       "updated_at": "2026-10-28T14:45:18.204Z"
+    },
+    {
+      "id": "56c23689-39cc-4cb6-9cf0-640a3d0a9874",
+      "key": "nathaly",
+      "name": "nathaly",
+      "email": "nathaly@piffpaff",
+      "phone": "47996583495",
+      "password_hash": "9fc404823fed229acea20f13e933a03dcc1ef2d920ebf2e9d0ec7ec62d562119",
+      "role": "vendedor",
+      "status": "active",
+      "requires_2fa": false,
+      "prefix": "CRM-NAT-",
+      "session_version": 1,
+      "deleted_at": null,
+      "created_at": "2026-10-29T13:51:42.831Z",
+      "updated_at": "2026-10-29T13:51:42.831Z"
     }
   ],
   "user_trusted_devices": [],
@@ -222,6 +238,27 @@
     }
   ],
   "audit_logs": [
+    {
+      "id": "66d6fb3c-3444-4a80-b6b7-f1ea1ff0c081",
+      "user_id": "99999999-9999-9999-9999-999999999999",
+      "action": "USER_CREATED_FULL_PROVISION",
+      "resource_type": "user",
+      "resource_id": "56c23689-39cc-4cb6-9cf0-640a3d0a9874",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "details": {
+        "name": "nathaly",
+        "email": "nathaly@piffpaff",
+        "role": "vendedor",
+        "requires_2fa": false,
+        "supabase_synced": false,
+        "whatsapp_instance": "nathaly",
+        "whatsapp_instance_ready": true,
+        "webhook_configured": true,
+        "api_endpoint": "/api/edson?seller=nathaly"
+      },
+      "created_at": "2026-10-29T13:51:42.831Z"
+    },
     {
       "id": "d102a24d-c6d0-4840-92ca-b4f7651fbacf",
       "user_id": "a1111111-1111-1111-1111-111111111111",
