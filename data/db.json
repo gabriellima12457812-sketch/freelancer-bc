@@ -4127,6 +4127,23 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-29T12:41:37.637Z"
+    },
+    {
+      "id": "u-1793278588395",
+      "name": "Cariannys Del valle Fajardo Martinez",
+      "role": "freelancer",
+      "cpf": "708.402.822-65",
+      "phone": "66992144015",
+      "email": "70840282265@freelancerbc.local",
+      "password": "140717",
+      "age": 21,
+      "experienceTime": "Menos de 1 ano",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-29T12:56:28.395Z"
     }
   ],
   "jobs": [
@@ -4155,20 +4172,8 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "51994483775",
-      "clicks": 3,
+      "clicks": 2,
       "applicants": [
-        {
-          "freelancerId": "u-1793278588395",
-          "name": "Cariannys Del valle Fajardo Martinez",
-          "phone": "66992144015",
-          "email": "70840282265@freelancerbc.local",
-          "profession": "Garçom",
-          "age": 21,
-          "experienceTime": "Menos de 1 ano",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-29T12:56:28.631Z",
-          "hiredStatus": "pendente"
-        },
         {
           "freelancerId": "u-1792026404148",
           "name": "Lucas",
