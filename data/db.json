@@ -4110,6 +4110,23 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-29T12:40:34.264Z"
+    },
+    {
+      "id": "u-1793277697637",
+      "name": "Bruna Ostwald Casburgo",
+      "role": "freelancer",
+      "cpf": "117.264.609-08",
+      "phone": "47989155052",
+      "email": "11726460908@freelancerbc.local",
+      "password": "1906",
+      "age": 25,
+      "experienceTime": "Menos de 1 ano",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-29T12:41:37.637Z"
     }
   ],
   "jobs": [
@@ -4138,21 +4155,8 @@
       "address": "Av. Atlântica, Balneário Camboriú",
       "attire": "All Black",
       "whatsapp": "51994483775",
-      "clicks": 1,
-      "applicants": [
-        {
-          "freelancerId": "u-1793277697637",
-          "name": "Bruna Ostwald Casburgo",
-          "phone": "47989155052",
-          "email": "11726460908@freelancerbc.local",
-          "profession": "Garçom",
-          "age": 25,
-          "experienceTime": "Menos de 1 ano",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-29T12:41:39.471Z",
-          "hiredStatus": "pendente"
-        }
-      ],
+      "clicks": 0,
+      "applicants": [],
       "createdAt": "2026-10-29T12:21:11.830Z",
       "updatedAt": "2026-10-29T12:21:11.831Z",
       "_localSyncTs": 1793276471831
