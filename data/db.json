@@ -4068,13 +4068,14 @@
       "email": "11150197919@freelancerbc.local",
       "password": "105090",
       "age": 27,
-      "experienceTime": "Mais de 5 anos",
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
       "profession": "Garçom",
       "city": "Balneário Camboriú",
       "isSubscriptionActive": true,
       "subscriptionTier": "free",
       "status": "aprovado",
-      "createdAt": "2026-10-29T12:37:01.471Z"
+      "createdAt": "2026-10-29T12:37:01.471Z",
+      "experience": ""
     },
     {
       "id": "u-1793277440100",
