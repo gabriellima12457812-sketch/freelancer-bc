@@ -223,6 +223,24 @@
   ],
   "audit_logs": [
     {
+      "id": "264f7fdb-2d4f-4ece-879f-74d99fe01c44",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "LEAD_SOFT_DELETE",
+      "resource_type": "lead",
+      "resource_id": "CRM-GAB-0010",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "details": {
+        "lead_name": "Maysa Décimo",
+        "phone": null,
+        "value": 180000,
+        "stage": "fechamento",
+        "deleted_by": "Gabriel Lima",
+        "deleted_at": "2026-10-29T12:28:07.140Z"
+      },
+      "created_at": "2026-10-29T12:28:07.140Z"
+    },
+    {
       "id": "aa46a034-8898-482d-a560-13d252ad6a01",
       "user_id": "a1111111-1111-1111-1111-111111111111",
       "action": "LEAD_STATUS_CHANGE",
@@ -632,5 +650,22 @@
       "created_at": "2026-10-28T11:56:45.383Z"
     }
   ],
-  "soft_deleted_records": {}
+  "soft_deleted_records": {
+    "lead:CRM-GAB-0010": {
+      "id": "CRM-GAB-0010",
+      "resource_type": "lead",
+      "deleted_at": "2026-10-29T12:28:07.140Z",
+      "deleted_by": "a1111111-1111-1111-1111-111111111111",
+      "deleted_by_name": "Gabriel Lima",
+      "snapshot": {
+        "id": "CRM-GAB-0010",
+        "name": "Maysa Décimo",
+        "phone": null,
+        "instagram": null,
+        "stage": "fechamento",
+        "value": 180000,
+        "user_id": "a1111111-1111-1111-1111-111111111111"
+      }
+    }
+  }
 }
