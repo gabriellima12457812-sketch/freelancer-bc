@@ -4199,6 +4199,26 @@
       "trialStartDate": "2026-10-30T12:11:11.299Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1793390681432",
+      "name": "Bruna morganti",
+      "email": "bruh.morganti@gmail.com",
+      "password": "morganti06",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "021.966.040-97",
+      "cnpj": null,
+      "phone": "47999482500",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 37,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-30T20:04:41.432Z",
+      "trialStartDate": "2026-10-30T20:04:41.432Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
