@@ -4179,6 +4179,26 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-29T13:52:11.651Z"
+    },
+    {
+      "id": "u-1793362271299",
+      "name": "YURI Ramos Pinto",
+      "email": "yuriramospinto07@gmail.com",
+      "password": "Yuri9641",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "111.958.959-25",
+      "cnpj": null,
+      "phone": "47991027707",
+      "businessType": null,
+      "profession": "Segurança",
+      "age": 28,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-10-30T12:11:11.299Z",
+      "trialStartDate": "2026-10-30T12:11:11.299Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
