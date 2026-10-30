@@ -4199,6 +4199,23 @@
       "trialStartDate": "2026-10-30T12:11:11.299Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1793390366585",
+      "name": "Bruna Morganti",
+      "role": "freelancer",
+      "cpf": "021.966.040-97",
+      "phone": "47999482500",
+      "email": "02196604097@freelancerbc.local",
+      "password": "morganti06",
+      "age": 37,
+      "experienceTime": "3 a 5 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-30T19:59:26.585Z"
     }
   ],
   "jobs": [
