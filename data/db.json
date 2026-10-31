@@ -4219,6 +4219,23 @@
       "trialStartDate": "2026-10-30T20:04:41.432Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1793471164900",
+      "name": "Sabrina Xavier ferreira",
+      "role": "freelancer",
+      "cpf": "019.648.610-63",
+      "phone": "47997176412",
+      "email": "01964861063@freelancerbc.local",
+      "password": "2416",
+      "age": 26,
+      "experienceTime": "Mais de 5 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-10-31T18:26:04.900Z"
     }
   ],
   "jobs": [
@@ -4353,18 +4370,6 @@
     {
       "applicants": [
         {
-          "freelancerId": "u-1793471164900",
-          "name": "Sabrina Xavier ferreira",
-          "phone": "47997176412",
-          "email": "01964861063@freelancerbc.local",
-          "profession": "Garçom",
-          "age": 26,
-          "experienceTime": "Mais de 5 anos",
-          "city": "Balneário Camboriú",
-          "clickedAt": "2026-10-31T18:26:05.190Z",
-          "hiredStatus": "pendente"
-        },
-        {
           "freelancerId": "u-1793410514338",
           "name": "ITACINEY MARTINS RIBEIRO",
           "phone": "48996921274",
@@ -4427,7 +4432,7 @@
       ],
       "companyName": "Bar na avenida atlântica",
       "commissionRate": null,
-      "clicks": 6,
+      "clicks": 5,
       "category": "Garçom",
       "address": "Av. Atlântica, Balneário",
       "startTime": "A combinar",
