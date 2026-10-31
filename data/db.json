@@ -4353,6 +4353,18 @@
     {
       "applicants": [
         {
+          "freelancerId": "u-1793471164900",
+          "name": "Sabrina Xavier ferreira",
+          "phone": "47997176412",
+          "email": "01964861063@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 26,
+          "experienceTime": "Mais de 5 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-10-31T18:26:05.190Z",
+          "hiredStatus": "pendente"
+        },
+        {
           "freelancerId": "u-1793410514338",
           "name": "ITACINEY MARTINS RIBEIRO",
           "phone": "48996921274",
@@ -4415,7 +4427,7 @@
       ],
       "companyName": "Bar na avenida atlântica",
       "commissionRate": null,
-      "clicks": 5,
+      "clicks": 6,
       "category": "Garçom",
       "address": "Av. Atlântica, Balneário",
       "startTime": "A combinar",
