@@ -624,11 +624,29 @@
 
           label: '🗓️ Mensal',
 
-          display: `${formatMoney(monthly)} / mês`,
+          display: monthly > 0 ? `${formatMoney(monthly)} / mês` : 'Mensal (A combinar)',
 
           subtitle: job.commissionDetail ? job.commissionDetail : 'Salário / Pagamento Mensal',
 
           badgeColor: 'bg-emerald-50 text-emerald-800 border border-emerald-300'
+
+        };
+
+      }
+
+      if (type === 'mensal_fixo_comissao') {
+
+        return {
+
+          type: 'mensal_fixo_comissao',
+
+          label: '🗓️⚡ Mensal Fixo + Comissão',
+
+          display: 'Mensal Fixo + Comissão',
+
+          subtitle: job.commissionDetail ? job.commissionDetail : 'Salário fixo mensal + comissão (sem valor definido)',
+
+          badgeColor: 'bg-teal-50 text-teal-900 border border-teal-300'
 
         };
 
@@ -775,6 +793,23 @@
 
 
 
+    const formatPositionRate = (pos, parentJob = null) => {
+      if (!pos) return 'A combinar';
+      if (pos.paymentType === 'mensal_fixo_comissao' || (!pos.rate && parentJob && parentJob.paymentType === 'mensal_fixo_comissao')) {
+        return 'Mensal Fixo + Comissão';
+      }
+      const rawRate = String(pos.rate || '').trim();
+      if (pos.paymentType === 'a_combinar' || !rawRate || rawRate.toLowerCase().includes('combinar')) {
+        return 'A combinar';
+      }
+      if (rawRate.toLowerCase().includes('mensal') || rawRate.toLowerCase().includes('comiss') || isNaN(Number(rawRate))) {
+        return rawRate;
+      }
+      if (pos.paymentType === 'mensal') return `R$ ${rawRate}/mês`;
+      if (pos.paymentType === 'por_hora') return `R$ ${rawRate}/h`;
+      return `R$ ${rawRate}`;
+    };
+
     // Formatador ultra-clean de compartilhamento/indicação para WhatsApp e Redes Sociais
     // Focado em alta legibilidade, informações importantes, sem poluição visual ou excesso de emojis
     const formatCleanShareJobText = (job, shareRole = 'geral', jobUrl = '') => {
@@ -790,12 +825,16 @@
           const pSpots = Number(p.spots) || 1;
           const pSpotsStr = `${pSpots} ${pSpots === 1 ? 'vaga' : 'vagas'}`;
           let pRateStr = '';
-          if (p.paymentType === 'a_combinar' || !p.rate) {
+          if (p.paymentType === 'mensal_fixo_comissao' || (!p.rate && job.paymentType === 'mensal_fixo_comissao')) {
+            pRateStr = 'Mensal Fixo + Comissão';
+          } else if (p.paymentType === 'a_combinar' || !p.rate) {
             pRateStr = 'Cachê a combinar';
           } else if (p.paymentType === 'mensal') {
             pRateStr = `R$ ${p.rate}/mês`;
           } else if (p.paymentType === 'por_hora') {
             pRateStr = `R$ ${p.rate}/h`;
+          } else if (isNaN(Number(p.rate))) {
+            pRateStr = String(p.rate);
           } else {
             pRateStr = `R$ ${p.rate}`;
           }
@@ -806,6 +845,8 @@
         let cacheDisplay = remun.display;
         if (remun.type === 'a_combinar') {
           cacheDisplay = 'A combinar';
+        } else if (remun.type === 'mensal_fixo_comissao') {
+          cacheDisplay = 'Mensal Fixo + Comissão (A combinar)';
         }
         vagasLines.push(`• *Cachê:* ${cacheDisplay}`);
       }
@@ -9595,7 +9636,7 @@
                                           <span className="text-[10px] text-slate-400 font-normal">({pos.spots} {Number(pos.spots) === 1 ? 'vaga' : 'vagas'})</span>
                                         </div>
                                         <span className="font-black text-emerald-600 text-xs">
-                                          {pos.paymentType === 'a_combinar' ? 'A combinar' : (pos.paymentType === 'por_hora' ? `R$ ${pos.rate}/h` : `R$ ${pos.rate}`)}
+                                          {formatPositionRate(pos, job)}
                                         </span>
                                       </div>
                                     ))}
@@ -10140,7 +10181,7 @@
                           <span className="text-[10px] text-slate-400 font-normal">({pos.spots} {Number(pos.spots) === 1 ? 'vaga' : 'vagas'})</span>
                         </div>
                         <span className="text-xs font-black text-emerald-600">
-                          {pos.paymentType === 'a_combinar' ? 'A combinar' : (pos.paymentType === 'por_hora' ? `R$ ${pos.rate}/h` : `R$ ${pos.rate}`)}
+                          {formatPositionRate(pos, job)}
                         </span>
                       </label>
                     ))}
@@ -10806,7 +10847,7 @@
                           <span className="text-[10px] text-slate-400 font-normal">({pos.spots} {Number(pos.spots) === 1 ? 'vaga' : 'vagas'})</span>
                         </div>
                         <span className="font-black text-emerald-600 text-xs">
-                          {pos.paymentType === 'a_combinar' ? 'A combinar' : (pos.paymentType === 'por_hora' ? `R$ ${pos.rate}/h` : `R$ ${pos.rate}`)}
+                          {formatPositionRate(pos, job)}
                         </span>
                       </div>
                     ))}
@@ -12232,9 +12273,9 @@
 
           positions: hasMultiplePositions ? positions : [],
 
-          paymentType: hasMultiplePositions ? 'a_combinar' : paymentType,
+          paymentType: (hasMultiplePositions && paymentType === 'diaria_fixa') ? 'a_combinar' : paymentType,
 
-          rate: hasMultiplePositions ? 0 : ((paymentType === 'so_comissao' || paymentType === 'a_combinar') ? 0 : (paymentType === 'por_hora' ? Number(hourlyRate) : (Number(rate) || 0))),
+          rate: hasMultiplePositions ? 0 : ((paymentType === 'so_comissao' || paymentType === 'a_combinar' || paymentType === 'mensal_fixo_comissao') ? 0 : (paymentType === 'por_hora' ? Number(hourlyRate) : (Number(rate) || 0))),
 
           hourlyRate: (!hasMultiplePositions && paymentType === 'por_hora') ? (Number(hourlyRate) || 0) : null,
           monthlyRate: (!hasMultiplePositions && paymentType === 'mensal') ? (Number(rate) || 0) : null,
@@ -12600,6 +12641,20 @@
                     <span className="text-[10px] text-slate-400 font-normal">Salário / Mês</span>
                   </button>
 
+                  <button
+                    type="button"
+                    onClick={() => setPaymentType('mensal_fixo_comissao')}
+                    className={`p-2.5 rounded-xl border text-left transition flex flex-col justify-between ${
+                      paymentType === 'mensal_fixo_comissao'
+                        ? 'bg-teal-50 border-teal-600 ring-2 ring-teal-500/20 text-teal-950 font-bold'
+                        : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100'
+                    }`}
+                  >
+                    <span className="text-base mb-1">🗓️⚡</span>
+                    <span className="text-xs font-bold leading-tight">Mensal Fixo + Comis.</span>
+                    <span className="text-[10px] text-slate-400 font-normal">Sem valor definido</span>
+                  </button>
+
 
 
                   <button
@@ -12961,6 +13016,29 @@
                 )}
 
 
+
+                {paymentType === 'mensal_fixo_comissao' && (
+                  <div className="space-y-2 pt-1 animate-in fade-in">
+                    <div className="p-3 bg-teal-50/80 border border-teal-200 rounded-xl text-xs text-teal-950 space-y-1">
+                      <div className="font-extrabold flex items-center gap-1.5 text-teal-900">
+                        <span>🗓️⚡</span>
+                        <span>Mensal Fixo + Comissão (Sem valor definido)</span>
+                      </div>
+                      <p className="text-[11px] text-teal-800 leading-relaxed">
+                        A vaga será publicada com remuneração <strong>"Mensal Fixo + Comissão"</strong> sem valor fixado no anúncio. Os valores de salário base e comissão serão alinhados diretamente com o candidato pelo WhatsApp.
+                      </p>
+                    </div>
+                    <div>
+                      <label className="font-semibold text-slate-700 block text-[11px] mb-1">Observações da Remuneração (Opcional)</label>
+                      <input
+                        placeholder="Ex: Salário fixo mensal + comissão sobre vendas a combinar na entrevista..."
+                        value={commissionDetail}
+                        onChange={e => setCommissionDetail(e.target.value)}
+                        className="w-full p-2 bg-white border border-slate-200 rounded-xl text-xs font-medium text-slate-900"
+                      />
+                    </div>
+                  </div>
+                )}
 
                 {paymentType === 'a_combinar' && (
 
@@ -13634,11 +13712,11 @@
 
           if (paymentFilter === 'diaria_fixa') matchPay = pType === 'diaria_fixa';
 
-          else if (paymentFilter === 'mensal') matchPay = pType === 'mensal';
+          else if (paymentFilter === 'mensal') matchPay = (pType === 'mensal' || pType === 'mensal_fixo_comissao');
 
           else if (paymentFilter === 'por_hora') matchPay = pType === 'por_hora';
 
-          else if (paymentFilter === 'comissao') matchPay = (pType === 'so_comissao' || pType === 'fixo_mais_comissao');
+          else if (paymentFilter === 'comissao') matchPay = (pType === 'so_comissao' || pType === 'fixo_mais_comissao' || pType === 'mensal_fixo_comissao');
           else if (paymentFilter === 'a_combinar') matchPay = (pType === 'a_combinar' || !job.rate || Number(job.rate) === 0);
 
 
@@ -14514,7 +14592,7 @@
                                     <span className="text-[10px] text-slate-400 font-normal">({pos.spots} {Number(pos.spots) === 1 ? 'vaga' : 'vagas'})</span>
                                   </div>
                                   <span className="font-black text-emerald-600 text-xs">
-                                    {pos.paymentType === 'a_combinar' ? 'A combinar' : (pos.paymentType === 'por_hora' ? `R$ ${pos.rate}/h` : `R$ ${pos.rate}`)}
+                                    {formatPositionRate(pos, job)}
                                   </span>
                                 </div>
                               ))}
