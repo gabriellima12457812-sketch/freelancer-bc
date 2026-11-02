@@ -4236,6 +4236,26 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-10-31T18:26:04.900Z"
+    },
+    {
+      "id": "u-1793607793611",
+      "name": "Guilherme Henrique",
+      "email": "guilhermehenriquedasilvadesouz@gmail.com",
+      "password": "Gui160309",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "126.132.839-63",
+      "cnpj": null,
+      "phone": "47999368053",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": null,
+      "experienceTime": "1 a 2 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-11-02T08:23:13.611Z",
+      "trialStartDate": "2026-11-02T08:23:13.611Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
