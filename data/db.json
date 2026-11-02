@@ -4256,6 +4256,23 @@
       "trialStartDate": "2026-11-02T08:23:13.611Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1793647041902",
+      "name": "martina skanata",
+      "role": "freelancer",
+      "cpf": "041.638.509-53",
+      "phone": "48992050301",
+      "email": "04163850953@freelancerbc.local",
+      "password": "19260512",
+      "age": 22,
+      "experienceTime": "1 a 2 anos",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-11-02T19:17:21.902Z"
     }
   ],
   "jobs": [
