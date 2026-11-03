@@ -4410,6 +4410,18 @@
     {
       "applicants": [
         {
+          "freelancerId": "u-1791499865361",
+          "name": "Emilaine da silva",
+          "phone": "47984246872",
+          "email": "emilainepadilhas@gmail.com",
+          "profession": "Garçom",
+          "age": 38,
+          "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-11-03T21:56:21.240Z",
+          "hiredStatus": "pendente"
+        },
+        {
           "freelancerId": "u-1793647041902",
           "name": "martina skanata",
           "phone": "48992050301",
@@ -4484,7 +4496,7 @@
       ],
       "companyName": "Bar na avenida atlântica",
       "commissionRate": null,
-      "clicks": 6,
+      "clicks": 7,
       "category": "Garçom",
       "address": "Av. Atlântica, Balneário",
       "startTime": "A combinar",
