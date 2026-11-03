@@ -280,6 +280,20 @@
   ],
   "audit_logs": [
     {
+      "id": "6374c34d-d268-4d71-b347-61e501b7b2dd",
+      "user_id": "c3333333-3333-3333-3333-333333333333",
+      "action": "CUSTOM_EVENT",
+      "resource_type": "leads",
+      "resource_id": "CRM-FEL-INSTA-002",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "felipe",
+        "phone": ""
+      },
+      "created_at": "2026-11-03T17:46:16.068Z"
+    },
+    {
       "id": "f4353e11-fedb-49fa-99e4-2375453e52fb",
       "user_id": "c3333333-3333-3333-3333-333333333333",
       "action": "LEAD_SOFT_DELETE",
