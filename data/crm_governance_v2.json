@@ -280,6 +280,22 @@
   ],
   "audit_logs": [
     {
+      "id": "56ae4aec-68bd-44e2-8506-4a559c7b1f35",
+      "user_id": "c3333333-3333-3333-3333-333333333333",
+      "action": "CUSTOM_EVENT",
+      "resource_type": "leads",
+      "resource_id": "CRM-FEL-WA-5516997545291",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "felipe",
+        "lead_name": "Érica Brignoli",
+        "previous_stage": "novos",
+        "new_stage": "fechamento"
+      },
+      "created_at": "2026-11-03T17:43:40.476Z"
+    },
+    {
       "id": "b73f656a-e950-4462-8f8c-c1be5d2a1d11",
       "user_id": "c3333333-3333-3333-3333-333333333333",
       "action": "CUSTOM_EVENT",
