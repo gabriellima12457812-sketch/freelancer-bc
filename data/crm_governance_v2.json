@@ -280,6 +280,22 @@
   ],
   "audit_logs": [
     {
+      "id": "24c2d63b-2316-429d-be56-4ce5ce5d3c56",
+      "user_id": "c3333333-3333-3333-3333-333333333333",
+      "action": "CUSTOM_EVENT",
+      "resource_type": "leads",
+      "resource_id": "CRM-FEL-WA-554891277865",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "felipe",
+        "lead_name": "Savana",
+        "previous_stage": "proposta",
+        "new_stage": "fechamento"
+      },
+      "created_at": "2026-11-03T17:47:39.181Z"
+    },
+    {
       "id": "6374c34d-d268-4d71-b347-61e501b7b2dd",
       "user_id": "c3333333-3333-3333-3333-333333333333",
       "action": "CUSTOM_EVENT",
