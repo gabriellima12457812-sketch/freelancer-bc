@@ -4256,6 +4256,26 @@
       "trialStartDate": "2026-11-02T08:23:13.611Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1793724551534",
+      "name": "Namo chocolateria",
+      "email": "namochocolateria@gmail.com",
+      "password": "Naml2026@",
+      "role": "empresa",
+      "status": "aprovado",
+      "cpf": null,
+      "cnpj": "54.463.889/0001-72",
+      "phone": "47997038449",
+      "businessType": "Outro",
+      "profession": null,
+      "age": null,
+      "experienceTime": null,
+      "city": null,
+      "createdAt": "2026-11-03T16:49:11.534Z",
+      "trialStartDate": "2026-11-03T16:49:11.534Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
