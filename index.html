@@ -1500,7 +1500,24 @@
 
 
 
+      const isDirectRegisterUrl = () => {
+        if (typeof window === 'undefined') return null;
+        try {
+          const sp = new URLSearchParams(window.location.search || '');
+          const cad = (sp.get('cadastro') || sp.get('tipo') || sp.get('role') || '').toLowerCase();
+          if (cad === 'empresa' || cad === 'contratante' || sp.get('empresa') === '1' || (window.location.pathname || '').includes('cadastro-empresa')) {
+            return 'empresa';
+          }
+          if (cad === 'freelancer' || (window.location.pathname || '').includes('cadastro-freelancer')) {
+            return 'freelancer';
+          }
+        } catch (e) {}
+        return null;
+      };
+
       const [currentUser, setCurrentUser] = useState(() => {
+
+        if (isDirectRegisterUrl()) return null;
 
         const s = localStorage.getItem('fbc_current_user');
 
@@ -1548,7 +1565,7 @@
 
 
 
-      const [authMode, setAuthMode] = useState('login');
+      const [authMode, setAuthMode] = useState(() => isDirectRegisterUrl() ? 'register' : 'login');
 
       const [showPaymentGatewayModal, setShowPaymentGatewayModal] = useState(false);
 
@@ -5234,7 +5251,18 @@
 
     function RegisterView({ users, onRegister, onGoToLogin, onTriggerInstall }) {
 
-      const [userType, setUserType] = useState('freelancer');
+      const [userType, setUserType] = useState(() => {
+        if (typeof window !== 'undefined') {
+          try {
+            const sp = new URLSearchParams(window.location.search || '');
+            const cad = (sp.get('cadastro') || sp.get('tipo') || sp.get('role') || '').toLowerCase();
+            if (cad === 'empresa' || cad === 'contratante' || sp.get('empresa') === '1' || (window.location.pathname || '').includes('cadastro-empresa')) {
+              return 'empresa';
+            }
+          } catch (e) {}
+        }
+        return 'freelancer';
+      });
 
       const [name, setName] = useState('');
 
