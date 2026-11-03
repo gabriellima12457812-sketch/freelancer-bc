@@ -3202,6 +3202,8 @@
               <PublicSharedJobView
 
                 job={jobs.find(j => j.id === sharedJobId)}
+                allJobs={jobs}
+                onSelectJob={(newJobId) => setSharedJobId(newJobId)}
                 onTrackView={handleTrackJobView}
 
                 isLoading={!initialCloudSyncDone && !jobs.some(j => j.id === sharedJobId)}
@@ -3446,6 +3448,8 @@
           {sharedJobId && (
             <PublicSharedJobView
               job={jobs.find(j => j.id === sharedJobId)}
+              allJobs={jobs}
+              onSelectJob={(newJobId) => setSharedJobId(newJobId)}
               onTrackView={handleTrackJobView}
               isLoading={!initialCloudSyncDone && !jobs.some(j => j.id === sharedJobId)}
               currentUser={currentUser}
@@ -10644,7 +10648,7 @@
     }
 
 
-    function PublicSharedJobView({ job, isLoading, currentUser, onApplyClick, onQuickApply, onRegisterClick, onShare, onClose, onTrackView }) {
+    function PublicSharedJobView({ job, allJobs = [], onSelectJob, isLoading, currentUser, onApplyClick, onQuickApply, onRegisterClick, onShare, onClose, onTrackView }) {
       useEffect(() => {
         if (job?.id && onTrackView) {
           onTrackView(job.id);
@@ -10661,8 +10665,10 @@
       const [quickError, setQuickError] = useState('');
       const [isSubmitting, setIsSubmitting] = useState(false);
 
-      if (!job) {
-        if (isLoading) {
+      const isJobInactiveForVisitor = Boolean(job && job.status !== 'ativa' && (!currentUser || currentUser.role === 'freelancer'));
+
+      if (!job || isJobInactiveForVisitor) {
+        if (isLoading && !job) {
           return (
             <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
               <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-sm w-full p-8 text-white text-center shadow-2xl space-y-4">
@@ -10673,21 +10679,146 @@
             </div>
           );
         }
+
+        const otherActiveJobs = (Array.isArray(allJobs) ? allJobs : [])
+          .filter(j => j && j.status === 'ativa' && !isJobExpired(j) && (!job || j.id !== job.id));
+
         return (
-          <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
-            <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 text-white text-center shadow-2xl relative my-auto">
-              <div className="w-12 h-12 bg-slate-800 text-slate-400 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                <Icon name="alertCircle" className="w-6 h-6" />
+          <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden">
+            <div className="bg-white w-full sm:max-w-xl max-h-[94vh] max-h-[94dvh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in">
+              {/* Header */}
+              <div className="shrink-0 px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-white z-10">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-500 to-emerald-400 flex items-center justify-center font-bold text-white">
+                    <Icon name="briefcase" className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-extrabold text-slate-900 leading-tight">Freelancer BC</h3>
+                    <p className="text-[11px] text-slate-400">Balneário Camboriú & Região</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition"
+                >
+                  <Icon name="x" className="w-5 h-5" />
+                </button>
               </div>
-              <h3 className="text-xl font-bold">Vaga não encontrada</h3>
-              <p className="text-xs text-slate-400 mt-1 mb-6">Esta vaga pode ter sido encerrada ou preenchida.</p>
-              <button
-                type="button"
-                onClick={onClose}
-                className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs"
-              >
-                Ver Vagas Disponíveis em BC
-              </button>
+
+              {/* Conteúdo Rolável */}
+              <div className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-6 space-y-4">
+                {/* Aviso de vaga preenchida / encerrada + CTA de Cadastro */}
+                <div className="p-5 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl shadow-md space-y-3 text-center">
+                  <div className="w-12 h-12 bg-amber-500/20 text-amber-300 border border-amber-400/30 rounded-2xl flex items-center justify-center mx-auto">
+                    <Icon name="alertCircle" className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-black text-white">
+                      Esta vaga já foi preenchida ou encerrada!
+                    </h3>
+                    <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                      Mas não perca oportunidade: cadastre-se gratuitamente para receber alertas de novas vagas e veja abaixo as <strong className="text-emerald-400">outras vagas abertas agora</strong> em Balneário Camboriú e região!
+                    </p>
+                  </div>
+
+                  {!currentUser ? (
+                    <div className="pt-2 space-y-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (onRegisterClick) onRegisterClick();
+                          else if (onClose) onClose();
+                        }}
+                        className="w-full py-3.5 px-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black rounded-2xl text-xs sm:text-sm shadow-lg shadow-emerald-500/20 transition transform active:scale-95 cursor-pointer flex items-center justify-center gap-2"
+                      >
+                        <Icon name="userCheck" className="w-4 h-4" />
+                        <span>Criar Meu Cadastro Gratuito Agora</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (onApplyClick) onApplyClick();
+                          else if (onClose) onClose();
+                        }}
+                        className="w-full py-2.5 px-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl text-xs border border-white/15 transition cursor-pointer"
+                      >
+                        Já tenho conta — Entrar no Sistema
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="pt-2">
+                      <button
+                        type="button"
+                        onClick={onClose}
+                        className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl text-xs sm:text-sm transition cursor-pointer"
+                      >
+                        Ir para o Painel Completo de Vagas
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {/* Lista de Outras Vagas Disponíveis para Analisar na Hora */}
+                <div className="space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-black text-slate-900 text-xs sm:text-sm uppercase tracking-wider flex items-center gap-1.5">
+                      <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                      <span>Outras Vagas Abertas Agora ({otherActiveJobs.length})</span>
+                    </h4>
+                    <span className="text-[11px] text-indigo-600 font-bold">Toque para ver detalhes</span>
+                  </div>
+
+                  {otherActiveJobs.length === 0 ? (
+                    <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl text-center space-y-2">
+                      <p className="text-xs font-bold text-slate-700">Novas vagas estão sendo cadastradas para hoje.</p>
+                      <p className="text-[11px] text-slate-500">Deixe seu cadastro pronto gratuitamente para receber o alerta assim que saírem!</p>
+                    </div>
+                  ) : (
+                    <div className="space-y-2.5">
+                      {otherActiveJobs.map(otherJob => {
+                        const oRemun = formatRemuneration(otherJob);
+                        const oRemaining = Math.max(0, (otherJob.totalSpots || 1) - (otherJob.filledSpots || 0));
+                        return (
+                          <div
+                            key={otherJob.id}
+                            onClick={() => {
+                              if (onSelectJob) onSelectJob(otherJob.id);
+                            }}
+                            className="p-3.5 bg-slate-50 hover:bg-indigo-50/50 border border-slate-200 hover:border-indigo-300 rounded-2xl transition cursor-pointer flex flex-col gap-2 shadow-2xs"
+                          >
+                            <div className="flex items-start justify-between gap-2">
+                              <div>
+                                <span className="inline-block px-2 py-0.5 bg-indigo-100 text-indigo-800 rounded-md font-bold text-[10px] mb-1">
+                                  {otherJob.category}
+                                </span>
+                                <h5 className="font-black text-slate-900 text-sm leading-tight">{otherJob.title}</h5>
+                                <p className="text-xs text-slate-600 font-semibold mt-0.5">🏢 {otherJob.companyName}</p>
+                                <p className="text-[11px] text-slate-500">📍 {otherJob.address}</p>
+                              </div>
+                              <div className="text-right shrink-0">
+                                <span className="block text-sm font-black text-emerald-600">{oRemun.display}</span>
+                                <span className="inline-block mt-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                                  {oRemaining} {oRemaining === 1 ? 'vaga' : 'vagas'}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="pt-2 border-t border-slate-200/70 flex items-center justify-between text-xs">
+                              <span className="text-[11px] text-slate-500 font-medium">
+                                📅 {(otherJob.noFixedDate || otherJob.dateUndefined || !otherJob.date) ? 'Início imediato / A combinar' : formatJobDate(otherJob.date, otherJob)}
+                              </span>
+                              <span className="font-extrabold text-indigo-600 flex items-center gap-1">
+                                <span>Analisar Vaga</span>
+                                <span>→</span>
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         );
