@@ -280,6 +280,24 @@
   ],
   "audit_logs": [
     {
+      "id": "f4353e11-fedb-49fa-99e4-2375453e52fb",
+      "user_id": "c3333333-3333-3333-3333-333333333333",
+      "action": "LEAD_SOFT_DELETE",
+      "resource_type": "lead",
+      "resource_id": "CRM-FEL-INSTA-002",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "lead_name": "Marcos VinÃ­cius Prado",
+        "phone": null,
+        "value": 72000,
+        "stage": "conversa",
+        "deleted_by": "Felipe",
+        "deleted_at": "2026-11-03T17:46:14.172Z"
+      },
+      "created_at": "2026-11-03T17:46:14.172Z"
+    },
+    {
       "id": "765a2a43-2cb7-4671-b1b8-87f3a84fa9e4",
       "user_id": "c3333333-3333-3333-3333-333333333333",
       "action": "CUSTOM_EVENT",
@@ -1998,6 +2016,22 @@
         "instagram": null,
         "stage": "investigacao",
         "value": 0,
+        "user_id": "c3333333-3333-3333-3333-333333333333"
+      }
+    },
+    "lead:CRM-FEL-INSTA-002": {
+      "id": "CRM-FEL-INSTA-002",
+      "resource_type": "lead",
+      "deleted_at": "2026-11-03T17:46:14.172Z",
+      "deleted_by": "c3333333-3333-3333-3333-333333333333",
+      "deleted_by_name": "Felipe",
+      "snapshot": {
+        "id": "CRM-FEL-INSTA-002",
+        "name": "Marcos VinÃ­cius Prado",
+        "phone": "",
+        "instagram": "marcosprado_design",
+        "stage": "conversa",
+        "value": 72000,
         "user_id": "c3333333-3333-3333-3333-333333333333"
       }
     }
