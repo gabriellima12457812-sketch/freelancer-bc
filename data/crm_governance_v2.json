@@ -280,6 +280,20 @@
   ],
   "audit_logs": [
     {
+      "id": "24e3ea14-09ca-4f6c-a5a2-b55cd6bf9719",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "CUSTOM_EVENT",
+      "resource_type": "leads",
+      "resource_id": "lead-instagram-oliviabavaresco",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+      "details": {
+        "seller": "gabriel",
+        "phone": null
+      },
+      "created_at": "2026-11-05T19:15:47.986Z"
+    },
+    {
       "id": "0449ea55-c050-4e58-b2d2-ed4596438d42",
       "user_id": "528bdca6-62a3-4dd5-bc45-0e77e9174e67",
       "action": "LEAD_STATUS_CHANGE",
