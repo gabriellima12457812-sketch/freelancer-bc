@@ -280,6 +280,24 @@
   ],
   "audit_logs": [
     {
+      "id": "e0190fde-f969-4512-81ec-faa59e71c853",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "LEAD_SOFT_DELETE",
+      "resource_type": "lead",
+      "resource_id": "lead-instagram-oliviabavaresco",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36 Edg/155.0.0.0",
+      "details": {
+        "lead_name": "Olívia",
+        "phone": null,
+        "value": 0,
+        "stage": "fechamento",
+        "deleted_by": "Gabriel Lima",
+        "deleted_at": "2026-11-05T19:15:43.350Z"
+      },
+      "created_at": "2026-11-05T19:15:43.350Z"
+    },
+    {
       "id": "2d722fce-f040-44a4-9d4b-7aa10d8c5e00",
       "user_id": "528bdca6-62a3-4dd5-bc45-0e77e9174e67",
       "action": "LEAD_STATUS_CHANGE",
@@ -3393,6 +3411,22 @@
         "stage": "conversa",
         "value": 72000,
         "user_id": "c3333333-3333-3333-3333-333333333333"
+      }
+    },
+    "lead:lead-instagram-oliviabavaresco": {
+      "id": "lead-instagram-oliviabavaresco",
+      "resource_type": "lead",
+      "deleted_at": "2026-11-05T19:15:43.350Z",
+      "deleted_by": "a1111111-1111-1111-1111-111111111111",
+      "deleted_by_name": "Gabriel Lima",
+      "snapshot": {
+        "id": "lead-instagram-oliviabavaresco",
+        "name": "Olívia",
+        "phone": null,
+        "instagram": "oliviabavaresco",
+        "stage": "fechamento",
+        "value": 0,
+        "user_id": "a1111111-1111-1111-1111-111111111111"
       }
     }
   }
