@@ -280,6 +280,21 @@
   ],
   "audit_logs": [
     {
+      "id": "d10203fb-a8cb-48e5-9b10-4fc2975f98ec",
+      "user_id": "528bdca6-62a3-4dd5-bc45-0e77e9174e67",
+      "action": "LEAD_STATUS_CHANGE",
+      "resource_type": "lead",
+      "resource_id": "CRM-SEB-WA-554797550665",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36 Edg/156.0.0.0",
+      "details": {
+        "stage": "novos",
+        "value": 0,
+        "updated_by": "sebastiao"
+      },
+      "created_at": "2026-11-05T19:15:12.720Z"
+    },
+    {
       "id": "84b735db-0c0f-4b25-9404-8877f8d09982",
       "user_id": "528bdca6-62a3-4dd5-bc45-0e77e9174e67",
       "action": "LEAD_STATUS_CHANGE",
