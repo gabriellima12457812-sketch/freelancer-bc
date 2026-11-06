@@ -280,6 +280,22 @@
   ],
   "audit_logs": [
     {
+      "id": "e57cc2e7-db3e-4dfe-a78f-aa21624df06e",
+      "user_id": "usr-nathaly",
+      "action": "CUSTOM_EVENT",
+      "resource_type": "leads",
+      "resource_id": "CRM-NAT-WA-554797932565",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "nathaly",
+        "lead_name": "Andre$Andre",
+        "previous_stage": "fechamento",
+        "new_stage": "novos"
+      },
+      "created_at": "2026-11-06T17:57:36.608Z"
+    },
+    {
       "id": "77bd2a35-6550-461d-9fd7-5f348eddbfef",
       "user_id": "usr-nathaly",
       "action": "LEAD_STATUS_CHANGE",
