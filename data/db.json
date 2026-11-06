@@ -4280,6 +4280,26 @@
       "trialStartDate": "2026-11-03T16:49:11.534Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1793985161630",
+      "name": "Marinara gomes",
+      "email": "maryygomess46@gmail.com",
+      "password": "150417",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "105.234.859-99",
+      "cnpj": null,
+      "phone": "47997715929",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 29,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-11-06T17:12:41.630Z",
+      "trialStartDate": "2026-11-06T17:12:41.630Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
