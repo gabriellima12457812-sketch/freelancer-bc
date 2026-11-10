@@ -4301,6 +4301,26 @@
       "trialStartDate": "2026-11-06T17:12:41.630Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
+    },
+    {
+      "id": "u-1794305467756",
+      "name": "MATEUS SAULO DO NASCIMENTO",
+      "email": "msaulo939@gmail.com",
+      "password": "310820",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "521.065.348-09",
+      "cnpj": null,
+      "phone": "15998173614",
+      "businessType": null,
+      "profession": "Garçom",
+      "age": 24,
+      "experienceTime": "Menos de 1 ano (Iniciante)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-11-10T10:11:07.756Z",
+      "trialStartDate": "2026-11-10T10:11:07.756Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
