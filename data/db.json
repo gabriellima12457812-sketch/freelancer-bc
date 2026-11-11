@@ -4322,6 +4322,26 @@
       "trialExpiryDate": null,
       "isSubscriptionActive": true,
       "experience": ""
+    },
+    {
+      "id": "u-1794360023851",
+      "name": "JHENNIFER NIKAELI FLORENTINO",
+      "email": "jhennifernikaeliflorentino@gmail.com",
+      "password": "196810",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "095.153.459-95",
+      "cnpj": null,
+      "phone": "44999324714",
+      "businessType": null,
+      "profession": "Recepção",
+      "age": 30,
+      "experienceTime": "Mais de 5 anos (Sênior / Especialista)",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-11-11T01:20:23.851Z",
+      "trialStartDate": "2026-11-11T01:20:23.851Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
