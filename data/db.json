@@ -4341,7 +4341,11 @@
       "createdAt": "2026-11-11T01:20:23.851Z",
       "trialStartDate": "2026-11-11T01:20:23.851Z",
       "trialExpiryDate": null,
-      "isSubscriptionActive": true
+      "isSubscriptionActive": true,
+      "alertCategories": [
+        "Recepção",
+        "Garçom"
+      ]
     }
   ],
   "jobs": [
