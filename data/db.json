@@ -4346,6 +4346,26 @@
         "Recepção",
         "Garçom"
       ]
+    },
+    {
+      "id": "u-1794480023663",
+      "name": "Aurenice Nascimento da Motta",
+      "email": "aurenicedrbr@gmail.com",
+      "password": "260507",
+      "role": "freelancer",
+      "status": "aprovado",
+      "cpf": "611.212.661-34",
+      "cnpj": null,
+      "phone": "47992243812",
+      "businessType": null,
+      "profession": "Limpeza",
+      "age": 52,
+      "experienceTime": "3 a 5 anos",
+      "city": "Balneário Camboriú",
+      "createdAt": "2026-11-12T10:40:23.663Z",
+      "trialStartDate": "2026-11-12T10:40:23.663Z",
+      "trialExpiryDate": null,
+      "isSubscriptionActive": true
     }
   ],
   "jobs": [
