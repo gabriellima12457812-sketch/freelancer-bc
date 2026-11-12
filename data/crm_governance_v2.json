@@ -280,6 +280,20 @@
   ],
   "audit_logs": [
     {
+      "id": "48ca2768-38f8-4416-97cf-4075ff8a6129",
+      "user_id": "usr-yasmim",
+      "action": "CUSTOM_EVENT",
+      "resource_type": "leads",
+      "resource_id": "CRM-YAS-LID-554591331419",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "yasmim",
+        "phone": "554591331419"
+      },
+      "created_at": "2026-11-12T19:28:38.100Z"
+    },
+    {
       "id": "cc4f5247-b2e1-414b-a81f-18af4023ddb6",
       "user_id": "usr-yasmim",
       "action": "CUSTOM_EVENT",
