@@ -280,6 +280,22 @@
   ],
   "audit_logs": [
     {
+      "id": "568b731a-6276-44a5-bd39-3981a6d4fd6b",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "LEAD_STATUS_CHANGE",
+      "resource_type": "lead",
+      "resource_id": "CRM-GAB-0105",
+      "ip_address": "170.247.147.73",
+      "user_agent": "Unknown Browser",
+      "details": {
+        "lead_name": "Dayana Tavares (Arquiteta & Lojista)",
+        "previous_stage": "projetos",
+        "new_stage": "novos",
+        "seller": "Gabriel Lima"
+      },
+      "created_at": "2026-11-12T17:55:28.201Z"
+    },
+    {
       "id": "76595c49-b8b7-4618-ae56-b4215fb3daad",
       "user_id": "99999999-9999-9999-9999-999999999999",
       "action": "LEAD_STATUS_CHANGE",
