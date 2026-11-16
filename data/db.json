@@ -4500,6 +4500,18 @@
     {
       "applicants": [
         {
+          "freelancerId": "u-1794849036522",
+          "name": "Oliver Matheus Corrêa Arsego",
+          "phone": "47996645334",
+          "email": "15853846906@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 22,
+          "experienceTime": "3 a 5 anos",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-11-16T17:10:37.283Z",
+          "hiredStatus": "pendente"
+        },
+        {
           "freelancerId": "u-1794848833104",
           "name": "Gabriel Ruiz Scremin",
           "phone": "14982298165",
@@ -4598,7 +4610,7 @@
       ],
       "companyName": "Bar na avenida atlântica",
       "commissionRate": null,
-      "clicks": 8,
+      "clicks": 9,
       "category": "Garçom",
       "address": "Av. Atlântica, Balneário",
       "startTime": "A combinar",
