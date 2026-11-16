@@ -4383,6 +4383,27 @@
       "subscriptionTier": "free",
       "status": "aprovado",
       "createdAt": "2026-11-16T17:10:36.522Z"
+    },
+    {
+      "id": "u-1794848833104",
+      "name": "Gabriel Ruiz Scremin",
+      "role": "freelancer",
+      "cpf": "121.332.159-05",
+      "phone": "14982298165",
+      "email": "12133215905@freelancerbc.local",
+      "password": "1836",
+      "age": 22,
+      "experienceTime": "Menos de 1 ano",
+      "profession": "Garçom",
+      "city": "Balneário Camboriú",
+      "isSubscriptionActive": true,
+      "subscriptionTier": "free",
+      "status": "aprovado",
+      "createdAt": "2026-11-16T17:07:13.104Z",
+      "alertCategories": [
+        "Garçom",
+        "Recepção"
+      ]
     }
   ],
   "jobs": [
