@@ -4401,7 +4401,8 @@
       "status": "aprovado",
       "createdAt": "2026-11-16T17:07:13.104Z",
       "alertCategories": [
-        "Recepção"
+        "Recepção",
+        "Garçom"
       ]
     }
   ],
