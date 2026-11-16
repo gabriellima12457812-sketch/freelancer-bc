@@ -4366,23 +4366,6 @@
       "trialStartDate": "2026-11-12T10:40:23.663Z",
       "trialExpiryDate": null,
       "isSubscriptionActive": true
-    },
-    {
-      "id": "u-1794848833104",
-      "name": "Gabriel Ruiz Scremin",
-      "role": "freelancer",
-      "cpf": "121.332.159-05",
-      "phone": "14982298165",
-      "email": "12133215905@freelancerbc.local",
-      "password": "1836",
-      "age": 22,
-      "experienceTime": "Menos de 1 ano",
-      "profession": "Garçom",
-      "city": "Balneário Camboriú",
-      "isSubscriptionActive": true,
-      "subscriptionTier": "free",
-      "status": "aprovado",
-      "createdAt": "2026-11-16T17:07:13.104Z"
     }
   ],
   "jobs": [
@@ -4517,6 +4500,18 @@
     {
       "applicants": [
         {
+          "freelancerId": "u-1794848833104",
+          "name": "Gabriel Ruiz Scremin",
+          "phone": "14982298165",
+          "email": "12133215905@freelancerbc.local",
+          "profession": "Garçom",
+          "age": 22,
+          "experienceTime": "Menos de 1 ano",
+          "city": "Balneário Camboriú",
+          "clickedAt": "2026-11-16T17:07:14.440Z",
+          "hiredStatus": "pendente"
+        },
+        {
           "freelancerId": "u-1791499865361",
           "name": "Emilaine da silva",
           "phone": "47984246872",
@@ -4603,7 +4598,7 @@
       ],
       "companyName": "Bar na avenida atlântica",
       "commissionRate": null,
-      "clicks": 7,
+      "clicks": 8,
       "category": "Garçom",
       "address": "Av. Atlântica, Balneário",
       "startTime": "A combinar",
