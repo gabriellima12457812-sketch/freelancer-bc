@@ -296,6 +296,24 @@
   ],
   "audit_logs": [
     {
+      "id": "2bae7f4f-f4d6-454c-bf76-2179112616f4",
+      "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
+      "action": "LEAD_SOFT_DELETE",
+      "resource_type": "lead",
+      "resource_id": "CRM-YAS-LID-266502787883161",
+      "ip_address": "177.221.69.152",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "lead_name": "🖱️",
+        "phone": "266502787883161",
+        "value": "25164.00",
+        "stage": "proposta",
+        "deleted_by": "Yasmim",
+        "deleted_at": "2026-11-19T13:50:36.957Z"
+      },
+      "created_at": "2026-11-19T13:50:36.957Z"
+    },
+    {
       "id": "ec1a8ab7-7525-4edb-b4a6-5762dfb135ca",
       "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
       "action": "LEAD_UPDATE",
@@ -4760,6 +4778,22 @@
         "stage": "fechamento",
         "value": 40000,
         "user_id": "a1111111-1111-1111-1111-111111111111"
+      }
+    },
+    "lead:CRM-YAS-LID-266502787883161": {
+      "id": "CRM-YAS-LID-266502787883161",
+      "resource_type": "lead",
+      "deleted_at": "2026-11-19T13:50:36.957Z",
+      "deleted_by": "bbbbbbbb-9999-4999-a999-999999999999",
+      "deleted_by_name": "Yasmim",
+      "snapshot": {
+        "id": "CRM-YAS-LID-266502787883161",
+        "name": "🖱️",
+        "phone": "266502787883161",
+        "instagram": null,
+        "stage": "proposta",
+        "value": "25164.00",
+        "user_id": "bbbbbbbb-9999-4999-a999-999999999999"
       }
     }
   }
