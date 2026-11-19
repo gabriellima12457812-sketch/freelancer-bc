@@ -296,6 +296,20 @@
   ],
   "audit_logs": [
     {
+      "id": "6d2b8e34-86b0-4361-9d25-01316f0aada6",
+      "user_id": "usr-yasmim",
+      "action": "CUSTOM_EVENT",
+      "resource_type": "leads",
+      "resource_id": "CRM-YAS-LID-266502787883161",
+      "ip_address": "177.221.69.152",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "yasmim",
+        "phone": "266502787883161"
+      },
+      "created_at": "2026-11-19T13:50:41.724Z"
+    },
+    {
       "id": "2bae7f4f-f4d6-454c-bf76-2179112616f4",
       "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
       "action": "LEAD_SOFT_DELETE",
