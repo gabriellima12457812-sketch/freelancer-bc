@@ -296,6 +296,22 @@
   ],
   "audit_logs": [
     {
+      "id": "22a0a764-a404-41c0-a407-30b7c0c6f07b",
+      "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
+      "action": "LEAD_UPDATE",
+      "resource_type": "lead",
+      "resource_id": "CRM-YAS-LID-250126144692277",
+      "ip_address": "177.221.69.152",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "Yasmim",
+        "stage": "proposta",
+        "value": 16000,
+        "phone": "250126144692277"
+      },
+      "created_at": "2026-11-19T16:50:24.925Z"
+    },
+    {
       "id": "f519cd60-3f5a-440e-bb46-4efbd5803d96",
       "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
       "action": "LEAD_UPDATE",
