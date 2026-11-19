@@ -296,6 +296,22 @@
   ],
   "audit_logs": [
     {
+      "id": "d8cd87fa-bf6c-44eb-9394-23f5b5255595",
+      "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
+      "action": "LEAD_UPDATE",
+      "resource_type": "lead",
+      "resource_id": "CRM-YAS-WA-555181424200",
+      "ip_address": "177.221.69.152",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "Yasmim",
+        "stage": "concluidas",
+        "value": 22100,
+        "phone": "5181424200"
+      },
+      "created_at": "2026-11-19T16:43:34.446Z"
+    },
+    {
       "id": "0c22f543-8f42-4752-bb58-00bb775d4d86",
       "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
       "action": "LEAD_UPDATE",
