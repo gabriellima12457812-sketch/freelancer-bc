@@ -296,6 +296,22 @@
   ],
   "audit_logs": [
     {
+      "id": "543feed3-ce9c-4c35-bc4a-419728d784fc",
+      "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
+      "action": "LEAD_UPDATE",
+      "resource_type": "lead",
+      "resource_id": "CRM-YAS-WA-555584268344",
+      "ip_address": "177.221.69.152",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "Yasmim",
+        "stage": "novos",
+        "value": 29700,
+        "phone": "555584268344"
+      },
+      "created_at": "2026-11-19T13:39:11.697Z"
+    },
+    {
       "id": "d413535e-4c85-4107-bd69-943ed45aceb3",
       "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
       "action": "LEAD_UPDATE",
