@@ -296,6 +296,22 @@
   ],
   "audit_logs": [
     {
+      "id": "7a0696fc-3b07-483f-987e-de43becbaa0c",
+      "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
+      "action": "LEAD_UPDATE",
+      "resource_type": "lead",
+      "resource_id": "CRM-YAS-WA-5511986557025",
+      "ip_address": "177.221.69.152",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "Yasmim",
+        "stage": "desistiu",
+        "value": 32450,
+        "phone": "11986557025"
+      },
+      "created_at": "2026-11-19T14:12:25.656Z"
+    },
+    {
       "id": "ea51dda7-294b-45de-b226-eec8def7f2b7",
       "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
       "action": "LEAD_UPDATE",
