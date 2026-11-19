@@ -296,6 +296,24 @@
   ],
   "audit_logs": [
     {
+      "id": "0791c9a6-0a8c-4b3b-97dc-786d69420637",
+      "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
+      "action": "LEAD_SOFT_DELETE",
+      "resource_type": "lead",
+      "resource_id": "CRM-YAS-LID-153326154993851",
+      "ip_address": "177.221.69.152",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "lead_name": "Kherolyn Cavalcante",
+        "phone": "153326154993851",
+        "value": "24990.00",
+        "stage": "proposta",
+        "deleted_by": "Yasmim",
+        "deleted_at": "2026-11-19T13:51:21.543Z"
+      },
+      "created_at": "2026-11-19T13:51:21.543Z"
+    },
+    {
       "id": "6d2b8e34-86b0-4361-9d25-01316f0aada6",
       "user_id": "usr-yasmim",
       "action": "CUSTOM_EVENT",
@@ -4807,6 +4825,22 @@
         "instagram": null,
         "stage": "proposta",
         "value": "25164.00",
+        "user_id": "bbbbbbbb-9999-4999-a999-999999999999"
+      }
+    },
+    "lead:CRM-YAS-LID-153326154993851": {
+      "id": "CRM-YAS-LID-153326154993851",
+      "resource_type": "lead",
+      "deleted_at": "2026-11-19T13:51:21.543Z",
+      "deleted_by": "bbbbbbbb-9999-4999-a999-999999999999",
+      "deleted_by_name": "Yasmim",
+      "snapshot": {
+        "id": "CRM-YAS-LID-153326154993851",
+        "name": "Kherolyn Cavalcante",
+        "phone": "153326154993851",
+        "instagram": null,
+        "stage": "proposta",
+        "value": "24990.00",
         "user_id": "bbbbbbbb-9999-4999-a999-999999999999"
       }
     }
