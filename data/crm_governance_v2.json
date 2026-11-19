@@ -296,6 +296,21 @@
   ],
   "audit_logs": [
     {
+      "id": "740e8190-f677-4739-bfb8-8f341595ee11",
+      "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
+      "action": "LEAD_UPDATE",
+      "resource_type": "lead",
+      "resource_id": "CRM-YAS-LID-264458400198762",
+      "ip_address": "177.221.69.152",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "details": {
+        "seller": "Yasmim",
+        "stage": "desistiu",
+        "value": 38500
+      },
+      "created_at": "2026-11-19T13:30:50.881Z"
+    },
+    {
       "id": "a26c8965-8b86-4181-9927-451da38ee2b5",
       "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
       "action": "LEAD_UPDATE",
