@@ -296,6 +296,22 @@
   ],
   "audit_logs": [
     {
+      "id": "70611ce7-10aa-41e5-9ebc-be25a013a6ae",
+      "user_id": "a1111111-1111-1111-1111-111111111111",
+      "action": "LEAD_STATUS_CHANGE",
+      "resource_type": "lead",
+      "resource_id": "CRM-GAB-WA-5511999192083",
+      "ip_address": "177.221.69.152",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+      "details": {
+        "lead_name": "Mirella Pieroccini",
+        "previous_stage": "proposta",
+        "new_stage": "desistiu",
+        "seller": "Gabriel Lima"
+      },
+      "created_at": "2026-11-19T14:46:21.579Z"
+    },
+    {
       "id": "4590fad3-b399-4479-a2bc-95125e4c9816",
       "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
       "action": "LEAD_UPDATE",
