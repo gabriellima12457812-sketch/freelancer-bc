@@ -296,6 +296,21 @@
   ],
   "audit_logs": [
     {
+      "id": "eb2b6de1-72e2-4a0e-ba3c-07c9fe6d4e9a",
+      "user_id": "bbbbbbbb-9999-4999-a999-999999999999",
+      "action": "LEAD_CREATE",
+      "resource_type": "lead",
+      "resource_id": "CRM-YAS-WA-5541999998888",
+      "ip_address": "127.0.0.1",
+      "user_agent": "Unknown Browser",
+      "details": {
+        "seller": "Yasmim",
+        "stage": "novos",
+        "phone": "5541999998888"
+      },
+      "created_at": "2026-11-23T14:58:14.479Z"
+    },
+    {
       "id": "37f79783-1db8-49d2-ab43-79eebe712969",
       "user_id": "a1111111-1111-1111-1111-111111111111",
       "action": "LEAD_STATUS_CHANGE",
